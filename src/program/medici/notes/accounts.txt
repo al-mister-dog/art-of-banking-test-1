@@ -1,0 +1,23 @@
+Bank0 : {
+  assets: {
+    bankDeposits: [{id: bank2, amount: 100}, {id: bank3, amount: 150}],
+  }
+  liabilities: {
+    customerDeposits: [{id: bank2, amount: 100}, {id: bank3, amount: 150}],
+  }
+  accounts: {
+    customerDeposits: [{id: customer1, amount: 100}, {id: customer2, amount: 150}],
+  }
+}
+
+Customer1 : {
+  assets: {
+    customerDeposits: [{id: bank0, amount: 100}],
+  }
+  liabilities: {
+    customerOverdrafts: [{id: bank0, amount: 0}],
+  }
+  accounts: {
+    customerDeposits: [{id: bank1, amount: 100}],
+  }
+}

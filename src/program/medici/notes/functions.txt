@@ -1,0 +1,62 @@
+interbank transfers
+
+1
+a customer may have more than one bank account
+this is a future eventuality to prepare for
+
+when customerA makes a transfer to customerB, customerB's bank account of 
+choice must be specified.
+
+what is a good way of doing this?
+establish a payee account between customers.
+
+whenever transaction function occurs, chosen banks will appear in parameters
+
+Bank.interbank(a, b, amount, shareFunc())
+
+2
+
+
+
+c1 > c2 (amount)
+c1 decreaseBalance/mapBalance
+c2 increaseBalance/mapBalance
+
+
+
+
+
+
+
+LOANS
+bankA takes loan out with bankB
+
+bankB                         bankB
+assets       liabilities      assets        liabilities
+loan(A)+     deposits(A)+     deposits(B)+  loan(B)+
+
+
+scenarios
+bankA pays back total loan in deposits
+bankB                         bankA
+assets       liabilities      assets        liabilities
+loan(A)-     deposits(A)-     deposits(B)-  loan(B)-
+
+bankB pays back total loan in cash
+bankB                         bankA
+assets       liabilities      assets        liabilities
+reserves+                     reserves-
+loan(A)-     deposits(A)-     deposits(B)-  loan(B)-
+
+functions 
+Customer.takeOutLoan() {
+  bank.createInstrument(loan)
+  customer.createInstrument(loan)
+  bank.increaseLiabilities(deposits)
+  customer.increaseAssets(deposits)
+}
+Customer.repayLoan("instrument", amount) {
+  instrument === cash?
+
+  instrument === deposits?
+}

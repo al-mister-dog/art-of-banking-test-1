@@ -1,0 +1,12 @@
+is the program efficient enough
+does it follow good oop principles
+
+STATIC FUNCTIONS
+most static functions will utilise more than one instance of a class
+
+PARENT CLASS
+parent class should only have functions shared by all descendents
+
+OVERRIDES
+static functions utilising more than one instance of a class but only relevant to a specific type of class
+

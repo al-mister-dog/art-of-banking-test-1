@@ -1,0 +1,27 @@
+create a bank and customer
+//SETUP
+const barclays = new CommercialBank(
+    "BARCLAYS",
+    { ...commercialAssets },
+    { ...commercialLiabilities },
+    { ...balances }
+  );
+  const johnDoe = new Customer(
+    "JOHN_DOE",
+    { customerDeposits: [] },
+    { customerOverdrafts: [] },
+    { ...balances }
+  );
+  Customer.createSubordinateAccount(
+    johnDoe, 
+    barclays, 
+    0, 
+    "customerDeposits", 
+    "customerOverdrafts"
+  );
+/shorthand
+setBank("BARCLAYS", "JOHNDOE") {
+  ^^^
+}
+
+create corresponding banks

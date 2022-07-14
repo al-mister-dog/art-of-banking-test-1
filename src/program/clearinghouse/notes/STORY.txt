@@ -1,0 +1,69 @@
+the banking system appears to work well when survival constraint is not taken into 
+account. balance sheets merely expand and contract. When survival constraint is 
+taken into account then complications arise. 
+
+CLEARING HOUSE SYSTEMS
+A clearing house reserves is made up through the subscription of its members.
+b1 subscription = 10000
+b2 subscription = 10000
+b3 subscription = 10000
+therefore clearinghouse reserves = 30000
+
+in exchange member banks are given the equivelant of their subscription in clearinghouse
+certificates.
+b1 chCertificates = 10000
+b2 chCertificates = 10000
+b3 chCertificates = 10000
+certificates act as a claim on the clearinghouse's reserves...
+eg "here is a clearinghouse certificate for $1000"
+
+
+customer A receives x via transfer from customer B (bankB)
+
+        bankA                                   customerA
+assets      liabilities              assets                liabilities
+reserves x
+            deposits(customerA)+     deposits(bankA)+
+---
+sides of balance sheet not equal
+
+
+bankB owes bankA
+        bankA                                    BankB
+assets      liabilities              assets                liabilities
+reserves x                           reserves x
+            deposits(customerA)+                           deposits(customerA)-
+dueFromB+                                                  dueFromA+
+---
+sides of balance sheet equal but needs to chase various banks
+
+
+instead of moving reserves bankA receives ch from the clearinghouse
+bankB gives ch to the clearingHouse
+        bankA                                    BankB
+assets      liabilities              assets                liabilities
+reserves x                           reserves x
+            deposits(customerA)+                         deposits(customerA)- 
+cHouse+                                                  cHouse+
+sides of balance sheet equal. no need to chase
+
+
+is the system fool proof?
+the banks are safe so long as its customers do not all demand payment in specie/cash
+if this happens, the banks will run out of reserves (final source of payment)
+
+one failing bank could demand payment in specie/cash from the clearing house, but if it
+is more than their subscription then the clearinghouse system will fail. other banks 
+will no longer be able to redeem clearingHouse certificates for specie/cash
+
+
+IN THE PROGRAM
+create banks
+each bank has x amount of reserves
+it can use some of this reserve to join a clearinghouse
+clearinghouse reserves +
+bank reserves -
+
+amount of reserves is equal to amount of clearinghouse certificates in the system
+
+

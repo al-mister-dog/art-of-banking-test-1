@@ -1,0 +1,35 @@
+interface StatusType {
+  [key: string]: boolean
+}
+
+const bank {
+  assets: {},
+  liabilities: {},
+  balances: {},
+  status: StatusType {
+    inOverdraft: inOverdraft()
+  }
+}
+
+function inOverdraft() {}
+
+this.transactionrecord {
+  1: {
+    time: date(),
+    action: withdrawal,
+    balance: 100,
+    type: 
+  }
+}
+
+after netting dues it turns out you OWE clearinghouse
+how to record this transaction??
+transactionRecord: {
+  type (liabilities.dueTo);
+  id (clearinghouse);
+  time: date();
+  amount;
+}
+
+WHERE IS THE BEST PLACE TO ADD A RECORD??
+maybe map balance??

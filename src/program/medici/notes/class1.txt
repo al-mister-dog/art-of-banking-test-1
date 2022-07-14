@@ -1,0 +1,51 @@
+//ACCOUNT FUNCTIONS
+createInstrument()
+  creates an account record for a given financial instrument e.g bankDeposits
+  "change to record"?
+
+isAccount()
+  checks if a particular account exists
+
+setAccount()
+  sets a particular account
+
+getAccountIndex()
+  returns a particular account index
+
+createSubordinateAccount()
+  creates a hierarchical account in which bank A's asset is bank B's liability 
+  Bank B is also able to keep track of bank A's balance.
+
+createCorrespondingAccount()
+  creates mutual subordinate accounts. Bank A and Bank B have the same assets and liabilities
+
+
+//INSTRUMENT FUNCTIONS
+increaseBalance()
+  increases the balance of a particular account.
+
+decreaseBalance()
+  decreases the balance of a particular account.
+
+increaseDues()
+  increases dues on one side of the balance sheet... but another function already does this??
+
+reduceAccounts()
+  sums the total amount of a given bank's financial instrument. 
+
+netAccounts()
+  will net both sides of the balance sheet of a given financial instrument and return the 
+  net on one side of it
+
+mapBalance() 
+  will map the balance of a subordinate account and adjust both banks' balance sheet, to 
+  move an instrument type to a debt (eg overdraft) account or a credit (eg deposit) account
+
+clearCorrespondingDues()
+  returns mutual dues to zero
+
+clearSubordinateDues()
+  returns hierarchical dues to zero
+
+
+//RESERVE FUNCTIONS

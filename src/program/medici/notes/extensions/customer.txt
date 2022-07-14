@@ -1,0 +1,22 @@
+customer opens two accounts with different banks
+  customer.transfer(c1, c2) {
+    c1.account -
+    c2.account +
+  }
+
+but from which bank and to which bank?
+
+must be a bank that customers have an account with
+
+option1: auto 
+  transfer > customer.transfer(c1, c2)
+    as is: autoTransferTo etc...
+
+option2: choose bank first
+  transfer > which bank > customer.transfer(c1, c2, bank)
+  if bank ()
+
+option3: choose both banks
+  transfer > which banks > customer.transfer(c1, c2, b1, b2)
+  if b1 && b2 ()
+

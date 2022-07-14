@@ -1,0 +1,101 @@
+single bank
+click on a bank
+shows balance sheet
+shows accounts with other banks and customers
+shows a list of options for functions
+
+create a bank -- 
+  bank name
+  type of bank
+  add customers
+  join a clearinghouse
+  create a correspondent account
+
+create a customer --
+
+
+npx create-react-app banking-1 --template redux-typescript
+
+GUI
+all banks
+    |
+    select bank
+options panel
+    |
+    create options
+        |
+        create bank
+        create customer
+    select panel
+        |
+        select customer
+            |
+            title: "customer a"
+            operations:
+                deposit
+                  |
+                  to: [..."banks that customer a has account with"]
+                withdraw
+                  |
+                  from: [..."banks that customer a has account with"]
+                open account
+                  |
+                  with [...banks (could be hierarchical)]
+                close account
+                  |
+                  with: [..."banks that customer a has account with"]
+                create loan
+                  |
+                  with: [..."banks that customer a has account with"]
+                repay loan
+                  |
+                  with: [..."banks that customer a has account with"]
+                  in: [cash, deposits]
+                fees: ...
+            displays:
+                deposit balance:
+                  |
+                  number
+                history:
+                  |
+                  history of transactions
+                balancesheet:
+                  |
+                  assets | liabilities
+        select bank
+            |
+            title: "bank a"
+            alerts:
+                |
+                eg. bank a is running an daylight overdraft: choose options
+                    |
+                    find loan in money market
+                    get loan from fed etc
+            operations:
+                deposit
+                  |
+                  to: [..."banks that bank a has account with"]
+                withdraw
+                  |
+                  from: [..."banks that bank a has account with"]
+                open account
+                  |
+                  with [...banks (could be hierarchical)]
+                close account
+                  |
+                  with: [..."banks that bank a has account with"]
+                create loan
+                  |
+                  with: [..."banks that bank a has account with"]
+                repay loan
+                  |
+                  with: [..."banks that bank a has account with"]
+                  in: [cash, deposits]
+                fees: ...
+            displays:
+                history:
+                  |
+                  history of transactions
+                balancesheet:
+                  |
+                  assets | liabilities

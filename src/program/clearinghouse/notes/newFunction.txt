@@ -1,0 +1,117 @@
+a deposits into b:
+
+fn makeDeposit(a, b, amount)
+  C.increaseBalance(a)
+  C.increaseBalance(b)
+  C.mapBalance(a, b) 
+
+fn increaseBalance(a, b, amount)
+  balance:
+    a balance += amount
+    b balance += amount
+
+fn makeWithdrawal(a, b, amount)
+  C.decreaseBalance(a)
+  C.decreaseBalance(b)
+  C.mapBalance(a, b) 
+
+fn decreaseBalance(a, b, amount)
+  balance:
+    a balance -= amount
+    b balance -= amount
+
+fn mapBalance(a, b, amount)
+    balance = findBalance(a, b)
+    if balance > 0
+      a.setAccount(assets.deposits, b.id, amount) 
+      b.setAccount(liabilities.deposits, a.id, amount) 
+      a.setAccount(liabilities.overdraft, b.id, 0) 
+      b.setAccount(assets.overdraft, a.id, 0) 
+    if balance < 0
+      a.setAccount(liabilities.overdrafts, b.id, -amount)
+      b.setAccount(assets.overdrafts, a.id, -amount)
+      a.setAccount(assets.deposits, b.id, 0)
+      b.setAccount(liabilities.deposits, a.id, 0)
+    if balance === 0
+      setAll(0)
+
+setAccount(cat, inst, id, amount) {
+  i = findIndex(id)
+  this[cat][inst][i] = amount
+}
+
+possibly only one 'bank' needs a balance. maybe the > bank
+
+fn makeDeposit(a, b, amount)
+  b.increaseBalance(a)
+  C.mapBalance(a, b) 
+
+fn makeWithdrawal(a, b, amount)
+  b.decreaseBalance(a)
+  C.mapBalance(a, b) 
+
+fn increaseBalance(a, b, amount)
+  b.findIndex(a, "balance")
+  this.balance += amount
+  
+fn decreaseBalance(a, b, amount)
+  b.findIndex(a, "balance")
+  this.balance += amount
+
+fn mapBalance(a, b, amount)
+    balance = findBalance(a, b)
+    if balance > 0
+      a.setAccount(assets.deposits, b.id, amount) 
+      b.setAccount(liabilities.deposits, a.id, amount) 
+      a.setAccount(liabilities.overdraft, b.id, 0) 
+      b.setAccount(assets.overdraft, a.id, 0) 
+    if balance < 0
+      a.setAccount(liabilities.overdrafts, b.id, -amount)
+      b.setAccount(assets.overdrafts, a.id, -amount)
+      a.setAccount(assets.deposits, b.id, 0)
+      b.setAccount(liabilities.deposits, a.id, 0)
+    if balance === 0
+      setAll(0)
+
+setAccount(cat, inst, id, amount) {
+  i = findIndex(id)
+  this[cat][inst][i] = amount
+}
+
+
+what about a non corresponding account? a can run an overdraft but b cant run an overdraft
+fn makeDeposit(a, b, amount)
+  b.increaseBalance(a)
+  C.mapBalance(a, b) 
+
+fn makeWithdrawal(a, b, amount)
+  b.decreaseBalance(a)
+  C.mapBalance(a, b) 
+
+fn increaseBalance(a, b, amount)
+  b.findIndex(a, "balance")
+  this.balance += amount
+  
+fn decreaseBalance(a, b, amount)
+  b.findIndex(a, "balance")
+  this.balance += amount
+
+fn mapBalance(a, b, amount)
+    balance = findBalance(a, b)
+    if balance > 0
+      a.setAccount(assets.deposits, b.id, amount) 
+      b.setAccount(liabilities.deposits, a.id, amount) 
+      a.setAccount(liabilities.overdraft, b.id, 0) 
+      b.setAccount(assets.overdraft, a.id, 0) 
+    if balance < 0
+      a.setAccount(liabilities.overdrafts, b.id, -amount)
+      b.setAccount(assets.overdrafts, a.id, -amount)
+      a.setAccount(assets.deposits, b.id, 0)
+      b.setAccount(liabilities.deposits, a.id, 0)
+    if balance === 0
+      setAll(0)
+
+setAccount(cat, inst, id, amount) {
+  i = findIndex(id)
+  this[cat][inst][i] = amount
+}

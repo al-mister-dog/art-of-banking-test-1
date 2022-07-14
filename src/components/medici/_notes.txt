@@ -1,0 +1,60 @@
+exchange rates are arranged into a hierarchy
+
+
+the bill is a payment order for a sum
+this sum is always drawn in the exchange money of only one of the cities 
+in this case Lyons
+
+
+TODOS
+card OK button should be disabled after click //done
+accordion should collapse after OK click //done
+
+Find Bill dialog should close after OK click // done
+Same for Remit // done
+a bill that has been paid should not be in choose from bill list // done
+
+there should be a panel that lets you know which city is quoting certain
+there should be a record of actions for each player eg "exported goods to..." "remitted bill to"
+
+THEORY
+Me sells bill: 1 marc to You for 64 ecus
+The price for a gold marc drawn on Lyons is 64 ecus
+The price for a gold marc in Lyons, quoted in Florence as 64 Ecus is known because 
+it is published in the Conto.
+
+
+
+DRAW BILL
+if (payee === bank)
+When drawing a bill on an exchange banker you are essentially selling the bill to the 
+exchange banker. This entitles the holder of the bill to draw money from the person owing,
+as specified on the bill. In this case {payee}...
+
+The unit of account used in bills of exchange is the 'marc de ecu', or gold marc. The price
+of a gold marc is published in the 'conto', and decided periodically at the exchange fair.
+The fair would take place in the dominant financial center of the time. At the time of this
+exchange, the financial center was Lyons (France) and towards the end of the 16th century 
+it was Bisenzone (Piacenza, Italy).
+The city that publishes the conto decides the price of the gold marc...
+For example in Florence the price for a gold marc drawn on Lyons is 64 ecus
+
+
+TODOS
+step by step guide...
+1, 2, 3
+
+add consignment letters (spaccios) and vostro nostro accounts (correspondent accounts)
+allow user to change the exchange numbers
+find out if moveable rate can be set by individual bankers or in the contos
+
+////////
+8th June
+
+TODOS
+swipeable balance sheets in mobile mode. overflowY flex. DONE
+could be a spinning wheel
+press Enter function on number enter dialog
+change focus onStepperChange
+finish step complete functionality
+create alerts for step completion

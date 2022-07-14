@@ -1,0 +1,26 @@
+status {
+  overdraft() {}
+  paymentsSuspended() {}
+  insolvent() {}
+  illiquid() {}
+}
+
+where do status checks fit in 
+
+function() {
+  const bla = Service.methodA(b1, b2)
+  if (bla.event === x) {}
+  if (bla.event === y) {}
+}
+
+
+methodA() {
+  if statusCheck() {
+    return event??
+    //go elsewhere??
+  } else {
+    //do usual stuff
+  }
+}
+
+test for event

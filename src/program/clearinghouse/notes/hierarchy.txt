@@ -1,0 +1,373 @@
+main functions
+
+every object is a type of bank, including...
+commercial bank
+customer etc
+
+all banks can have a relationship with all other banks through creating accounts
+different instruments come into play depending on a bank's position in the hierarchy
+eg
+customer deposit is the liability of the bank and the asset of the customer
+customer overdraft is the liability of the customer and the asset of the bank
+
+
+
+a correspondent account is when two banks open accounts with each other
+
+KEY
+the banking system works best when debts (in the highest form of money) are never called in
+banks prefer working with credit than with cash or with gold!
+
+in a credit system, a bank can defer payment in its ultimate form using an overdraft
+
+
+
+
+loss of faith function!!!
+
+bankA doubts the ability of bankB to pay a potential debt
+
+
+
+goal for the time being
+all credit instruments to increase decrease accounts, go into debt and go into credit
+forms of credit instruments
+customer deposits
+customer overdraft
+bank deposit
+bank overdraft
+
+
+processes
+step1
+add or subtract accounts
+check if this puts bank into credit or debt
+add credit and debt statuses to correspondent accounts
+
+customer > bank
+step1
+
+bank > bank (customer interbank transfers)
+net accounts
+total accounts
+step1
+
+
+step1
+
+credit account means hsbc increases its liabilities. barclays increases its assets
+hsbc.assets.bankDeposits 1000
+hsbc.liabilities.bankDeposits 1150
+barclays.assets.bankDeposits 1150
+barclays.liabilities.bankDeposits 1000
+
+credit account means barclays increases its liabilities. hsbc increases its assets
+hsbc.assets.bankDeposits 1150
+hsbc.liabilities.bankDeposits 1000
+barclays.assets.bankDeposits 1000
+barclays.liabilities.bankDeposits 1150
+
+debit account means hsbc decreases its liabilities. barclays decreases its assets
+hsbc.assets.bankDeposits 1000
+hsbc.liabilities.bankDeposits 850
+barclays.assets.bankDeposits 850
+barclays.liabilities.bankDeposits 1000
+
+
+
+
+
+
+
+debit account means barclays decreases its liabilities. hsbc decreases its assets    
+barclays.assets.bankDeposits: { id: 'HSBC', amount: 1000 }
+barclays.liabilities.bankDeposits: { id: 'HSBC', amount: 0 }
+barclays.assets.bankOverdrafts: { id: 'HSBC', amount: 100 }
+barclays.liabilities.bankOverdrafts: { id: 'HSBC', amount: 1000 }
+hsbc.assets.bankDeposits: { id: 'BARCLAYS', amount: 0 }
+hsbc.liabilities.bankDeposits: { id: 'BARCLAYS', amount: 1000 }
+hsbc.assets.bankOverdrafts: { id: 'BARCLAYS', amount: 1000 }
+hsbc.liabilities.bankOverdrafts: { id: 'BARCLAYS', amount: 100 }
+
+
+barclays decreases its liabilities
+hsbc decreases its assets
+barclays liabilities = 1000 
+if barclays decreases its liabilities below zero then the remainder is taken up as assets
+if barclays liabilities are 1000 and is decreased by 1100 then:
+  liabilities.bankDeposits = 0
+  assets.bankOverdrafts = 100
+
+  if hsbc decreases its liabilities below zero then the remainder is taken up as liability.bankOverdrafts
+
+barclays
+a               l
+-----------------------
+D:hsbc:1000     D:hsbc:1000
+
+
+hsbc
+a                l
+-----------------------
+D:barclays:1000    D:barclays:1000
+
+
+case1
+barclays decreases its liabilities
+hsbc decreases its assets
+
+barclays
+a               l
+-----------------------
+D:hsbc:1000     D:hsbc:0
+
+
+hsbc
+a                l
+-----------------------
+D:barclays:0    D:barclays:1000
+
+
+case2
+barclays decreases its liabilities
+hsbc decreases its assets
+
+barclays
+a               l
+-----------------------
+D:hsbc:1100     D:hsbc:0
+
+
+hsbc
+a                l
+-----------------------
+D:barclays:0    D:barclays:1100
+
+
+case3
+barclays decreases its liabilities and opens an asset overdraft
+hsbc decreases its assets further and goes into liability overdraft
+
+barclays
+a               l
+-----------------------
+D1:hsbc:1000     D2:hsbc:0
+O1:hsbc:100      O2:hsbc:0
+
+hsbc
+a                l
+-----------------------
+D2:barclays:0      D1:barclays:1000
+O2:barclays:0      O1:barclays:100
+
+barclays.assets.deposits(hsbc, 1000)
+barclays.assets.overdrafts(hsbc, 100)
+barclays.liabilities.deposits(hsbc, 0)
+barclays.liabilities.overdrafts(hsbc, 0)
+hsbc.assets.deposits(hsbc, 0)
+hsbc.assets.overdrafts(hsbc, 0)
+hsbc.liabilities.deposits(hsbc, 1000)
+hsbc.liabilities.overdrafts(hsbc, 100)
+
+barclays.assets.bankDeposits: { id: 'HSBC', amount: 1000 }
+barclays.assets.bankOverdrafts: { id: 'HSBC', amount: 100 }
+barclays.liabilities.bankDeposits: { id: 'HSBC', amount: 0 }
+barclays.liabilities.bankOverdrafts: { id: 'HSBC', amount: 1000 } WRONG
+hsbc.assets.bankDeposits: { id: 'BARCLAYS', amount: 0 }
+hsbc.assets.bankOverdrafts: { id: 'BARCLAYS', amount: 1000 } WRONG
+hsbc.liabilities.bankDeposits: { id: 'BARCLAYS', amount: 1000 }
+hsbc.liabilities.bankOverdrafts: { id: 'BARCLAYS', amount: 100 }
+
+
+
+ids
+if hsbc opens an account with barclays it would look like this
+HSBC
+accountsId BARCLAYS
+assets.depositsId BARCLAYS
+liabilities.overdraftId BARCLAYS
+BARCLAYS
+accountsId HSBC
+liabilities.depositsId HSBC
+assets.overdraftId HSBC
+
+if barclays opens an account with hsbc it would look like this
+BARCLAYS
+accountsId HSBC
+assets.depositsId HSBC
+liabilities.overdraftId HSBC
+HSBC
+accountsId BARCLAYS
+liabilities.depositsId BARCLAYS
+asset.overdraftID BARCLAYS
+
+the balance ids are duplicates
+we need a better identifier
+if hsbc opens an account with barclays
+corresponding ids
+HSBC
+accountsId HSBC-BARCLAYS
+BARCLAYS
+accounts HSBC-BARCLAYS
+
+if barclays opens an account with hsbc
+corresponding ids
+BARCLAYS
+accountsId BARCLAYS-HSBC
+HSBC
+accounts BARCLAYS-HSBC
+
+the bank on the left handside of the id denotes the fact that the left handside bank
+can run an overdraft with the bank on the righthandside
+
+
+function call rule: bank on right is subordinate to bank on left
+debitAccount
+minusBalance function(hsbc.id, barclays.id, amount) {
+  id = `${hsbc.id}>${barclays.id}`
+}
+
+
+
+
+-----
+
+on open account a > b
+a balanceId = a>b
+b balanceId = a>b
+a assets.depositsId = b
+b liabilities.depositsId = a
+a liabilities.overdraft = b
+b assets.overdraft = a
+
+
+a deposits into b:
+balance:
+  a balance +
+  b balance +
+assets/liabilities
+  if balance > 0
+    a assets.deposits +
+    b liabilities.deposits +
+  if balance < 0
+    a liabilities.overdrafts -
+    b assets.overdrafts -
+  if balance === 0
+    all o
+
+
+a withdraws from b:
+balance:
+  a balance +
+  b balance +
+assets/liabilities
+  if balance > 0
+    a assets.deposits -
+    b liabilities.deposits -
+  if balance < 0
+    a liabilities.overdrafts +
+    b assets.overdraft +
+  if balance === 0
+    all o
+
+
+
+same but with all accounts
+a deposits into b:
+balance:
+  a balance +
+  b balance +
+assets/liabilities
+  if balance > 0
+    a assets.deposits +
+    b liabilities.deposits +
+    a liabilities.overdraft = 0
+    a assets.overdraft = 0
+  if balance < 0
+    a liabilities.overdrafts -
+    b assets.overdrafts -
+    a assets.deposits = 0
+    b liabilities.deposits = 0
+  if balance === 0
+    all o
+
+
+a withdraws from b:
+balance:
+  a balance +
+  b balance +
+assets/liabilities
+  if balance > 0
+    a assets.deposits -
+    b liabilities.deposits -
+    a liabilities.overdraft = 0
+    b assets.overdraft = 0
+  if balance < 0
+    a liabilities.overdrafts +
+    b assets.overdraft +
+    a assets.deposits = 0
+    b liabilities.deposits = 0
+  if balance === 0
+    all o
+
+
+
+same but with finding accounts
+a deposits into b:
+
+fn makeDeposit(a, b)
+  C.increaseBalance(a)
+  C.increaseBalance(b)
+  C.mapBalance(a, b) 
+
+fn increaseBalance(a, b)
+  balance:
+    a balance +
+    b balance +
+
+fn mapBalance(a, b, amount)
+  const [a, b, c, d, e, f, g, h] = findAccountIndexes()
+    if balance > 0
+      a.setAccount(assets.deposits[id], amount) 
+      b.setAccount(liabilities.deposits[id], amount) 
+      a.setAccount(liabilities.overdraft[id], 0) 
+      a.setAccount(assets.overdraft[id], 0) 
+    if balance < 0
+      a.setAccount(liabilities.overdrafts[id], -amount)
+      b.setAccount(assets.overdrafts[id], -amount)
+      a.setAccount(assets.deposits[id], 0)
+      b.setAccount(liabilities.deposits[id], 0)
+    if balance === 0
+      setAll(0)
+
+
+a withdraws from b:
+fn makeWithdrawal(a, b)
+  C.decreaseBalance(a)
+  C.decreaseBalance(b)
+  C.mapDecreaseBalance(a, b) 
+
+fn decreaseBalance(a, b)
+  balance:
+    a balance -
+    b balance -
+
+assets/liabilities
+  if balance > 0
+    a assets.deposits -
+    b liabilities.deposits -
+    a liabilities.overdraft = 0
+    b assets.overdraft = 0
+  if balance < 0
+    a liabilities.overdrafts +
+    b assets.overdraft +
+    a assets.deposits = 0
+    b liabilities.deposits = 0
+  if balance === 0
+    all o
+
+
+
+customer opens account with bank
+customer has: assets.deposits, liabilities.overdraft
+bank has: liabilities.deposits, assets.overdraft, accounts.deposits

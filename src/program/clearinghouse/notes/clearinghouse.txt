@@ -1,0 +1,153 @@
+is a clearinghouse just a bank?
+
+clearinghouse = new Bank()
+b1 = new Bank()
+b2 = new Bank()
+b3 = new Bank()
+c1 = new Customer()
+c2 = new Customer()
+c3 = new Customer()
+
+Bank.createCorrespondingAccounts(b1, b2)
+Bank.createCorrespondingAccounts(b1, b3)
+Bank.createCorrespondingAccounts(b2, b1)
+Bank.createCorrespondingAccounts(b2, b3)
+Bank.createCorrespondingAccounts(b3, b1)
+Bank.createCorrespondingAccounts(b3, b2)
+
+function createClearingHouse(banks, clearingHouse) {
+  this.clearingHouse = clearingHouse
+  for (const bank in banks) {
+    Bank.createCorrespondingAccounts(bank, clearingHouse, 10000)
+  }
+}
+
+Customer.createSubordinateAccount(c1, b1)
+Customer.createSubordinateAccount(c2, b2)
+Customer.createSubordinateAccount(c3, b3)
+
+totalAccounts()
+return total and make out to designated clearingHouse
+ClearingHouse.clearingHouse
+
+clearinghouse certificates are exactly the same as bank deposits. they are a claim on money
+to be paid on demand
+
+
+example
+santander owes clearinghouse 40
+both banks have totalAccounts
+
+result
+before settlement
+clearingHouse has asset dues and liability dues
+the clearinghouse only has liability chCertificates
+santander gives clearinhouse its assets of 40
+santander.assets.chCertificates 9960
+clearinghouse.assets.chCertificatess = 1040
+
+//NOTES
+Each use of the loan certificate required another member bank to refrain from collecting a 
+payment of reserves. This individual bank that does not collect reserves essentially makes 
+a temporary interbank loan.
+
+Further, the central clearinghouse did not retain the interest paid by banks that borrowed 
+loan certificates, so the central clearinghouse was not a lender. The interest on the loan 
+certificate accrued to the individual lending bank.
+
+healthy and conservative banks might prefer to cooperate less under a loan certificate 
+system if riskier banks regularly required larger borrowings of loan certificates.
+
+step 1: travelling porter
+
+step 2: net clearing
+net clearing: we gather all of the payments from the day and net them (exchange) so as to 
+transfer a smaller quantity of physical money (settlement). 
+
+
+The settlement process was expedited by allowing banks to store currency at the clearinghouse. 
+The clearinghouse created special certificates called clearinghouse certificates that represented 
+a claim on actual money stored in a vault and could be used in the settlement.
+
+
+//FAILURES
+After the exchanges but before the settlement, a debtor bank could fail, causing a loss to a 
+creditor bank that never accepted a check from the debtor bank.
+
+Therefore, member banks would want assurances that all other members were financially sound.
+Gorton and Mullineaux emphasize tactics such as bank examinations and monitoring of bank 
+statements that bank clearinghouses employed to ensure the solvency of its members.
+
+
+                      clearinghouse
+member loan from debtorbank| chLoan to creditorbank
+
+debtorbank                    creditorbank
+random assets | chLoan        chLoan  | random liabilities
+              |                       |
+              |                       |
+
+
+if a member bank is a net debtor at the end of the day it has to choose from:
+pay in clearinghouse certificates
+borrow from another member
+default
+
+Once banks suspended payments during panics, clearinghouses could increase the 
+expansion of loans. 
+Suppose that a bank clearinghouse has two members, Bank A and Bank B.
+
+As a result of the crisis, imagine that both banks declare that they suspend payments, 
+and usually this announcement would be made cooperatively at the clearinghouse. 
+suspendPayments(bankA, bankB)
+
+Now imagine that the banks want to make loans to their customers who desperately need credit. 
+Often times, banks would lend to brokers or stock market operators who required credit 
+to facilitate securities transactions. 
+
+Suppose both Bank A and Bank B increase loans by $100. 
+Bank A lends $100 to Borrower 1, and Bank B lends $100 to Borrower 2. 
+Remember that under suspension, the borrowers cannot withdraw the money in cash, ...
+CustomerService.borrow(borrower1, BankA) if (bankA.paymentsSuspended()) {cant withdraw}
+CustomerService.borrow(borrower2, BankB) if (bankB.paymentsSuspended()) {cant withdraw}
+...so the best they can do is write checks. 
+Borrower 1 could write a check to Depositor 1B for $100, and Borrower 2 could write a 
+check to Depositor 2A for $100. 
+CustomerService.transferByCheck(borrower1, depositor1, BankA, BankB, 100)
+CustomerService.transferByCheck(borrower2, depositor2, BankA, BankB, 100)
+
+Now Depositor 1B banks at Bank B and deposits the check for $100 in Bank B, 
+and Depositor 2A banks at Bank A and deposits the check for $100 in Bank A. 
+CustomerService.depositByCheck(borrower1, BankA, 100)
+CustomerService.depositByCheck(borrower2, BankB, 100)
+In the clearings, Bank A will owe Bank B $100, and Bank B will owe Bank A $100, 
+and thus the two payments will cancel out and settlement requires no payment. 
+In this way, 
+*the banks can increase their loans without a change in their reserve position.* 
+The leadership of the New York Clearing House developed this strategy during the panic 
+of 1857, shortly after its founding in 1853 (Myers Reference Myers1931).
+
+
+But if the check payments are distributed asymmetrically across the banks, 
+some banks obtain debtor positions in the clearings.
+Now imagine that instead Borrower 1 wrote a $100 check to Depositor 1A who banks at Bank A.
+CustomerService.transfer(borrower1, depositor1, )
+Bank A can just increase Depositor 1A's account by $100 and decrease Borrower 1's account 
+by $100 without any other changes. (already covered)
+
+Thus, at the clearing, there is only one check, written by Borrower 2 which is deposited 
+by Depositor 2A at bank A. Therefore, Bank B owes Bank A $100 in the clearings and will 
+suffer a reserve outflow at settlement. In general, if spending of the borrowed funds is 
+distributed asymmetrically at certain institutions, these institutions would obtain a 
+creditor position in the clearings, so other institutions must have a debtor position and 
+will suffer reserve outflows. If banks anticipated suffering reserve losses in the event 
+that spending was concentrated at other banks, a bank might not want to expand loans, 
+thus limiting credit during panic periods when it was needed most by the business and 
+financial community.
+
+IN PLAIN ENGLISH
+If bankA finds itself in a constant debtor position it will be hesitant to give loans.
+status.continuousDebtor()
+if (status.continuousDebtor()) {stopMakingLoans}
+if (stopMakingLoans) {businessFail!!!}
+

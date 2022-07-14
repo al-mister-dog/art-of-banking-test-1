@@ -1,0 +1,44 @@
+netAccountsAndTransfer()
+  a.net(b)
+  b.net(a)
+  if (a owes b) {
+    a.credit(b)
+  } if (b owes a) {
+    b.credit(a)
+  }
+  if (equal) {
+    return
+  }
+  a.deleteDuesAccount(b)
+  b.deleteDuesAccount(a)
+
+
+
+
+desired behaviours
+banks can rack up dues with each other
+banks can net dues with each other
+banks can then pay each other bilaterally
+banks will then clear their dues accounts
+
+this process can happen individually
+eg:
+c1.transfers(c2)
+b1 and b2.netAccounts()
+b1 or b2 credit or debit bilaterally()
+
+the second two steps could possibly be done together
+netAccountsAndTransfer() {
+  b1 and b2.netAccounts()
+  b1 or b2 credit or debit bilaterally() 
+  clearDues() //decrease dues to zero
+}
+
+procedure
+go through process with individual functions first
+go through process in one function (see what parameters need passing etc)
+
+
+find dues
+function will find the account of the bank oweing...
+when bank has been found, transfer function with correct parameters

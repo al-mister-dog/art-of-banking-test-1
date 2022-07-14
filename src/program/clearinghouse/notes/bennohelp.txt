@@ -1,0 +1,6 @@
+Customer, Bank, etc should represent objects with no static methods
+
+CustomerService, BankService etc should contain methods that modify 
+customer and bank instances
+
+Open-close principle

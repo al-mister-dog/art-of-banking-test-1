@@ -1,9 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import  playersReducer from '../features/players/playersSlice';
+
+import fundamentalsReducer from '../features/moduleState/fundamentalsSlice'
+import auxilliaryReducer from "../features/auxilliary/auxilliarySlice"
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+     players:  playersReducer,
+     partiesFundamentals: fundamentalsReducer,
+     auxilliary: auxilliaryReducer
   },
 });
 
