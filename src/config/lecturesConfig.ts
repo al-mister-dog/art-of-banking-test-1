@@ -1,5 +1,5 @@
 import { fundamentals, clearinghouse } from "./texts";
-import {  module1, module2 } from "./initialStateConfig";
+import {  lecture1StateConfig, lecture2StateConfig } from "./initialStateConfig";
 
 export interface Text {
   title: string;
@@ -41,7 +41,7 @@ export const lectures = {
         parties: ["customer1", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step2,
-        state: module1.defaultSetup,
+        state: lecture1StateConfig.defaultSetup,
       } as Step,
       3: {
         title: "step3",
@@ -51,7 +51,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step3,
-        state: module1.defaultSetup
+        state: lecture1StateConfig.defaultSetup
       } as Step,
       4: {
         title: "step4",
@@ -61,7 +61,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step4,
-        state: module1.overdraft,
+        state: lecture1StateConfig.overdraft,
       } as Step,
       5: {
         title: "step5",
@@ -71,7 +71,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step5,
-        state: module1.creditSetup
+        state: lecture1StateConfig.creditSetup
       } as Step,
     },
   },
@@ -89,7 +89,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "customer3", "customer4", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: clearinghouse.step2,
-        state: module2.oneBigBank,
+        state: lecture2StateConfig.oneBigBank,
       },
       3: {
         overdraft: true,
@@ -105,7 +105,7 @@ export const lectures = {
         ],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts", "dues"],
         text: clearinghouse.step3,
-        state: module2.multipleBanks,
+        state: lecture2StateConfig.multipleBanks,
       },
       4: {
         overdraft: true,
@@ -127,7 +127,7 @@ export const lectures = {
           "dues",
         ],
         text: clearinghouse.step4,
-        state: module2.correspondentBanking,
+        state: lecture2StateConfig.correspondentBanking,
       },
     },
   },

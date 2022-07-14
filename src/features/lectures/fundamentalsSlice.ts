@@ -85,6 +85,7 @@ export const fundamentalsSlice = createSlice({
       }
     },
     reset: (state) => {
+      console.log(setupState)
       for (const key in setupState) {
         state[key] = JSON.parse(JSON.stringify(setupState[key]));
         // lookup[key] = JSON.parse(JSON.stringify(setupState[key])); incase of errors

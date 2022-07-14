@@ -1,15 +1,15 @@
-import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import {
-  selectParties,
-  withdraw,
-} from "../../../../../features/lectures/fundamentalsSlice";
-import { findBankByCustomersAccounts } from "./__filters";
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+// import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
+// import {
+//   selectParties,
+//   withdraw,
+// } from "../../../../../features/lectures/fundamentalsSlice";
+// import { findBankByCustomersAccounts } from "./__filters";
+import { Box,  } from "@mui/material";
 
-import { useState } from "react";
-import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import { IBank } from "../../../../../program/clearinghouse/types";
-import DoneIcon from "@mui/icons-material/Done";
+// import { useState } from "react";
+// import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
+// import { IBank } from "../../../../../program/clearinghouse/types";
+// import DoneIcon from "@mui/icons-material/Done";
 import { Accordions } from "../../../../types";
 
 

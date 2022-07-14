@@ -8,7 +8,7 @@ import {
   customerBalances,
 } from "./program/fixtures";
 import { lookup } from "./program/lookupTables";
-import { defaultSetup } from "./setupConfig"
+import { lecture1StateConfig } from "../../config/initialStateConfig"
 import { CustomerService } from "./program/services";
 import { System } from "./program/systemMethods";
 
@@ -101,6 +101,7 @@ function createBankingSystem(config: { system: any; parties: any }) {
   });
 }
 
+const defaultSetup = lecture1StateConfig.defaultSetup
 createBankingSystem(defaultSetup)
 const setupState = JSON.parse(JSON.stringify(state))
 export { setupState, defaultSetup };

@@ -47,7 +47,7 @@ export default function Home() {
           }}
         >
           <Typography variant="h6" align="center">
-            Learn the <strong>Art of Banking</strong> - from the Italian masters
+          <strong>Learn the Art of Banking</strong> - from the Italian masters
             to the New York Money Market...
           </Typography>
           

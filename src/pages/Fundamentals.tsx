@@ -1,7 +1,6 @@
 import { useAppDispatch } from "../app/hooks";
 import { reset } from "../features/lectures/fundamentalsSlice";
 import { useState } from "react";
-import { fundamentals } from "../config/texts";
 import { lectures } from "../config/lecturesConfig";
 
 import {
@@ -36,7 +35,7 @@ function getStepContent(step: number) {
     case 3:
       return <StepComponent text={config[4].text} config={config[4]} />;
     case 4:
-      return <StepComponent text={fundamentals.step5} config={config[5]} />;
+      return <StepComponent text={config[5].text} config={config[5]} />;
     // case 5:
     //   return <Playground />;
     default:

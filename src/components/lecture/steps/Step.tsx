@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
-import {defaultSetup, creditSetup} from "../../../features/lectures/setupConfig"
+import {lecture1StateConfig} from "../../../config/initialStateConfig"
 import {
   selectParties,
   setupModule,
@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 import IndexMobile from "../mobile/Index";
 import IndexDesktop from "../desktop/Index";
 import { IBank } from "../../../features/lectures/program/types";
+
+const {defaultSetup, creditSetup} = lecture1StateConfig
 
 const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   text,
