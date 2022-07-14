@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../app/hooks";
-import { reset } from "../features/lectures/fundamentalsSlice";
+import { reset } from "../features/lectures/lecturesSlice";
 import { useState } from "react";
 import { lectures } from "../config/lecturesConfig";
 

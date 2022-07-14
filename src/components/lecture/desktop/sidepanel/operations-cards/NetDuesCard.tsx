@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import { selectParties } from "../../../../../features/lectures/fundamentalsSlice";
-import { netCorrespondingDues } from "../../../../../features/lectures/fundamentalsSlice";
+import { selectParties } from "../../../../../features/lectures/lecturesSlice";
+import { netCorrespondingDues } from "../../../../../features/lectures/lecturesSlice";
 import { findOwedandOweingBanks } from "./__filters";
 import { Box, Button, Typography } from "@mui/material";
 

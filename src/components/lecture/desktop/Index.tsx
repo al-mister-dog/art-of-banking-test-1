@@ -2,7 +2,7 @@ import { useAppSelector } from "../../../app/hooks";
 import {
   selectParties,
   // createNewCustomer,
-} from "../../../features/lectures/fundamentalsSlice";
+} from "../../../features/lectures/lecturesSlice";
 import Introduction from "../ui/Introduction";
 
 import { Box } from "@mui/material";

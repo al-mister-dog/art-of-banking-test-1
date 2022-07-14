@@ -1,13 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import  playersReducer from '../features/players/playersSlice';
 
-import fundamentalsReducer from '../features/lectures/fundamentalsSlice'
+import lecturesReducer from '../features/lectures/lecturesSlice'
 import auxilliaryReducer from "../features/auxilliary/auxilliarySlice"
 
 export const store = configureStore({
   reducer: {
      players:  playersReducer,
-     partiesFundamentals: fundamentalsReducer,
+     partiesLectures: lecturesReducer,
      auxilliary: auxilliaryReducer
   },
 });

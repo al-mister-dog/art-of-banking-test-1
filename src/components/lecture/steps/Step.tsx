@@ -4,7 +4,7 @@ import {
   selectParties,
   setupModule,
   reset,
-} from "../../../features/lectures/fundamentalsSlice";
+} from "../../../features/lectures/lecturesSlice";
 import { resetTotalCreditData } from "../../../features/auxilliary/auxilliarySlice";
 import { useState, useEffect } from "react";
 import IndexMobile from "../mobile/Index";
@@ -25,7 +25,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
     party.includes("customer")
   );
   const configBanks = config.parties.filter((party: string) =>
-    party.includes("bank")
+    party.includes("bank") || party.includes("clearinghouse")
   );
 
   const [selected, setSelected] = useState<string>("customer1");

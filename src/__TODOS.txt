@@ -1,9 +1,3 @@
 //MAKE RECEIVE BANK PAYMENTS
-if no parties found, show this on display
-
-make an interbank system, where dues are not netted or fully cleared
-
-sort out the refresh/reset system
-
-create an index for different modules
+create different dispatch methods for NETDUES
 

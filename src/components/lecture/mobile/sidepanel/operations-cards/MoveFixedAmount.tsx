@@ -4,7 +4,7 @@ import {
   payBank,
   creditBankAccount,
   debitBankAccount,
-} from "../../../../../features/lectures/fundamentalsSlice";
+} from "../../../../../features/lectures/lecturesSlice";
 
 import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";

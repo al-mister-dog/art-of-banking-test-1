@@ -103,7 +103,7 @@ export const fundamentals = {
     Expand the credit in the system by $50 and then contract it to $0`,
   },
   step5: {
-    title: `Constraints`,
+    title: `The Clearing House`,
     paragraphs: [
       `Because cash is many ways seen as the final form of settlement, a bank must ensure that
       it can redeem its customers on a day to day basis. The surest way of doing this would be

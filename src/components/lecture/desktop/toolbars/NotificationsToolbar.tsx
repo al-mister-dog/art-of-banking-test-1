@@ -3,7 +3,7 @@
 import { useAppSelector, useAppDispatch } from "../../../../app/hooks";
 import {
   selectParties,
-} from "../../../../features/lectures/fundamentalsSlice";
+} from "../../../../features/lectures/lecturesSlice";
 import {
   selectAuxilliary,
   setReservePercentage,

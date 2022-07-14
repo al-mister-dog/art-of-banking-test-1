@@ -5,7 +5,7 @@ import {
   deposit,
   transfer,
   payBank,
-} from "../../../../../features/lectures/fundamentalsSlice";
+} from "../../../../../features/lectures/lecturesSlice";
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
 
 import { useState } from "react";

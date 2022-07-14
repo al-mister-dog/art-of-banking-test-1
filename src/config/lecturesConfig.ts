@@ -1,5 +1,5 @@
 import { fundamentals, clearinghouse } from "./texts";
-import {  lecture1StateConfig, lecture2StateConfig } from "./initialStateConfig";
+import { lecture1StateConfig, lecture2StateConfig } from "./initialStateConfig";
 
 export interface Text {
   title: string;
@@ -51,7 +51,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step3,
-        state: lecture1StateConfig.defaultSetup
+        state: lecture1StateConfig.defaultSetup,
       } as Step,
       4: {
         title: "step4",
@@ -71,7 +71,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step5,
-        state: lecture1StateConfig.creditSetup
+        state: lecture1StateConfig.creditSetup,
       } as Step,
     },
   },
@@ -128,6 +128,29 @@ export const lectures = {
         ],
         text: clearinghouse.step4,
         state: lecture2StateConfig.correspondentBanking,
+      },
+      5: {
+        overdraft: true,
+        credit: true,
+        constraint: false,
+        parties: [
+          "customer1",
+          "customer2",
+          "customer3",
+          "customer4",
+          "bank1",
+          "bank2",
+          "clearinghouse"
+        ],
+        balanceSheetDisplay: [
+          "customerDeposits",
+          "customerOverdrafts",
+          "dues",
+          "chCertificates",
+          "chOverdrafts",
+        ],
+        text: clearinghouse.step5,
+        state: lecture2StateConfig.clearinghouse,
       },
     },
   },

@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
 import {
   selectParties,
   withdraw,
-} from "../../../../../features/lectures/fundamentalsSlice";
+} from "../../../../../features/lectures/lecturesSlice";
 import { findBankByCustomersAccounts } from "./__filters";
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 

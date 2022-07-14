@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../app/hooks";
 import { useState } from "react";
-import { reset } from "../features/lectures/fundamentalsSlice";
+import { reset } from "../features/lectures/lecturesSlice";
 import { lectures } from "../config/lecturesConfig";
 
 import {
@@ -34,8 +34,8 @@ function getStepContent(step: number) {
       return <StepComponent text={config[3].text} config={config[3]} />;
     case 3:
       return <StepComponent text={config[4].text} config={config[4]} />;
-    // case 4:
-    //   return <StepComponent text={fundamentals.step5} config={config[5]} />;
+    case 4:
+      return <StepComponent text={config[5].text} config={config[5]} />;
     // case 5:
     //   return <Playground />;
     default:
@@ -47,7 +47,7 @@ const steps = [
   "One Big Bank",
   "Multiple Banks",
   "Correspondent Banking",
-  // "Constraints",
+  "The Clearing House",
   // "Playground",
 ];
 
