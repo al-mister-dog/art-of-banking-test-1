@@ -1,8 +1,8 @@
 import { useAppDispatch } from "../app/hooks";
-import { reset } from "../features/moduleState/fundamentalsSlice";
+import { reset } from "../features/lectures/fundamentalsSlice";
 import { useState } from "react";
 import { fundamentals } from "../config/texts";
-import { modules } from "../config/config";
+import { lectures } from "../config/lecturesConfig";
 
 import {
   Box,
@@ -20,22 +20,21 @@ import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-import Introduction from "../components/module/steps/Introduction";
-import StepComponent from "../components/module/steps/Step";
+import Introduction from "../components/lecture/steps/Introduction";
+import StepComponent from "../components/lecture/steps/Step";
 
-// import Playground from "./6-playground";
-const config = modules.fundamentals.steps;
+const config = lectures.fundamentals.steps;
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
       return <Introduction text={config[1].text} />;
     case 1:
-      return <StepComponent text={fundamentals.step2} config={config[2]} />;
+      return <StepComponent text={config[2].text} config={config[2]} />;
     case 2:
-      return <StepComponent text={fundamentals.step3} config={config[3]} />;
+      return <StepComponent text={config[3].text} config={config[3]} />;
     case 3:
-      return <StepComponent text={fundamentals.step4} config={config[4]} />;
+      return <StepComponent text={config[4].text} config={config[4]} />;
     case 4:
       return <StepComponent text={fundamentals.step5} config={config[5]} />;
     // case 5:

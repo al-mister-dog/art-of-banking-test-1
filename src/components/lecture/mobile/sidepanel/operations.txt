@@ -1,0 +1,26 @@
+
+
+CardData
+sendBankPayment: (
+  <MoveFixedAmount
+    selected={selected}
+    accordionExpanded={accordionExpanded}
+    setAccordionExpanded={setAccordionExpanded}
+    filterMethod={findOwedBanks}
+    methodText="Find Bank"
+    dispatchMethod="payBank"
+    config={config}
+  />
+),
+
+\/\/\/\/\/\/
+MoveFixedAmount
+<ChoosePlayer
+  setSelectedValuePlayer={setSelectedValuePlayer}
+  open={openTo}
+  onClose={handleCloseTo}
+  selectedBankers={selectedParties}
+/>
+
+\/\/\/\/\/\/
+ChoosePlayer

@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../app/hooks";
 import { useState } from "react";
-import { reset } from "../features/moduleState/fundamentalsSlice";
-import { modules } from "../config/config";
+import { reset } from "../features/lectures/fundamentalsSlice";
+import { lectures } from "../config/lecturesConfig";
 
 import {
   Box,
@@ -19,10 +19,10 @@ import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-import Introduction from "../components/module/steps/Introduction";
-import StepComponent from "../components/module/steps/Step";
+import Introduction from "../components/lecture/steps/Introduction";
+import StepComponent from "../components/lecture/steps/Step";
 
-const config = modules.clearinghouse.steps;
+const config = lectures.clearinghouse.steps;
 
 function getStepContent(step: number) {
   switch (step) {

@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import  playersReducer from '../features/players/playersSlice';
 
-import fundamentalsReducer from '../features/moduleState/fundamentalsSlice'
+import fundamentalsReducer from '../features/lectures/fundamentalsSlice'
 import auxilliaryReducer from "../features/auxilliary/auxilliarySlice"
 
 export const store = configureStore({

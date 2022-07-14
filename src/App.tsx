@@ -4,7 +4,7 @@ import Home from "./pages/home/Home"
 import Nav from "./components/Nav"
 import Fundamentals from "./pages/Fundamentals";
 import Clearinghouse from "./pages/Clearinghouse";
-import Medici from "./components/medici/steps/Stepper";
+import Medici from "./components/bonus_lecture/steps/Stepper";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
