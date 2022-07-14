@@ -103,7 +103,7 @@ export const fundamentals = {
     Expand the credit in the system by $50 and then contract it to $0`,
   },
   step5: {
-    title: `The Clearing House`,
+    title: `Constraint`,
     paragraphs: [
       `Because cash is many ways seen as the final form of settlement, a bank must ensure that
       it can redeem its customers on a day to day basis. The surest way of doing this would be
@@ -252,45 +252,31 @@ export const clearinghouse = {
     accounts contain "Bank Deposits".`,
   },
   step5: {
-    title: `Constraints`,
+    title: `The Clearing House`,
     paragraphs: [
-      `Because cash is many ways seen as the final form of settlement, a bank must ensure that
-      it can redeem its customers on a day to day basis. The surest way of doing this would be
-      to keep all the cash deposited in a vault, in case all the customers decide to all take out
-      their money at the same time. Of course, this is unlikely and the bank would like to use 
-      these funds for investments elsewhere. But bank runs (the scenario illustrated in the previous
-      sentence) can and do happen.`,
-      `This then is one of many constraints a bank faces. Traditionally banks are required to keep
-      a fraction of total customer deposits as reserves. For example if total customer deposits were
-      $10000, a bank may be required by law to keep $2500 in reserve to meet its daily demands. This 
-      is called fractional reserve banking.`,
-      `We have seen by playing with overdrafts how credit can expand and contract. Credit expansion 
-      means there is lots of investment going on, and lots of payments being made. However this 
-      is a precarious position for a bank if suddenly everyone gets spooked and wants to redeem their
-      deposits as cash. On the other hand, if credit doesn't expand, growth becomes much slower or 
-      even impossible. The art of banking requires striking a balance between constraint and elasticity.`,
+      `The correspondent system of banking is a step forward from the older system of interbank
+      payments, but it could be improved. Obviously it would advantageous 
+      to devise a system where the bank only had to pay the net across all its correspondents, rather
+      than pay bilaterally with every bank in the network. It would be easier if all the banks held 
+      correspondent accounts with only one bank, and use those balances to clear all its payments.`,
+      `In the mid nineteenth century, a group of banks of roughly the same stature set up the New York
+      Clearing House Association, a bank who's reserves where made up of a subscription by every 
+      member bank. Any payment due to or from one bank became a payment due to or from the Clearing
+      House. These payments were made with "Clearing House Certificates" which were bank notes representing
+      the dollar, in cash or gold. Each bank had a deposit account of Clearinghouse Certificates. 
+      At the end of each day, all the banks would meet up at the Clearing House, net their due tos and due froms, 
+      and if they were a debtor party, pay the Clearing House in certificates, or if they were the 
+      creditor party, receive certificates from the Clearing House.`,
+      `Because the money supply in this system is made up entirely of the deposit accounts of the 
+      member banks, total due tos and due froms will always net to zero, and reserves will never 
+      have to move. However this system can break if one member bank ends up systematically becoming a debtor
+      and runs out of certificates in their account. Other members would be reluctant to extend an 
+      overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
+      To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
+      looked at in the next chapter.`
     ],
-    assignment: `Change the reserve requirement and see how it effects the elasticity of the system.`,
-  },
-  step6: {
-    title: `Conclusion`,
-    paragraphs: [
-      `Because cash is many ways seen as the final form of settlement, a bank must ensure that
-      it can redeem its customers on a day to day basis. The surest way of doing this would be
-      to keep all the cash deposited in a vault, in case all the customers decide to all take out
-      their money at the same time. Of course, this is unlikely and the bank would like to use 
-      these funds for investments elsewhere. But bank runs (the scenario illustrated in the previous
-      sentence) can and do happen.`,
-      `This then is one of many constraints a bank faces. Traditionally banks are required to keep
-      a fraction of total customer deposits as reserves. For example if total customer deposits were
-      $10000, a bank may be required by law to keep $2500 in reserve to meet its daily demands. This 
-      is called fractional reserve banking.`,
-      `We have seen by playing with overdrafts how credit can expand and contract. Credit expansion 
-      means there is lots of investment going on, and lots of payments being made. However this 
-      is a precarious position for a bank if suddenly everyone gets spooked and wants to redeem their
-      deposits as cash. On the other hand, if credit doesn't expand, growth becomes much slower or 
-      even impossible. The art of banking requires striking a balance between constraint and elasticity.`,
-    ],
-    assignment: `Change the reserve requirement and see how it effects the elasticity of the system.`,
+    assignment: `Below are banks and customers who have done a day of trading and are now ready to net
+    and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
+    Then settle dues and see what happens to the banks' certificate accounts.`,
   },
 };

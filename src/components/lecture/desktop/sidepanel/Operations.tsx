@@ -72,30 +72,35 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
       {
         accordionKey: "netDues",
         accordionTitle: "Net Dues",
+        institutions: ["correspondent"],
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .netDues,
       },
       {
         accordionKey: "receiveBankPayment",
         accordionTitle: "Receive Bank Payment",
+        institutions: ["interbank"],
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .receiveBankPayment,
       },
       {
         accordionKey: "sendBankPayment",
         accordionTitle: "Send Bank Payment",
+        institutions: ["interbank"],
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .sendBankPayment,
       },
       {
         accordionKey: "creditBankAccount",
         accordionTitle: "Credit Bank Account",
+        institutions: ["correspondent"],
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
       {
         accordionKey: "debitBankAccount",
         accordionTitle: "Debit Bank Account",
+        institutions: ["correspondent"],
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
@@ -107,17 +112,18 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         component: cardData(selected, accordionExpanded, setAccordionExpanded)
           .settleDues,
       },
+      {
+        accordionKey: "chNetDues",
+        accordionTitle: "Net Dues",
+        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+          .chNetDues,
+      },
     ],
   };
 
-  if (config.state.system === "interbank") {
-    partyOperations.bank = partyOperations.bank.filter(
-      (partyOp: { accordionKey: string }) =>
-        partyOp.accordionKey !== "netDues" &&
-        partyOp.accordionKey !== "creditBankAccount" &&
-        partyOp.accordionKey !== "debitBankAccount"
-    );
-  }
+  partyOperations.bank = partyOperations.bank.filter((partyOp) =>
+    partyOp.institutions.includes(config.state.system)
+  );
 
   const accordionColors = {
     monochromatic: "#8F1A14",

@@ -3,15 +3,15 @@ import MoveVariableAmount from "./operations-cards/MoveVariableAmount";
 import MoveFixedAmount from "./operations-cards/MoveFixedAmount";
 import NetDuesCard from "./operations-cards/NetDuesCard";
 import OpenAccountCard from "./operations-cards/OpenAccountCard";
-import SettleDuesCard from "./operations-cards/SettleDuesCard";
-
+import SettleDuesCard from "./operations-cards/SettleDuesCard"
+import ChNetDuesCard from "./operations-cards/ChNetDuesCard";
 import {
   findBankByCustomersAccounts,
   findAllCustomers,
-  findAllBanks,
   findOweingBanks,
   findOwedBanks,
 } from "./operations-cards/__filters";
+
 
 const cardData = (
   selected: any,
@@ -65,6 +65,13 @@ const cardData = (
     ),
     netDues: (
       <NetDuesCard
+        selected={selected}
+        accordionExpanded={accordionExpanded}
+        setAccordionExpanded={setAccordionExpanded}
+      />
+    ),
+    chNetDues: (
+      <ChNetDuesCard
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}

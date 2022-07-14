@@ -5,9 +5,10 @@ import { lookup } from "./program/lookupTables";
 import { IBank } from "./program/types";
 import { setupState } from "./initialState";
 import { newSetupState, createBankingSystem } from "./helpers";
-import { CustomerService } from "./program/services";
+import { ClearingHouseService, CustomerService } from "./program/services";
 import { BankService } from "./program/services";
 import { PaymentMethods } from "./program/methods";
+import { clearinghouse } from "../../config/texts";
 
 interface BankState {
   [index: string]: IBank;
@@ -74,6 +75,20 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
+    chNetDues: (state) => {
+      for (const key in lookup) {
+        if (key.includes("bank")) {
+          BankService.netDues(lookup[key])
+        }
+      }
+      lecturesSlice.caseReducers.updateState(state);
+      lecturesSlice.caseReducers.updateLookup(state);
+    },
+    settleDues: (state) => {
+      PaymentMethods.settleDues();
+      lecturesSlice.caseReducers.updateState(state);
+      lecturesSlice.caseReducers.updateLookup(state);
+    },
     updateState: (state) => {
       for (const key in state) {
         state[key] = JSON.parse(JSON.stringify(lookup[key]));
@@ -108,6 +123,8 @@ export const {
   payBank,
   netDues,
   netCorrespondingDues,
+  settleDues,
+  chNetDues,
   reset,
   setupModule,
 } = lecturesSlice.actions;

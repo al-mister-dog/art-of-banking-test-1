@@ -23,8 +23,7 @@ export class System {
     } else if (sys === "clearinghouse") {
       SystemMethods = new ClearingHouseSystem();
       systemCheck = "clearinghouse";
-    }
-    else if (sys === "interbank") {
+    } else if (sys === "interbank") {
       SystemMethods = new InterbankSystem();
       systemCheck = "interbank";
     }
@@ -76,12 +75,10 @@ class InterbankSystem extends AbstractSystem {
   settleDues(): void {
     for (const bank in lookup) {
       lookup[bank].liabilities.dues.forEach((due) => {
-        PaymentMethods.creditAccount(
-          lookup[due.id],
-          lookup[bank],
-          due.amount,
-          ["dues", "dues"]
-        );
+        PaymentMethods.creditAccount(lookup[due.id], lookup[bank], due.amount, [
+          "dues",
+          "dues",
+        ]);
         PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
       });
     }
@@ -127,12 +124,10 @@ class CorrespondentSystem extends AbstractSystem {
   settleDues(): void {
     for (const bank in lookup) {
       lookup[bank].liabilities.dues.forEach((due) => {
-        PaymentMethods.creditAccount(
-          lookup[due.id],
-          lookup[bank],
-          due.amount,
-          ["bankDeposits", "bankOverdrafts"]
-        );
+        PaymentMethods.creditAccount(lookup[due.id], lookup[bank], due.amount, [
+          "bankDeposits",
+          "bankOverdrafts",
+        ]);
         PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
       });
     }
@@ -191,9 +186,9 @@ class ClearingHouseSystem extends AbstractSystem {
     let bankDueFrom = bank.assets.dues.find(
       (due) => due.id === lookup["clearinghouse"].id
     );
-    let clearinghouseDueFrom = lookup[
-      "clearinghouse"
-    ].liabilities.dues.find((due) => due.id === bank.id);
+    let clearinghouseDueFrom = lookup["clearinghouse"].liabilities.dues.find(
+      (due) => due.id === bank.id
+    );
 
     if (clearinghouseDueFrom && bankDueFrom) {
       clearinghouseDueFrom.amount = bankDueFrom.amount;
@@ -209,26 +204,53 @@ class ClearingHouseSystem extends AbstractSystem {
     }
   }
 
+  // settleDues(): void {
+  //   for (const bank in lookup) {
+  //     lookup[bank].liabilities.dues.forEach((due) => {
+  //       if (due.amount > 0 && lookup[bank].id === "clearinghouse") {
+  //         PaymentMethods.creditAccount(
+  //           lookup[due.id],
+  //           lookup[bank],
+  //           due.amount,
+  //           ["chCertificates", "chOverdrafts"]
+  //         );
+  //       } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
+  //         PaymentMethods.debitAccount(
+  //           lookup[bank],
+  //           lookup[due.id],
+  //           due.amount,
+  //           ["chCertificates", "chOverdrafts"]
+  //         );
+  //       }
+  //       PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
+  //     });
+  //   }
+  // }
   settleDues(): void {
     for (const bank in lookup) {
-      lookup[bank].liabilities.dues.forEach((due) => {
-        if (due.amount > 0 && lookup[bank].id === "clearinghouse") {
-          PaymentMethods.creditAccount(
-            lookup[due.id],
-            lookup[bank],
-            due.amount,
-            ["chCertificates", "chOverdrafts"]
-          );
-        } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
-          PaymentMethods.debitAccount(
-            lookup[bank],
-            lookup[due.id],
-            due.amount,
-            ["chCertificates", "chOverdrafts"]
-          );
-        }
-        PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
-      });
+      if (
+        lookup[bank].id.includes("bank") ||
+        lookup[bank].id.includes("clearinghouse")
+      ) {
+        lookup[bank].liabilities.dues.forEach((due) => {
+          if (due.amount > 0 && lookup[bank].id === "clearinghouse") {
+            PaymentMethods.creditAccount(
+              lookup[due.id],
+              lookup[bank],
+              due.amount,
+              ["chCertificates", "chOverdrafts"]
+            );
+          } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
+            PaymentMethods.debitAccount(
+              lookup[bank],
+              lookup[due.id],
+              due.amount,
+              ["chCertificates", "chOverdrafts"]
+            );
+          }
+          PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
+        });
+      }
     }
   }
 }

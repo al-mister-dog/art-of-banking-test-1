@@ -1,25 +1,26 @@
 import { useAppDispatch } from "../../../../../app/hooks";
 import {
-  settleDues,
+  chNetDues,
 } from "../../../../../features/lectures/lecturesSlice";
 import { Box, Button, Typography } from "@mui/material";
 import { Accordions } from "../../../../types";
 
-const SettleDues: React.FunctionComponent<{
+const ChNetDuesCard: React.FunctionComponent<{
   selected: any;
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
 }> = ({ selected, accordionExpanded, setAccordionExpanded }) => {
-  const dispatch = useAppDispatch();
+  
+  const dispatch = useAppDispatch()
 
-  function handlesettleDues() {
-    dispatch(settleDues())
+  function handleChNetDues() {
+    dispatch(chNetDues())
     // setAccordionExpanded({ ...accordionExpanded, deposit: false });
   }
   return (
     <Box sx={{display: "flex", justifyContent: "space-around"}}>
-      <Button variant="contained" onClick={handlesettleDues}>
-        Settle Dues
+      <Button variant="contained" onClick={handleChNetDues}>
+        Net Dues
       </Button>
       <Box
         sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
@@ -49,4 +50,5 @@ const SettleDues: React.FunctionComponent<{
   );
 };
 
-export default SettleDues;
+export default ChNetDuesCard;
+

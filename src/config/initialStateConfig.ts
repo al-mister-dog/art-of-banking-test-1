@@ -185,7 +185,7 @@ export const lecture2StateConfig = {
             customer: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 40 }],
+            transfers: [{ customer: "customer4", amount: 50 }],
           },
           {
             customer: "customer2",
@@ -202,7 +202,7 @@ export const lecture2StateConfig = {
             customer: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 20 }],
+            transfers: [{ customer: "customer2", amount: 30 }],
           },
           {
             customer: "customer4",

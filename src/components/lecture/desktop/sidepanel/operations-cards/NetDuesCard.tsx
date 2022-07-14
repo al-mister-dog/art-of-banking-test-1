@@ -22,15 +22,13 @@ const ImportCard: React.FunctionComponent<{
   for (const key in parties) {
     partiesArray = [...partiesArray, parties[key]];
   }
-  // const bankParties = findBankByCustomersAccounts(selected, partiesArray);
-  // const [selectAmount, setSelectAmount] = useState(false);
   const selectedParties = findOwedandOweingBanks(selected, partiesArray);
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );
   const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
-  // const [amountInputOpen, setAmountInputOpen] = useState(false);
+  
 
   const handleClickOpenTo = () => {
     setOpenTo(true);
