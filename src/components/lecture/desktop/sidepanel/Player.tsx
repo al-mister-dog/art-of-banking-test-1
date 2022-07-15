@@ -21,13 +21,14 @@ const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          alignItems: "flex-end",
           padding: "5px 25px",
         }}
       >
-        <Typography variant="h6" align="left" sx={{ marginTop: 4 }}>
+        <Typography variant="h4" align="left" sx={{ marginTop: 4 }}>
           {deCamelize(selected.id)}
         </Typography>
-        <Typography variant="body1" align="left" sx={{ marginTop: 4 }}>
+        <Typography variant="h6" align="left" sx={{ marginTop: 4, fontFamily: "Roboto", fontWeight: "bold" }}>
           Cash: ${selected.reserves}
         </Typography>
       </Box>
