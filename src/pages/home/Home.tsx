@@ -47,31 +47,27 @@ export default function Home() {
             alt={image.alt}
           />
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Understanding banking and finance is a key requirement of making
+            informed decisions, whether you are a thinking about earning extra
+            money in trading and investment, or whether you want to learn more
+            about economics in order to make informed decisions as a voter or 
+            a content provider.
           </Typography>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Unfortunately the world of banking is obscured in jargon as well as 
+            well as the fact that many of the opinions we receive about the subject
+            come from people as misinformed as we are. This site aims to shed light
+            on the world of banking and present it in a concrete way, assuming next
+            to zero understanding, bringing the student from the very basics of making
+            a deposit at the bank, all the way up to a working knowledge of such things as 
+            Credit Default Swaps, Repos, Liquidity and Global Finance.
           </Typography>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            To do this, the lectures contain small games in which the user can trade 
+            between banks and other institutions like pieces on a board. These games
+            model banking systems from around the world and different time periods. 
+            This is an unfunded project, so please enjoy what is on here so far and 
+            new lectures will be posted as and when is possible.
           </Typography>
         </Box>
       </Box>
