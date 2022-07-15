@@ -62,16 +62,16 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
           aria-label="basic tabs example"
         >
           <Tab
-            sx={{ fontSize: "0.8rem" }}
+            sx={{ fontSize: "1rem", padding: 1, margin: "0px" }}
             label="Operations"
             {...a11yProps(0)}
           />
           <Tab
-            sx={{ fontSize: "0.8rem" }}
+            sx={{ fontSize: "1rem", padding: 1, margin: "0px" }}
             label="Balance Sheets"
             {...a11yProps(1)}
           />
-          <Tab sx={{ fontSize: "0.8rem" }} label="Records" {...a11yProps(2)} />
+          <Tab sx={{ fontSize: "1rem", padding: 1, margin: "0px" }} label="Records" {...a11yProps(2)} />
         </Tabs>
       </Box>
 

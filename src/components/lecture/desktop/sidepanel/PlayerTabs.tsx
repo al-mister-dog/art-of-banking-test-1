@@ -1,7 +1,7 @@
 import Operations from "./Operations";
 import Balances from "./Balances";
 
-import { Tabs, Tab, Box } from "@mui/material";
+import { Tabs, Tab, Box, styled } from "@mui/material";
 
 import { useState } from "react";
 
@@ -11,6 +11,9 @@ interface TabPanelProps {
   value: number;
 }
 
+const StyledTab = styled(Tab)(() => ({
+  fontWeight: "bold"
+}))
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -54,9 +57,9 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab sx={{}} label="Operations" {...a11yProps(0)} />
-          <Tab sx={{}} label="Balance Sheets" {...a11yProps(1)} />
-          <Tab sx={{}} label="Records" {...a11yProps(2)} />
+          <Tab sx={{fontSize: "1rem", padding: 1, margin: "0px"}} label="Operations" {...a11yProps(0)} />
+          <Tab sx={{fontSize: "1rem", padding: 1, margin: "0px"}} label="Balance Sheets" {...a11yProps(1)} />
+          <Tab sx={{fontSize: "1rem", padding: 1, margin: "0px"}} label="Records" {...a11yProps(2)} />
         </Tabs>
       </Box>
 
