@@ -11,7 +11,7 @@ const TitleText = styled(Typography)(({ theme }) => ({
   letterSpacing: "1px",
   textAlign: "justify",
   marginBottom: "10px",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("laptop")]: {
     fontSize: "1.7rem",
     // fontWeight: "bold",
     textAlign: "center"

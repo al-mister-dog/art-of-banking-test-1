@@ -78,7 +78,7 @@ export default function DrawerAppBar(props: Props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { tablet: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -86,13 +86,13 @@ export default function DrawerAppBar(props: Props) {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              sx={{ flexGrow: 1, display: { mobile: "none", tablet: "block" } }}
             >
           <Link to="/" style={{textDecoration: "none", color: "black"}}>Art of Banking</Link>    
             </Typography>
           
 
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { mobile: "none", tablet: "block" } }}>
             {navItems.map((item) => (
               <Button key={item.title} sx={{ color: "#fff" }}>
                 <Link

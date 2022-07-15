@@ -5,12 +5,52 @@ import {
 } from "../../../features/lectures/lecturesSlice";
 import Introduction from "../ui/Introduction";
 
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import Player from "./sidepanel/Player";
 import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 // import Refresh from "./toolbars/RefreshToolbar";
 // import { useState } from "react";
+
+const InterfaceContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  height: "60vh",
+  // margin: "5px",
+  // border: "1px solid #BDBDBD",
+  // borderRadius: "5px",
+  marginBottom: "20px",
+  
+}));
+const BoardContainer = styled("div")(({ theme }) => ({
+  [theme.breakpoints.up("mobile")]: {
+    width: "50%",
+  },
+  [theme.breakpoints.up("tablet")]: {
+    width: "60%",
+  },
+  [theme.breakpoints.up("laptop")]: {
+    width: "60%",
+  },
+  [theme.breakpoints.up("desktop")]: {
+    width: "65%",
+  },
+}));
+const SidePanelContainer = styled("div")(({ theme }) => ({
+  margin: "auto",
+
+  [theme.breakpoints.up("mobile")]: {
+    width: "50%",
+  },
+  [theme.breakpoints.up("tablet")]: {
+    width: "40%",
+  },
+  [theme.breakpoints.up("laptop")]: {
+    width: "40%",
+  },
+  [theme.breakpoints.up("desktop")]: {
+    width: "35%",
+  },
+}));
 
 const Index: React.FunctionComponent<{
   config?: any;
@@ -36,28 +76,25 @@ const Index: React.FunctionComponent<{
       >
         <Introduction texts={texts} />
       </Box>
-      <Notifications config={config} />
 
-      <Box
-        style={{
-          display: "flex",
-          height: "60vh",
-          margin: "5px",
-          border: "1px solid #BDBDBD",
-          borderRadius: "5px",
-        }}
-      >
-        <Board
-          config={config}
-          customerParties={customerParties}
-          bankParties={bankParties}
-          selectParty={selectParty}
-        />
+      <Box sx={{ border: "1px solid #BDBDBD", borderRadius: "5px", margin: "5px", }}>
+        <InterfaceContainer>
+          <BoardContainer>
+            <Board
+              config={config}
+              customerParties={customerParties}
+              bankParties={bankParties}
+              selectParty={selectParty}
+            />
+          </BoardContainer>
 
-        <Box sx={{ width: "40%", margin: "auto" }}>
-          <Player config={config} selected={parties[selected]} />
-        </Box>
+          <SidePanelContainer>
+            <Player config={config} selected={parties[selected]} />
+          </SidePanelContainer>
+        </InterfaceContainer>
+        <Notifications config={config} />
       </Box>
+
       {/* <Button onClick={() => dispatch(createNewCustomer())}>
         Create Customer
       </Button> */}

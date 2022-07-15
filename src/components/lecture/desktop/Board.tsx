@@ -8,7 +8,7 @@ const Board: React.FunctionComponent<{
 }> = ({ config, customerParties, bankParties, selectParty }) => {
   return (
     <>
-      <div style={{ display: "flex", height: "60vh" }}>
+      <div style={{ display: "flex", height: "60vh", justifyContent: "space-around" }}>
         <div style={{ overflowX: "hidden" }}>
           {bankParties.map((player: any, i: any) => (
             <BalanceSheet

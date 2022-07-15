@@ -66,18 +66,18 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           alignItems: "center",
         }}
       >
-        <Typography style={{ margin: 0, padding: 0 }}>
+        <Typography variant="caption" style={{ margin: 0, padding: 0 }}>
           Total System Credit: ${totalCredit}
         </Typography>
         <LineChart
-          width={400}
-          height={150}
+          width={300}
+          height={100}
           data={totalCreditData}
           margin={{ top: 5, right: 30, left: 20, bottom: -10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
-          <YAxis />
+          <YAxis style={{fontSize: "0.5rem"}}/>
           <Tooltip />
           <Line type="monotone" dataKey="credit" stroke="#8884d8" />
         </LineChart>

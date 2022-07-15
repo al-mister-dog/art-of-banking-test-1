@@ -1,4 +1,43 @@
+import { styled } from "@mui/material";
 import BalanceSheet from "../ui/mobile/BalanceSheet";
+
+const BoardContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-around",
+  
+  [theme.breakpoints.up("mobile")]: {
+    flexDirection: "column",
+  },
+  [theme.breakpoints.up("tablet")]: {
+    flexDirection: "row",
+  },
+  // [theme.breakpoints.up("laptop")]: {
+  //   width: "40%",
+  // },
+  // [theme.breakpoints.up("desktop")]: {
+  //   width: "35%",
+  // },
+}));
+
+const BalanceSheetList = styled("div")(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.up("mobile")]: {
+    flexDirection: "row",
+    flexWrap: "nowrap",
+    overflowX: "auto",
+  },
+  [theme.breakpoints.up("tablet")]: {
+    flexDirection: "column",
+    flexWrap: "nowrap",
+    overflowX: "auto",
+  },
+  // [theme.breakpoints.up("laptop")]: {
+  //   width: "40%",
+  // },
+  // [theme.breakpoints.up("desktop")]: {
+  //   width: "35%",
+  // },
+}));
 
 const Board: React.FunctionComponent<{
   config?: any;
@@ -8,18 +47,9 @@ const Board: React.FunctionComponent<{
 }> = ({ config, customerParties, bankParties, selectParty }) => {
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",          
-        }}
+      <BoardContainer
       >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            overflowX: "auto",
-          }}
+        <BalanceSheetList
         >
           {bankParties.map((player: any, i: any) => (
             <BalanceSheet
@@ -29,13 +59,8 @@ const Board: React.FunctionComponent<{
               selectParty={selectParty}
             />
           ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "nowrap",
-            overflowX: "auto",
-          }}
+        </BalanceSheetList>
+        <BalanceSheetList
         >
           {customerParties.map((player: any, i: any) => (
             <BalanceSheet
@@ -45,8 +70,8 @@ const Board: React.FunctionComponent<{
               selectParty={selectParty}
             />
           ))}
-        </div>
-      </div>
+        </BalanceSheetList>
+      </BoardContainer>
     </>
   );
 };

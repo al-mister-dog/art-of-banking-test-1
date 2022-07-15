@@ -50,7 +50,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
 
   //HANDLE BREAKPOINTS
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 950;
 
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);

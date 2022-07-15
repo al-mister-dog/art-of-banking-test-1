@@ -4,10 +4,19 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  styled,
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import cardData from "./cardData";
+
+const accordionColors = {
+  monochromatic: "#8F1A14",
+  analogous1: "#620E34",
+  analogous2: "#623C0E",
+  triadic1: "#0E6212",
+  triadic2: "#120E62",
+};
 
 const resetAccordions = {
   deposit: false,
@@ -21,6 +30,12 @@ const resetAccordions = {
   creditBankAccount: false,
   debitBankAccount: false,
 };
+
+const ResponsiveAccordion = styled(Accordion)(({theme}) => ({
+  background: accordionColors.analogous2, color: "#f2eecb",
+  [theme.breakpoints.up('tablet')]: {width: "30rem", margin: "auto"},
+  // [theme.breakpoints.down('smallTablet')]: {minWidth: "10%"}
+}))
 
 const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
   config,
@@ -128,21 +143,15 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
     );
   }
   
-  const accordionColors = {
-    monochromatic: "#8F1A14",
-    analogous1: "#620E34",
-    analogous2: "#623C0E",
-    triadic1: "#0E6212",
-    triadic2: "#120E62",
-  };
+
 
   const partyAccordions = (key: keyof PartyOps) => {
     return partyOperations[key].map((party, i) => {
       return (
-        <Accordion
+        <ResponsiveAccordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          sx={{ background: accordionColors.analogous2, color: "#f2eecb" }}
+          
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: "#f2eecb" }} />}
@@ -153,7 +162,7 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
             <Typography>{party.accordionTitle}</Typography>
           </AccordionSummary>
           <AccordionDetails>{party.component}</AccordionDetails>
-        </Accordion>
+        </ResponsiveAccordion>
       );
     });
   };

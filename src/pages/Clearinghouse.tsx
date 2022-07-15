@@ -75,7 +75,7 @@ const StepperIndex: React.FunctionComponent = () => {
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 900;
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);

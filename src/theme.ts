@@ -1,4 +1,21 @@
 import { createTheme } from "@mui/material/styles";
+
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: false; // removes the `xs` breakpoint
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+    mobile: true; // adds the `mobile` breakpoint
+    smallTablet: true;
+    tablet: true;
+    laptop: true;
+    desktop: true;
+  }
+}
+
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -17,7 +34,15 @@ const theme = createTheme({
     // "fontWeightRegular": 400,
     fontWeightBold: 700,
   },
-  
+  breakpoints: {
+    values: {
+      mobile: 0,
+      smallTablet: 500,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1160,
+    },
+  },
 });
 
 export default theme;

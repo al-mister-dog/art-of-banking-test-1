@@ -43,21 +43,11 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
       }}
     >
-      {config.constraint && (
-        <Box width={300}>
-          <Typography>Reserve Requirement: %{reservePercentage}</Typography>
-          <Slider
-            defaultValue={25}
-            aria-label="Default"
-            valueLabelDisplay="auto"
-            onChange={handleChangeReserveRequirement}
-          />
-        </Box>
-      )}
+
       {config.credit && (
         <Box
           sx={{
@@ -71,16 +61,27 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           </Typography>
           <LineChart
             width={450}
-            height={150}
+            height={125}
             data={totalCreditData}
             margin={{ top: 5, right: 30, left: 20, bottom: -10 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis style={{fontSize: "0.6rem"}}/>
             <Tooltip />
             <Line type="monotone" dataKey="credit" stroke="#8884d8" />
           </LineChart>
+        </Box>
+      )}
+            {config.constraint && (
+        <Box width={300}>
+          <Typography>Reserve Requirement: %{reservePercentage}</Typography>
+          <Slider
+            defaultValue={25}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={handleChangeReserveRequirement}
+          />
         </Box>
       )}
     </Box>

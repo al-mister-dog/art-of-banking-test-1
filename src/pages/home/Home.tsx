@@ -13,14 +13,14 @@ const Page = styled("div")(({ theme }) => ({
   borderRadius: "15px",
   background: "#F2EECB",
   padding: "20px",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("tablet")]: {
     width: "100%",
     marginTop: "120px",
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("tablet")]: {
     marginTop: "150px",
   },
-  [theme.breakpoints.up("lg")]: {
+  [theme.breakpoints.up("laptop")]: {
     marginTop: "150px",
   },
 }));
@@ -33,15 +33,15 @@ const TextContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
   margin: "auto",
   padding: theme.spacing(1),
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("tablet")]: {
     marginTop: "40px",
     width: "80%",
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("tablet")]: {
     marginTop: "40px",
     width: "65%",
   },
-  [theme.breakpoints.up("lg")]: {
+  [theme.breakpoints.up("laptop")]: {
     marginTop: "40px",
     width: "65%",
   },

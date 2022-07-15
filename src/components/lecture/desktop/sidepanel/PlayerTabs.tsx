@@ -16,16 +16,14 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <div
-    style={{overflowX: "hidden"}}
+      style={{ overflowX: "hidden" }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>{children}</Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -37,7 +35,10 @@ function a11yProps(index: number) {
   };
 }
 
-const PlayerTabs: React.FunctionComponent<{config: any, selected: any}> = ({config, selected}) => {
+const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
+  config,
+  selected,
+}) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -48,6 +49,7 @@ const PlayerTabs: React.FunctionComponent<{config: any, selected: any}> = ({conf
     <>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
+          centered
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
@@ -59,18 +61,11 @@ const PlayerTabs: React.FunctionComponent<{config: any, selected: any}> = ({conf
       </Box>
 
       <TabPanel value={value} index={0}>
-        {/* <Box sx={{ paddingLeft: "50px", paddingRight: "50px"}}> */}
-        <Operations config={config} selected={selected}/>
-        {/* </Box> */}
+        <Operations config={config} selected={selected} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Balances selected={selected} />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        {selected.records.map((record: string, i: number) => (
-          <p key={i}>{record}</p>
-        ))}
-      </TabPanel> */}
     </>
   );
 };

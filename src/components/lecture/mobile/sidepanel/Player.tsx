@@ -12,7 +12,6 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
         sx={{
           display: "flex",
           flexDirection: "column",
-          height: "40vh",
           paddingBottom: "20px",
         }}
       >

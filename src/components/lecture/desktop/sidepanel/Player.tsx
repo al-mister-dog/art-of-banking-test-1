@@ -13,7 +13,7 @@ const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
         display: "flex",
         flexDirection: "column",
         height: "60vh",
-        width: "100%",
+        // width: "100%",
       }}
     >
       <Box
