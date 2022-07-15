@@ -41,7 +41,9 @@ export default function DrawerAppBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
+      <Link to="/" style={{textDecoration: "none", color: "black"}}>
         Art of Banking
+      </Link>
       </Typography>
       <Divider />
       <List>
@@ -123,7 +125,7 @@ export default function DrawerAppBar(props: Props) {
         >
           {drawer}
         </Drawer>
-        <Typography><Link to="/" style={{textDecoration: "none", color: "black"}}>Art of Banking</Link>    </Typography>
+        {/* <Typography><Link to="/" style={{textDecoration: "none", color: "black"}}>Art of Banking!</Link>    </Typography> */}
       </Box>
     </Box>
   );

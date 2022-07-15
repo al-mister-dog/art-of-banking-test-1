@@ -269,12 +269,12 @@ const StepperMobile: React.FunctionComponent<{
         margin: "auto",
         borderRadius: "15px",
         background: "#F2EECB",
-        marginTop: "50px",
+        marginTop: "120px",
         padding: "20px 5px",
       }}
     >
       <MobileStepper
-        sx={{ background: "#F2EECB" }}
+        sx={{ background: "#F2EECB", marginBottom: "30px" }}
         variant="text"
         steps={maxSteps}
         position="static"

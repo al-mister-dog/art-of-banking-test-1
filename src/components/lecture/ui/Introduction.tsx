@@ -16,7 +16,9 @@ export default function Introduction({ texts }: { texts: Texts }) {
   return (
     <div
       style={{
+        margin: "10px",
         marginBottom: "25px",
+
       }}
     >
       <Title>{texts.title}</Title>
