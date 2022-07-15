@@ -37,7 +37,7 @@ const Index: React.FunctionComponent<{
         sx={{
           display: "flex",
           flexDirection: "column",
-          margin: "5px",
+          // margin: "1px",
           border: "1px solid #BDBDBD",
           borderRadius: "5px",
         }}

@@ -13,16 +13,17 @@ const SideOfBalanceSheet: React.FunctionComponent<{
       p={1}
       flex={"auto"}
       style={{
-        borderLeft: `1px solid ${toolbarTextColor}`,
+        borderLeft: `${side === "liabilities" ? `1px solid ${toolbarTextColor}`:`none`}`,
         height: "50%",
         width: "50%",
       }}
     >
       <Typography
         style={{
-          fontSize: 14,
+          fontSize: 16,
           color: toolbarTextColor,
-          fontWeight: 500,
+          fontFamily: "Roboto",
+          fontWeight: "bold",
           margin: 0,
         }}
       >
@@ -38,13 +39,14 @@ const SideOfBalanceSheet: React.FunctionComponent<{
                 margin: 0,
                 padding: 0,
                 textAlign: "left",
-                fontSize: 13,
+                fontSize: 15,
                 color: toolbarTextColor,
                 fontWeight: 500,
               }}
             >
               {config.balanceSheetDisplay.includes(k) && (
-                <Typography sx={{ margin: 0, padding: 0, fontSize: 13 }}>
+                <Typography sx={{ margin: 0, padding: 0, fontSize: 15, fontFamily: "Roboto",
+                fontWeight: "bold", }}>
                   {deCamelize(k)}
                 </Typography>
               )}
@@ -55,7 +57,8 @@ const SideOfBalanceSheet: React.FunctionComponent<{
                   return (
                     <Typography
                       key={account.id}
-                      style={{ margin: 0, padding: 0, fontSize: 12 }}
+                      style={{ margin: 0, padding: 0, fontSize: 14, fontFamily: "Roboto",
+                      fontWeight: "bold", }}
                     >
                       <span>{account.id}: </span>
                       <span>${account.amount}</span>
@@ -73,13 +76,14 @@ const SideOfBalanceSheet: React.FunctionComponent<{
             margin: 0,
             padding: 0,
             textAlign: "left",
-            fontSize: 12,
+            fontSize: 14,
             color: toolbarTextColor,
             fontWeight: 500,
           }}
         >
           <hr style={{borderColor: "#f2eecb"}}/>
-          <Typography sx={{ margin: 0, padding: 0, fontSize: 13 }}>
+          <Typography sx={{ margin: 0, padding: 0, fontSize: 15, fontFamily: "Roboto",
+          fontWeight: "bold", }}>
             Reserves: ${reserves}
           </Typography>
         </div>

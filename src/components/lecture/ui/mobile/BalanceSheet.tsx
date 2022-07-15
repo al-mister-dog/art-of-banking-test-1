@@ -11,7 +11,7 @@ const BalanceSheetCard = styled(Card)(({theme}) => ({
   margin: "5px",
   backgroundColor: "#62120E",
   [theme.breakpoints.up('tablet')]: {minWidth: "40vw"},
-  [theme.breakpoints.down('smallTablet')]: {minWidth: "90vw"}
+  [theme.breakpoints.down('smallTablet')]: {minWidth: "85vw"}
 }))
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
@@ -34,7 +34,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
       <CardContent sx={{ padding: 1 }}>
         <Typography
           style={{
-            fontSize: 15,
+            fontSize: 22,
             fontWeight: "bold",
             color: toolbarTextColor,
           }}
