@@ -26,10 +26,10 @@ const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
           marginBottom: "25px",
         }}
       >
-        <Typography variant="h4" align="left" sx={{ marginTop: 4 }}>
+        <Typography variant="h4" align="left" sx={{ marginTop: 4, color: "#134749" }}>
           {deCamelize(selected.id)}
         </Typography>
-        <Typography variant="h6" align="left" sx={{ marginTop: 4, fontFamily: "Roboto", fontWeight: "bold" }}>
+        <Typography variant="h6" align="left" sx={{ marginTop: 4, fontFamily: "Roboto", fontWeight: "bold", color: "#134749" }}>
           Cash: ${selected.reserves}
         </Typography>
       </Box>

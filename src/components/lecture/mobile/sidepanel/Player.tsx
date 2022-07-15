@@ -25,8 +25,8 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
             marginTop: "25px",
           }}
         >
-          <Typography variant="h4">{deCamelize(selected.id)}</Typography>
-          <Typography variant="h6" sx={{fontFamily: "Roboto", fontWeight: "bold"}}>Cash: ${selected.reserves}</Typography>
+          <Typography variant="h4" sx={{color: "#134749"}}>{deCamelize(selected.id)}</Typography>
+          <Typography variant="h6" sx={{fontFamily: "Roboto", fontWeight: "bold", color: "#134749"}}>Cash: ${selected.reserves}</Typography>
         </div>
 
         <PlayerTabs config={config} selected={selected} />

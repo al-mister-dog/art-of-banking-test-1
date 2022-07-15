@@ -9,7 +9,7 @@ const BalanceSheetCard = styled(Card)(({theme}) => ({
   borderRadius: 12,
   textAlign: "center",
   margin: "5px",
-  backgroundColor: "#62120E",
+  backgroundColor: "#e18953",
   [theme.breakpoints.up('tablet')]: {minWidth: "40vw"},
   [theme.breakpoints.down('smallTablet')]: {minWidth: "85vw"}
 }))

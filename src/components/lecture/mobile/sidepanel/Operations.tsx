@@ -151,7 +151,7 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         <ResponsiveAccordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          
+          sx={{ background: "#aa3d23", color: "#f2eecb" }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: "#f2eecb" }} />}

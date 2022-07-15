@@ -11,10 +11,11 @@ const TitleText = styled(Typography)(({ theme }) => ({
   letterSpacing: "1px",
   textAlign: "justify",
   marginBottom: "10px",
+  color: "#134749",
   [theme.breakpoints.down("laptop")]: {
     fontSize: "1.7rem",
     // fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
   },
 }));
 

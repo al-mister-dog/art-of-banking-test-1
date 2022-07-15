@@ -14,7 +14,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
         minWidth: 300,
         textAlign: "center",
         margin: 25,
-        backgroundColor: "#62120E",
+        backgroundColor: "#e18953",
       }}
       sx={{
         "&:hover": {
