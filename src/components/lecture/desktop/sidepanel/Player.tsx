@@ -23,6 +23,7 @@ const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
           justifyContent: "space-between",
           alignItems: "flex-end",
           padding: "5px 25px",
+          marginBottom: "25px",
         }}
       >
         <Typography variant="h4" align="left" sx={{ marginTop: 4 }}>

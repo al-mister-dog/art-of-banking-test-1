@@ -22,6 +22,7 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
             justifyContent: "space-around",
             alignItems: "flex-end",
             padding: "10px",
+            marginTop: "25px",
           }}
         >
           <Typography variant="h4">{deCamelize(selected.id)}</Typography>
