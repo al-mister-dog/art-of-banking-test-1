@@ -147,7 +147,7 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
             id="panel1a-header"
             onClick={() => toggleAccordion(party.accordionKey)}
           >
-            <Typography>{party.accordionTitle}</Typography>
+            <Typography sx={{fontSize: "1.3rem"}}>{party.accordionTitle}</Typography>
           </AccordionSummary>
           <AccordionDetails>{party.component}</AccordionDetails>
         </Accordion>
