@@ -38,13 +38,11 @@ const Index: React.FunctionComponent<{
           display: "flex",
           flexDirection: "column",
           // margin: "1px",
-          border: "1px solid #BDBDBD",
+          // border: "1px solid #BDBDBD",
           borderRadius: "5px",
         }}
       >
-        <Box>
-          <Player config={config} selected={parties[selected]} />
-        </Box>
+        
         <Box>
           <Board
             config={config}
@@ -52,6 +50,9 @@ const Index: React.FunctionComponent<{
             bankParties={bankParties}
             selectParty={selectParty}
           />
+        </Box>
+        <Box>
+          <Player config={config} selected={parties[selected]} />
         </Box>
       </Box>
     </>
