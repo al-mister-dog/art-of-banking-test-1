@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import bankImg2 from "./medici2.jpeg";
+import bankImg2 from "./assets/medici2.jpeg";
 
 const image = {
   src: bankImg2,
@@ -7,7 +7,6 @@ const image = {
 };
 
 export default function Home() {
-  // const randImg = images[Math.floor(Math.random() * images.length)];
   return (
     <>
       <Box
