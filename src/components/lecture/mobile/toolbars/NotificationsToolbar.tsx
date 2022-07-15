@@ -48,8 +48,8 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
     }}
   >
     {config.constraint && (
-      <Box width={300}>
-        <Typography>Reserve Requirement: %{reservePercentage}</Typography>
+      <Box sx={{width: "250px"}}>
+        <Typography variant="caption">Reserve Requirement: %{reservePercentage}</Typography>
         <Slider
           defaultValue={25}
           aria-label="Default"
@@ -70,10 +70,10 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           Total System Credit: ${totalCredit}
         </Typography>
         <LineChart
-          width={300}
+          width={250}
           height={100}
           data={totalCreditData}
-          margin={{ top: 5, right: 30, left: 20, bottom: -10 }}
+          margin={{ bottom: -10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
