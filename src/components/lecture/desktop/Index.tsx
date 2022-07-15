@@ -19,9 +19,11 @@ const InterfaceContainer = styled("div")(({ theme }) => ({
   // border: "1px solid #BDBDBD",
   // borderRadius: "5px",
   marginBottom: "20px",
-  
 }));
 const BoardContainer = styled("div")(({ theme }) => ({
+  // backgroundColor: "#bccccd",
+  // backgroundColor: "#e2e9e9",
+  // backgroundColor: "#d9dbdb",
   [theme.breakpoints.up("mobile")]: {
     width: "50%",
   },
@@ -77,7 +79,15 @@ const Index: React.FunctionComponent<{
         <Introduction texts={texts} />
       </Box>
 
-      <Box sx={{ border: "1px solid #BDBDBD", borderRadius: "5px", margin: "5px", }}>
+      <Box
+        sx={{
+          // backgroundColor: "#e2e9e9",
+          border: "1px solid #bccccd",
+          borderRadius: "5px",
+          margin: "3px",
+          marginTop: "50px",
+        }}
+      >
         <InterfaceContainer>
           <BoardContainer>
             <Board

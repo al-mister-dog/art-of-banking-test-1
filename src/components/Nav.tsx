@@ -88,7 +88,7 @@ export default function DrawerAppBar(props: Props) {
               component="div"
               sx={{ flexGrow: 1, display: { mobile: "none", tablet: "block" } }}
             >
-          <Link to="/" style={{textDecoration: "none", color: "black"}}>Art of Banking</Link>    
+          <Link to="/" style={{textDecoration: "none", color: "#134749", fontSize: "1.8rem"}}>Art of Banking</Link>    
             </Typography>
           
 

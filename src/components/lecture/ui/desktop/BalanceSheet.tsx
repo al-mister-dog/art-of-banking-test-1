@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import SideBalance from "./SideOfBalanceSheet";
 import { capitalize } from "../../helpers";
-const toolbarTextColor = "#f2eecb";
+const toolbarTextColor = "#f5f1d6";
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
   bank: any;

@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { deCamelize, capitalize } from "../../helpers";
-const toolbarTextColor = "#f2eecb";
+const toolbarTextColor = "#f5f1d6";
 
 const SideOfBalanceSheet: React.FunctionComponent<{
   config?: any;
