@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import {colors} from "../config/colorPalette"
 
 interface Props {
   /**
@@ -72,7 +73,7 @@ export default function DrawerAppBar(props: Props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" sx={{ background: "#f2eecb", color: "black" }}>
+      <AppBar component="nav" sx={{ background: colors.paper, color: "black" }}>
         <Toolbar>
           <IconButton
             aria-label="open drawer"
@@ -88,7 +89,7 @@ export default function DrawerAppBar(props: Props) {
               component="div"
               sx={{ flexGrow: 1, display: { mobile: "none", tablet: "block" } }}
             >
-          <Link to="/" style={{textDecoration: "none", color: "#134749", fontSize: "1.8rem"}}>Art of Banking</Link>    
+          <Link to="/" style={{textDecoration: "none", color: colors.darkMain, fontSize: "1.8rem"}}>Art of Banking</Link>    
             </Typography>
           
 

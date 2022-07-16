@@ -1,6 +1,8 @@
-import { useAppSelector } from "../../../app/hooks";
-import { selectRecords } from "../../../features/players/playersSlice";
-import { useEffect, useState } from "react";
+import { useAppDispatch } from "../../../app/hooks";
+import { useState } from "react";
+import { reset } from "../../../features/lectures/lecturesSlice";
+import { lectures } from "../../../config/lecturesConfig";
+
 import {
   Box,
   Stepper,
@@ -17,88 +19,45 @@ import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
-import Introduction from "./1-introduction";
-import BillsExchange from "./2-bills";
-import RemitBills from "./3-remit";
-import RechangeOne from "./4-rechange1";
-import RechangeTwo from "./5-rechange2";
-import Playground from "./6-playground";
+import Introduction from "./Introduction";
+import StepComponent from "./Step";
 import { colors } from "../../../config/colorPalette";
 
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <Introduction />;
-    case 1:
-      return <BillsExchange />;
-    case 2:
-      return <RemitBills />;
-    case 3:
-      return <RechangeOne />;
-    case 4:
-      return <RechangeTwo />;
-    case 5:
-      return <Playground />;
-    default:
-      return "Unknown step";
-  }
-}
-const steps = [
-  "Introduction",
-  "Bills of Exchange",
-  "Remitting Bills",
-  "Rechange Part 1",
-  "Rechange Part 2",
-  "Playground",
-];
+const config = lectures.clearinghouse.steps;
 
-const StepperIndex: React.FunctionComponent = () => {
-  const records = useAppSelector(selectRecords);
+// function getStepContent(step: number) {
+//   switch (step) {
+//     case 0:
+//       return <Introduction text={config[1].text} />;
+//     case 1:
+//       return <StepComponent text={config[2].text} config={config[2]} />;
+//     case 2:
+//       return <StepComponent text={config[3].text} config={config[3]} />;
+//     case 3:
+//       return <StepComponent text={config[4].text} config={config[4]} />;
+//     case 4:
+//       return <StepComponent text={config[5].text} config={config[5]} />;
+//     // case 5:
+//     //   return <Playground />;
+//     default:
+//       return "Unknown step";
+//   }
+// }
+// const steps = [
+//   "Introduction",
+//   "One Big Bank",
+//   "Multiple Banks",
+//   "Correspondent Banking",
+//   "The Clearing House",
+//   // "Playground",
+// ];
+
+const StepperIndex: React.FunctionComponent<{
+  getStepContent: (step: number) => JSX.Element | "Unknown step";
+  steps: string[];
+}> = ({ getStepContent, steps }) => {
   const [activeStep, setActiveStep] = useState(0);
-  useEffect(() => {
-    console.log(records);
-    const record1 = "salviati imports 1 marc worth of goods from me";
-    const record2 = "me draws bill on you for 1 marc";
-    const record3 = "you remits bill to tomasso";
-    const record4 = "tomasso draws bill on salviati for 1";
-    const record5 = "federigo imports 1 marc worth of goods from piero";
-    const record6 = "piero draws bill on tomasso for 1 marc";
-    const record7 = "tomasso remits bill to you";
-    const record8 = "you draws bill on federigo for 1";
 
-    const step1Complete = () => {
-      return records[0] === record1 && records[1] === record2;
-    };
-    const step2Complete = () => {
-      return records[2] === record3 && records[3] === record4;
-    };
-    const step3Complete = () => {
-      return records[4] === record5 && records[5] === record6;
-    };
-    const step4Complete = () => {
-      return records[6] === record7 && records[7] === record8;
-    };
-    if (step1Complete()) {
-      const newCompleted = completed;
-      newCompleted[1] = true;
-      handleSetCompleted(newCompleted);
-    }
-    if (step1Complete() && step2Complete()) {
-      const newCompleted = completed;
-      newCompleted[2] = true;
-      handleSetCompleted(newCompleted);
-    }
-    if (step1Complete() && step2Complete() && step3Complete()) {
-      const newCompleted = completed;
-      newCompleted[3] = true;
-      handleSetCompleted(newCompleted);
-    }
-    if (step1Complete() && step2Complete() && step3Complete() && step4Complete()) {
-      const newCompleted = completed;
-      newCompleted[4] = true;
-      handleSetCompleted(newCompleted);
-    }
-  }, [records]);
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
   }>({});
@@ -120,7 +79,7 @@ const StepperIndex: React.FunctionComponent = () => {
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 700;
+  const breakpoint = 900;
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
@@ -131,8 +90,10 @@ const StepperIndex: React.FunctionComponent = () => {
   if (width > breakpoint) {
     return (
       <StepperDeskTop
+        steps={steps}
         activeStep={activeStep}
         completed={completed}
+        getStepContent={getStepContent}
         handleSetActiveStep={handleSetActiveStep}
         handleSetActiveStepBack={handleSetActiveStepBack}
         handleSetCompleted={handleSetCompleted}
@@ -141,7 +102,9 @@ const StepperIndex: React.FunctionComponent = () => {
   }
   return (
     <StepperMobile
+      steps={steps}
       activeStep={activeStep}
+      getStepContent={getStepContent}
       handleSetActiveStep={handleSetActiveStep}
       handleNext={handleNext}
       handleBack={handleBack}
@@ -150,20 +113,25 @@ const StepperIndex: React.FunctionComponent = () => {
 };
 
 const StepperDeskTop: React.FunctionComponent<{
+  steps: string[];
   activeStep: number;
   completed: {
     [k: number]: boolean;
   };
+  getStepContent: (step: number) => JSX.Element | "Unknown step";
   handleSetActiveStep: (step: number) => void;
   handleSetActiveStepBack: () => void;
   handleSetCompleted: (v?: any) => void;
 }> = ({
+  steps,
   activeStep,
   completed,
+  getStepContent,
   handleSetActiveStep,
   handleSetActiveStepBack,
   handleSetCompleted,
 }) => {
+  const dispatch = useAppDispatch();
   const totalSteps = () => {
     return steps.length;
   };
@@ -181,24 +149,27 @@ const StepperDeskTop: React.FunctionComponent<{
   };
 
   const handleNext = () => {
+    dispatch(reset());
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
-        ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        ? steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     handleSetActiveStep(newActiveStep);
   };
 
   const handleBack = () => {
+    dispatch(reset());
     handleSetActiveStepBack();
   };
 
   const handleStep = (step: number) => () => {
+    dispatch(reset());
+
     handleSetActiveStep(step);
   };
 
   const handleComplete = () => {
+    dispatch(reset());
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     handleSetCompleted(newCompleted);
@@ -206,6 +177,7 @@ const StepperDeskTop: React.FunctionComponent<{
   };
 
   const handleReset = () => {
+    dispatch(reset());
     handleSetActiveStep(0);
     handleSetCompleted({});
   };
@@ -222,14 +194,15 @@ const StepperDeskTop: React.FunctionComponent<{
       }}
     >
       <Stepper
+        alternativeLabel
         nonLinear
         activeStep={activeStep}
-        sx={{ width: "90%", margin: "auto" }}
+        sx={{ width: "90%", margin: "auto", marginTop: "25px", marginBottom: "75px" }}
       >
         {steps.map((label, index) => (
-          <Step key={label} completed={completed[index]}>
+          <Step key={label} completed={completed[index]} >
             <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
+              <Typography sx={{fontFamily: "Roboto", fontWeight: "bold", }}>{label}</Typography>
             </StepButton>
           </Step>
         ))}
@@ -294,11 +267,20 @@ const StepperDeskTop: React.FunctionComponent<{
 };
 
 const StepperMobile: React.FunctionComponent<{
+  steps: string[];
   activeStep: number;
+  getStepContent: (step: number) => JSX.Element | "Unknown step";
   handleSetActiveStep: (step: number) => void;
   handleNext: () => void;
   handleBack: () => void;
-}> = ({ activeStep, handleSetActiveStep, handleNext, handleBack }) => {
+}> = ({
+  steps,
+  activeStep,
+  getStepContent,
+  handleSetActiveStep,
+  handleNext,
+  handleBack,
+}) => {
   const theme = useTheme();
 
   const maxSteps = steps.length;
@@ -309,12 +291,12 @@ const StepperMobile: React.FunctionComponent<{
         margin: "auto",
         borderRadius: "15px",
         background: colors.paper,
-        marginTop: "50px",
+        marginTop: "120px",
         padding: "20px 5px",
       }}
     >
       <MobileStepper
-        sx={{ background: colors.paper }}
+        sx={{ background: colors.paper, marginBottom: "30px" }}
         variant="text"
         steps={maxSteps}
         position="static"

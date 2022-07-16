@@ -14,6 +14,7 @@ import { IBank } from "../../../../../program/clearinghouse/types";
 import { Accordions } from "../../../../types";
 import { Box, Button, Typography } from "@mui/material";
 import Amount from "./buttons/Amount";
+import { colors } from "../../../../../config/colorPalette";
 
 type DispatchFunctionSig = (
   selected: IBank,
@@ -214,7 +215,7 @@ const MoveVariableAmount: React.FunctionComponent<{
 
           <Typography
             variant="h6"
-            sx={{ color: "#f2eecb", paddingLeft: "7px" }}
+            sx={{ color: colors.paper, paddingLeft: "7px" }}
           >
             Amount
           </Typography>

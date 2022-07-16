@@ -140,11 +140,11 @@ const ImportCard: React.FunctionComponent<{
             <Box sx={{ display: "flex" }}>
               <TextField
                 sx={{
-                  color: "#f2eecb",
-                  input: { color: "#f2eecb" },
-                  label: { color: "#f2eecb" },
+                  color: colors.paper,
+                  input: { color: colors.paper },
+                  label: { color: colors.paper },
                   "& label.Mui-focused": {
-                    color: "#f2eecb",
+                    color: colors.paper,
                   },
                 }}
                 id="standard-number"

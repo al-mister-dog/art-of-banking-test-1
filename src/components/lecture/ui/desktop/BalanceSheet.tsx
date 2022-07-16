@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import SideBalance from "./SideOfBalanceSheet";
 import { capitalize } from "../../helpers";
+import { colors } from "../../../../config/colorPalette";
 const toolbarTextColor = "#f5f1d6";
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
@@ -14,7 +15,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
         minWidth: 300,
         textAlign: "center",
         margin: 25,
-        backgroundColor: "#e18953",
+        backgroundColor: colors.contrast,
       }}
       sx={{
         "&:hover": {

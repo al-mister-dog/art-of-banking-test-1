@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import cardData from "./cardData";
+import { colors } from "../../../../config/colorPalette";
 
 const resetAccordions = {
   deposit: false,
@@ -139,10 +140,10 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         <Accordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          sx={{ background: "#aa3d23", color: "#f2eecb" }}
+          sx={{ background: colors.rustyRed, color: colors.paper }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon sx={{ color: "#f2eecb" }} />}
+            expandIcon={<ExpandMoreIcon sx={{ color: colors.paper }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
             onClick={() => toggleAccordion(party.accordionKey)}

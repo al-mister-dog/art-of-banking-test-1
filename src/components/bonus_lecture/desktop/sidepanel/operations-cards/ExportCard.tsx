@@ -9,8 +9,9 @@ import { Box, Button, Typography } from "@mui/material";
 
 import ChoosePlayerDialog from "./dialogs/ChoosePlayerDialog";
 import AmountDialog from "./dialogs/AmountDialog";
+import { colors } from "../../../../../config/colorPalette";
 
-const textColor = "#f2eecb";
+const textColor = colors.paper;
 
 interface Trader {
   id: string;

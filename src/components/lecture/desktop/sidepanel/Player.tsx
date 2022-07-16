@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import PlayerTabs from "./PlayerTabs";
 import { deCamelize } from "../../helpers";
+import {colors} from "../../../../config/colorPalette"
 
-const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
+const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
   config,
   selected,
-  
 }) => {
   return (
     <Box
@@ -26,10 +26,23 @@ const Player: React.FunctionComponent<{ config?: any; selected: any,  }> = ({
           marginBottom: "25px",
         }}
       >
-        <Typography variant="h4" align="left" sx={{ marginTop: 4, color: "#134749" }}>
+        <Typography
+          variant="h4"
+          align="left"
+          sx={{ marginTop: 4, color: colors.darkMain }}
+        >
           {deCamelize(selected.id)}
         </Typography>
-        <Typography variant="h6" align="left" sx={{ marginTop: 4, fontFamily: "Roboto", fontWeight: "bold", color: "#134749" }}>
+        <Typography
+          variant="h6"
+          align="left"
+          sx={{
+            marginTop: 4,
+            fontFamily: "Roboto",
+            fontWeight: "bold",
+            color: colors.darkMain,
+          }}
+        >
           Cash: ${selected.reserves}
         </Typography>
       </Box>

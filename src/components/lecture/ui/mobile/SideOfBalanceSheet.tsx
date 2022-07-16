@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { colors } from "../../../../config/colorPalette";
 import { deCamelize, capitalize } from "../../helpers";
 const toolbarTextColor = "#f5f1d6";
 
@@ -81,7 +82,7 @@ const SideOfBalanceSheet: React.FunctionComponent<{
             fontWeight: 500,
           }}
         >
-          <hr style={{borderColor: "#f2eecb"}}/>
+          <hr style={{borderColor: colors.paper}}/>
           <Typography sx={{ margin: 0, padding: 0, fontSize: 15, fontFamily: "Roboto",
           fontWeight: "bold", }}>
             Reserves: ${reserves}

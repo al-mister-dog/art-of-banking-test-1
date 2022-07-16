@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { capitalize } from "../../helpers";
+import { colors } from "../../../../config/colorPalette";
 
 // const toolbarTextColor = '#f2eecb'
 const toolbarTextColor = "black"
@@ -37,7 +38,7 @@ export default function ButtonAppBar() {
         sx={{
           // backgroundColor: "#735c51",
           // backgroundColor: "#62120E",
-          backgroundColor: "#F2EECB",
+          backgroundColor: colors.paper,
           // boxShadow: "0px 6px 10px -7px gray",
           padding: "5px",
         }}

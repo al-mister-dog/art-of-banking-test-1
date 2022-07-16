@@ -9,6 +9,7 @@ import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 import { IBank } from "../../../../../program/clearinghouse/types";
 import { Accordions } from "../../../../types";
 import { deCamelize } from "../../../helpers";
+import { colors } from "../../../../../config/colorPalette";
 
 const ImportCard: React.FunctionComponent<{
   selected: any;
@@ -99,7 +100,7 @@ const ImportCard: React.FunctionComponent<{
           </Button>
           <Typography
             variant="h6"
-            sx={{ color: "#f2eecb", paddingLeft: "7px" }}
+            sx={{ color: colors.paper, paddingLeft: "7px" }}
           >
             Dues After Net:
           </Typography>

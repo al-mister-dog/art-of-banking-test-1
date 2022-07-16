@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
-const toolbarTextColor = "#f2eecb";
+import { colors } from "../../../../config/colorPalette";
+const toolbarTextColor = colors.paper;
 type Account = {
   [index: string]: any;
 };

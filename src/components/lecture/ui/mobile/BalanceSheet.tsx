@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Typography, styled } from "@mui/material";
 import SideBalance from "./SideOfBalanceSheet";
 import { capitalize } from "../../helpers";
+import { colors } from "../../../../config/colorPalette";
 const toolbarTextColor = "#f5f1d6";
 
 const BalanceSheetCard = styled(Card)(({theme}) => ({
@@ -9,7 +10,7 @@ const BalanceSheetCard = styled(Card)(({theme}) => ({
   borderRadius: 12,
   textAlign: "center",
   margin: "5px",
-  backgroundColor: "#e18953",
+  backgroundColor: colors.contrast,
   [theme.breakpoints.up('tablet')]: {minWidth: "40vw"},
   [theme.breakpoints.down('smallTablet')]: {minWidth: "85vw"}
 }))

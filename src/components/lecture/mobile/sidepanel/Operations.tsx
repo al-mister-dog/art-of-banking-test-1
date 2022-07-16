@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import cardData from "./cardData";
+import { colors } from "../../../../config/colorPalette";
 
 const accordionColors = {
   monochromatic: "#8F1A14",
@@ -32,7 +33,7 @@ const resetAccordions = {
 };
 
 const ResponsiveAccordion = styled(Accordion)(({theme}) => ({
-  background: accordionColors.analogous2, color: "#f2eecb",
+  background: accordionColors.analogous2, color: colors.paper,
   [theme.breakpoints.up('tablet')]: {width: "30rem", margin: "auto"},
   // [theme.breakpoints.down('smallTablet')]: {minWidth: "10%"}
 }))
@@ -151,10 +152,10 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         <ResponsiveAccordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          sx={{ background: "#aa3d23", color: "#f2eecb" }}
+          sx={{ background: colors.rustyRed, color: colors.paper }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon sx={{ color: "#f2eecb" }} />}
+            expandIcon={<ExpandMoreIcon sx={{ color: colors.paper }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
             onClick={() => toggleAccordion(party.accordionKey)}

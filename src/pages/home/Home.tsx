@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import bankImg2 from "./assets/medici2.jpeg";
+import { colors } from "../../config/colorPalette";
 
 const image = {
   src: bankImg2,
@@ -11,7 +12,7 @@ const Page = styled("div")(({ theme }) => ({
   width: "90%",
   margin: "auto",
   borderRadius: "15px",
-  background: "#F2EECB",
+  background: colors.paper,
   padding: "20px",
   [theme.breakpoints.down("tablet")]: {
     width: "100%",
@@ -35,7 +36,7 @@ const TextContainer = styled("div")(({ theme }) => ({
   padding: theme.spacing(1),
   [theme.breakpoints.down("tablet")]: {
     marginTop: "40px",
-    width: "80%",
+    width: "90%",
   },
   [theme.breakpoints.up("tablet")]: {
     marginTop: "40px",
@@ -52,9 +53,11 @@ export default function Home() {
     <>
       <Page>
         <TextContainer>
-          <Typography variant="h6" align="center">
-            <strong>Learn the Art of Banking</strong> - from the Italian masters
-            to the New York Money Market...
+          <Typography variant="h3" align="center" sx={{color: colors.darkMain, marginBottom: "25px"}}>
+            Learn the Art of Banking
+          </Typography>
+          <Typography variant="h6">
+            from the Italian masters to the New York Money Market...
           </Typography>
 
           <img
@@ -76,14 +79,14 @@ export default function Home() {
               padding: "5px",
             }}
           >
-            <Typography align="justify" sx={{ marginBottom: "5px" }}>
+            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
               Understanding banking and finance is a key requirement of making
               informed decisions, whether you are a thinking about earning extra
               money in trading and investment, or whether you want to learn more
               about economics in order to make informed decisions as a voter or
               a content provider.
             </Typography>
-            <Typography align="justify" sx={{ marginBottom: "5px" }}>
+            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
               Unfortunately the world of banking is obscured in jargon as well
               as well as the fact that many of the opinions we receive about the
               subject come from people as misinformed as we are. This site aims
@@ -93,7 +96,7 @@ export default function Home() {
               up to a working knowledge of such things as Credit Default Swaps,
               Repos, Liquidity and Global Finance.
             </Typography>
-            <Typography align="justify" sx={{ marginBottom: "5px" }}>
+            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
               To do this, the lectures contain small games in which the user can
               trade between banks and other institutions like pieces on a board.
               These games model banking systems from around the world and

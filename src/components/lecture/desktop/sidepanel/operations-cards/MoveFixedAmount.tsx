@@ -11,6 +11,7 @@ import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 import { IBank } from "../../../../../program/clearinghouse/types";
 import { Accordions } from "../../../../types";
 import { Box, Button, Typography } from "@mui/material";
+import { colors } from "../../../../../config/colorPalette";
 
 type DispatchFunctionSig = (
   selected: IBank,
@@ -186,7 +187,7 @@ const MoveFixedAmount: React.FunctionComponent<{
 
           <Typography
             variant="h6"
-            sx={{ color: "#f2eecb", paddingLeft: "7px" }}
+            sx={{ color: colors.paper, paddingLeft: "7px" }}
           >
             Amount
           </Typography>

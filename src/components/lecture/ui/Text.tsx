@@ -22,7 +22,8 @@ export default function Text(props: {
     <Typography
       variant="body1"
       sx={{
-        fontSize: ".9rem",
+        letterSpacing: "1px",
+        fontSize: "1.2rem",
         textAlign: "justify",
         marginBottom: "10px",
         fontWeight: props.bold ? "bold" : "",

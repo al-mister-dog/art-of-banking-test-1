@@ -9,6 +9,7 @@ import {
   Toolbar,
   Tooltip,
 } from "@mui/material";
+import { colors } from "../../../../config/colorPalette";
 
 export default function ButtonAppBar() {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <Toolbar
         sx={{
-          backgroundColor: "#F2EECB",
+          backgroundColor: colors.paper,
           // boxShadow: "0px 6px 10px -7px gray",
         }}
       >

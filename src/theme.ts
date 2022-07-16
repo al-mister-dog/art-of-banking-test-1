@@ -1,3 +1,4 @@
+import {colors} from "./config/colorPalette"
 import { createTheme } from "@mui/material/styles";
 
 declare module '@mui/material/styles' {
@@ -19,12 +20,11 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette: {
     primary: {
-      // main: "#607D8B"
-      main: "#0e5e62",
+      main: colors.main,
     },
     action: {
       disabledBackground: "#6E3C2B",
-      disabled: "#f2eecb",
+      disabled: colors.paper,
     },
   },
   typography: {

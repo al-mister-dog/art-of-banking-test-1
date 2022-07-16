@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import PlayerTabs from "./PlayerTabs";
 import { deCamelize } from "../../helpers";
+import { colors } from "../../../../config/colorPalette";
 
 const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
   config,
@@ -25,8 +26,8 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
             marginTop: "25px",
           }}
         >
-          <Typography variant="h4" sx={{color: "#134749"}}>{deCamelize(selected.id)}</Typography>
-          <Typography variant="h6" sx={{fontFamily: "Roboto", fontWeight: "bold", color: "#134749"}}>Cash: ${selected.reserves}</Typography>
+          <Typography variant="h4" sx={{color: colors.darkMain}}>{deCamelize(selected.id)}</Typography>
+          <Typography variant="h6" sx={{fontFamily: "Roboto", fontWeight: "bold", color: colors.darkMain}}>Cash: ${selected.reserves}</Typography>
         </div>
 
         <PlayerTabs config={config} selected={selected} />

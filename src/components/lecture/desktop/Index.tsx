@@ -9,6 +9,7 @@ import { Box, styled } from "@mui/material";
 import Player from "./sidepanel/Player";
 import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
+import { colors } from "../../../config/colorPalette";
 // import Refresh from "./toolbars/RefreshToolbar";
 // import { useState } from "react";
 
@@ -74,18 +75,18 @@ const Index: React.FunctionComponent<{
   return (
     <>
       <Box
-        sx={{ paddingLeft: "75px", paddingRight: "75px", marginTop: "50px" }}
+        sx={{ paddingLeft: "75px", paddingRight: "75px", marginTop: "50px", marginBottom: "50px" }}
       >
         <Introduction texts={texts} />
       </Box>
-
+      <hr style={{ color: "#bccccd", width: "70%" }} />
       <Box
         sx={{
           // backgroundColor: "#e2e9e9",
-          border: "1px solid #bccccd",
-          borderRadius: "5px",
-          margin: "3px",
+          // borderTop: "1px solid #bccccd",
+          
           marginTop: "50px",
+          marginBottom: "50px",
         }}
       >
         <InterfaceContainer>
@@ -104,7 +105,7 @@ const Index: React.FunctionComponent<{
         </InterfaceContainer>
         <Notifications config={config} />
       </Box>
-
+      {/* <hr style={{ color: "#bccccd", width: "50%" }} /> */}
       {/* <Button onClick={() => dispatch(createNewCustomer())}>
         Create Customer
       </Button> */}
