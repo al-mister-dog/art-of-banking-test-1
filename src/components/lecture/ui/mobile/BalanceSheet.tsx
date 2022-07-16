@@ -7,10 +7,10 @@ const toolbarTextColor = "#f5f1d6";
 const BalanceSheetCard = styled(Card)(({theme}) => ({
   flex: "0 0 auto",
   minWidth: "30vw",
-  borderRadius: 12,
+  borderRadius: 5,
   textAlign: "center",
   margin: "5px",
-  backgroundColor: colors.contrast,
+  backgroundColor: colors.balanceSheetsColor,
   [theme.breakpoints.up('tablet')]: {minWidth: "40vw"},
   [theme.breakpoints.down('smallTablet')]: {minWidth: "85vw"}
 }))

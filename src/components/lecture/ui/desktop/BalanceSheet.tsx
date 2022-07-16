@@ -11,11 +11,11 @@ const BalanceSheetTrader: React.FunctionComponent<{
   return (
     <Card
       style={{
-        borderRadius: 12,
+        borderRadius: 5,
         minWidth: 300,
         textAlign: "center",
         margin: 25,
-        backgroundColor: colors.contrast,
+        backgroundColor: colors.balanceSheetsColor,
       }}
       sx={{
         "&:hover": {

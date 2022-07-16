@@ -140,7 +140,7 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         <Accordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          sx={{ background: colors.rustyRed, color: colors.paper }}
+          sx={{ background: colors.accordionColor, color: colors.paper }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: colors.paper }} />}
