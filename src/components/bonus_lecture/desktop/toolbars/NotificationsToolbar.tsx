@@ -15,7 +15,6 @@ import {
 import { capitalize } from "../../helpers";
 import { colors } from "../../../../config/colorPalette";
 
-// const toolbarTextColor = '#f2eecb'
 const toolbarTextColor = "black"
 export default function ButtonAppBar() {
   const dispatch = useAppDispatch();

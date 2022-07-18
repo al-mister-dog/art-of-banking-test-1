@@ -2,8 +2,8 @@ import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
 import { selectParties } from "../../../../../features/lectures/lecturesSlice";
 import { netCorrespondingDues } from "../../../../../features/lectures/lecturesSlice";
 import { findOwedandOweingBanks } from "./__filters";
-import { Box, Button, Typography } from "@mui/material";
-
+import { Box, Typography } from "@mui/material";
+import CardButton from "./CardButton"
 import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 import { IBank } from "../../../../../program/clearinghouse/types";
@@ -91,20 +91,20 @@ const ImportCard: React.FunctionComponent<{
             alignItems: "flex-start",
           }}
         >
-          <Button
+          <CardButton
             variant="contained"
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
             Net Dues Of
-          </Button>
+          </CardButton>
           <Typography
             variant="h6"
-            sx={{ color: colors.paper, paddingLeft: "7px" }}
+            sx={{ color: colors.accordionTextColor, paddingLeft: "7px" }}
           >
             Dues After Net:
           </Typography>
-          {/* <Button onClick={onClickNetDues}>Net Dues</Button> */}
+          {/* <CardButton onClick={onClickNetDues}>Net Dues</CardButton> */}
         </div>
         <div
           style={{
@@ -129,13 +129,13 @@ const ImportCard: React.FunctionComponent<{
           justifyContent: "flex-end",
         }}
       >
-        <Button
+        <CardButton
           variant="contained"
           disabled={!selectedValueTo}
           onClick={onClickNetDues}
         >
           Ok
-        </Button>
+        </CardButton>
       </div>
     </Box>
   );

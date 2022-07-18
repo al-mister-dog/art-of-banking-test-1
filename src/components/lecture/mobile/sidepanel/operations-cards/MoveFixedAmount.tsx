@@ -10,8 +10,11 @@ import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 import { IBank } from "../../../../../program/clearinghouse/types";
 import { Accordions } from "../../../../types";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import CardButton from "./CardButton"
 import { colors } from "../../../../../config/colorPalette";
+import { capitalize } from "../../../helpers";
+
 
 type DispatchFunctionSig = (
   selected: IBank,
@@ -170,13 +173,13 @@ const MoveFixedAmount: React.FunctionComponent<{
             alignItems: "flex-start",
           }}
         >
-          <Button
+          <CardButton
             variant="contained"
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
             {methodText}
-          </Button>
+          </CardButton>
           <ChoosePlayer
             setSelectedValuePlayer={setSelectedValuePlayer}
             open={openTo}
@@ -187,7 +190,7 @@ const MoveFixedAmount: React.FunctionComponent<{
 
           <Typography
             variant="h6"
-            sx={{ color: colors.paper, paddingLeft: "7px" }}
+            sx={{ color: colors.accordionTextColor, paddingLeft: "7px" }}
           >
             Amount
           </Typography>
@@ -200,10 +203,10 @@ const MoveFixedAmount: React.FunctionComponent<{
             alignItems: "flex-start",
           }}
         >
-          <Typography sx={{ margin: 0.75 }}>
-            {selectedValueTo ? `${selectedValueTo.id}` : ` `}
+          <Typography variant="h6" sx={{ margin: 0.75 }}>
+            {selectedValueTo ? `${capitalize(selectedValueTo.id)}` : ` `}
           </Typography>
-          <Typography sx={{ margin: 0.75 }}>
+          <Typography variant="h6" sx={{ margin: 0.75 }}>
             ${selectedValueAmount ? `${selectedValueAmount}` : `0`}
           </Typography>
         </div>
@@ -215,17 +218,18 @@ const MoveFixedAmount: React.FunctionComponent<{
           justifyContent: "flex-end",
         }}
       >
-        <Button
+        <CardButton
           variant="contained"
           disabled={
             selectedValueAmount < 1 ||
             selectedValueTo === null ||
             !selectedValueAmount
           }
+          sx={{marginTop: "10px"}}
           onClick={onClickOk}
         >
           Ok
-        </Button>
+        </CardButton>
       </div>
     </Box>
   );

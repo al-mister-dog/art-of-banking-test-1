@@ -1,4 +1,7 @@
 export const lecture1StateConfig = {
+  step1And2: {
+
+  },
   defaultSetup: {
     system: "default",
     parties: [

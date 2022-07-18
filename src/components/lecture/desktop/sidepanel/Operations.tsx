@@ -126,14 +126,6 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
     partyOp.institutions.includes(config.state.system)
   );
 
-  const accordionColors = {
-    monochromatic: "#8F1A14",
-    analogous1: "#620E34",
-    analogous2: "#623C0E",
-    triadic1: "#0E6212",
-    triadic2: "#120E62",
-  };
-
   const partyAccordions = (key: keyof PartyOps) => {
     return partyOperations[key].map((party, i) => {
       return (

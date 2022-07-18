@@ -56,7 +56,7 @@ export default function Home() {
           <Typography variant="h3" align="center" sx={{color: colors.darkMain, marginBottom: "25px"}}>
             Learn the Art of Banking
           </Typography>
-          <Typography variant="h6">
+          <Typography variant="h5">
             from the Italian masters to the New York Money Market...
           </Typography>
 

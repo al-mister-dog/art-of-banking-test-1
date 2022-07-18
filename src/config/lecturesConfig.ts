@@ -27,7 +27,7 @@ export interface Steps {
 
 export const lectures = {
   fundamentals: {
-    name: "fundamentals",
+    title: "fundamentals",
     steps: {
       1: {
         title: "step1",
@@ -76,7 +76,7 @@ export const lectures = {
     },
   },
   clearinghouse: {
-    name: "clearinghouse",
+    title: "clearinghouse",
     steps: {
       1: {
         title: "step1",

@@ -12,9 +12,11 @@ import { useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 import { IBank } from "../../../../../program/clearinghouse/types";
 import { Accordions } from "../../../../types";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Amount from "./buttons/Amount";
 import { colors } from "../../../../../config/colorPalette";
+import CardButton from "./CardButton"
+import {capitalize} from "../../../helpers"
 
 type DispatchFunctionSig = (
   selected: IBank,
@@ -198,13 +200,13 @@ const MoveVariableAmount: React.FunctionComponent<{
             alignItems: "flex-start",
           }}
         >
-          <Button
+          <CardButton
             variant="contained"
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
             {methodText}
-          </Button>
+          </CardButton>
           <ChoosePlayer
             setSelectedValuePlayer={setSelectedValuePlayer}
             open={openTo}
@@ -215,7 +217,7 @@ const MoveVariableAmount: React.FunctionComponent<{
 
           <Typography
             variant="h6"
-            sx={{ color: colors.paper, paddingLeft: "7px" }}
+            sx={{ color: colors.accordionTextColor, paddingLeft: "7px" }}
           >
             Amount
           </Typography>
@@ -228,8 +230,8 @@ const MoveVariableAmount: React.FunctionComponent<{
             alignItems: "flex-start",
           }}
         >
-          <Typography sx={{ margin: 0.75 }}>
-            {selectedValueTo ? `${selectedValueTo.id}` : ` `}
+          <Typography variant="h6" sx={{ margin: 0.75 }}>
+            {selectedValueTo ? `${capitalize(selectedValueTo.id)}` : ` `}
           </Typography>
 
           <Amount
@@ -247,7 +249,7 @@ const MoveVariableAmount: React.FunctionComponent<{
           justifyContent: "flex-end",
         }}
       >
-        <Button
+        <CardButton
           variant="contained"
           disabled={
             selectedValueAmount < 1 ||
@@ -255,10 +257,11 @@ const MoveVariableAmount: React.FunctionComponent<{
             error ||
             !selectedValueAmount
           }
+          sx={{marginTop: "10px"}}
           onClick={onClickOk}
         >
           Ok
-        </Button>
+        </CardButton>
       </div>
     </Box>
   );

@@ -1,7 +1,6 @@
 import { useAppDispatch } from "../../../app/hooks";
 import { useState } from "react";
 import { reset } from "../../../features/lectures/lecturesSlice";
-import { lectures } from "../../../config/lecturesConfig";
 
 import {
   Box,
@@ -18,12 +17,9 @@ import { useTheme } from "@mui/material/styles";
 import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-
-import Introduction from "./Introduction";
-import StepComponent from "./Step";
 import { colors } from "../../../config/colorPalette";
 
-const config = lectures.clearinghouse.steps;
+
 
 // function getStepContent(step: number) {
 //   switch (step) {

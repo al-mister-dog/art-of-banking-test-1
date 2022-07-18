@@ -11,11 +11,11 @@ const Amount: React.FunctionComponent<{
     <Box sx={{ display: "flex" }}>
       <TextField
         sx={{
-          color: colors.paper,
-          input: { color: colors.paper },
-          label: { color: colors.paper },
+          color: colors.accordionTextColor,
+          input: { color: colors.accordionTextColor },
+          label: { color: colors.accordionTextColor },
           "& label.Mui-focused": {
-            color: colors.paper,
+            color: colors.accordionTextColor,
           },
         }}
         error={error}
