@@ -2,7 +2,7 @@ import { Box, Card, CardContent, Typography, styled } from "@mui/material";
 import SideBalance from "./SideOfBalanceSheet";
 import { capitalize } from "../../helpers";
 import { colors } from "../../../../config/colorPalette";
-const toolbarTextColor = "#f5f1d6";
+const toolbarTextColor = colors.balanceSheetsTextColor;
 
 const BalanceSheetCard = styled(Card)(({theme}) => ({
   flex: "0 0 auto",

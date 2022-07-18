@@ -140,10 +140,10 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
         <Accordion
           key={i}
           expanded={accordionExpanded[party.accordionKey as keyof Accordions]}
-          sx={{ background: colors.accordionColor, color: colors.paper }}
+          sx={{ background: colors.main, color: colors.accordionTextColor }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon sx={{ color: colors.paper }} />}
+            expandIcon={<ExpandMoreIcon sx={{ color: colors.accordionTextColor }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
             onClick={() => toggleAccordion(party.accordionKey)}

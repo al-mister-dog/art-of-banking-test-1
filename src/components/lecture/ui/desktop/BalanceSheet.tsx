@@ -2,7 +2,7 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import SideBalance from "./SideOfBalanceSheet";
 import { capitalize } from "../../helpers";
 import { colors } from "../../../../config/colorPalette";
-const toolbarTextColor = "#f5f1d6";
+const toolbarTextColor = colors.balanceSheetsTextColor
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
   bank: any;
@@ -11,7 +11,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
   return (
     <Card
       style={{
-        borderRadius: 5,
+        borderRadius: 4,
         minWidth: 300,
         textAlign: "center",
         margin: 25,
