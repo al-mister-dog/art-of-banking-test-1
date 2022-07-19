@@ -20,6 +20,7 @@ import {
   Line,
   Tooltip,
 } from "recharts";
+import { colors } from "../../../../config/colorPalette";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -69,7 +70,8 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             <XAxis dataKey="name" />
             <YAxis style={{fontSize: "0.6rem"}}/>
             <Tooltip />
-            <Line type="monotone" dataKey="credit" stroke="#8884d8" />
+            <Line type="monotone" dataKey="credit" stroke={colors.darkMain} />
+            <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
           </LineChart>
         </Box>
       )}

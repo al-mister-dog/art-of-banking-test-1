@@ -1,9 +1,13 @@
 import Title from "./Title";
 import Text from "./Text";
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import { colors } from "../../../config/colorPalette";
+import { lectures } from "../../../config/lecturesConfig";
+import { Link } from "react-router-dom";
 
 interface Texts {
+  lectureTitle: string;
   title: string;
   paragraphs: string[];
   assignment: string;
@@ -18,9 +22,13 @@ export default function Introduction({ texts }: { texts: Texts }) {
       style={{
         margin: "10px",
         marginBottom: "25px",
-
       }}
     >
+      <Typography sx={{ fontFamily: "Roboto", color: colors.darkMain }}>
+        {/* <Link to="clearinghouse" style={{textDecoration: "none"}}> */}
+        {texts.lectureTitle}
+        {/* </Link> */}
+      </Typography>
       <Title>{texts.title}</Title>
       {expanded ? (
         texts.paragraphs.map((paragraph, i) => <Text key={i}>{paragraph}</Text>)

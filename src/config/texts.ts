@@ -1,5 +1,6 @@
 export const fundamentals = {
   step1: {
+lectureTitle: `fundamentals`,
     title: `Banking Fundamentals: Balance Sheets`,
     paragraphs: [
       `For someone unfamiliar to the world of banking and finance, the whole thing can seem 
@@ -20,6 +21,7 @@ export const fundamentals = {
   },
 
   step2: {
+    lectureTitle: `fundamentals`,
     title: `Balance Sheets and Bank Deposits`,
     paragraphs: [
       `A balance sheet is a T shaped graph that has two sides. One side consists
@@ -55,6 +57,7 @@ export const fundamentals = {
     of the difference in the customer's and the bank's balance sheets. Then click next `,
   },
   step3: {
+    lectureTitle: `fundamentals`,
     title: `Deposit Transfers`,
     paragraphs: [
       `We have seen how a bank takes a customer's money and exchanges them for deposits. On the bank's balance sheet, the deposits are counted as liabilities and the cash is part of the reserves on the assets side of the balance sheet.
@@ -68,6 +71,7 @@ export const fundamentals = {
     assignment: `Here we have a bank with two customers, who have 100 pounds in cash ready to be deposited at the bank. Watch what happens to the bank’s balance sheet and the customers' accounts when they transfer their money to eachother.`,
   },
   step4: {
+    lectureTitle: `fundamentals`,
     title: `Credit and Overdrafts`,
     paragraphs: [
       `Credit is simply a promise to pay at a future date. I could write you an IOU on a piece
@@ -103,6 +107,7 @@ export const fundamentals = {
     Expand the credit in the system by $50 and then contract it to $0`,
   },
   step5: {
+    lectureTitle: `fundamentals`,
     title: `Constraint`,
     paragraphs: [
       `Because cash is many ways seen as the final form of settlement, a bank must ensure that
@@ -124,6 +129,7 @@ export const fundamentals = {
     assignment: `Change the reserve requirement and see how it effects the elasticity of the system.`,
   },
   step6: {
+    lectureTitle: `fundamentals`,
     title: `Conclusion`,
     paragraphs: [
       `Because cash is many ways seen as the final form of settlement, a bank must ensure that
@@ -148,6 +154,7 @@ export const fundamentals = {
 
 export const clearinghouse = {
   step1: {
+    lectureTitle: `Clearing House`,
     title: `The Clearing House: Towards a Central Bank`,
     paragraphs: [
       `The United States Federal Reserve is often portrayed as a mysterious and often
@@ -169,6 +176,7 @@ export const clearinghouse = {
   },
 
   step2: {
+    lectureTitle: `Clearing House`,
     title: `One Big Bank`,
     paragraphs: [
       `Suppose there was only one bank, and everyone in the economy had an account.
@@ -194,6 +202,7 @@ export const clearinghouse = {
     balance sheet. How many types of transactions exist in this system?`,
   },
   step3: {
+    lectureTitle: `Clearing House`,
     title: `Multiple Banks`,
     paragraphs: [
       `In reality there isn't just one bank but many banks. If a customer from Bank 1 pays a
@@ -221,6 +230,7 @@ export const clearinghouse = {
     settled.`,
   },
   step4: {
+    lectureTitle: `Clearing House`,
     title: `Correspondent Banking`,
     paragraphs: [
       `Instead of transferring reserves for each order of payment, suppose that each day each
@@ -252,6 +262,7 @@ export const clearinghouse = {
     accounts contain "Bank Deposits".`,
   },
   step5: {
+    lectureTitle: `Clearing House`,
     title: `The Clearing House`,
     paragraphs: [
       `The correspondent system of banking is a step forward from the older system of interbank

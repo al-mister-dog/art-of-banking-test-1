@@ -5,6 +5,7 @@ import StepperIndex from "../components/lecture/steps/Stepper";
 
 const config = lectures.fundamentals.steps;
 
+
 function getStepContent(step: number) {
   switch (step) {
     case 0:

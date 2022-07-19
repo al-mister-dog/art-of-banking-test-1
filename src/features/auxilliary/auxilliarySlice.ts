@@ -96,6 +96,10 @@ export const auxilliarySlice = createSlice({
         }
       });
 
+      const totalReserves = allBanks.reduce((a, c) => {
+        return {reserves: a.reserves + c.reserves}
+      }, {reserves: 0}).reserves
+
       const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
         (a: Account, c: Account) => {
           return { amount: a.amount + c.amount };
@@ -106,11 +110,11 @@ export const auxilliarySlice = createSlice({
       const totalCredit = totalAssetsAndLiabilities.amount;
 
       state.totalCredit = totalCredit;
-      state.totalCreditData =[ ...state.totalCreditData, { name: "", credit: state.totalCredit }];
+      state.totalCreditData =[ ...state.totalCreditData, { name: "", credit: state.totalCredit, reserves: totalReserves }];
     },
     resetTotalCreditData: (state) => {
       state.totalCredit = 0;
-      state.totalCreditData =[ { name: "", credit: state.totalCredit }];
+      state.totalCreditData =[ { name: "", credit: state.totalCredit, reserves: 0 }];
     },
   },
 });
