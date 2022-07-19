@@ -1,9 +1,7 @@
 //TODO
 //credit expansion graph
 import { useAppSelector, useAppDispatch } from "../../../../app/hooks";
-import {
-  selectParties,
-} from "../../../../features/lectures/lecturesSlice";
+import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import {
   selectAuxilliary,
   setReservePercentage,
@@ -19,19 +17,21 @@ import {
   YAxis,
   Line,
   Tooltip,
+  Legend,
 } from "recharts";
+import { colors } from "../../../../config/colorPalette";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
 }) => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const { reservePercentage, totalCreditData, totalCredit } = useAppSelector(selectAuxilliary);
+  const { reservePercentage, totalCreditData, totalCredit } =
+    useAppSelector(selectAuxilliary);
 
   useEffect(() => {
-    dispatch(setTotalCreditData({parties}))
+    dispatch(setTotalCreditData({ parties }));
   }, [parties]);
-
 
   function handleChangeReserveRequirement(
     event: Event,
@@ -41,50 +41,59 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   }
   return (
     <Box
-    sx={{
-      display: "flex",
-      justifyContent: "flex-end",
-      alignItems: "flex-end",
-    }}
-  >
-    {config.constraint && (
-      <Box sx={{width: "250px"}}>
-        <Typography variant="caption">Reserve Requirement: %{reservePercentage}</Typography>
-        <Slider
-          defaultValue={25}
-          aria-label="Default"
-          valueLabelDisplay="auto"
-          onChange={handleChangeReserveRequirement}
-        />
-      </Box>
-    )}
-    {config.credit && (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="caption" style={{ margin: 0, padding: 0 }}>
-          Total System Credit: ${totalCredit}
-        </Typography>
-        <LineChart
-          width={250}
-          height={100}
-          data={totalCreditData}
-          margin={{ bottom: -10 }}
+      sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+      }}
+    >
+      {config.constraint && (
+        <Box sx={{ width: "250px" }}>
+          <Typography variant="caption">
+            Reserve Requirement: %{reservePercentage}
+          </Typography>
+          <Slider
+            defaultValue={25}
+            aria-label="Default"
+            valueLabelDisplay="auto"
+            onChange={handleChangeReserveRequirement}
+          />
+        </Box>
+      )}
+      {config.credit && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis style={{fontSize: "0.5rem"}}/>
-          <Tooltip />
-          <Line type="monotone" dataKey="credit" stroke="#8884d8" />
-        </LineChart>
-      </Box>
-    )}
-  </Box>
-);
+          <Typography variant="caption" style={{ margin: 0, padding: 0 }}>
+            Total System Credit: ${totalCredit}
+          </Typography>
+          <LineChart
+            width={250}
+            height={100}
+            data={totalCreditData}
+            margin={{ bottom: -10 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis style={{ fontSize: "0.5rem" }} />
+            <Tooltip />
+            <Line
+              type="monotone"
+              name="+ credit"
+              dataKey="credit"
+              stroke={colors.balanceSheetsColor}
+            />
+            <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
+            <Legend iconType="line"/>
+          </LineChart>
+        </Box>
+      )}
+    </Box>
+  );
 };
 
 export default ButtonAppBar;
