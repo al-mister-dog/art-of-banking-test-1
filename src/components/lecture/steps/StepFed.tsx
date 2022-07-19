@@ -21,10 +21,10 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
 
   const parties = useAppSelector(selectParties);
   const configCustomers = config.parties.filter((party: string) =>
-    party.includes("customer")
+    party.includes("central")
   );
   const configBanks = config.parties.filter((party: string) =>
-    (party.includes("bank") || party.includes("clearinghouse"))
+    (party.includes("bank") && !party.includes("central"))
   );
 
   const [selected, setSelected] = useState<string>("customer1");

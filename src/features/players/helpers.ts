@@ -23,7 +23,6 @@ function replaceBill(
 }
 
 function finaliseBill(holder: any, recipient: any, bill: any) {
-  console.log(recipient)
   const recipientCopy = { ...bill };
   const holderCopy = { ...bill };
   recipientCopy.paid = true;

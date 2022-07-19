@@ -14,6 +14,7 @@ export const commercialLiabilities = {
   bankOverdrafts: [],
   bankLoans: [],
   customerDeposits: [],
+  daylightOverdrafts: [],
   chCertificates: [],
   chOverdrafts: [],
   customerLoans: [],
@@ -47,4 +48,19 @@ export const clearinghouseLiabilities = {
 
 export const clearinghouseBalances = {
   chCertificates: [],
+};
+
+export const centralBankAssets = {
+  daylightOverdrafts: [],
+  bankDeposits: [],
+  dues: [],
+};
+
+export const centralBankLiabilities = {
+  bankDeposits: [],
+  dues: [],
+};
+
+export const centralBankBalances = {
+  bankDeposits: [],
 };

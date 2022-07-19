@@ -291,3 +291,151 @@ export const clearinghouse = {
     Then settle dues and see what happens to the banks' certificate accounts.`,
   },
 };
+
+
+export const centralbank = {
+  step1: {
+    lectureTitle: `The Fed`,
+    title: `The Fed: Final Settlement`,
+    paragraphs: [
+      `The following lecture is under construction. Feel free to carry on reading it in its less
+      than final form!`,
+      `We have begun to understand how the banking system consists of many banks that try to act as
+      if they were all part of one big bank. The reason behind this is that a healthy bank is a bank
+      that can meet its daily requirements, and in order to facilitate this it is crucial that all
+      other banks can meet their daily requirements. The Clearing House system was a step towards
+      guaranteeing banks meet their daily requirements by creating a system in which all debts with 
+      the Clearing House and not any individual bank. This system can be easily broken however because
+      at the end of the day the Clearing House is liable to its members with a scarce resource.`,
+      `The Federal Reserve however has the legal right to create its own liabilities, which means
+      theoretically it can not run out of money. This greatly eases the facilitation of the nationwide
+      interbank payment system. However, this is not to say discipline does not play a factor. 
+      The Fed does not simply give away money for free. Banks can run overdrafts with the Fed but this
+      comes with consequences such as fees etc. To avoid overdrafts at the Fed, a bank will go to
+      the Fed Funds Market in search of loans to allow that bank to carry on with its day to day 
+      activities.`,
+      `The Fed Funds Market consists of loans and payments made to and from all the other banks in the federal 
+      banking system. These loans are reserves and involve promises to pay in return yet more Fed Funds reserves. 
+      The entire Fed Funds Market is effectively an expansion of credit based on the existing money
+      that is on the balance sheet of the Fed. It is important now to follow the money from balance
+      sheet to balance sheet as we explore further how exactly banking works.`
+    ],
+    assignment: `Sources: Marcia Stigum - Stigum's Money Market, The Federal Funds Market since the Financial Crisis - Ben Craig`
+  },
+
+  step2: {
+    lectureTitle: `The Fed`,
+    title: `Daylight Overdrafts`,
+    paragraphs: [
+      `Suppose there was only one bank, and everyone in the economy had an account.
+      The bank would have reserves on the assets side of its balance sheet and each customer's
+      deposits on the liabilities side. In this world the 'quantity of money' would consist
+      of the amount of deposit accounts in the bank. Any payments made between customers would
+      simply add and subtract the same amount on the the liability side of the bank's balance
+      sheet. Reserves would never move.`,
+      `But what if this bank were to allow overdrafts, in which negative accounts show up on
+      the assets side of the bank's balance sheet. In this world, a customer with a negative
+      account making a payment to a customer with a positive account would end up expanding both 
+      sides of the bank's balance sheet. Likewise a customer with a positive account making a 
+      payment to a customer with a negative account would end up contracting both sides of the
+      balance sheet.`,
+      `The use of bank credit as a means of payment thus involves a certain elasticity in the 
+      quantity of money. This raises questions about how to properly measure the quantity of 
+      money. There are three possibilities. 1: The sum of deposits held in positive accounts. 
+      2: The sum of positive accounts subtracted by overdrafts. 3: All deposits, positive or
+      negative.`,
+    ],
+    assignment: `Here are four customers belonging to the same bank. Make payments between customers
+    with both positive and negative accounts and see which transactions expand or contract the 
+    balance sheet. How many types of transactions exist in this system?`,
+  },
+  step3: {
+    lectureTitle: `Fed Funds`,
+    title: `The Fed Funds Market`,
+    paragraphs: [
+      `In reality there isn't just one bank but many banks. If a customer from Bank 1 pays a
+      customer from Bank 2, the liabilities of Bank 1 decreases but the liabilities of Bank2 
+      increases. However Bank 2 has not received any cash in return for this increase in its
+      deposit liabilities; Bank 2 is in effect owed money by Bank 1. This raises the problem
+      of how to settle payments between banks.`,
+      `In America during the first half of the 19th century, a cheque received by one bank 
+      would have the name of the bank from which the customer belonging to some other bank 
+      had made a payment. These cheques would be tallied up at the end of the day or week 
+      and then a bill demanding payment from that bank would be issued. Likewise, this same 
+      bank will receive bills demanding payments to other banks from which customers from 
+      this bank have made transfers to customers to those other banks. Each bank would have 
+      a porter who would shift reserves from bank to bank, carrying the risk of making 
+      mistakes in payments, honest or dishonest.`,
+      `We introduce in this step 'dues'. These dues represent money owed to or from a bank and 
+      appear on both sides of a bank's balance sheet. They are not really any different to 
+      deposits or overdrafts, representing payments the banks will make to eachother at a future
+      date. When payments are settled these dues are wiped off the balance sheets and end up in
+      each banks' reserves. In the next step we will look at an improved way of dealing with payments between banks.`,
+    ],
+    assignment: `Here we have a twos banks each with two customers, who have 50 dollars in their
+    accounts. Make payments between customers and note how 'due tos' and 'due froms' get added to
+    each bank's balance sheet. Note where this money goes once payments between banks have been
+    settled.`,
+  },
+  step4: {
+    lectureTitle: `Clearing House`,
+    title: `Correspondent Banking`,
+    paragraphs: [
+      `Instead of transferring reserves for each order of payment, suppose that each day each
+      bank collects “due tos” and “due froms” with respect to every other bank. 
+      At the end of the day, each bank nets the payments to each other bank. If Bank 1 owes
+      Bank 2 $50 and Bank 2 owes Bank 1 $50, the net will be zero. And if Bank 1 owes Bank 2
+      $50 and Bank 2 owes Bank 1 $30, the net will be $20 owed to Bank 2.`,
+      `Further, instead of settling these payments in gold or cash, each bank could simply 
+      have an account with every other bank. These are called correspondent accounts, and 
+      are in effect a swap of IOUs. Bank 1 owes deposits to Bank 2 and Bank 2 owes deposits
+      to Bank 1. Now, if Bank 1 owes Bank 2, Bank 1 can pay Bank 2 by drawing on balances held 
+      at Bank 2, or by increasing the balance held at Bank 1 to Bank 2’s credit. `,
+      `Regarding settling payments via bank deposit accounts there are two options. Suppose Bank 1 owes Bank 2.
+      Bank 1 can decrease Bank 2's liabilities to Bank 1, which would also decrease Bank 1's assets 
+      from Bank 2. Alternatively Bank 1 can increase Bank 2's assets from Bank 1, which would also
+      increase Bank 1's liabilities to Bank 2. In the first case total deposits fall (debiting) and 
+      in the second case total deposits increase (crediting). Historically the bigger more central 
+      bank will be credited by the smaller less central bank.`,
+      `The invention of correspondent banking amounts to moving from a money payment
+      system to a credit payment system between banks. Note that, since the correspondent system is a
+      credit system, we are not constrained by the quantity of gold, only by the various bi-lateral credit
+      limits. One can imagine an entire banking system using these book entries to clear bi-lateral net
+      payments at the end of the day. But there is an even better way, which we will look at in
+      the next step.
+      `,
+    ],
+    assignment: `Assignment: There are two banks each with two customers who have made various transfers.
+    One bank owes another bank. Net the payments and settle using corresponding accounts. Corresponding
+    accounts contain "Bank Deposits".`,
+  },
+  step5: {
+    lectureTitle: `Clearing House`,
+    title: `The Clearing House`,
+    paragraphs: [
+      `The correspondent system of banking is a step forward from the older system of interbank
+      payments, but it could be improved. Obviously it would advantageous 
+      to devise a system where the bank only had to pay the net across all its correspondents, rather
+      than pay bilaterally with every bank in the network. It would be easier if all the banks held 
+      correspondent accounts with only one bank, and use those balances to clear all its payments.`,
+      `In the mid nineteenth century, a group of banks of roughly the same stature set up the New York
+      Clearing House Association, a bank who's reserves where made up of a subscription by every 
+      member bank. Any payment due to or from one bank became a payment due to or from the Clearing
+      House. These payments were made with "Clearing House Certificates" which were bank notes representing
+      the dollar, in cash or gold. Each bank had a deposit account of Clearinghouse Certificates. 
+      At the end of each day, all the banks would meet up at the Clearing House, net their due tos and due froms, 
+      and if they were a debtor party, pay the Clearing House in certificates, or if they were the 
+      creditor party, receive certificates from the Clearing House.`,
+      `Because the money supply in this system is made up entirely of the deposit accounts of the 
+      member banks, total due tos and due froms will always net to zero, and reserves will never 
+      have to move. However this system can break if one member bank ends up systematically becoming a debtor
+      and runs out of certificates in their account. Other members would be reluctant to extend an 
+      overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
+      To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
+      looked at in the next chapter.`
+    ],
+    assignment: `Below are banks and customers who have done a day of trading and are now ready to net
+    and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
+    Then settle dues and see what happens to the banks' certificate accounts.`,
+  },
+};

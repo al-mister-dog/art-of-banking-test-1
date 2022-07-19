@@ -1,7 +1,5 @@
 export const lecture1StateConfig = {
-  step1And2: {
-
-  },
+  step1And2: {},
   defaultSetup: {
     system: "default",
     parties: [
@@ -18,10 +16,10 @@ export const lecture1StateConfig = {
           },
         ],
         reserves: 500,
-      }
+      },
     ],
   },
-  
+
   creditSetup: {
     system: "default",
     parties: [
@@ -43,7 +41,7 @@ export const lecture1StateConfig = {
       },
     ],
   },
-  
+
   overdraft: {
     system: "default",
     parties: [
@@ -66,8 +64,8 @@ export const lecture1StateConfig = {
         reserves: 500,
       },
     ],
-  }
-}
+  },
+};
 export const lecture2StateConfig = {
   oneBigBank: {
     system: "default",
@@ -217,4 +215,205 @@ export const lecture2StateConfig = {
       },
     ],
   },
+};
+
+export const lecture3StateConfig = {
+  daylightOverdraft: {
+    system: "centralbank",
+    parties: [
+      {
+        bank: "bank1",
+        customers: [
+          {
+            customer: "customer1",
+            reserves: 100,
+            initialDeposit: 50,
+            transfers: [{ customer: "customer2", amount: 100 }],
+          },
+        ],
+        initialDeposit: 0,
+        reserves: 0,
+      },
+      {
+        bank: "bank2",
+        customers: [
+          {
+            customer: "customer2",
+            reserves: 100,
+            initialDeposit: 0,
+          },
+        ],
+        initialDeposit: 100,
+        reserves: 100,
+      },
+      {
+        bank: "bank3",
+        customers: [
+          {
+            customer: "customer3",
+            reserves: 100,
+            initialDeposit: 0,
+          },
+        ],
+        initialDeposit: 100,
+        reserves: 100,
+      },
+    ],
+  },
+  fedFundsMarket: {
+    system: "centralbank",
+    parties: [
+      {
+        bank: "bank1",
+        customers: [
+          {
+            customer: "customer1",
+            reserves: 100,
+            initialDeposit: 50,
+            transfers: [{ customer: "customer2", amount: 100 }],
+          },
+        ],
+        reserves: 0,
+      },
+      {
+        bank: "bank2",
+        customers: [
+          {
+            customer: "customer2",
+            reserves: 100,
+            initialDeposit: 0,
+          },
+        ],
+        reserves: 100,
+      },
+      {
+        bank: "bank3",
+        customers: [
+          {
+            customer: "customer3",
+            reserves: 100,
+            initialDeposit: 0,
+          },
+        ],
+        reserves: 100,
+      },
+    ],
+  },
+  // multipleBanks: {
+  //   system: "interbank",
+  //   parties: [
+  //     {
+  //       bank: "bank1",
+  //       customers: [
+  //         {
+  //           customer: "customer1",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer4", amount: 40 }],
+  //         },
+  //         {
+  //           customer: "customer2",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //     {
+  //       bank: "bank2",
+  //       customers: [
+  //         {
+  //           customer: "customer3",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer2", amount: 20 }],
+  //         },
+  //         {
+  //           customer: "customer4",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //   ],
+  // },
+  // correspondentBanking: {
+  //   system: "correspondent",
+  //   parties: [
+  //     {
+  //       bank: "bank1",
+  //       customers: [
+  //         {
+  //           customer: "customer1",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer4", amount: 40 }],
+  //         },
+  //         {
+  //           customer: "customer2",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //     {
+  //       bank: "bank2",
+  //       customers: [
+  //         {
+  //           customer: "customer3",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer2", amount: 20 }],
+  //         },
+  //         {
+  //           customer: "customer4",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //   ],
+  // },
+  // clearinghouse: {
+  //   system: "clearinghouse",
+  //   parties: [
+  //     {
+  //       bank: "bank1",
+  //       customers: [
+  //         {
+  //           customer: "customer1",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer4", amount: 50 }],
+  //         },
+  //         {
+  //           customer: "customer2",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //     {
+  //       bank: "bank2",
+  //       customers: [
+  //         {
+  //           customer: "customer3",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //           transfers: [{ customer: "customer2", amount: 30 }],
+  //         },
+  //         {
+  //           customer: "customer4",
+  //           reserves: 100,
+  //           initialDeposit: 50,
+  //         },
+  //       ],
+  //       reserves: 0,
+  //     },
+  //   ],
+  // },
 };

@@ -26,6 +26,9 @@ export class System {
     } else if (sys === "interbank") {
       SystemMethods = new InterbankSystem();
       systemCheck = "interbank";
+    } else if (sys === "centralbank") {
+      SystemMethods = new CentralBankSystem();
+      systemCheck = "centralbank";
     }
   }
 }
@@ -212,14 +215,14 @@ class ClearingHouseSystem extends AbstractSystem {
   //           lookup[due.id],
   //           lookup[bank],
   //           due.amount,
-  //           ["chCertificates", "chOverdrafts"]
+  //           ["bankDeposits", "daylightOverdrafts"]
   //         );
   //       } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
   //         PaymentMethods.debitAccount(
   //           lookup[bank],
   //           lookup[due.id],
   //           due.amount,
-  //           ["chCertificates", "chOverdrafts"]
+  //           ["bankDeposits", "daylightOverdrafts"]
   //         );
   //       }
   //       PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
@@ -238,14 +241,136 @@ class ClearingHouseSystem extends AbstractSystem {
               lookup[due.id],
               lookup[bank],
               due.amount,
-              ["chCertificates", "chOverdrafts"]
+              ["bankDeposits", "daylightOverdrafts"]
             );
           } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
             PaymentMethods.debitAccount(
               lookup[bank],
               lookup[due.id],
               due.amount,
-              ["chCertificates", "chOverdrafts"]
+              ["bankDeposits", "daylightOverdrafts"]
+            );
+          }
+          PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
+        });
+      }
+    }
+  }
+}
+
+class CentralBankSystem extends AbstractSystem {
+  increaseDues(bankA: IBank, bankB: IBank, amount: number) {
+    PaymentMethods.debitAccount(bankA, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    // partyFunctions(bankA).increaseInstrument(
+    //   lookup["centralbank"].id,
+    //   "liabilities",
+    //   "bankDeposits",
+    //   amount
+    // );
+    // partyFunctions(lookup["centralbank"]).increaseInstrument(
+    //   bankA.id,
+    //   "assets",
+    //   "bankDeposits",
+    //   amount
+    // );
+    // partyFunctions(bankB).increaseInstrument(
+    //   lookup["centralbank"].id,
+    //   "assets",
+    //   "bankDeposits",
+    //   amount
+    // );
+    // partyFunctions(lookup["centralbank"]).increaseInstrument(
+    //   bankB.id,
+    //   "liabilities",
+    //   "bankDeposits",
+    //   amount
+    // );
+  }
+
+  netDues(bank: IBank): void {
+    bank.assets.dues.forEach((thisDue) => {
+      let dueFrom = thisDue;
+      let dueTo = bank.liabilities.dues.find((due) => (due.id = thisDue.id));
+      if (!dueTo) {
+        return;
+      }
+      if (dueFrom.amount > dueTo.amount) {
+        dueFrom.amount = dueFrom.amount - dueTo.amount;
+        dueTo.amount = 0;
+      }
+      if (dueTo.amount > dueFrom.amount) {
+        dueTo.amount = dueTo.amount - dueFrom.amount;
+        dueFrom.amount = 0;
+      }
+      if (dueTo.amount === dueFrom.amount) {
+        dueTo.amount = 0;
+        dueFrom.amount = 0;
+      }
+    });
+
+    let bankDueFrom = bank.assets.dues.find(
+      (due) => due.id === lookup["centralbank"].id
+    );
+    let centralbankDueFrom = lookup["centralbank"].liabilities.dues.find(
+      (due) => due.id === bank.id
+    );
+
+    if (centralbankDueFrom && bankDueFrom) {
+      centralbankDueFrom.amount = bankDueFrom.amount;
+    }
+    let bankDueTo = bank.liabilities.dues.find(
+      (due) => due.id === lookup["centralbank"].id
+    );
+    let centralbankDueTo = lookup["centralbank"].assets.dues.find(
+      (due) => due.id === bank.id
+    );
+    if (centralbankDueTo && bankDueTo) {
+      centralbankDueTo.amount = bankDueTo.amount;
+    }
+  }
+
+  // settleDues(): void {
+  //   for (const bank in lookup) {
+  //     lookup[bank].liabilities.dues.forEach((due) => {
+  //       if (due.amount > 0 && lookup[bank].id === "clearinghouse") {
+  //         PaymentMethods.creditAccount(
+  //           lookup[due.id],
+  //           lookup[bank],
+  //           due.amount,
+  //           ["bankDeposits", "daylightOverdrafts"]
+  //         );
+  //       } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
+  //         PaymentMethods.debitAccount(
+  //           lookup[bank],
+  //           lookup[due.id],
+  //           due.amount,
+  //           ["bankDeposits", "daylightOverdrafts"]
+  //         );
+  //       }
+  //       PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
+  //     });
+  //   }
+  // }
+  settleDues(): void {
+    for (const bank in lookup) {
+      if (
+        lookup[bank].id.includes("bank") ||
+        lookup[bank].id.includes("centralbank")
+      ) {
+        lookup[bank].liabilities.dues.forEach((due) => {
+          if (due.amount > 0 && lookup[bank].id === "centralbank") {
+            PaymentMethods.creditAccount(
+              lookup[due.id],
+              lookup[bank],
+              due.amount,
+              ["bankDeposits", "daylightOverdrafts"]
+            );
+          } else if (due.amount > 0 && lookup[bank].id !== "centralbank") {
+            PaymentMethods.debitAccount(
+              lookup[bank],
+              lookup[due.id],
+              due.amount,
+              ["bankDeposits", "daylightOverdrafts"]
             );
           }
           PaymentMethods.clearDues(lookup[bank], lookup[due.id]);

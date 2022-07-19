@@ -1,5 +1,5 @@
-import { fundamentals, clearinghouse } from "./texts";
-import { lecture1StateConfig, lecture2StateConfig } from "./initialStateConfig";
+import { fundamentals, clearinghouse, centralbank } from "./texts";
+import { lecture1StateConfig, lecture2StateConfig, lecture3StateConfig } from "./initialStateConfig";
 
 export interface Text {
   title: string;
@@ -152,6 +152,82 @@ export const lectures = {
         text: clearinghouse.step5,
         state: lecture2StateConfig.clearinghouse,
       },
+    },
+  },
+
+
+
+
+  centralbank: {
+    title: "centralbank",
+    steps: {
+      1: {
+        title: "step1",
+        text: centralbank.step1,
+      },
+      2: {
+        overdraft: true,
+        credit: true,
+        constraint: false,
+        parties: ["bank1", "bank2", "bank3", "centralbank"],
+        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "dues"],
+        text: centralbank.step2,
+        state: lecture3StateConfig.daylightOverdraft,
+      },
+      3: {
+        overdraft: true,
+        credit: true,
+        constraint: false,
+        parties: ["bank1", "bank2", "centralbank"],
+        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "dues"],
+        text: centralbank.step3,
+        state: lecture3StateConfig.fedFundsMarket,
+      },
+      // 4: {
+      //   overdraft: true,
+      //   credit: true,
+      //   constraint: false,
+      //   parties: [
+      //     "customer1",
+      //     "customer2",
+      //     "customer3",
+      //     "customer4",
+      //     "bank1",
+      //     "bank2",
+      //   ],
+      //   balanceSheetDisplay: [
+      //     "customerDeposits",
+      //     "customerOverdrafts",
+      //     "bankDeposits",
+      //     "bankOverdrafts",
+      //     "dues",
+      //   ],
+      //   text: centralbank.step4,
+      //   state: lecture2StateConfig.correspondentBanking,
+      // },
+      // 5: {
+      //   overdraft: true,
+      //   credit: true,
+      //   constraint: false,
+      //   parties: [
+      //     "customer1",
+      //     "customer2",
+      //     "customer3",
+      //     "customer4",
+      //     "bank1",
+      //     "bank2",
+      //     "clearinghouse"
+      //   ],
+      //   balanceSheetDisplay: [
+      //     "customerDeposits",
+      //     "customerOverdrafts",
+      //     "dues",
+      //     "chCertificates",
+      //     "chOverdrafts",
+      //   ],
+      //   text: clearinghouse.step5,
+      //   state: lecture2StateConfig.clearinghouse,
+      // },
     },
   },
 };

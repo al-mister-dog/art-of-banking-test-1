@@ -56,7 +56,7 @@ const StepperIndex: React.FunctionComponent = () => {
   const records = useAppSelector(selectRecords);
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
-    console.log(records);
+    
     const record1 = "salviati imports 1 marc worth of goods from me";
     const record2 = "me draws bill on you for 1 marc";
     const record3 = "you remits bill to tomasso";

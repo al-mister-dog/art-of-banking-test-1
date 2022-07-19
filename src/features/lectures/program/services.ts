@@ -262,3 +262,46 @@ export class ClearingHouseService {
     partyFunctions(bankB).increaseReserves(amount);
   }
 }
+
+export class CentralBankService {
+  static settleDues() {
+    for (const bank in lookup) {
+      lookup[bank].liabilities.dues.forEach((due: any) => {
+        const centralbankOwesBank =
+          due.amount > 0 &&
+          lookup[bank].id === "centralbank" &&
+          due.id !== "centralbank";
+        const bankOwesCentralBank =
+          due.amount > 0 &&
+          lookup[bank].id !== "centralbank" &&
+          due.id === "centralbank";
+        if (centralbankOwesBank) {
+          PaymentMethods.creditAccount(
+            lookup[due.id],
+            lookup[bank],
+            due.amount,
+            ["bankDeposits", "daylightOverdrafts"]
+          );
+        } else if (bankOwesCentralBank) {
+          PaymentMethods.debitAccount(
+            lookup[bank],
+            lookup[due.id],
+            due.amount,
+            ["bankDeposits", "daylightOverdrafts"]
+          );
+        }
+        PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
+      });
+    }
+  }
+  static openAccount(bankA: IBank, bankB: IBank, amount: number = 0) {
+    AccountMethods.createSubordinateAccount(
+      bankA,
+      bankB,
+      amount,
+      "bankDeposits",
+      "daylightOverdrafts"
+    );
+    partyFunctions(bankB).increaseReserves(amount);
+  }
+}

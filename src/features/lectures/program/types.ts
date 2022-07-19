@@ -17,6 +17,7 @@ export interface CategoryTypes {
 }
 
 export interface InstrumentTypes {
+  daylightOverdrafts: Account[];
   bankDeposits: Account[];
   bankOverdrafts: Account[];
   bankLoans: Account[];

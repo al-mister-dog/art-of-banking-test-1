@@ -27,7 +27,7 @@ const drawerWidth = 240;
 const navItems = [
   { title: "Fundamentals", page: "fundamentals" },
   { title: "Clearinghouse", page: "clearinghouse" },
-  { title: "The Fed", page: "" },
+  { title: "The Fed", page: "the-fed" },
   { title: "Renaissance Banking", page: "medici" },
 ];
 

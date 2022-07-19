@@ -8,12 +8,16 @@ import {
   clearinghouseAssets,
   clearinghouseBalances,
   clearinghouseLiabilities,
+  centralBankAssets,
+  centralBankBalances,
+  centralBankLiabilities,
 } from "./program/fixtures";
 import { lookup } from "./program/lookupTables";
 import {
   CustomerService,
   BankService,
   ClearingHouseService,
+  CentralBankService,
 } from "./program/services";
 import { System } from "./program/systemMethods";
 import { IBank } from "./program/types";
@@ -21,6 +25,7 @@ import { IBank } from "./program/types";
 type BankConfig = {
   bank: string;
   customers: CustomerConfig[];
+  initialDeposit: number;
   reserves: number;
 };
 type CustomerConfig = {
@@ -73,6 +78,20 @@ function createClearinghouse(id: string = "clearinghouse", reserves = 0) {
   return newBank;
 }
 
+function createCentralBank(id: string = "centralbank", reserves = 1000) {
+  const newBank: IBank = {
+    id,
+    type: "centralbank",
+    assets: { ...centralBankAssets },
+    liabilities: { ...centralBankLiabilities },
+    balances: { ...centralBankBalances },
+    reserves,
+    records: [],
+  };
+  lookup[newBank.id] = JSON.parse(JSON.stringify(newBank));
+  return newBank;
+}
+
 interface StateObject {
   [index: string]: IBank;
 }
@@ -95,7 +114,30 @@ export function createBankingSystem(config: { system: any; parties: any }) {
         CustomerService.deposit(newCustomer, newBank, customer.initialDeposit);
     });
   });
+  if (config.system === "centralbank") {
+    const centralbank = createCentralBank();
+    lookup[centralbank.id] = centralbank;
+    newSetupState[centralbank.id] = centralbank;
 
+    const bankKeys = Object.keys(lookup).filter(
+      (key) => key.includes("bank") && !key.includes("central")
+    );
+
+    // for (let i = 0; i < bankKeys.length; i++) {
+    //   CentralBankService.openAccount(
+    //     lookup[`${bankKeys[i]}`],
+    //     centralbank,
+    //     1000
+    //   );
+    // }
+    config.parties.forEach((bank: BankConfig) => {
+      CentralBankService.openAccount(
+        lookup[bank.bank],
+        centralbank,
+        bank.initialDeposit
+      );
+    })
+  }
   if (config.system === "clearinghouse") {
     const clearinghouse = createClearinghouse();
     lookup[clearinghouse.id] = clearinghouse;

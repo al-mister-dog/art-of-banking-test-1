@@ -146,6 +146,10 @@ export class AccountMethods {
       creditInstrument,
       amount
     );
+    if (b.id !== "centralbank") {
+
+    }
+    
     AccountMethods.createBalance(a, b, amount, creditInstrument);
   }
 }
@@ -167,7 +171,6 @@ export class StatusMethods {
       i > bank.records.length - (timesIndebted + 1);
       i--
     ) {
-      console.log(bank.records[i].credit);
       bank.records[i].credit ? num++ : num--;
     }
     return num === -timesIndebted ? true : false;
