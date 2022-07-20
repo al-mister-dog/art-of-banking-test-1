@@ -68,6 +68,13 @@ const operationsText: Operation = {
         : `You have no correspondent accounts`;
     },
   },
+  "Get Loan": {
+    moreThanOne(arr: any[]) {
+      return arr.length > 0
+        ? `Find a bank to lend you reserves`
+        : `There are no banks with sufficient reserves`;
+    },
+  },
 };
 
 export interface ChoosePlayerProps {

@@ -354,6 +354,30 @@ export class CentralBankService {
       });
     }
   }
+
+  static createLoan(a: IBank, b: IBank, amount: number, rate: number = 10) {
+    const interest = (amount * rate) / 100;
+    const amountPlusInterest = amount + interest;
+    partyFunctions(a).createInstrument(
+      b.id,
+      "liabilities",
+      "bankLoans",
+      amountPlusInterest
+    );
+    partyFunctions(b).createInstrument(
+      a.id,
+      "assets",
+      "bankLoans",
+      amountPlusInterest
+    );
+    // PaymentMethods.creditAccount(a, b, amount, [
+    //   "bankDeposits",
+    //   "bankOverdrafts",
+    // ]);
+    partyFunctions(a).increaseReserves(amount)
+    partyFunctions(b).decreaseReserves(amount)
+  }
+
   static openAccount(bankA: IBank, bankB: IBank, amount: number = 0) {
     AccountMethods.createSubordinateAccount(
       bankA,

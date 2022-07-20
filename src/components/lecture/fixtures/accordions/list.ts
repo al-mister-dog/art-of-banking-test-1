@@ -81,7 +81,7 @@ export default function accordionList(
         accordionTitle: "Get Loan",
         institutions: ["centralbank"],
         component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
-          .debitBankAccount,
+          .getLoan,
       },
     ],
     clearinghouse: [

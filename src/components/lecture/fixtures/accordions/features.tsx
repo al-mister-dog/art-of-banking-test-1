@@ -1,5 +1,5 @@
 import { Accordions } from "../../../types";
-import { findAllBanks, findAllCustomers, findBankByCustomersAccounts, findOwedBanks, findOweingBanks } from "../../helpers/filters";
+import { findExcessReserveBanks, findAllCustomers, findBankByCustomersAccounts, findOwedBanks, findOweingBanks } from "../../helpers/filters";
 import ChNetDuesCard from "./accdn-methods/ChNetDuesCard";
 import MoveFixedAmount from "./accdn-methods/MoveFixedAmount";
 import MoveVariableAmount from "./accdn-methods/MoveVariableAmount";
@@ -127,9 +127,9 @@ const cardData = (
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}
-        filterMethod={findAllBanks}
+        filterMethod={findExcessReserveBanks}
         operationText="Get Loan"
-        methodText="Find Bank"
+        methodText="Get Loan"
         dispatchMethod="createLoan"
         config={config}
       />

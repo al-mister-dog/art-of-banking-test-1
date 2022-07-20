@@ -153,7 +153,6 @@ const MoveFixedAmount: React.FunctionComponent<{
       }
       if (selectedAmount) {
         setSelectedValueAmount(selectedAmount.amount);
-        console.log(selectedAmount)
       }
     }
   }, [selectedValueTo]);

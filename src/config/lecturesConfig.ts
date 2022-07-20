@@ -170,7 +170,7 @@ export const lectures = {
         credit: true,
         constraint: false,
         parties: ["bank1", "bank2", "bank3", "centralbank"],
-        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "dues"],
+        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans"],
         text: centralbank.step2,
         state: lecture3StateConfig.daylightOverdraft,
       },

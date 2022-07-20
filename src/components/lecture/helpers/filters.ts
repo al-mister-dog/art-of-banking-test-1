@@ -21,6 +21,25 @@ export const findAllBanks = (selected: IBank, partiesArray: IBank[]) => {
   );
 };
 
+export const findExcessReserveBanks = (
+  selected: IBank,
+  partiesArray: IBank[]
+) => {
+  return partiesArray.filter((party: IBank) => {
+    if (party.id === selected.id) {
+      return false
+    } else if (!party.id.includes("bank")) {
+      return false
+    } else if (party.id.includes("central")) {
+      return false
+    } else if (selected.liabilities.daylightOverdrafts[0].amount > party.reserves) {
+      return false
+    } else {      
+      return true
+    }
+  });
+};
+
 export const findOweingBanks = (selected: IBank, partiesArray: IBank[]) => {
   return partiesArray.filter(
     (party) =>

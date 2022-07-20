@@ -5,7 +5,7 @@ import { lookup } from "./program/lookupTables";
 import { IBank } from "./program/types";
 import { setupState } from "./initialState";
 import { newSetupState, createBankingSystem } from "./helpers";
-import { ClearingHouseService, CustomerService } from "./program/services";
+import { CentralBankService, ClearingHouseService, CustomerService } from "./program/services";
 import { BankService } from "./program/services";
 import { PaymentMethods } from "./program/methods";
 import { clearinghouse } from "../../config/texts";
@@ -63,8 +63,8 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateLookup(state);
     },
     createLoan: (state, {payload}) => {
-      const {p1, p2, amount} = payload;
-      BankService.createLoan(lookup[p1.id], lookup[p2.id], amount);
+      const {p1, p2, amt} = payload;
+      CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
