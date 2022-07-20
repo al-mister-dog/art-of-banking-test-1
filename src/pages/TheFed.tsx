@@ -1,6 +1,6 @@
 import { lectures } from "../config/lecturesConfig";
 import Introduction from "../components/lecture/steps/Introduction";
-import StepComponent from "../components/lecture/steps/StepFed";
+import StepComponent from "../components/lecture/steps/Step";
 import StepperIndex from "../components/lecture/steps/Stepper";
 
 const config = lectures.centralbank.steps;

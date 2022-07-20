@@ -41,17 +41,18 @@ const BalanceSheetList = styled("div")(({ theme }) => ({
 
 const Board: React.FunctionComponent<{
   config?: any;
-  customerParties: any;
-  bankParties: any;
+  partiesRowOne: any;
+  partiesRowTwo: any;
   selectParty: (a: any) => void;
-}> = ({ config, customerParties, bankParties, selectParty }) => {
+}> = ({ config, partiesRowOne,
+  partiesRowTwo, selectParty }) => {
   return (
     <>
       <BoardContainer
       >
         <BalanceSheetList
         >
-          {bankParties.map((player: any, i: any) => (
+          {partiesRowTwo.map((player: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}
@@ -62,7 +63,7 @@ const Board: React.FunctionComponent<{
         </BalanceSheetList>
         <BalanceSheetList
         >
-          {customerParties.map((player: any, i: any) => (
+          {partiesRowOne.map((player: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}

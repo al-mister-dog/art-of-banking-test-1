@@ -15,15 +15,15 @@ import Notifications from "./toolbars/NotificationsToolbar";
 const Index: React.FunctionComponent<{
   config?: any;
   texts: any;
-  customerParties: any;
-  bankParties: any;
+  partiesRowOne: any;
+  partiesRowTwo: any;
   selected: string;
   selectParty: (v: any) => void;
 }> = ({
   config,
   texts,
-  customerParties,
-  bankParties,
+  partiesRowOne,
+  partiesRowTwo,
   selected,
   selectParty,
 }) => {
@@ -46,8 +46,8 @@ const Index: React.FunctionComponent<{
         <Box>
           <Board
             config={config}
-            customerParties={customerParties}
-            bankParties={bankParties}
+            partiesRowOne={partiesRowOne}
+            partiesRowTwo={partiesRowTwo}
             selectParty={selectParty}
           />
         </Box>

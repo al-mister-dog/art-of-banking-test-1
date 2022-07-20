@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
-import {lecture1StateConfig} from "../../../config/initialStateConfig"
+import { lecture1StateConfig } from "../../../config/initialStateConfig";
 import {
   selectParties,
   setupModule,
@@ -11,7 +11,7 @@ import IndexMobile from "../views/mobile/Index";
 import IndexDesktop from "../views/desktop/Index";
 import { IBank } from "../../../features/lectures/program/types";
 
-const {defaultSetup, creditSetup} = lecture1StateConfig
+const { defaultSetup, creditSetup } = lecture1StateConfig;
 
 const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   text,
@@ -23,8 +23,15 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   const configCustomers = config.parties.filter((party: string) =>
     party.includes("central")
   );
-  const configBanks = config.parties.filter((party: string) =>
-    (party.includes("bank") && !party.includes("central"))
+  const configBanks = config.parties.filter(
+    (party: string) => party.includes("bank") && !party.includes("central")
+  );
+
+  const rowOne = config.parties.filter(
+    (party: string) => party.includes("central") || party.includes("customer")
+  );
+  const rowTwo = config.parties.filter(
+    (party: string) => party.includes("bank") && !party.includes("central")
   );
 
   const [selected, setSelected] = useState<string>("customer1");
@@ -62,42 +69,41 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   useEffect(() => {
     if (config.state) {
       dispatch(reset());
-      dispatch(setupModule({setup: config.state}));
+      dispatch(setupModule({ setup: config.state }));
       dispatch(resetTotalCreditData());
-      return
-    }
-    else if (config.credit) {
+      return;
+    } else if (config.credit) {
       dispatch(reset());
-      dispatch(setupModule({setup: creditSetup}));
+      dispatch(setupModule({ setup: creditSetup }));
       dispatch(resetTotalCreditData());
     } else {
       dispatch(reset());
-      dispatch(setupModule({setup: defaultSetup}));
+      dispatch(setupModule({ setup: defaultSetup }));
       dispatch(resetTotalCreditData());
     }
   }, [config]);
 
   if (width > breakpoint) {
-    return (
-      <IndexDesktop
-        config={config}
-        texts={text}
-        customerParties={customerParties}
-        bankParties={bankParties}
-        selected={selected}
-        selectParty={selectParty}
-      />
+    return (<></>
+      // <IndexDesktop
+      //   config={config}
+      //   texts={text}
+      //   customerParties={customerParties}
+      //   bankParties={bankParties}
+      //   selected={selected}
+      //   selectParty={selectParty}
+      // />
     );
   }
-  return (
-    <IndexMobile
-    config={config}
-    texts={text}
-    customerParties={customerParties}
-    bankParties={bankParties}
-    selected={selected}
-    selectParty={selectParty}
-    />
+  return (<></>
+    // <IndexMobile
+    //   config={config}
+    //   texts={text}
+    //   customerParties={customerParties}
+    //   bankParties={bankParties}
+    //   selected={selected}
+    //   selectParty={selectParty}
+    // />
   );
 };
 

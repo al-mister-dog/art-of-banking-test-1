@@ -58,15 +58,15 @@ const SidePanelContainer = styled("div")(({ theme }) => ({
 const Index: React.FunctionComponent<{
   config?: any;
   texts: any;
-  customerParties: any;
-  bankParties: any;
+  partiesRowOne: any;
+  partiesRowTwo: any;
   selected: string;
   selectParty: (v: any) => void;
 }> = ({
   config,
   texts,
-  customerParties,
-  bankParties,
+  partiesRowOne,
+  partiesRowTwo,
   selected,
   selectParty,
 }) => {
@@ -75,7 +75,12 @@ const Index: React.FunctionComponent<{
   return (
     <>
       <Box
-        sx={{ paddingLeft: "75px", paddingRight: "75px", marginTop: "50px", marginBottom: "50px" }}
+        sx={{
+          paddingLeft: "75px",
+          paddingRight: "75px",
+          marginTop: "50px",
+          marginBottom: "50px",
+        }}
       >
         <Introduction texts={texts} />
       </Box>
@@ -84,7 +89,7 @@ const Index: React.FunctionComponent<{
         sx={{
           // backgroundColor: "#e2e9e9",
           // borderTop: "1px solid #bccccd",
-          
+
           marginTop: "50px",
           marginBottom: "50px",
         }}
@@ -93,8 +98,8 @@ const Index: React.FunctionComponent<{
           <BoardContainer>
             <Board
               config={config}
-              customerParties={customerParties}
-              bankParties={bankParties}
+              partiesRowOne={partiesRowOne}
+              partiesRowTwo={partiesRowTwo}
               selectParty={selectParty}
             />
           </BoardContainer>

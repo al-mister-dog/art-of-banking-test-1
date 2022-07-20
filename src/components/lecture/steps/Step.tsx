@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
-import {lecture1StateConfig} from "../../../config/initialStateConfig"
+import { lecture1StateConfig } from "../../../config/initialStateConfig";
 import {
   selectParties,
   setupModule,
@@ -11,7 +11,7 @@ import IndexMobile from "../views/mobile/Index";
 import IndexDesktop from "../views/desktop/Index";
 import { IBank } from "../../../features/lectures/program/types";
 
-const {defaultSetup, creditSetup} = lecture1StateConfig
+const { defaultSetup, creditSetup } = lecture1StateConfig;
 
 const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   text,
@@ -20,11 +20,12 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   const dispatch = useAppDispatch();
 
   const parties = useAppSelector(selectParties);
-  const configCustomers = config.parties.filter((party: string) =>
-    party.includes("customer")
+
+  const configPartiesOne = config.parties.filter(
+    (party: string) => party.includes("central") || party.includes("customer")
   );
-  const configBanks = config.parties.filter((party: string) =>
-    (party.includes("bank") || party.includes("clearinghouse"))
+  const configPartiesTwo = config.parties.filter(
+    (party: string) => party.includes("bank") && !party.includes("central")
   );
 
   const [selected, setSelected] = useState<string>("customer1");
@@ -35,12 +36,12 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
     partiesArray = [...partiesArray, parties[key]];
   }
 
-  const customerParties = partiesArray.filter((party) =>
-    configCustomers.includes(party.id)
+  const partiesRowOne = partiesArray.filter((party) =>
+    configPartiesOne.includes(party.id)
   );
 
-  const bankParties = partiesArray.filter((party) =>
-    configBanks.includes(party.id)
+  const partiesRowTwo = partiesArray.filter((party) =>
+    configPartiesTwo.includes(party.id)
   );
 
   function selectParty(player: any) {
@@ -62,17 +63,16 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   useEffect(() => {
     if (config.state) {
       dispatch(reset());
-      dispatch(setupModule({setup: config.state}));
+      dispatch(setupModule({ setup: config.state }));
       dispatch(resetTotalCreditData());
-      return
-    }
-    else if (config.credit) {
+      return;
+    } else if (config.credit) {
       dispatch(reset());
-      dispatch(setupModule({setup: creditSetup}));
+      dispatch(setupModule({ setup: creditSetup }));
       dispatch(resetTotalCreditData());
     } else {
       dispatch(reset());
-      dispatch(setupModule({setup: defaultSetup}));
+      dispatch(setupModule({ setup: defaultSetup }));
       dispatch(resetTotalCreditData());
     }
   }, [config]);
@@ -82,8 +82,8 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
       <IndexDesktop
         config={config}
         texts={text}
-        customerParties={customerParties}
-        bankParties={bankParties}
+        partiesRowOne={partiesRowOne}
+        partiesRowTwo={partiesRowTwo}
         selected={selected}
         selectParty={selectParty}
       />
@@ -91,12 +91,12 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   }
   return (
     <IndexMobile
-    config={config}
-    texts={text}
-    customerParties={customerParties}
-    bankParties={bankParties}
-    selected={selected}
-    selectParty={selectParty}
+      config={config}
+      texts={text}
+      partiesRowOne={partiesRowOne}
+      partiesRowTwo={partiesRowTwo}
+      selected={selected}
+      selectParty={selectParty}
     />
   );
 };
