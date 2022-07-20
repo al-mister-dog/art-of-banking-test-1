@@ -30,6 +30,7 @@ const resetAccordions = {
   sendBankPayment: false,
   creditBankAccount: false,
   debitBankAccount: false,
+  getLoan: false,
 };
 
 const ResponsiveAccordion = styled(Accordion)(({theme}) => ({
@@ -122,6 +123,20 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
       },
     ],
     clearinghouse: [
+      {
+        accordionKey: "settleDues",
+        accordionTitle: "Settle Dues",
+        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+          .settleDues,
+      },
+      {
+        accordionKey: "chNetDues",
+        accordionTitle: "Net Dues",
+        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+          .chNetDues,
+      },
+    ],
+    centralbank: [
       {
         accordionKey: "settleDues",
         accordionTitle: "Settle Dues",

@@ -1,5 +1,4 @@
-import { IBank } from "../../../../../features/lectures/program/types";
-
+import { IBank } from "../../../features/lectures/program/types";
 
 export const findBankByCustomersAccounts = (
   selected: IBank,

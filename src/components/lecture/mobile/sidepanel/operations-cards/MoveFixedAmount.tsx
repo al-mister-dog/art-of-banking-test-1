@@ -8,12 +8,13 @@ import {
 
 import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import { IBank } from "../../../../../program/clearinghouse/types";
+
 import { Accordions } from "../../../../types";
 import { Box, Typography } from "@mui/material";
 import CardButton from "./CardButton"
 import { colors } from "../../../../../config/colorPalette";
 import { capitalize } from "../../../helpers";
+import { IBank } from "../../../../../features/lectures/program/types";
 
 
 type DispatchFunctionSig = (

@@ -1,0 +1,10 @@
+create playground: {
+  add customers {
+    customers need to open accounts
+    customers can 'earn money'
+  }
+  add banks {
+    banks can join clearinghouse
+  }
+  add clearinghouse
+}

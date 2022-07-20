@@ -1,5 +1,0 @@
-const main = "#0e5e62" // background
-const darkMain = "#134749" // header texts
-const light = "#addadc" //
-const balanceSheetsColor = "#e18953" //balance sheets
-const accordionColor = "#aa3d23" //accordions

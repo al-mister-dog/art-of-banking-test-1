@@ -1,4 +1,4 @@
-import Operations from "./Operations";
+import Operations from "./Accordions";
 import Balances from "./Balances";
 
 import { Tabs, Tab, Box, styled } from "@mui/material";

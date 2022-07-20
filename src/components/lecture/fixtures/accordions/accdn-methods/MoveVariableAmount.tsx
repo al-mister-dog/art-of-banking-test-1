@@ -14,10 +14,12 @@ import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 
 import { Accordions } from "../../../../types";
 import { Box, Typography } from "@mui/material";
-import Amount from "./buttons/Amount";
+
 import { colors } from "../../../../../config/colorPalette";
-import CardButton from "./CardButton";
+
 import { capitalize } from "../../../helpers";
+import CardButton from "../../../ui/CardButton";
+import Amount from "./Amount";
 import { IBank } from "../../../../../features/lectures/program/types";
 
 type DispatchFunctionSig = (

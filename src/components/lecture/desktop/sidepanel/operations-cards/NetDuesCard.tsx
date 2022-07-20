@@ -6,10 +6,11 @@ import { Box, Typography } from "@mui/material";
 import CardButton from "./CardButton"
 import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import { IBank } from "../../../../../program/clearinghouse/types";
+
 import { Accordions } from "../../../../types";
 import { deCamelize } from "../../../helpers";
 import { colors } from "../../../../../config/colorPalette";
+import { IBank } from "../../../../../features/lectures/program/types";
 
 const ImportCard: React.FunctionComponent<{
   selected: any;

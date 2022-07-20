@@ -62,6 +62,66 @@ export class BankService {
       "bankOverdrafts",
     ]);
   }
+  static createLoan(a: IBank, b: IBank, amount: number, rate: number = 10) {
+    const interest = (amount * rate) / 100;
+    const amountPlusInterest = amount + interest;
+    partyFunctions(a).createInstrument(
+      b.id,
+      "liabilities",
+      "bankLoans",
+      amountPlusInterest
+    );
+    partyFunctions(b).createInstrument(
+      a.id,
+      "assets",
+      "bankLoans",
+      amountPlusInterest
+    );
+    PaymentMethods.creditAccount(a, b, amount, [
+      "bankDeposits",
+      "bankOverdrafts",
+    ]);
+  }
+  static repayLoan(a: IBank, b: IBank, amount: number) {
+    PaymentMethods.debitAccount(a, b, amount, [
+      "bankDeposits",
+      "bankOverdrafts",
+    ]);
+    const loanAmount = b.assets.bankLoans.find((loan) => loan.id === a.id);
+    if (loanAmount) {
+      if (amount > loanAmount.amount) {
+        amount = loanAmount.amount;
+      }
+      partyFunctions(a).decreaseInstrument(
+        b.id,
+        "liabilities",
+        "bankLoans",
+        amount
+      );
+      partyFunctions(b).decreaseInstrument(
+        a.id,
+        "assets",
+        "bankLoans",
+        amount
+      );
+    }
+  }
+  static repayLoanReserves(a: IBank, b: IBank, amount: number) {
+    partyFunctions(a).decreaseReserves(amount);
+    partyFunctions(b).increaseReserves(amount);
+    partyFunctions(a).decreaseInstrument(
+      b.id,
+      "liabilities",
+      "bankLoans",
+      amount
+    );
+    partyFunctions(b).decreaseInstrument(
+      a.id,
+      "assets",
+      "bankLoans",
+      amount
+    );
+  }
 }
 
 export class CustomerService {

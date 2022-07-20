@@ -290,6 +290,20 @@ export const clearinghouse = {
     and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
     Then settle dues and see what happens to the banks' certificate accounts.`,
   },
+  step6: {
+    lectureTitle: `Clearing House`,
+    title: `Clearing House Loans`,
+    paragraphs: [
+      ``
+    ]
+  },
+  step7: {
+    lectureTitle: `Clearing House`,
+    title: `Playground`,
+    paragraphs: [
+      ``
+    ]
+  }
 };
 
 

@@ -1,18 +1,11 @@
 import { Accordions } from "../../../types";
-import MoveVariableAmount from "./operations-cards/MoveVariableAmount";
-import MoveFixedAmount from "./operations-cards/MoveFixedAmount";
-import NetDuesCard from "./operations-cards/NetDuesCard";
-import OpenAccountCard from "./operations-cards/OpenAccountCard";
-import SettleDuesCard from "./operations-cards/SettleDuesCard"
-import ChNetDuesCard from "./operations-cards/ChNetDuesCard";
-import {
-  findBankByCustomersAccounts,
-  findAllCustomers,
-  findAllBanks,
-  findOweingBanks,
-  findOwedBanks,
-} from "./operations-cards/__filters";
-
+import { findAllBanks, findAllCustomers, findBankByCustomersAccounts, findOwedBanks, findOweingBanks } from "../../helpers/filters";
+import ChNetDuesCard from "./accdn-methods/ChNetDuesCard";
+import MoveFixedAmount from "./accdn-methods/MoveFixedAmount";
+import MoveVariableAmount from "./accdn-methods/MoveVariableAmount";
+import NetDuesCard from "./accdn-methods/NetDuesCard";
+import OpenAccountCard from "./accdn-methods/OpenAccountCard";
+import SettleDuesCard from "./accdn-methods/SettleDuesCard";
 
 const cardData = (
   selected: any,

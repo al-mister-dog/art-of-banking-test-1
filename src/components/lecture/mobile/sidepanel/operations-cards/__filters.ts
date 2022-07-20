@@ -1,4 +1,5 @@
-import { IBank } from "../../../../../program/clearinghouse/types";
+import { IBank } from "../../../../../features/lectures/program/types";
+
 
 export const findBankByCustomersAccounts = (
   selected: IBank,

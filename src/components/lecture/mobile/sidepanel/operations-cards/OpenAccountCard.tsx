@@ -8,7 +8,7 @@ import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 
 import { useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import { IBank } from "../../../../../program/clearinghouse/types";
+
 import DoneIcon from "@mui/icons-material/Done";
 import { Accordions } from "../../../../types";
 

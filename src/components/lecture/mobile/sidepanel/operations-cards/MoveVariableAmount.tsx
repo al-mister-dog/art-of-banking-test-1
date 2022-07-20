@@ -10,13 +10,14 @@ import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliaryS
 
 import { useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import { IBank } from "../../../../../program/clearinghouse/types";
+
 import { Accordions } from "../../../../types";
 import { Box, Typography } from "@mui/material";
 import Amount from "./buttons/Amount";
 import { colors } from "../../../../../config/colorPalette";
 import CardButton from "./CardButton"
 import {capitalize} from "../../../helpers"
+import { IBank } from "../../../../../features/lectures/program/types";
 
 type DispatchFunctionSig = (
   selected: IBank,
