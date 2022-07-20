@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import cardData from "./cardData";
+import cardData from "../../fixtures/accordions/accordionData";
 import cards from "../../fixtures/accordions/accordions"
 import { colors } from "../../../../config/colorPalette";
 
