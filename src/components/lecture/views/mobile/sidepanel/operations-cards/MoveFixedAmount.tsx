@@ -1,20 +1,20 @@
-import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../../../../app/hooks";
 import {
   selectParties,
   payBank,
   creditBankAccount,
   debitBankAccount,
-} from "../../../../../features/lectures/lecturesSlice";
+} from "../../../../../../features/lectures/lecturesSlice";
 
 import { useEffect, useState } from "react";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 
-import { Accordions } from "../../../../types";
+import { Accordions } from "../../../../../types";
 import { Box, Typography } from "@mui/material";
-import { colors } from "../../../../../config/colorPalette";
-import { capitalize } from "../../../helpers/parsers";
-import CardButton from "../../../ui/CardButton";
-import { IBank } from "../../../../../features/lectures/program/types";
+import CardButton from "./CardButton"
+import { colors } from "../../../../../../config/colorPalette";
+import { capitalize } from "../../../../helpers/parsers";
+import { IBank } from "../../../../../../features/lectures/program/types";
 
 
 type DispatchFunctionSig = (
@@ -153,7 +153,6 @@ const MoveFixedAmount: React.FunctionComponent<{
       }
       if (selectedAmount) {
         setSelectedValueAmount(selectedAmount.amount);
-        console.log(selectedAmount)
       }
     }
   }, [selectedValueTo]);

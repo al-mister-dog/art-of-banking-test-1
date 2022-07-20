@@ -1,25 +1,23 @@
-import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import { selectParties, netCorrespondingDues } from "../../../../../features/lectures/lecturesSlice";
+import { useAppSelector, useAppDispatch } from "../../../../../../app/hooks";
+import { selectParties } from "../../../../../../features/lectures/lecturesSlice";
+import { netCorrespondingDues } from "../../../../../../features/lectures/lecturesSlice";
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
-
-
-import { Accordions } from "../../../../types";
-import { IBank } from "../../../../../features/lectures/program/types";
+import { findOwedandOweingBanks } from "./__filters";
+import { deCamelize } from "../../../../helpers/parsers";
 import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
-import CardButton from "../../../ui/CardButton";
-import { findOwedandOweingBanks } from "../../../helpers/filters";
-import { deCamelize } from "../../../helpers/parsers";
-import { colors } from "../../../../../config/colorPalette";
+import { Box, Typography } from "@mui/material";
+import CardButton from "./CardButton";
 
+import { Accordions } from "../../../../../types";
+import { colors } from "../../../../../../config/colorPalette";
+import { IBank } from "../../../../../../features/lectures/program/types";
 
-const NetDuesCard: React.FunctionComponent<{
+const ImportCard: React.FunctionComponent<{
   selected: any;
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
 }> = ({ selected, accordionExpanded, setAccordionExpanded }) => {
   const dispatch = useAppDispatch();
-  const operationText = "Net Dues";
   const parties = useAppSelector(selectParties);
   let partiesArray: IBank[] = [];
   for (const key in parties) {
@@ -31,7 +29,6 @@ const NetDuesCard: React.FunctionComponent<{
   );
   const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
-  
 
   const handleClickOpenTo = () => {
     setOpenTo(true);
@@ -43,11 +40,10 @@ const NetDuesCard: React.FunctionComponent<{
   function onClickNetDues() {
     dispatch(netCorrespondingDues({ p1: selected, p2: selectedValueTo }));
   }
-  
+
   useEffect(() => {
     if (selectedValueTo) {
       let selectedAmount;
-
       const whatYouOwe = selected.liabilities.dues.find(
         (account: { id: string }) => account.id === selectedValueTo.id
       );
@@ -69,6 +65,7 @@ const NetDuesCard: React.FunctionComponent<{
       }
     }
   }, [selectedValueTo]);
+  
   return (
     <Box>
       <ChoosePlayer
@@ -76,7 +73,7 @@ const NetDuesCard: React.FunctionComponent<{
         open={openTo}
         onClose={handleCloseTo}
         selectedBankers={selectedParties}
-        methodText={operationText}
+        methodText="Net Dues"
       />
 
       <div
@@ -143,4 +140,4 @@ const NetDuesCard: React.FunctionComponent<{
   );
 };
 
-export default NetDuesCard;
+export default ImportCard;

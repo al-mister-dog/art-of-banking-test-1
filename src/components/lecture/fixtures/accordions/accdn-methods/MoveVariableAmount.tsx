@@ -17,7 +17,7 @@ import { Box, Typography } from "@mui/material";
 
 import { colors } from "../../../../../config/colorPalette";
 
-import { capitalize } from "../../../helpers";
+import { capitalize } from "../../../helpers/parsers";
 import CardButton from "../../../ui/CardButton";
 import Amount from "./Amount";
 import { IBank } from "../../../../../features/lectures/program/types";

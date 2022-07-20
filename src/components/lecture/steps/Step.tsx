@@ -7,8 +7,8 @@ import {
 } from "../../../features/lectures/lecturesSlice";
 import { resetTotalCreditData } from "../../../features/auxilliary/auxilliarySlice";
 import { useState, useEffect } from "react";
-import IndexMobile from "../mobile/Index";
-import IndexDesktop from "../desktop/Index";
+import IndexMobile from "../views/mobile/Index";
+import IndexDesktop from "../views/desktop/Index";
 import { IBank } from "../../../features/lectures/program/types";
 
 const {defaultSetup, creditSetup} = lecture1StateConfig
