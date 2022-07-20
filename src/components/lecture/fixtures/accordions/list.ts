@@ -1,7 +1,7 @@
 import { Accordions, PartyOps } from "./types";
 
-export default function cards(
-  cardData: any,
+export default function accordionList(
+  dropDownFeatures: any,
   selected: any,
   accordionExpanded: Accordions,
   setAccordionExpanded: any,
@@ -12,7 +12,7 @@ export default function cards(
       {
         accordionKey: "deposit",
         accordionTitle: "Deposit",
-        component: cardData(
+        component: dropDownFeatures(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -22,7 +22,7 @@ export default function cards(
       {
         accordionKey: "withdraw",
         accordionTitle: "Withdraw",
-        component: cardData(
+        component: dropDownFeatures(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -32,7 +32,7 @@ export default function cards(
       {
         accordionKey: "transfer",
         accordionTitle: "Transfer",
-        component: cardData(
+        component: dropDownFeatures(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -45,42 +45,42 @@ export default function cards(
         accordionKey: "netDues",
         accordionTitle: "Net Dues",
         institutions: ["correspondent"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .netDues,
       },
       {
         accordionKey: "receiveBankPayment",
         accordionTitle: "Receive Bank Payment",
         institutions: ["interbank"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .receiveBankPayment,
       },
       {
         accordionKey: "sendBankPayment",
         accordionTitle: "Send Bank Payment",
         institutions: ["interbank"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .sendBankPayment,
       },
       {
         accordionKey: "creditBankAccount",
         accordionTitle: "Credit Bank Account",
         institutions: ["correspondent"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
       {
         accordionKey: "debitBankAccount",
         accordionTitle: "Debit Bank Account",
         institutions: ["correspondent"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
       {
         accordionKey: "getLoan",
         accordionTitle: "Get Loan",
         institutions: ["centralbank"],
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
     ],
@@ -88,13 +88,13 @@ export default function cards(
       {
         accordionKey: "settleDues",
         accordionTitle: "Settle Dues",
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .settleDues,
       },
       {
         accordionKey: "chNetDues",
         accordionTitle: "Net Dues",
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .chNetDues,
       },
     ],
@@ -102,13 +102,13 @@ export default function cards(
       {
         accordionKey: "settleDues",
         accordionTitle: "Settle Dues",
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .settleDues,
       },
       {
         accordionKey: "chNetDues",
         accordionTitle: "Net Dues",
-        component: cardData(selected, accordionExpanded, setAccordionExpanded)
+        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
           .chNetDues,
       },
     ],

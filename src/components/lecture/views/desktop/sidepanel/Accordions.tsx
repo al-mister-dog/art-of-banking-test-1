@@ -7,8 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import cardData from "../../../fixtures/accordions/accordionData";
-import cards from "../../../fixtures/accordions/accordions"
+import accordionFeatures from "../../../fixtures/accordions/features";
+import accordionList from "../../../fixtures/accordions/list"
 import { colors } from "../../../../../config/colorPalette";
 
 const resetAccordions = {
@@ -38,16 +38,16 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
     setAccordionExpanded({ ...resetAccordions, [key]: !bool });
   }
 
-  const partyOperations = cards(
-    cardData,
+  const partyOperations = accordionList(
+    accordionFeatures,
     selected,
     accordionExpanded,
     setAccordionExpanded,
     config
   );
 
-  partyOperations.bank = cards(
-    cardData,
+  partyOperations.bank = accordionList(
+    accordionFeatures,
     selected,
     accordionExpanded,
     setAccordionExpanded,

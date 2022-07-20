@@ -6,7 +6,7 @@ import { Box, Typography } from "@mui/material";
 
 import { Accordions } from "../../../../types";
 import { IBank } from "../../../../../features/lectures/program/types";
-import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
+import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
 import CardButton from "../../../ui/CardButton";
 import { findOwedandOweingBanks } from "../../../helpers/filters";
 import { deCamelize } from "../../../helpers/parsers";

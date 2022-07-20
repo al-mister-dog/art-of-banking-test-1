@@ -7,7 +7,7 @@ import {
 } from "../../../../../features/lectures/lecturesSlice";
 
 import { useEffect, useState } from "react";
-import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
+import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
 
 import { Accordions } from "../../../../types";
 import { Box, Typography } from "@mui/material";
