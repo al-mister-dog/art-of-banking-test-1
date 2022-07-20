@@ -114,6 +114,12 @@ export const lecturesSlice = createSlice({
       }
     },
     setupModule: (state, { payload }) => {
+      for (const key in lookup) {
+        delete lookup[key]
+      }
+      for (const key in newSetupState) {
+        state[key] = JSON.parse(JSON.stringify(newSetupState[key]));
+      }
       createBankingSystem(payload.setup);
       for (const key in newSetupState) {
         state[key] = JSON.parse(JSON.stringify(newSetupState[key]));

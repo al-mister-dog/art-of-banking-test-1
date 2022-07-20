@@ -100,7 +100,7 @@ export const newSetupState: StateObject = {};
 
 export function createBankingSystem(config: { system: any; parties: any }) {
   System.setSystem(config.system);
-
+  
   config.parties.forEach((bank: BankConfig) => {
     const newBank = createBank(bank.bank, bank.reserves);
     lookup[newBank.id] = newBank;
@@ -114,22 +114,11 @@ export function createBankingSystem(config: { system: any; parties: any }) {
         CustomerService.deposit(newCustomer, newBank, customer.initialDeposit);
     });
   });
+
   if (config.system === "centralbank") {
     const centralbank = createCentralBank();
     lookup[centralbank.id] = centralbank;
     newSetupState[centralbank.id] = centralbank;
-
-    const bankKeys = Object.keys(lookup).filter(
-      (key) => key.includes("bank") && !key.includes("central")
-    );
-
-    // for (let i = 0; i < bankKeys.length; i++) {
-    //   CentralBankService.openAccount(
-    //     lookup[`${bankKeys[i]}`],
-    //     centralbank,
-    //     1000
-    //   );
-    // }
     config.parties.forEach((bank: BankConfig) => {
       CentralBankService.openAccount(
         lookup[bank.bank],
@@ -138,6 +127,7 @@ export function createBankingSystem(config: { system: any; parties: any }) {
       );
     })
   }
+
   if (config.system === "clearinghouse") {
     const clearinghouse = createClearinghouse();
     lookup[clearinghouse.id] = clearinghouse;

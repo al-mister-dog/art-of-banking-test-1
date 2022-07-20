@@ -30,7 +30,6 @@ export const partyFunctions = (bank: IBank) => ({
     instrument: InstrumentKey,
     amount: number = 0
   ): void {
-    // console.log(id, category, instrument)
     bank[category][instrument] = [
       ...bank[category][instrument],
       { id, type: instrument, amount },
