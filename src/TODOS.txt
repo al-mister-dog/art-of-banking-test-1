@@ -11,3 +11,9 @@ create playground: {
 
 add paybank feature
 add repay loan feature (needs research)
+
+bank A pays bank B.
+centralbank bankdeposits to B +
+centralbank overdrafts from A +
+
+BANK DEPOSITS ARE RESERVES AT THE FED

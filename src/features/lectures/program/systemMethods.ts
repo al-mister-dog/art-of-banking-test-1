@@ -260,31 +260,31 @@ class ClearingHouseSystem extends AbstractSystem {
 
 class CentralBankSystem extends AbstractSystem {
   increaseDues(bankA: IBank, bankB: IBank, amount: number) {
-    PaymentMethods.debitAccount(bankA, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
-    // partyFunctions(bankA).increaseInstrument(
-    //   lookup["centralbank"].id,
-    //   "liabilities",
-    //   "bankDeposits",
-    //   amount
-    // );
-    // partyFunctions(lookup["centralbank"]).increaseInstrument(
-    //   bankA.id,
-    //   "assets",
-    //   "bankDeposits",
-    //   amount
-    // );
-    // partyFunctions(bankB).increaseInstrument(
-    //   lookup["centralbank"].id,
-    //   "assets",
-    //   "bankDeposits",
-    //   amount
-    // );
-    // partyFunctions(lookup["centralbank"]).increaseInstrument(
-    //   bankB.id,
-    //   "liabilities",
-    //   "bankDeposits",
-    //   amount
-    // );
+    // PaymentMethods.debitAccount(bankA, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    partyFunctions(bankA).increaseInstrument(
+      lookup["centralbank"].id,
+      "liabilities",
+      "daylightOverdrafts",
+      amount
+    );
+    partyFunctions(lookup["centralbank"]).increaseInstrument(
+      bankA.id,
+      "assets",
+      "daylightOverdrafts",
+      amount
+    );
+    partyFunctions(bankB).increaseInstrument(
+      lookup["centralbank"].id,
+      "assets",
+      "bankDeposits",
+      amount
+    );
+    partyFunctions(lookup["centralbank"]).increaseInstrument(
+      bankB.id,
+      "liabilities",
+      "bankDeposits",
+      amount
+    );
   }
 
   netDues(bank: IBank): void {
