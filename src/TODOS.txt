@@ -8,3 +8,6 @@ create playground: {
   }
   add clearinghouse
 }
+
+add paybank feature
+add repay loan feature (needs research)

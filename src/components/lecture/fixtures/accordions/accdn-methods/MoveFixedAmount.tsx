@@ -5,16 +5,15 @@ import {
   creditBankAccount,
   debitBankAccount,
 } from "../../../../../features/lectures/lecturesSlice";
-
 import { useEffect, useState } from "react";
 import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
-
-import { Accordions } from "../types";
 import { Box, Typography } from "@mui/material";
-import { colors } from "../../../../../config/colorPalette";
-import { capitalize } from "../../../helpers/parsers";
+import { Accordions } from "../types";
 import CardButton from "../../../ui/CardButton";
 import { IBank } from "../../../../../features/lectures/program/types";
+import { capitalize } from "../../../helpers/parsers";
+import { colors } from "../../../../../config/colorPalette";
+
 
 
 type DispatchFunctionSig = (
