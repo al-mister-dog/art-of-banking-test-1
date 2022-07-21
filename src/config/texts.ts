@@ -1,6 +1,6 @@
 export const fundamentals = {
   step1: {
-lectureTitle: `fundamentals`,
+    lectureTitle: `fundamentals`,
     title: `Banking Fundamentals: Balance Sheets`,
     paragraphs: [
       `For someone unfamiliar to the world of banking and finance, the whole thing can seem 
@@ -284,7 +284,7 @@ export const clearinghouse = {
       and runs out of certificates in their account. Other members would be reluctant to extend an 
       overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
       To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
-      looked at in the next chapter.`
+      looked at in the next chapter.`,
     ],
     assignment: `Below are banks and customers who have done a day of trading and are now ready to net
     and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
@@ -293,19 +293,14 @@ export const clearinghouse = {
   step6: {
     lectureTitle: `Clearing House`,
     title: `Clearing House Loans`,
-    paragraphs: [
-      ``
-    ]
+    paragraphs: [``],
   },
   step7: {
     lectureTitle: `Clearing House`,
     title: `Playground`,
-    paragraphs: [
-      ``
-    ]
-  }
+    paragraphs: [``],
+  },
 };
-
 
 export const centralbank = {
   step1: {
@@ -332,36 +327,37 @@ export const centralbank = {
       banking system. These loans are reserves and involve promises to pay in return yet more Fed Funds reserves. 
       The entire Fed Funds Market is effectively an expansion of credit based on the existing money
       that is on the balance sheet of the Fed. It is important now to follow the money from balance
-      sheet to balance sheet as we explore further how exactly banking works.`
+      sheet to balance sheet as we explore further how exactly banking works.`,
     ],
-    assignment: `Sources: Marcia Stigum - Stigum's Money Market, The Federal Funds Market since the Financial Crisis - Ben Craig`
+    assignment: `Sources: Marcia Stigum - Stigum's Money Market, The Federal Funds Market since the Financial Crisis - Ben Craig`,
   },
 
   step2: {
     lectureTitle: `The Fed`,
     title: `Daylight Overdrafts`,
     paragraphs: [
-      `Suppose there was only one bank, and everyone in the economy had an account.
-      The bank would have reserves on the assets side of its balance sheet and each customer's
-      deposits on the liabilities side. In this world the 'quantity of money' would consist
-      of the amount of deposit accounts in the bank. Any payments made between customers would
-      simply add and subtract the same amount on the the liability side of the bank's balance
-      sheet. Reserves would never move.`,
-      `But what if this bank were to allow overdrafts, in which negative accounts show up on
-      the assets side of the bank's balance sheet. In this world, a customer with a negative
-      account making a payment to a customer with a positive account would end up expanding both 
-      sides of the bank's balance sheet. Likewise a customer with a positive account making a 
-      payment to a customer with a negative account would end up contracting both sides of the
-      balance sheet.`,
-      `The use of bank credit as a means of payment thus involves a certain elasticity in the 
-      quantity of money. This raises questions about how to properly measure the quantity of 
-      money. There are three possibilities. 1: The sum of deposits held in positive accounts. 
-      2: The sum of positive accounts subtracted by overdrafts. 3: All deposits, positive or
-      negative.`,
+      `It is worth being reminding once more that in the federal reserve system, that money transfers
+      happen between the banks and the Fed, and not between the banks themselves. Lets say a customer
+      from Bank A transfers money to a customer of Bank B. Bank B does not need to know whether this
+      payment caused Bank A to go into their overdraft. Bank B is happy because their money came
+      directly from the Fed.`,
+      `In todays banking world, the majority of bank reserves in America are deposit accounts 
+      at the Fed. The survival constraint says that cash inflows must be at least as large as cash outflows.
+      For a bank, this constraint involves settling with the Fed by the end of the day (having a non-negative balance).
+      However to avoid stifling banks from being able to make payments, the Fed allows an overdraft in the day.
+      This allows to smooth out payments between banks without bouncing checks etc. At the end
+      of the day this overdraft must be paid back, otherwise the Fed charges an extra fee (usually
+      100 basis points over the interest rate).
+      `,
+      `To avoid this, banks will try to get loans from other banks to pay off their overdrafts.
+      In order for a bank to lend to another bank, the lender bank must have an excess of reserves in 
+      their own account. These loans still accrue interest, but they are below the interest rate, 
+      (otherwise known as the Fed Funds Rate). This is beneficial for both banks, as the borrower bank is able to settle their accounts without
+      incurring overdraft fees, and the lender bank has used idle reserves in order to make a profit by 
+      lending them out.`,
     ],
-    assignment: `Here are four customers belonging to the same bank. Make payments between customers
-    with both positive and negative accounts and see which transactions expand or contract the 
-    balance sheet. How many types of transactions exist in this system?`,
+    assignment: `Bank 1 has gone into its daylight overdraft with the Fed. Find a bank with an excess
+    reserve position and get a loan in order to settle.`,
   },
   step3: {
     lectureTitle: `Fed Funds`,
@@ -446,7 +442,7 @@ export const centralbank = {
       and runs out of certificates in their account. Other members would be reluctant to extend an 
       overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
       To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
-      looked at in the next chapter.`
+      looked at in the next chapter.`,
     ],
     assignment: `Below are banks and customers who have done a day of trading and are now ready to net
     and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 

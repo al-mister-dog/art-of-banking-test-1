@@ -28,7 +28,9 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
     (party: string) => party.includes("bank") && !party.includes("central")
   );
 
-  const [selected, setSelected] = useState<string>("customer1");
+  const [selected, setSelected] = useState<string>(
+    config.state.system === "centralbank" ? "bank1" : "customer1"
+  );
 
   let partiesArray: IBank[] = [];
 

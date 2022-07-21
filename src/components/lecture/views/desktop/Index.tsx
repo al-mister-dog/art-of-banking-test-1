@@ -22,9 +22,6 @@ const InterfaceContainer = styled("div")(({ theme }) => ({
   marginBottom: "20px",
 }));
 const BoardContainer = styled("div")(({ theme }) => ({
-  // backgroundColor: "#bccccd",
-  // backgroundColor: "#e2e9e9",
-  // backgroundColor: "#d9dbdb",
   [theme.breakpoints.up("mobile")]: {
     width: "50%",
   },

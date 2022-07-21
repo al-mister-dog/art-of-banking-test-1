@@ -27,15 +27,20 @@ export const findExcessReserveBanks = (
 ) => {
   return partiesArray.filter((party: IBank) => {
     if (party.id === selected.id) {
-      return false
+      return false;
     } else if (!party.id.includes("bank")) {
-      return false
+      return false;
     } else if (party.id.includes("central")) {
-      return false
-    } else if (selected.liabilities.daylightOverdrafts[0].amount > party.reserves) {
-      return false
-    } else {      
-      return true
+      return false;
+    } else if (
+      selected.liabilities.daylightOverdrafts[0] &&
+      party.assets.bankDeposits[0] &&
+      selected.liabilities.daylightOverdrafts[0].amount >
+        party.assets.bankDeposits[0].amount
+    ) {
+      return false;
+    } else {
+      return true;
     }
   });
 };

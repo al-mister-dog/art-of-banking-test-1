@@ -370,14 +370,30 @@ export class CentralBankService {
       "bankLoans",
       amountPlusInterest
     );
-    // PaymentMethods.creditAccount(a, b, amount, [
-    //   "bankDeposits",
-    //   "bankOverdrafts",
-    // ]);
-    partyFunctions(a).increaseReserves(amount)
-    partyFunctions(b).decreaseReserves(amount)
   }
 
+  static repayLoan(a: IBank, b: IBank, amount: number) {
+    const loanAmount = b.assets.bankLoans.find((loan) => loan.id === a.id);
+    if (loanAmount) {
+      if (amount > loanAmount.amount) {
+        amount = loanAmount.amount;
+      }
+      partyFunctions(a).decreaseInstrument(
+        b.id,
+        "liabilities",
+        "bankLoans",
+        amount
+      );
+      partyFunctions(b).decreaseInstrument(
+        a.id,
+        "assets",
+        "bankLoans",
+        amount
+      );
+    }
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+  }
   static openAccount(bankA: IBank, bankB: IBank, amount: number = 0) {
     AccountMethods.createSubordinateAccount(
       bankA,

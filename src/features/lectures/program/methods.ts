@@ -15,6 +15,7 @@ export class PaymentMethods {
       (account: any) => account.id === id
     );
     if (account) {
+      // console.log('account:' + JSON.stringify(account) )
       partyFunctions(a).increaseInstrument(id, "balances", creditInstrument, amount);
       partyFunctions(b).increaseInstrument(id, "balances", creditInstrument, amount);
 
