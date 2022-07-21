@@ -5,12 +5,13 @@
 // } from "../../../../../features/lectures/fundamentalsSlice";
 // import { findBankByCustomersAccounts } from "./__filters";
 import { Box,  } from "@mui/material";
+import { Accordions } from "../types";
 
 // import { useState } from "react";
 // import ChoosePlayer from "./dialogs/ChoosePlayerDialog";
 
 // import DoneIcon from "@mui/icons-material/Done";
-import { Accordions } from "../../../../types";
+
 
 
 

@@ -4,7 +4,7 @@ import {
 } from "../../../../../features/lectures/lecturesSlice";
 import { Box, Typography } from "@mui/material";
 
-import { Accordions } from "../../../../types";
+import { Accordions } from "../types";
 import CardButton from "../../../ui/CardButton";
 
 const ChNetDuesCard: React.FunctionComponent<{

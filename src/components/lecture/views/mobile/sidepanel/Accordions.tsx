@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Accordions, PartyOps } from "../../../../types";
 import {
   Accordion,
   AccordionDetails,
@@ -8,9 +7,9 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import accordionFeatures from "../../../fixtures/accordions/features";
 import accordionList from "../../../fixtures/accordions/list";
 import { colors } from "../../../../../config/colorPalette";
+import { Accordions, PartyOps } from "../../../fixtures/accordions/types";
 
 const resetAccordions = {
   deposit: false,
@@ -18,6 +17,7 @@ const resetAccordions = {
   withdraw: false,
   openAccount: false,
   netDues: false,
+  chNetDues: false,
   settleDues: false,
   receiveBankPayment: false,
   sendBankPayment: false,
@@ -45,7 +45,6 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
   }
 
   const partyOperations = accordionList(
-    accordionFeatures,
     selected,
     accordionExpanded,
     setAccordionExpanded,
@@ -53,12 +52,11 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
   );
 
   partyOperations.bank = accordionList(
-    accordionFeatures,
     selected,
     accordionExpanded,
     setAccordionExpanded,
     config
-  ).bank.filter((partyOp: { institutions: string | any[] }) =>
+  ).bank.filter((partyOp: { institutions: string[] }) =>
     partyOp.institutions.includes(config.state.system)
   );
 
@@ -76,7 +74,7 @@ const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
             }
             aria-controls="panel1a-content"
             id="panel1a-header"
-            onClick={() => toggleAccordion(party.accordionKey)}
+            onClick={() => toggleAccordion(party.accordionKey as keyof Accordions)}
           >
             <Typography sx={{ fontSize: "1.3rem" }}>
               {party.accordionTitle}

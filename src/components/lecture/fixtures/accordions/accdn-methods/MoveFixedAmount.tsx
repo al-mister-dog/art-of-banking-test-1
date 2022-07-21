@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
 
-import { Accordions } from "../../../../types";
+import { Accordions } from "../types";
 import { Box, Typography } from "@mui/material";
 import { colors } from "../../../../../config/colorPalette";
 import { capitalize } from "../../../helpers/parsers";

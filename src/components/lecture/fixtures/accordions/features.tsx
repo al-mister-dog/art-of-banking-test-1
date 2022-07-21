@@ -1,4 +1,4 @@
-import { Accordions } from "../../../types";
+import { IBank } from "../../../../features/lectures/program/types";
 import { findExcessReserveBanks, findAllCustomers, findBankByCustomersAccounts, findOwedBanks, findOweingBanks } from "../../helpers/filters";
 import ChNetDuesCard from "./accdn-methods/ChNetDuesCard";
 import MoveFixedAmount from "./accdn-methods/MoveFixedAmount";
@@ -6,13 +6,14 @@ import MoveVariableAmount from "./accdn-methods/MoveVariableAmount";
 import NetDuesCard from "./accdn-methods/NetDuesCard";
 import OpenAccountCard from "./accdn-methods/OpenAccountCard";
 import SettleDuesCard from "./accdn-methods/SettleDuesCard";
+import { Accordions, FeatureObjects } from "./types";
 
-const cardData = (
-  selected: any,
+const features = (
+  selected: IBank,
   accordionExpanded: Accordions,
   setAccordionExpanded: (accs: Accordions) => void,
   config?: any
-) => {
+): FeatureObjects => {
   return {
     deposit: (
       <MoveVariableAmount
@@ -137,4 +138,4 @@ const cardData = (
   };
 };
 
-export default cardData;
+export default features;

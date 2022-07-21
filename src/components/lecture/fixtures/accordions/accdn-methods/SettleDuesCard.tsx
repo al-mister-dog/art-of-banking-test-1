@@ -3,9 +3,8 @@ import {
   settleDues,
 } from "../../../../../features/lectures/lecturesSlice";
 import { Box, Typography } from "@mui/material";
-
-import { Accordions } from "../../../../types";
 import CardButton from "../../../ui/CardButton";
+import { Accordions } from "../types";
 
 const SettleDues: React.FunctionComponent<{
   selected: any;

@@ -1,7 +1,6 @@
-import { Accordions, PartyOps } from "./types";
-
+import { Accordions, FeatureCall, PartyOps } from "./types";
+import features from "./features"
 export default function accordionList(
-  dropDownFeatures: any,
   selected: any,
   accordionExpanded: Accordions,
   setAccordionExpanded: any,
@@ -12,7 +11,8 @@ export default function accordionList(
       {
         accordionKey: "deposit",
         accordionTitle: "Deposit",
-        component: dropDownFeatures(
+        institutions: ["none"],
+        component: features(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -22,7 +22,8 @@ export default function accordionList(
       {
         accordionKey: "withdraw",
         accordionTitle: "Withdraw",
-        component: dropDownFeatures(
+        institutions: ["none"],
+        component: features(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -32,7 +33,8 @@ export default function accordionList(
       {
         accordionKey: "transfer",
         accordionTitle: "Transfer",
-        component: dropDownFeatures(
+        institutions: ["none"],
+        component: features(
           selected,
           accordionExpanded,
           setAccordionExpanded,
@@ -45,42 +47,42 @@ export default function accordionList(
         accordionKey: "netDues",
         accordionTitle: "Net Dues",
         institutions: ["correspondent"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .netDues,
       },
       {
         accordionKey: "receiveBankPayment",
         accordionTitle: "Receive Bank Payment",
         institutions: ["interbank"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .receiveBankPayment,
       },
       {
         accordionKey: "sendBankPayment",
         accordionTitle: "Send Bank Payment",
         institutions: ["interbank"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .sendBankPayment,
       },
       {
         accordionKey: "creditBankAccount",
         accordionTitle: "Credit Bank Account",
         institutions: ["correspondent"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
       {
         accordionKey: "debitBankAccount",
         accordionTitle: "Debit Bank Account",
         institutions: ["correspondent"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .debitBankAccount,
       },
       {
         accordionKey: "getLoan",
         accordionTitle: "Get Loan",
         institutions: ["centralbank"],
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .getLoan,
       },
     ],
@@ -88,13 +90,15 @@ export default function accordionList(
       {
         accordionKey: "settleDues",
         accordionTitle: "Settle Dues",
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        institutions: ["none"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .settleDues,
       },
       {
         accordionKey: "chNetDues",
         accordionTitle: "Net Dues",
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        institutions: ["none"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .chNetDues,
       },
     ],
@@ -102,13 +106,15 @@ export default function accordionList(
       {
         accordionKey: "settleDues",
         accordionTitle: "Settle Dues",
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        institutions: ["none"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .settleDues,
       },
       {
         accordionKey: "chNetDues",
         accordionTitle: "Net Dues",
-        component: dropDownFeatures(selected, accordionExpanded, setAccordionExpanded)
+        institutions: ["none"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
           .chNetDues,
       },
     ],
