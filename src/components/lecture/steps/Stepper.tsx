@@ -35,15 +35,18 @@ const StepperIndex: React.FunctionComponent<{
     setCompleted(v);
   }
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);    
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 900;
+  
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
@@ -119,6 +122,7 @@ const StepperDeskTop: React.FunctionComponent<{
         ? steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     handleSetActiveStep(newActiveStep);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   const handleBack = () => {
@@ -144,6 +148,7 @@ const StepperDeskTop: React.FunctionComponent<{
     dispatch(reset());
     handleSetActiveStep(0);
     handleSetCompleted({});
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   return (
