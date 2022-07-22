@@ -241,14 +241,14 @@ class ClearingHouseSystem extends AbstractSystem {
               lookup[due.id],
               lookup[bank],
               due.amount,
-              ["bankDeposits", "daylightOverdrafts"]
+              ["chCertificates", "chOverdrafts"]
             );
           } else if (due.amount > 0 && lookup[bank].id !== "clearinghouse") {
             PaymentMethods.debitAccount(
               lookup[bank],
               lookup[due.id],
               due.amount,
-              ["bankDeposits", "daylightOverdrafts"]
+              ["chCertificates", "chOverdrafts"]
             );
           }
           PaymentMethods.clearDues(lookup[bank], lookup[due.id]);
