@@ -61,8 +61,7 @@ const Dues: React.FunctionComponent<{
     } else if (dispatchMethod === "netClearinghouseDues") {
       dispatchMethods.netClearinghouseDues();
     }
-
-    // setAccordionExpanded({ ...accordionExpanded, deposit: false });
+    setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
   }
 
   const handleClickOpenTo = () => {
@@ -75,6 +74,7 @@ const Dues: React.FunctionComponent<{
 
   const onClickNetDues = () => {
     dispatchMethods.netCorrespondingDues();
+    setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
   };
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const Dues: React.FunctionComponent<{
     }
   }, [selectedValueTo]);
 
-  return selectedParties ? (
+  return filterMethod ? (
     <Box>
       <ChoosePlayer
         setSelectedValuePlayer={setSelectedValuePlayer}
@@ -95,7 +95,6 @@ const Dues: React.FunctionComponent<{
         selectedBankers={selectedParties}
         method={method}
       />
-
       <div
         style={{
           display: "flex",

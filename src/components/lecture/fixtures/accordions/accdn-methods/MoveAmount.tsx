@@ -100,7 +100,7 @@ const MoveFixedAmount: React.FunctionComponent<{
       });
       setSelectedValueAmount(0);
       setSelectedValuePlayer(null);
-      setAccordionExpanded({ ...accordionExpanded, deposit: false });
+      setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
     }
   };
 
