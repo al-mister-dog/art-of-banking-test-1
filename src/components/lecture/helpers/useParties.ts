@@ -3,20 +3,21 @@ import { IBank } from "../../../features/lectures/program/types";
 type Parties = {
   [index: string]: IBank;
 };
+
 const usePartiesArray = (
-  selected: IBank,
   parties: Parties,
+  selected?: IBank,
   filterMethod?: (a: IBank, b: IBank[]) => IBank[]
 ) => {
-  if (filterMethod) {
-    let partiesArray: IBank[] = [];
-    for (const key in parties) {
-      partiesArray = [...partiesArray, parties[key]];
-    }
+  let partiesArray: IBank[] = [];
+  for (const key in parties) {
+    partiesArray = [...partiesArray, parties[key]];
+  }
+  if (filterMethod && selected) {
     const selectedParties = filterMethod(selected, partiesArray);
     return [selectedParties];
   } else {
-    return [];
+    return [partiesArray];
   }
 };
 

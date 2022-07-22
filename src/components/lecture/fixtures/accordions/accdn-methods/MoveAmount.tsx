@@ -82,8 +82,7 @@ const MoveFixedAmount: React.FunctionComponent<{
 
   const parties = useAppSelector(selectParties);
   const { reservePercentage } = useAppSelector(selectAuxilliary);
-  const [selectedParties] = useParties(selected, parties, filterMethod);
-  
+  const [selectedParties] = useParties(parties, selected, filterMethod);
 
   const handleClickOpenTo = () => {
     setOpenTo(true);

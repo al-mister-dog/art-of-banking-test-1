@@ -9,7 +9,7 @@ import { resetTotalCreditData } from "../../../features/auxilliary/auxilliarySli
 import { useState, useEffect } from "react";
 import IndexMobile from "../views/mobile/Index";
 import IndexDesktop from "../views/desktop/Index";
-import { IBank } from "../../../features/lectures/program/types";
+import usePartiesArray from "../helpers/useParties";
 
 const { defaultSetup, creditSetup } = lecture1StateConfig;
 
@@ -18,8 +18,10 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   config,
 }) => {
   const dispatch = useAppDispatch();
-
   const parties = useAppSelector(selectParties);
+  const [selected, setSelected] = useState<string>(
+    config.state.system === "centralbank" ? "bank1" : "customer1"
+  );
 
   const configPartiesOne = config.parties.filter(
     (party: string) => party.includes("central") || party.includes("customer")
@@ -30,15 +32,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
       !party.includes("central")
   );
 
-  const [selected, setSelected] = useState<string>(
-    config.state.system === "centralbank" ? "bank1" : "customer1"
-  );
-
-  let partiesArray: IBank[] = [];
-
-  for (const key in parties) {
-    partiesArray = [...partiesArray, parties[key]];
-  }
+  const [partiesArray] = usePartiesArray(parties)
 
   const partiesRowOne = partiesArray.filter((party) =>
     configPartiesOne.includes(party.id)
@@ -47,6 +41,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   const partiesRowTwo = partiesArray.filter((party) =>
     configPartiesTwo.includes(party.id)
   );
+
 
   function selectParty(player: any) {
     setSelected(player.id);

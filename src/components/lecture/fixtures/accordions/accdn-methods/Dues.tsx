@@ -36,7 +36,7 @@ const Dues: React.FunctionComponent<{
 }) => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const [selectedParties] = useParties(selected, parties, filterMethod)
+  const [selectedParties] = useParties(parties, selected, filterMethod)
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );

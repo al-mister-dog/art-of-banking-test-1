@@ -28,7 +28,6 @@ const Index: React.FunctionComponent<{
   selectParty,
 }) => {
   const parties = useAppSelector(selectParties);
-
   return (
     <>
       <Introduction texts={texts} />

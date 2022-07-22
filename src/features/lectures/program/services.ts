@@ -370,6 +370,8 @@ export class CentralBankService {
       "bankLoans",
       amountPlusInterest
     );
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
   }
 
   static repayLoan(a: IBank, b: IBank, amount: number) {
