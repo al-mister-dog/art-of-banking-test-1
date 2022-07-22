@@ -1,4 +1,4 @@
-import { Accordions, FeatureCall, PartyOps } from "./types";
+import { Accordions, PartyOps } from "./types";
 import features from "./features"
 export default function accordionList(
   selected: any,

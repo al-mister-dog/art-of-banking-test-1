@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import {
   selectParties,
   settleDues,
-  netDues,
   netCorrespondingDues,
   chNetDues,
 } from "../../../../../features/lectures/lecturesSlice";
@@ -124,7 +123,6 @@ const Dues: React.FunctionComponent<{
           >
             Dues After Net:
           </Typography>
-          {/* <CardButton onClick={onClickNetDues}>Net Dues</CardButton> */}
         </div>
         <div
           style={{

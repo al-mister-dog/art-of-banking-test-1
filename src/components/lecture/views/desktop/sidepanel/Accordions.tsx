@@ -25,6 +25,8 @@ const resetAccordions: Accordions = {
   getLoan: false,
 };
 
+
+
 const Operations: React.FunctionComponent<{ config: any; selected: any }> = ({
   config,
   selected,
