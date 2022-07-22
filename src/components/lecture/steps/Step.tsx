@@ -25,7 +25,9 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
     (party: string) => party.includes("central") || party.includes("customer")
   );
   const configPartiesTwo = config.parties.filter(
-    (party: string) => party.includes("bank") && !party.includes("central")
+    (party: string) =>
+      (party.includes("bank") || party.includes("clearinghouse")) &&
+      !party.includes("central")
   );
 
   const [selected, setSelected] = useState<string>(

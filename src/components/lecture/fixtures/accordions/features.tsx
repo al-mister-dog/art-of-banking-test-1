@@ -5,11 +5,11 @@ import {
   findBankByCustomersAccounts,
   findOwedBanks,
   findOweingBanks,
+  findOwedandOweingBanks,
 } from "../../helpers/filters";
 import ChNetDuesCard from "./accdn-methods/ChNetDuesCard";
-import MoveFixedAmount from "./accdn-methods/MoveFixedAmount";
 import MoveAmount from "./accdn-methods/MoveAmount";
-import NetDuesCard from "./accdn-methods/NetDuesCard";
+import Dues from "./accdn-methods/Dues";
 import OpenAccountCard from "./accdn-methods/OpenAccountCard";
 import SettleDuesCard from "./accdn-methods/SettleDuesCard";
 import { Accordions, FeatureObjects } from "./types";
@@ -68,24 +68,34 @@ const features = (
       />
     ),
     netDues: (
-      <NetDuesCard
+      <Dues
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}
+        filterMethod={findOwedandOweingBanks}
+        dispatchMethod="netCorrespondingDues"
+        method="Net Dues"
+        btnText="Net Dues"
       />
     ),
     chNetDues: (
-      <ChNetDuesCard
+      <Dues
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}
+        dispatchMethod="netClearinghouseDues"
+        method="Net Dues"
+        btnText="Net Dues"
       />
     ),
     settleDues: (
-      <SettleDuesCard
+      <Dues
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}
+        dispatchMethod="settleDues"
+        method="Settle Dues"
+        btnText="Settle Dues"
       />
     ),
     receiveBankPayment: (

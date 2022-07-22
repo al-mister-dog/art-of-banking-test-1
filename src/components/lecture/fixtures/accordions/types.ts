@@ -58,6 +58,12 @@ export interface Dispatches {
   debitBankAccount: DispatchFunctionSig;
 }
 
+export interface DuesDispatches {
+  settleDues: () => void;
+  netClearinghouseDues: () => void;
+  netCorrespondingDues: () => void;
+}
+
 export interface PayloadArguments {
   p1: IBank;
   p2: IBank;

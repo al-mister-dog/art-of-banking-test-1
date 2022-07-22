@@ -89,6 +89,7 @@ export default function ChoosePlayer(props: ChoosePlayerProps) {
   const { onClose, setSelectedValuePlayer, open, selectedBankers, method } =
     props;
 
+  
   const handleClose = () => {
     onClose();
   };

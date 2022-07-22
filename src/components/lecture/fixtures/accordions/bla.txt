@@ -1,51 +1,139 @@
+NETDUESCARD
+return (
+    <Box>
+      <ChoosePlayer
+        setSelectedValuePlayer={setSelectedValuePlayer}
+        open={openTo}
+        onClose={handleCloseTo}
+        selectedBankers={selectedParties}
+        method={method}
+      />
 
-<MoveVariableAmount
-  selected={selected}
-  accordionExpanded={accordionExpanded}
-  setAccordionExpanded={setAccordionExpanded}
-  filterMethod={findBankByCustomersAccounts}
-  operationText="Deposit To"
-  method="Deposit To"
-  dispatchMethod="deposit"
-  config={config}
-/>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
+          <CardButton
+            variant="contained"
+            onClick={handleClickOpenTo}
+            sx={{ width: "130px", marginBottom: "5px" }}
+          >
+            Net Dues Of
+          </CardButton>
+          <Typography
+            variant="h6"
+            sx={{ color: colors.accordionTextColor, paddingLeft: "7px" }}
+          >
+            Dues After Net:
+          </Typography>
+          {/* <CardButton onClick={onClickNetDues}>Net Dues</CardButton> */}
+        </div>
+        <div
+          style={{
+            alignSelf: "flex-end",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
+          <Typography sx={{ margin: 0.75 }}>
+            {selectedValueTo ? `${deCamelize(selectedValueTo.id)}` : ` `}
+          </Typography>
+          <Typography sx={{ margin: 0.75 }}>
+            {selectedValueAmount ? `${selectedValueAmount}` : `...`}
+          </Typography>
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+        }}
+      >
+        <CardButton
+          variant="contained"
+          disabled={!selectedValueTo}
+          onClick={onClickNetDues}
+        >
+          Ok
+        </CardButton>
+      </div>
+    </Box>
+  );
 
-<MoveFixedAmount
-  selected={selected}
-  accordionExpanded={accordionExpanded}
-  setAccordionExpanded={setAccordionExpanded}
-  filterMethod={findOweingBanks}
-  operationText="Receive Bank Payment"
-  method="Find Bank"
-  config={config}
-/>
+CHNETDUES
+return (
+    <Box sx={{display: "flex", flexDirection: "column", alignItems: "flex-end", padding: 0}}>
+      <Box
+        sx={{ display: "flex", flexDirection: "row", justifyContent: "center"}}
+      >
+        <Box sx={{ display: "flex", flexDirection: "column", margin: "5px" }}>
+          <Typography variant="h6">Due Froms</Typography>
+          {selected.assets.dues.map((due: any, index: number) => {
+            return due.amount > 0 && (
+              <Typography variant="body1" sx={{fontFamily: "Roboto", fontWeight: "bold"}} key={index}>
+                {due.id}: ${due.amount}
+              </Typography>
+            );
+          })}
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", margin: "5px" }}>
+          <Typography variant="h6">Due Tos</Typography>
+          {selected.liabilities.dues.map((due: any, index: number) => {
+            return due.amount > 0 && (
+              <Typography variant="body1" sx={{fontFamily: "Roboto", fontWeight: "bold"}} key={index}>
+                {due.id}: ${due.amount}
+              </Typography>
+            );
+          })}
+        </Box>
+      </Box>
+      <CardButton variant="contained" onClick={handleChNetDues}>
+        Net Dues
+      </CardButton>
+    </Box>
+  );
 
-  const dispatchMethods = {
-    deposit(payloadArgs: PayloadArguments) {
-      dispatch(deposit(payloadArgs));
-    },
-    withdraw(payloadArgs: PayloadArguments) {
-      dispatch(withdraw(payloadArgs));
-    },
-    transfer(payloadArgs: PayloadArguments) {
-      dispatch(transfer(payloadArgs));
-    },
-    payBank(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    createLoan(payloadArgs: PayloadArguments) {
-      dispatch(createLoan(payloadArgs));
-    },
-    "Send Bank Payment"(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    "Receive Bank Payment"(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    "Credit Bank Account"(payloadArgs: PayloadArguments) {
-      dispatch(creditBankAccount(payloadArgs));
-    },
-    "Debit Bank Account"(payloadArgs: PayloadArguments) {
-      dispatch(debitBankAccount(payloadArgs));
-    },
-  };
+SETTLEDUESCARD
+return (
+    <Box sx={{display: "flex", flexDirection: "column", alignItems: "flex-end", padding: 0}}>
+      <Box
+        sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "column", margin: "5px" }}>
+        <Typography variant="h6">Due Froms</Typography>
+          {selected.assets.dues.map((due: any, index: number) => {
+            return due.amount > 0 && (
+              <Typography variant="body1" sx={{fontFamily: "Roboto", fontWeight: "bold"}} key={index}>
+                {due.id}: ${due.amount}
+              </Typography>
+            );
+          })}
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", margin: "5px" }}>
+        <Typography variant="h6">Due Tos</Typography>
+          {selected.liabilities.dues.map((due: any, index: number) => {
+            return due.amount > 0 && (
+              <Typography variant="body1" sx={{fontFamily: "Roboto", fontWeight: "bold"}} key={index}>
+                {due.id}: ${due.amount}
+              </Typography>
+            );
+          })}
+        </Box>
+      </Box>
+      <CardButton variant="contained" onClick={handlesettleDues}>
+        Settle Dues
+      </CardButton>
+    </Box>
+  );
