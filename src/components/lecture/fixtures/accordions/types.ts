@@ -39,3 +39,33 @@ export type FeatureCall = (
   setAccordionExpanded: (accs: Accordions) => void,
   config?: any
 ) => FeatureObjects;
+
+type DispatchFunctionSig = (
+  selected: IBank,
+  selectedValueTo: IBank,
+  selectedValueAmount: number
+) => void;
+
+export interface Dispatches {
+  withdraw: DispatchFunctionSig;
+  deposit: DispatchFunctionSig;
+  transfer: DispatchFunctionSig;
+  payBank: DispatchFunctionSig;
+  createLoan: DispatchFunctionSig;
+  receiveBankPayment: DispatchFunctionSig;
+  sendBankPayment: DispatchFunctionSig;
+  creditBankAccount: DispatchFunctionSig;
+  debitBankAccount: DispatchFunctionSig;
+}
+
+export interface DuesDispatches {
+  settleDues: () => void;
+  netClearinghouseDues: () => void;
+  netCorrespondingDues: () => void;
+}
+
+export interface PayloadArguments {
+  p1: IBank;
+  p2: IBank;
+  amt: number;
+}

@@ -1,61 +1,46 @@
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
 import {
   selectParties,
+  payBank,
+  creditBankAccount,
+  debitBankAccount,
   withdraw,
   deposit,
   transfer,
-  payBank,
   createLoan,
 } from "../../../../../features/lectures/lecturesSlice";
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
-
-import { Accordions } from "../types";
-import { Box, Typography } from "@mui/material";
-
-import { colors } from "../../../../../config/colorPalette";
-
-import { capitalize } from "../../../helpers/parsers";
 import CardButton from "../../../ui/CardButton";
 import Amount from "./Amount";
+import { Box, Typography } from "@mui/material";
+import { Accordions, Dispatches, PayloadArguments } from "../types";
 import { IBank } from "../../../../../features/lectures/program/types";
+import { capitalize } from "../../../helpers/parsers";
+import { colors } from "../../../../../config/colorPalette";
 
-type DispatchFunctionSig = (
-  selected: IBank,
-  selectedValueTo: IBank,
-  selectedValueAmount: number
-) => void;
-
-interface Dispatches {
-  withdraw: DispatchFunctionSig;
-  deposit: DispatchFunctionSig;
-  transfer: DispatchFunctionSig;
-  payBank: DispatchFunctionSig;
-  createLoan: DispatchFunctionSig;
-}
-
-const MoveVariableAmount: React.FunctionComponent<{
+const MoveFixedAmount: React.FunctionComponent<{
+  variable?: boolean;
   selected: any;
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
   filterMethod: (selected: IBank, partiesArray: IBank[]) => IBank[];
-  operationText: string;
-  methodText: string;
+  method: string;
+  btnText: string;
   dispatchMethod: keyof Dispatches;
   config?: any;
 }> = ({
+  variable,
   config,
   selected,
   accordionExpanded,
   setAccordionExpanded,
   filterMethod,
-  operationText,
-  methodText,
+  method,
+  btnText,
   dispatchMethod,
 }) => {
-  const { reservePercentage } = useAppSelector(selectAuxilliary);
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );
@@ -65,73 +50,37 @@ const MoveVariableAmount: React.FunctionComponent<{
   const dispatch = useAppDispatch();
 
   const dispatchMethods = {
-    deposit(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        deposit({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    deposit(payloadArgs: PayloadArguments) {
+      dispatch(deposit(payloadArgs));
     },
-    withdraw(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        withdraw({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    withdraw(payloadArgs: PayloadArguments) {
+      dispatch(withdraw(payloadArgs));
     },
-    transfer(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        transfer({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    transfer(payloadArgs: PayloadArguments) {
+      dispatch(transfer(payloadArgs));
     },
-    payBank(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        payBank({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    payBank(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
     },
-    createLoan(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        createLoan({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      )
-    }
+    createLoan(payloadArgs: PayloadArguments) {
+      dispatch(createLoan(payloadArgs));
+    },
+    sendBankPayment(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
+    },
+    receiveBankPayment(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
+    },
+    creditBankAccount(payloadArgs: PayloadArguments) {
+      dispatch(creditBankAccount(payloadArgs));
+    },
+    debitBankAccount(payloadArgs: PayloadArguments) {
+      dispatch(debitBankAccount(payloadArgs));
+    },
   };
+
   const parties = useAppSelector(selectParties);
+  const { reservePercentage } = useAppSelector(selectAuxilliary);
   let partiesArray: IBank[] = [];
   for (const key in parties) {
     partiesArray = [...partiesArray, parties[key]];
@@ -147,16 +96,17 @@ const MoveVariableAmount: React.FunctionComponent<{
 
   const onClickOk = () => {
     if (selectedValueTo !== null) {
-      dispatchMethods[dispatchMethod](
-        selected,
-        selectedValueTo,
-        selectedValueAmount
-      );
+      dispatchMethods[dispatchMethod]({
+        p1: selected,
+        p2: selectedValueTo,
+        amt: selectedValueAmount,
+      });
       setSelectedValueAmount(0);
       setSelectedValuePlayer(null);
       setAccordionExpanded({ ...accordionExpanded, deposit: false });
     }
   };
+
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(``);
 
@@ -181,10 +131,6 @@ const MoveVariableAmount: React.FunctionComponent<{
       config.constraint &&
       selectedValueTo.reserves - amount <=
         (selectedValueTo.reserves / 100) * reservePercentage
-      // config.constraint &&
-      // dispatchMethod === "withdraw" &&
-      // selectedValueTo !== null &&
-      // (selected.valueTo.reserves - amount) <= (selected.valueTo.reserves / 100 * 25)
     ) {
       setError(true);
       setErrorMessage(`Your bank has insufficent reserve requirements`);
@@ -201,6 +147,26 @@ const MoveVariableAmount: React.FunctionComponent<{
     }
     setSelectedValueAmount(amount);
   };
+
+  useEffect(() => {
+    if (!variable) {
+      if (selectedValueTo) {
+        let selectedAmount;
+        if (dispatchMethod === "receiveBankPayment") {
+          selectedAmount = selectedValueTo.liabilities.dues.find(
+            (account) => account.id === selected.id
+          );
+        } else {
+          selectedAmount = selected.liabilities.dues.find(
+            (account: { id: string }) => account.id === selectedValueTo.id
+          );
+        }
+        if (selectedAmount) {
+          setSelectedValueAmount(selectedAmount.amount);
+        }
+      }
+    }
+  }, [selectedValueTo]);
 
   return (
     <Box>
@@ -219,22 +185,18 @@ const MoveVariableAmount: React.FunctionComponent<{
           }}
         >
           <CardButton
-            // disabled={
-            //   (config.title === "step2" || config.title === "step3") &&
-            //   config.parties.length === 2
-            // }
             variant="contained"
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
-            {methodText}
+            {btnText}
           </CardButton>
           <ChoosePlayer
             setSelectedValuePlayer={setSelectedValuePlayer}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={selectedParties}
-            methodText={methodText}
+            method={method}
           />
 
           <Typography
@@ -255,13 +217,18 @@ const MoveVariableAmount: React.FunctionComponent<{
           <Typography variant="h6" sx={{ margin: 0.75 }}>
             {selectedValueTo ? `${capitalize(selectedValueTo.id)}` : ` `}
           </Typography>
-
-          <Amount
-            selectedValueAmount={selectedValueAmount}
-            handleChangeAmount={handleChangeAmount}
-            error={error}
-            errorMessage={errorMessage}
-          />
+          {variable ? (
+            <Amount
+              selectedValueAmount={selectedValueAmount}
+              handleChangeAmount={handleChangeAmount}
+              error={error}
+              errorMessage={errorMessage}
+            />
+          ) : (
+            <Typography variant="h6" sx={{ margin: 0.75 }}>
+              ${selectedValueAmount ? `${selectedValueAmount}` : `0`}
+            </Typography>
+          )}
         </div>
       </div>
       <div
@@ -276,7 +243,6 @@ const MoveVariableAmount: React.FunctionComponent<{
           disabled={
             selectedValueAmount < 1 ||
             selectedValueTo === null ||
-            error ||
             !selectedValueAmount
           }
           sx={{ marginTop: "10px" }}
@@ -289,4 +255,4 @@ const MoveVariableAmount: React.FunctionComponent<{
   );
 };
 
-export default MoveVariableAmount;
+export default MoveFixedAmount;

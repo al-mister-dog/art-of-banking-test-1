@@ -1,8 +1,10 @@
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import { selectParties, netCorrespondingDues } from "../../../../../features/lectures/lecturesSlice";
+import {
+  selectParties,
+  netCorrespondingDues,
+} from "../../../../../features/lectures/lecturesSlice";
 import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
-
 
 import { Accordions } from "../types";
 import { IBank } from "../../../../../features/lectures/program/types";
@@ -11,7 +13,7 @@ import CardButton from "../../../ui/CardButton";
 import { findOwedandOweingBanks } from "../../../helpers/filters";
 import { deCamelize } from "../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
-
+import { netAmount } from "../../../helpers/utils";
 
 const NetDuesCard: React.FunctionComponent<{
   selected: any;
@@ -19,7 +21,7 @@ const NetDuesCard: React.FunctionComponent<{
   setAccordionExpanded: (v: Accordions) => void;
 }> = ({ selected, accordionExpanded, setAccordionExpanded }) => {
   const dispatch = useAppDispatch();
-  const operationText = "Net Dues";
+  const method = "Net Dues";
   const parties = useAppSelector(selectParties);
   let partiesArray: IBank[] = [];
   for (const key in parties) {
@@ -31,7 +33,6 @@ const NetDuesCard: React.FunctionComponent<{
   );
   const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
-  
 
   const handleClickOpenTo = () => {
     setOpenTo(true);
@@ -43,29 +44,12 @@ const NetDuesCard: React.FunctionComponent<{
   function onClickNetDues() {
     dispatch(netCorrespondingDues({ p1: selected, p2: selectedValueTo }));
   }
-  
+
   useEffect(() => {
     if (selectedValueTo) {
-      let selectedAmount;
-
-      const whatYouOwe = selected.liabilities.dues.find(
-        (account: { id: string }) => account.id === selectedValueTo.id
-      );
-      const whatOtherBankOwes = selected.assets.dues.find(
-        (account: { id: string }) => account.id === selectedValueTo.id
-      );
-      if (whatYouOwe && whatOtherBankOwes) {
-        if (whatYouOwe.amount > whatOtherBankOwes.amount) {
-          selectedAmount = `${deCamelize(selectedValueTo.id)} owed: $${
-            whatYouOwe.amount - whatOtherBankOwes.amount
-          }`;
-          setSelectedValueAmount(selectedAmount);
-        } else if (whatOtherBankOwes.amount > whatYouOwe.amount) {
-          selectedAmount = `${deCamelize(selected.id)} owed: $${
-            whatOtherBankOwes.amount - whatYouOwe.amount
-          }`;
-          setSelectedValueAmount(selectedAmount);
-        }
+      const selectedAmount = netAmount(selectedValueTo, selected);
+      if (selectedAmount) {
+        setSelectedValueAmount(selectedAmount);
       }
     }
   }, [selectedValueTo]);
@@ -76,7 +60,7 @@ const NetDuesCard: React.FunctionComponent<{
         open={openTo}
         onClose={handleCloseTo}
         selectedBankers={selectedParties}
-        methodText={operationText}
+        method={method}
       />
 
       <div

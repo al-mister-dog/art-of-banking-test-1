@@ -1,22 +1,11 @@
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-} from "react";
 import { Typography } from "@mui/material";
 
-export default function Text(props: {
+export default function Text({
+  children,
+  bold,
+}: {
+  children: string;
   bold?: boolean;
-  children:
-    | string
-    | number
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | ReactFragment
-    | ReactPortal
-    | null
-    | undefined;
 }) {
   return (
     <Typography
@@ -26,10 +15,10 @@ export default function Text(props: {
         fontSize: "1.2rem",
         textAlign: "justify",
         marginBottom: "10px",
-        fontWeight: props.bold ? "bold" : "",
+        fontWeight: bold ? "bold" : "",
       }}
     >
-      {props.children}
+      {children}
     </Typography>
   );
 }
