@@ -3,8 +3,6 @@ import Text from "./Text";
 import { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { colors } from "../../../config/colorPalette";
-import { lectures } from "../../../config/lecturesConfig";
-import { Link } from "react-router-dom";
 
 interface Texts {
   lectureTitle: string;

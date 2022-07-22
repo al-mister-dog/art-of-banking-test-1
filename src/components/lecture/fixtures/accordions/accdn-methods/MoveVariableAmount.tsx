@@ -8,15 +8,11 @@ import {
   createLoan,
 } from "../../../../../features/lectures/lecturesSlice";
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
-
 import { useState } from "react";
 import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
-
 import { Accordions } from "../types";
 import { Box, Typography } from "@mui/material";
-
 import { colors } from "../../../../../config/colorPalette";
-
 import { capitalize } from "../../../helpers/parsers";
 import CardButton from "../../../ui/CardButton";
 import Amount from "./Amount";
@@ -48,7 +44,7 @@ const MoveVariableAmount: React.FunctionComponent<{
   setAccordionExpanded: (v: Accordions) => void;
   filterMethod: (selected: IBank, partiesArray: IBank[]) => IBank[];
   operationText: string;
-  methodText: string;
+  method: string;
   dispatchMethod: keyof Dispatches;
   config?: any;
 }> = ({
@@ -58,7 +54,7 @@ const MoveVariableAmount: React.FunctionComponent<{
   setAccordionExpanded,
   filterMethod,
   operationText,
-  methodText,
+  method,
   dispatchMethod,
 }) => {
   const { reservePercentage } = useAppSelector(selectAuxilliary);
@@ -175,14 +171,14 @@ const MoveVariableAmount: React.FunctionComponent<{
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
-            {methodText}
+            {method}
           </CardButton>
           <ChoosePlayer
             setSelectedValuePlayer={setSelectedValuePlayer}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={selectedParties}
-            methodText={methodText}
+            method={method}
           />
 
           <Typography

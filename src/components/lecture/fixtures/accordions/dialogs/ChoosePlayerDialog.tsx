@@ -11,11 +11,11 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { blue } from "@mui/material/colors";
 
-interface Operation {
+interface Method {
   [index: string]: any;
 }
 
-const operationsText: Operation = {
+const methods: Method = {
   "Receive Bank Payment": {
     moreThanOne(arr: any[]) {
       return arr.length > 0
@@ -82,11 +82,11 @@ export interface ChoosePlayerProps {
   setSelectedValuePlayer: (v: any) => void;
   onClose: () => void;
   selectedBankers: any[];
-  methodText: string;
+  method: string;
 }
 
 export default function ChoosePlayer(props: ChoosePlayerProps) {
-  const { onClose, setSelectedValuePlayer, open, selectedBankers, methodText } =
+  const { onClose, setSelectedValuePlayer, open, selectedBankers, method } =
     props;
 
   const handleClose = () => {
@@ -102,10 +102,10 @@ export default function ChoosePlayer(props: ChoosePlayerProps) {
     <Dialog onClose={handleClose} open={open}>
       <Box sx={{ padding: "20px" }}>
         <Typography variant="h6" sx={{ marginBottom: 0 }}>
-          {methodText}
+          {method}
         </Typography>
         <Typography variant="subtitle1">
-          {operationsText[methodText].moreThanOne(selectedBankers)}
+          {methods[method].moreThanOne(selectedBankers)}
         </Typography>
         <List sx={{ pt: 0 }}>
           {selectedBankers.map((banker, i) => (

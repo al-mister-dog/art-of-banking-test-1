@@ -76,7 +76,7 @@ const NetDuesCard: React.FunctionComponent<{
         open={openTo}
         onClose={handleCloseTo}
         selectedBankers={selectedParties}
-        methodText={operationText}
+        method={operationText}
       />
 
       <div

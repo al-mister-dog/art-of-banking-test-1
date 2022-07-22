@@ -1,0 +1,51 @@
+
+<MoveVariableAmount
+  selected={selected}
+  accordionExpanded={accordionExpanded}
+  setAccordionExpanded={setAccordionExpanded}
+  filterMethod={findBankByCustomersAccounts}
+  operationText="Deposit To"
+  method="Deposit To"
+  dispatchMethod="deposit"
+  config={config}
+/>
+
+<MoveFixedAmount
+  selected={selected}
+  accordionExpanded={accordionExpanded}
+  setAccordionExpanded={setAccordionExpanded}
+  filterMethod={findOweingBanks}
+  operationText="Receive Bank Payment"
+  method="Find Bank"
+  config={config}
+/>
+
+  const dispatchMethods = {
+    deposit(payloadArgs: PayloadArguments) {
+      dispatch(deposit(payloadArgs));
+    },
+    withdraw(payloadArgs: PayloadArguments) {
+      dispatch(withdraw(payloadArgs));
+    },
+    transfer(payloadArgs: PayloadArguments) {
+      dispatch(transfer(payloadArgs));
+    },
+    payBank(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
+    },
+    createLoan(payloadArgs: PayloadArguments) {
+      dispatch(createLoan(payloadArgs));
+    },
+    "Send Bank Payment"(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
+    },
+    "Receive Bank Payment"(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
+    },
+    "Credit Bank Account"(payloadArgs: PayloadArguments) {
+      dispatch(creditBankAccount(payloadArgs));
+    },
+    "Debit Bank Account"(payloadArgs: PayloadArguments) {
+      dispatch(debitBankAccount(payloadArgs));
+    },
+  };
