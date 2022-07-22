@@ -7,11 +7,9 @@ import {
   findOweingBanks,
   findOwedandOweingBanks,
 } from "../../helpers/filters";
-import ChNetDuesCard from "./accdn-methods/ChNetDuesCard";
 import MoveAmount from "./accdn-methods/MoveAmount";
 import Dues from "./accdn-methods/Dues";
 import OpenAccountCard from "./accdn-methods/OpenAccountCard";
-import SettleDuesCard from "./accdn-methods/SettleDuesCard";
 import { Accordions, FeatureObjects } from "./types";
 
 const features = (

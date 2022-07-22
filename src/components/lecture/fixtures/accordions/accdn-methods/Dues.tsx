@@ -15,6 +15,7 @@ import { netAmount } from "../../../helpers/utils";
 import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
 import { colors } from "../../../../../config/colorPalette";
 import { deCamelize } from "../../../helpers/parsers";
+import useParties from "../../../helpers/useParties";
 
 const Dues: React.FunctionComponent<{
   selected: any;
@@ -34,22 +35,14 @@ const Dues: React.FunctionComponent<{
   btnText,
 }) => {
   const dispatch = useAppDispatch();
-  const operationText = "Net Dues";
   const parties = useAppSelector(selectParties);
-  let partiesArray: IBank[] = [];
-  for (const key in parties) {
-    partiesArray = [...partiesArray, parties[key]];
-  }
-  let selectedParties;
-  if (filterMethod) {
-    selectedParties = filterMethod(selected, partiesArray);
-  }
-
+  const [selectedParties] = useParties(selected, parties, filterMethod)
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );
-  const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
+
+  const [openTo, setOpenTo] = useState(false);
 
   const dispatchMethods = {
     settleDues() {

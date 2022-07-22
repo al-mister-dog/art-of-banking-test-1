@@ -19,6 +19,7 @@ import { Accordions, Dispatches, PayloadArguments } from "../types";
 import { IBank } from "../../../../../features/lectures/program/types";
 import { capitalize } from "../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
+import useParties from "../../../helpers/useParties";
 
 const MoveFixedAmount: React.FunctionComponent<{
   variable?: boolean;
@@ -81,11 +82,8 @@ const MoveFixedAmount: React.FunctionComponent<{
 
   const parties = useAppSelector(selectParties);
   const { reservePercentage } = useAppSelector(selectAuxilliary);
-  let partiesArray: IBank[] = [];
-  for (const key in parties) {
-    partiesArray = [...partiesArray, parties[key]];
-  }
-  const selectedParties = filterMethod(selected, partiesArray);
+  const [selectedParties] = useParties(selected, parties, filterMethod);
+  
 
   const handleClickOpenTo = () => {
     setOpenTo(true);

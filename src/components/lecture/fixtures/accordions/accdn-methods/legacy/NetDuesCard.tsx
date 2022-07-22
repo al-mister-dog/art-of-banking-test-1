@@ -1,19 +1,19 @@
-import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../../../../app/hooks";
 import {
   selectParties,
   netCorrespondingDues,
-} from "../../../../../features/lectures/lecturesSlice";
+} from "../../../../../../features/lectures/lecturesSlice";
 import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
-import { Accordions } from "../types";
-import { IBank } from "../../../../../features/lectures/program/types";
-import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
-import CardButton from "../../../ui/CardButton";
-import { findOwedandOweingBanks } from "../../../helpers/filters";
-import { deCamelize } from "../../../helpers/parsers";
-import { colors } from "../../../../../config/colorPalette";
-import { netAmount } from "../../../helpers/utils";
+import { Accordions } from "../../types";
+import { IBank } from "../../../../../../features/lectures/program/types";
+import ChoosePlayer from "../../dialogs/ChoosePlayerDialog";
+import CardButton from "../../../../ui/CardButton";
+import { findOwedandOweingBanks } from "../../../../helpers/filters";
+import { deCamelize } from "../../../../helpers/parsers";
+import { colors } from "../../../../../../config/colorPalette";
+import { netAmount } from "../../../../helpers/utils";
 
 const NetDuesCard: React.FunctionComponent<{
   selected: any;
