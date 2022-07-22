@@ -260,7 +260,6 @@ class ClearingHouseSystem extends AbstractSystem {
 
 class CentralBankSystem extends AbstractSystem {
   increaseDues(bankA: IBank, bankB: IBank, amount: number) {
-    // PaymentMethods.debitAccount(bankA, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
     partyFunctions(bankA).increaseInstrument(
       lookup["centralbank"].id,
       "liabilities",

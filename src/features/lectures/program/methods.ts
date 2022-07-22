@@ -15,9 +15,18 @@ export class PaymentMethods {
       (account: any) => account.id === id
     );
     if (account) {
-      // console.log('account:' + JSON.stringify(account) )
-      partyFunctions(a).increaseInstrument(id, "balances", creditInstrument, amount);
-      partyFunctions(b).increaseInstrument(id, "balances", creditInstrument, amount);
+      partyFunctions(a).increaseInstrument(
+        id,
+        "balances",
+        creditInstrument,
+        amount
+      );
+      partyFunctions(b).increaseInstrument(
+        id,
+        "balances",
+        creditInstrument,
+        amount
+      );
 
       PaymentMethods.mapBalance(
         a,
@@ -42,8 +51,18 @@ export class PaymentMethods {
       (account: any) => account.id === id
     );
     if (account) {
-      partyFunctions(a).decreaseInstrument(id, "balances", creditInstrument, amount);
-      partyFunctions(b).decreaseInstrument(id, "balances", creditInstrument, amount);
+      partyFunctions(a).decreaseInstrument(
+        id,
+        "balances",
+        creditInstrument,
+        amount
+      );
+      partyFunctions(b).decreaseInstrument(
+        id,
+        "balances",
+        creditInstrument,
+        amount
+      );
       PaymentMethods.mapBalance(
         a,
         b,
@@ -148,9 +167,8 @@ export class AccountMethods {
       amount
     );
     if (b.id !== "centralbank") {
-
     }
-    
+
     AccountMethods.createBalance(a, b, amount, creditInstrument);
   }
 }
@@ -178,16 +196,16 @@ export class StatusMethods {
   }
   static isGeneralDebtor(bank: IBank) {
     const creditTransactions = bank.records.filter(
-      (record:any) => record.credit === true
+      (record: any) => record.credit === true
     );
     const debtTransactions = bank.records.filter(
-      (record:any) => record.credit === false
+      (record: any) => record.credit === false
     );
     return debtTransactions.length > creditTransactions.length;
   }
   static creditStatus(bank: IBank) {
     const creditTransactions = bank.records.filter(
-      (record:any) => record.credit === true
+      (record: any) => record.credit === true
     );
     const totalTransactions = bank.records.length;
     const timesInCredit = creditTransactions.length;

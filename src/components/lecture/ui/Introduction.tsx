@@ -25,9 +25,7 @@ export default function Introduction({ texts }: { texts: Texts }) {
       }}
     >
       <Typography sx={{ fontFamily: "Roboto", color: colors.darkMain }}>
-        {/* <Link to="clearinghouse" style={{textDecoration: "none"}}> */}
         {texts.lectureTitle}
-        {/* </Link> */}
       </Typography>
       <Title>{texts.title}</Title>
       {expanded ? (

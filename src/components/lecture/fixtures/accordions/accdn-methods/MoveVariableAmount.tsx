@@ -36,8 +36,14 @@ interface Dispatches {
   createLoan: DispatchFunctionSig;
 }
 
+interface PayloadArguments {
+  p1: IBank;
+  p2: IBank;
+  amt: number;
+}
+
 const MoveVariableAmount: React.FunctionComponent<{
-  selected: any;
+  selected: IBank;
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
   filterMethod: (selected: IBank, partiesArray: IBank[]) => IBank[];
@@ -65,71 +71,21 @@ const MoveVariableAmount: React.FunctionComponent<{
   const dispatch = useAppDispatch();
 
   const dispatchMethods = {
-    deposit(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        deposit({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    deposit(payloadArgs: PayloadArguments) {
+      dispatch(deposit(payloadArgs));
     },
-    withdraw(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        withdraw({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    withdraw(payloadArgs: PayloadArguments) {
+      dispatch(withdraw(payloadArgs));
     },
-    transfer(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        transfer({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    transfer(payloadArgs: PayloadArguments) {
+      dispatch(transfer(payloadArgs));
     },
-    payBank(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        payBank({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      );
+    payBank(payloadArgs: PayloadArguments) {
+      dispatch(payBank(payloadArgs));
     },
-    createLoan(
-      selected: IBank,
-      selectedValueTo: IBank,
-      selectedValueAmount: number
-    ) {
-      dispatch(
-        createLoan({
-          p1: selected,
-          p2: selectedValueTo,
-          amt: selectedValueAmount,
-        })
-      )
-    }
+    createLoan(payloadArgs: PayloadArguments) {
+      dispatch(createLoan(payloadArgs));
+    },
   };
   const parties = useAppSelector(selectParties);
   let partiesArray: IBank[] = [];
@@ -147,11 +103,11 @@ const MoveVariableAmount: React.FunctionComponent<{
 
   const onClickOk = () => {
     if (selectedValueTo !== null) {
-      dispatchMethods[dispatchMethod](
-        selected,
-        selectedValueTo,
-        selectedValueAmount
-      );
+      dispatchMethods[dispatchMethod]({
+        p1: selected,
+        p2: selectedValueTo,
+        amt: selectedValueAmount,
+      });
       setSelectedValueAmount(0);
       setSelectedValuePlayer(null);
       setAccordionExpanded({ ...accordionExpanded, deposit: false });
@@ -181,10 +137,6 @@ const MoveVariableAmount: React.FunctionComponent<{
       config.constraint &&
       selectedValueTo.reserves - amount <=
         (selectedValueTo.reserves / 100) * reservePercentage
-      // config.constraint &&
-      // dispatchMethod === "withdraw" &&
-      // selectedValueTo !== null &&
-      // (selected.valueTo.reserves - amount) <= (selected.valueTo.reserves / 100 * 25)
     ) {
       setError(true);
       setErrorMessage(`Your bank has insufficent reserve requirements`);
@@ -219,10 +171,6 @@ const MoveVariableAmount: React.FunctionComponent<{
           }}
         >
           <CardButton
-            // disabled={
-            //   (config.title === "step2" || config.title === "step3") &&
-            //   config.parties.length === 2
-            // }
             variant="contained"
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
