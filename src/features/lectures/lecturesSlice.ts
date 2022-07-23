@@ -5,10 +5,9 @@ import { lookup } from "./program/lookupTables";
 import { IBank } from "./program/types";
 import { setupState } from "./initialState";
 import { newSetupState, createBankingSystem } from "./helpers";
-import { CentralBankService, ClearingHouseService, CustomerService } from "./program/services";
+import { CentralBankService, CustomerService } from "./program/services";
 import { BankService } from "./program/services";
 import { PaymentMethods } from "./program/methods";
-import { clearinghouse } from "../../config/texts";
 
 interface BankState {
   [index: string]: IBank;
@@ -107,18 +106,9 @@ export const lecturesSlice = createSlice({
         lookup[key] = JSON.parse(JSON.stringify(state[key]));
       }
     },
-    reset: (state) => {
-      for (const key in setupState) {
-        state[key] = JSON.parse(JSON.stringify(setupState[key]));
-        // lookup[key] = JSON.parse(JSON.stringify(setupState[key])); incase of errors
-      }
-    },
-    setupModule: (state, { payload }) => {
+    setupModule: (state, { payload }) => {      
       for (const key in lookup) {
         delete lookup[key]
-      }
-      for (const key in newSetupState) {
-        state[key] = JSON.parse(JSON.stringify(newSetupState[key]));
       }
       createBankingSystem(payload.setup);
       for (const key in newSetupState) {
@@ -140,7 +130,6 @@ export const {
   netCorrespondingDues,
   settleDues,
   chNetDues,
-  reset,
   setupModule,
 } = lecturesSlice.actions;
 

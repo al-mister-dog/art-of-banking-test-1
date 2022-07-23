@@ -11,13 +11,6 @@ interface TabPanelProps {
   value: number;
 }
 
-// const stringifyRecord = (record: any) => {
-//   let str = ''
-//   if (record.accountType === "customerDeposits") {
-//     str +=
-//   }
-// }
-
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 

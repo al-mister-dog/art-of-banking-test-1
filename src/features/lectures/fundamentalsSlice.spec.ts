@@ -1,4 +1,4 @@
-import counterReducer, { reset } from "./lecturesSlice";
+import counterReducer from "./lecturesSlice";
 export interface Account {
   id: string;
   type: string;

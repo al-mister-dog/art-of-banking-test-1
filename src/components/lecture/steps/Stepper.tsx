@@ -1,5 +1,3 @@
-import { useAppDispatch } from "../../../app/hooks";
-import { reset } from "../../../features/lectures/lecturesSlice";
 import * as React from "react";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
@@ -16,7 +14,6 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { colors } from "../../../config/colorPalette";
 
-
 const StepperIndex: React.FunctionComponent<{
   getStepContent: (step: number) => JSX.Element | "Unknown step";
   steps: string[];
@@ -25,28 +22,35 @@ const StepperIndex: React.FunctionComponent<{
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
   }>({});
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
   function handleSetActiveStep(step: number) {
     setActiveStep(step);
+    scrollToTop();
   }
   function handleSetActiveStepBack() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    scrollToTop();
   }
   function handleSetCompleted(v?: any) {
     setCompleted(v);
   }
   const handleNext = () => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);    
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    scrollToTop();
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    scrollToTop();
   };
 
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 900;
-  
+
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
@@ -98,7 +102,6 @@ const StepperDeskTop: React.FunctionComponent<{
   handleSetActiveStepBack,
   handleSetCompleted,
 }) => {
-  const dispatch = useAppDispatch();
   const totalSteps = () => {
     return steps.length;
   };
@@ -116,28 +119,22 @@ const StepperDeskTop: React.FunctionComponent<{
   };
 
   const handleNext = () => {
-    dispatch(reset());
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     handleSetActiveStep(newActiveStep);
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   const handleBack = () => {
-    dispatch(reset());
     handleSetActiveStepBack();
   };
 
   const handleStep = (step: number) => () => {
-    dispatch(reset());
-
     handleSetActiveStep(step);
   };
 
   const handleComplete = () => {
-    dispatch(reset());
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     handleSetCompleted(newCompleted);
@@ -145,10 +142,8 @@ const StepperDeskTop: React.FunctionComponent<{
   };
 
   const handleReset = () => {
-    dispatch(reset());
     handleSetActiveStep(0);
     handleSetCompleted({});
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   };
 
   return (
@@ -166,12 +161,19 @@ const StepperDeskTop: React.FunctionComponent<{
         alternativeLabel
         nonLinear
         activeStep={activeStep}
-        sx={{ width: "90%", margin: "auto", marginTop: "25px", marginBottom: "75px" }}
+        sx={{
+          width: "90%",
+          margin: "auto",
+          marginTop: "25px",
+          marginBottom: "75px",
+        }}
       >
         {steps.map((label, index) => (
-          <Step key={label} completed={completed[index]} >
+          <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>
-              <Typography sx={{fontFamily: "Roboto", fontWeight: "bold", }}>{label}</Typography>
+              <Typography sx={{ fontFamily: "Roboto", fontWeight: "bold" }}>
+                {label}
+              </Typography>
             </StepButton>
           </Step>
         ))}

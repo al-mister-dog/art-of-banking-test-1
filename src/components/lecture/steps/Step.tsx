@@ -1,9 +1,7 @@
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
-import { lecture1StateConfig } from "../../../config/initialStateConfig";
 import {
   selectParties,
   setupModule,
-  reset,
 } from "../../../features/lectures/lecturesSlice";
 import { resetTotalCreditData } from "../../../features/auxilliary/auxilliarySlice";
 import { useState, useEffect } from "react";
@@ -11,7 +9,6 @@ import IndexMobile from "../views/mobile/Index";
 import IndexDesktop from "../views/desktop/Index";
 import usePartiesArray from "../helpers/useParties";
 
-const { defaultSetup, creditSetup } = lecture1StateConfig;
 
 const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   text,
@@ -32,7 +29,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
       !party.includes("central")
   );
 
-  const [partiesArray] = usePartiesArray(parties)
+  const [partiesArray] = usePartiesArray(parties);
 
   const partiesRowOne = partiesArray.filter((party) =>
     configPartiesOne.includes(party.id)
@@ -41,7 +38,6 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   const partiesRowTwo = partiesArray.filter((party) =>
     configPartiesTwo.includes(party.id)
   );
-
 
   function selectParty(player: any) {
     setSelected(player.id);
@@ -60,21 +56,9 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   }, []);
 
   useEffect(() => {
-    if (config.state) {
-      dispatch(reset());
-      dispatch(setupModule({ setup: config.state }));
-      dispatch(resetTotalCreditData());
-      return;
-    } else if (config.credit) {
-      dispatch(reset());
-      dispatch(setupModule({ setup: creditSetup }));
-      dispatch(resetTotalCreditData());
-    } else {
-      dispatch(reset());
-      dispatch(setupModule({ setup: defaultSetup }));
-      dispatch(resetTotalCreditData());
-    }
-  }, [config]);
+    dispatch(setupModule({ setup: config.state }));
+    dispatch(resetTotalCreditData());
+  }, [config, dispatch]);
 
   if (width > breakpoint) {
     return (
