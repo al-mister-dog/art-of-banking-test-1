@@ -4,7 +4,7 @@ import { RootState } from "../../app/store";
 import { lookup } from "./program/lookupTables";
 import { IBank } from "./program/types";
 import { setupState } from "./initialState";
-import { newSetupState, createBankingSystem } from "./helpers";
+import { createBankingSystem } from "./helpers";
 import { CentralBankService, CustomerService } from "./program/services";
 import { BankService } from "./program/services";
 import { PaymentMethods } from "./program/methods";
@@ -39,7 +39,7 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
-    creditBankAccount: (state, {payload}) => {
+    creditBankAccount: (state, { payload }) => {
       const { p1, p2, amt } = payload;
       BankService.creditAccount(lookup[p1.id], lookup[p2.id], amt);
       PaymentMethods.clearDues(lookup[p1.id], lookup[p2.id]);
@@ -47,7 +47,7 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
-    debitBankAccount: (state, {payload}) => {
+    debitBankAccount: (state, { payload }) => {
       const { p1, p2, amt } = payload;
       BankService.debitAccount(lookup[p1.id], lookup[p2.id], amt);
       PaymentMethods.clearDues(lookup[p1.id], lookup[p2.id]);
@@ -55,14 +55,14 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
-    payBank: (state, {payload}) => {
+    payBank: (state, { payload }) => {
       const { p1, p2 } = payload;
       BankService.payBank(lookup[p1.id], lookup[p2.id]);
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
-    createLoan: (state, {payload}) => {
-      const {p1, p2, amt} = payload;
+    createLoan: (state, { payload }) => {
+      const { p1, p2, amt } = payload;
       CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
@@ -85,7 +85,7 @@ export const lecturesSlice = createSlice({
     chNetDues: (state) => {
       for (const key in lookup) {
         if (key.includes("bank")) {
-          BankService.netDues(lookup[key])
+          BankService.netDues(lookup[key]);
         }
       }
       lecturesSlice.caseReducers.updateState(state);
@@ -97,23 +97,30 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateLookup(state);
     },
     updateState: (state) => {
-      for (const key in state) {
+      for (const key in lookup) {
         state[key] = JSON.parse(JSON.stringify(lookup[key]));
       }
     },
     updateLookup: (state) => {
+      lecturesSlice.caseReducers.clearLookup();
       for (const key in state) {
         lookup[key] = JSON.parse(JSON.stringify(state[key]));
       }
     },
-    setupModule: (state, { payload }) => {      
+    clearLookup: () => {
       for (const key in lookup) {
-        delete lookup[key]
+        delete lookup[key];
+      }
+    },
+    setupModule: (state, { payload }) => {
+      for (const key in lookup) {
+        delete lookup[key];
       }
       createBankingSystem(payload.setup);
-      for (const key in newSetupState) {
-        state[key] = JSON.parse(JSON.stringify(newSetupState[key]));
+      for (const key in lookup) {
+        state[key] = JSON.parse(JSON.stringify(lookup[key]));
       }
+      console.log(Object.keys(lookup))
     },
   },
 });

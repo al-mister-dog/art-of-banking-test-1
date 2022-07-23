@@ -92,23 +92,15 @@ function createCentralBank(id: string = "centralbank", reserves = 1000) {
   return newBank;
 }
 
-interface StateObject {
-  [index: string]: IBank;
-}
-
-export const newSetupState: StateObject = {};
-
 export function createBankingSystem(config: { system: any; parties: any }) {
   System.setSystem(config.system);
   
   config.parties.forEach((bank: BankConfig) => {
     const newBank = createBank(bank.bank, bank.reserves);
     lookup[newBank.id] = newBank;
-    newSetupState[newBank.id] = newBank;
     bank.customers?.forEach((customer) => {
       const newCustomer = createCustomer(customer.customer, customer.reserves);
       lookup[newCustomer.id] = newCustomer;
-      newSetupState[newCustomer.id] = newCustomer;
       CustomerService.openAccount(newCustomer, newBank);
       customer.initialDeposit &&
         CustomerService.deposit(newCustomer, newBank, customer.initialDeposit);
@@ -118,7 +110,6 @@ export function createBankingSystem(config: { system: any; parties: any }) {
   if (config.system === "centralbank") {
     const centralbank = createCentralBank();
     lookup[centralbank.id] = centralbank;
-    newSetupState[centralbank.id] = centralbank;
     config.parties.forEach((bank: BankConfig) => {
       CentralBankService.openAccount(
         lookup[bank.bank],
@@ -131,8 +122,6 @@ export function createBankingSystem(config: { system: any; parties: any }) {
   if (config.system === "clearinghouse") {
     const clearinghouse = createClearinghouse();
     lookup[clearinghouse.id] = clearinghouse;
-    newSetupState[clearinghouse.id] = clearinghouse;
-
     const bankKeys = Object.keys(lookup).filter((key) => key.includes("bank"));
     for (let i = 0; i < bankKeys.length; i++) {
       ClearingHouseService.openAccount(
