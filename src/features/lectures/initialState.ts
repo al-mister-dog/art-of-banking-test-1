@@ -104,4 +104,4 @@ function createBankingSystem(config: { system: any; parties: any }) {
 const defaultSetup = lecture1StateConfig.defaultSetup
 createBankingSystem(defaultSetup)
 const setupState = JSON.parse(JSON.stringify(state))
-export { setupState };
+export { setupState, defaultSetup };
