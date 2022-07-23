@@ -11,7 +11,7 @@ import {
 } from "../../../../../features/lectures/lecturesSlice";
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
 import { useEffect, useState } from "react";
-import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
+import ChoosePlayer from "../dialogs/ChoosePartyDialog";
 import CardButton from "../../../ui/CardButton";
 import Amount from "./Amount";
 import { Box, Typography } from "@mui/material";

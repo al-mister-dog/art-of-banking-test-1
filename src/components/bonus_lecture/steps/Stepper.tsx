@@ -24,6 +24,8 @@ import RechangeOne from "./4-rechange1";
 import RechangeTwo from "./5-rechange2";
 import Playground from "./6-playground";
 import { colors } from "../../../config/colorPalette";
+import StepperHeader from "../../shared_ui/StepperHeader";
+import StepperFooter from "../../shared_ui/StepperFooter";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -56,7 +58,6 @@ const StepperIndex: React.FunctionComponent = () => {
   const records = useAppSelector(selectRecords);
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
-    
     const record1 = "salviati imports 1 marc worth of goods from me";
     const record2 = "me draws bill on you for 1 marc";
     const record3 = "you remits bill to tomasso";
@@ -93,7 +94,12 @@ const StepperIndex: React.FunctionComponent = () => {
       newCompleted[3] = true;
       handleSetCompleted(newCompleted);
     }
-    if (step1Complete() && step2Complete() && step3Complete() && step4Complete()) {
+    if (
+      step1Complete() &&
+      step2Complete() &&
+      step3Complete() &&
+      step4Complete()
+    ) {
       const newCompleted = completed;
       newCompleted[4] = true;
       handleSetCompleted(newCompleted);
@@ -221,19 +227,17 @@ const StepperDeskTop: React.FunctionComponent<{
         paddingTop: "20px",
       }}
     >
-      <Stepper
-        nonLinear
-        activeStep={activeStep}
-        sx={{ width: "90%", margin: "auto" }}
-      >
+      <StepperHeader activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
+              <Typography sx={{ fontFamily: "Roboto", fontWeight: "bold" }}>
+                {label}
+              </Typography>
             </StepButton>
           </Step>
         ))}
-      </Stepper>
+      </StepperHeader>
       <div>
         {allStepsCompleted() ? (
           <>
@@ -248,16 +252,7 @@ const StepperDeskTop: React.FunctionComponent<{
         ) : (
           <>
             <>{getStepContent(activeStep)}</>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                pt: 2,
-                width: "90%",
-                margin: "auto",
-                paddingBottom: "10px",
-              }}
-            >
+            <StepperFooter>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
@@ -285,7 +280,7 @@ const StepperDeskTop: React.FunctionComponent<{
                       : "Complete Step"}
                   </Button>
                 ))}
-            </Box>
+            </StepperFooter>
           </>
         )}
       </div>

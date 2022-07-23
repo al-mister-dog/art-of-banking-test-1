@@ -9,8 +9,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
   return (
     <Card
       style={{
-        borderRadius: 12,
-        border: "5px solid black",
+        borderRadius: 3,
         minWidth: 300,
         textAlign: "center",
         margin: 25,

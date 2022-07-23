@@ -1,7 +1,7 @@
 import Operations from "./Accordions";
 import Balances from "./Balances";
 
-import { Tabs, Tab, Box, styled } from "@mui/material";
+import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
 
@@ -11,9 +11,6 @@ interface TabPanelProps {
   value: number;
 }
 
-const StyledTab = styled(Tab)(() => ({
-  fontWeight: "bold"
-}))
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 

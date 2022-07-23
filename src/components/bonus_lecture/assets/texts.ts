@@ -1,5 +1,6 @@
 export const textsIntro = {
-  title: `The Systematic Enrichment of Exchange Bankers`,
+  lectureTitle: "Renaissance Banking",
+  title: `The Enrichment of Exchange Bankers`,
   paragraphs: [
     `This module explains how the exchange bankers of the 16th century 
     were able to make profits from bills of exchange. A bill of exchange 

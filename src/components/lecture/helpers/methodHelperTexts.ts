@@ -1,21 +1,8 @@
-import {
-  Dialog,
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  ListItemText,
-} from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import { blue } from "@mui/material/colors";
-
 interface Method {
   [index: string]: any;
 }
 
-const methods: Method = {
+const methodHelperTexts: Method = {
   "Receive Bank Payment": {
     moreThanOne(arr: any[]) {
       return arr.length > 0
@@ -77,54 +64,4 @@ const methods: Method = {
   },
 };
 
-export interface ChoosePlayerProps {
-  open: boolean;
-  setSelectedValuePlayer: (v: any) => void;
-  onClose: () => void;
-  selectedBankers: any[];
-  method: string;
-}
-
-export default function ChoosePlayer(props: ChoosePlayerProps) {
-  const { onClose, setSelectedValuePlayer, open, selectedBankers, method } =
-    props;
-
-  
-  const handleClose = () => {
-    onClose();
-  };
-
-  const handleListItemClick = (value: any) => {
-    setSelectedValuePlayer(value);
-    onClose();
-  };
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-      <Box sx={{ padding: "20px" }}>
-        <Typography variant="h6" sx={{ marginBottom: 0 }}>
-          {method}
-        </Typography>
-        <Typography variant="subtitle1">
-          {methods[method].moreThanOne(selectedBankers)}
-        </Typography>
-        <List sx={{ pt: 0 }}>
-          {selectedBankers.map((banker, i) => (
-            <ListItem
-              button
-              onClick={() => handleListItemClick(banker)}
-              key={i}
-            >
-              <ListItemAvatar>
-                <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
-                  <PersonIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={banker.id} />
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-    </Dialog>
-  );
-}
+export default methodHelperTexts

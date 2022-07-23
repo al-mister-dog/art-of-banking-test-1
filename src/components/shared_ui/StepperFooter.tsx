@@ -17,3 +17,5 @@ const StepperFooter = ({ children }: { children: React.ReactNode }) => {
     </Box>
   );
 };
+
+export default StepperFooter

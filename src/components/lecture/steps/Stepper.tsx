@@ -9,10 +9,12 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import StepperFooter from "../../shared_ui/StepperFooter";
 import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { colors } from "../../../config/colorPalette";
+import StepperHeader from "../../shared_ui/StepperHeader";
 
 const StepperIndex: React.FunctionComponent<{
   getStepContent: (step: number) => JSX.Element | "Unknown step";
@@ -157,17 +159,7 @@ const StepperDeskTop: React.FunctionComponent<{
         paddingTop: "20px",
       }}
     >
-      <Stepper
-        alternativeLabel
-        nonLinear
-        activeStep={activeStep}
-        sx={{
-          width: "90%",
-          margin: "auto",
-          marginTop: "25px",
-          marginBottom: "75px",
-        }}
-      >
+      <StepperHeader activeStep={activeStep}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
             <StepButton color="inherit" onClick={handleStep(index)}>
@@ -177,7 +169,7 @@ const StepperDeskTop: React.FunctionComponent<{
             </StepButton>
           </Step>
         ))}
-      </Stepper>
+      </StepperHeader>
       <div>
         {allStepsCompleted() ? (
           <>
@@ -192,16 +184,7 @@ const StepperDeskTop: React.FunctionComponent<{
         ) : (
           <>
             <>{getStepContent(activeStep)}</>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                pt: 2,
-                width: "90%",
-                margin: "auto",
-                paddingBottom: "10px",
-              }}
-            >
+            <StepperFooter>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
@@ -229,7 +212,7 @@ const StepperDeskTop: React.FunctionComponent<{
                       : "Complete Step"}
                   </Button>
                 ))}
-            </Box>
+            </StepperFooter>
           </>
         )}
       </div>

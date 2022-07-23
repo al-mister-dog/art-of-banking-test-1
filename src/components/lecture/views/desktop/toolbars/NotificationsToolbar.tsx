@@ -1,9 +1,7 @@
 //TODO
 //credit expansion graph
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import {
-  selectParties,
-} from "../../../../../features/lectures/lecturesSlice";
+import { selectParties } from "../../../../../features/lectures/lecturesSlice";
 import {
   selectAuxilliary,
   setReservePercentage,
@@ -28,12 +26,8 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
 }) => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const { reservePercentage, totalCreditData, totalCredit } = useAppSelector(selectAuxilliary);
-
-  useEffect(() => {
-    dispatch(setTotalCreditData({parties}))
-  }, [parties]);
-
+  const { reservePercentage, totalCreditData, totalCredit } =
+    useAppSelector(selectAuxilliary);
 
   function handleChangeReserveRequirement(
     event: Event,
@@ -41,6 +35,11 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   ) {
     dispatch(setReservePercentage({ percentage: newValue }));
   }
+
+  useEffect(() => {
+    dispatch(setTotalCreditData({ parties }));
+  }, [parties]);
+  
   return (
     <Box
       sx={{
@@ -49,7 +48,6 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
         alignItems: "flex-start",
       }}
     >
-
       {config.credit && (
         <Box
           sx={{
@@ -69,15 +67,20 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis style={{fontSize: "0.6rem"}}/>
+            <YAxis style={{ fontSize: "0.6rem" }} />
             <Tooltip />
-            <Line type="monotone" name="+ credit" dataKey="credit" stroke={colors.balanceSheetsColor} />
+            <Line
+              type="monotone"
+              name="+ credit"
+              dataKey="credit"
+              stroke={colors.balanceSheetsColor}
+            />
             <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
-            <Legend iconType="line"/>
+            <Legend iconType="line" />
           </LineChart>
         </Box>
       )}
-            {config.constraint && (
+      {config.constraint && (
         <Box width={300}>
           <Typography>Reserve Requirement: %{reservePercentage}</Typography>
           <Slider

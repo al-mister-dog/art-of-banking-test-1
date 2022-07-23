@@ -11,7 +11,7 @@ import { Accordions, DuesDispatches } from "../types";
 import { IBank } from "../../../../../features/lectures/program/types";
 import { useEffect, useState } from "react";
 import { netAmount } from "../../../helpers/utils";
-import ChoosePlayer from "../dialogs/ChoosePlayerDialog";
+import ChoosePlayer from "../dialogs/ChoosePartyDialog";
 import { colors } from "../../../../../config/colorPalette";
 import { deCamelize } from "../../../helpers/parsers";
 import useParties from "../../../helpers/useParties";

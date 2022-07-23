@@ -11,12 +11,6 @@ const BoardContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("tablet")]: {
     flexDirection: "row",
   },
-  // [theme.breakpoints.up("laptop")]: {
-  //   width: "40%",
-  // },
-  // [theme.breakpoints.up("desktop")]: {
-  //   width: "35%",
-  // },
 }));
 
 const BalanceSheetList = styled("div")(({ theme }) => ({
