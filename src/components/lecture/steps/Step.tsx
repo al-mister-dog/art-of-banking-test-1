@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../../app/hooks";
-import { setupModule } from "../../../features/lectures/lecturesSlice";
+import { setState } from "../../../features/lectures/lecturesSlice";
 import { resetTotalCreditData } from "../../../features/auxilliary/auxilliarySlice";
 import { useState, useEffect } from "react";
 import IndexMobile from "../views/mobile/Index";
@@ -22,7 +22,7 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
   }, []);
 
   useEffect(() => {
-    dispatch(setupModule({ setup: config.state }));
+    dispatch(setState({ setup: config.state }));
     dispatch(resetTotalCreditData());
   }, [config]);
 

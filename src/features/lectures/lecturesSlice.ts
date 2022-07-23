@@ -67,8 +67,6 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.updateState(state);
       lecturesSlice.caseReducers.updateLookup(state);
     },
-    // getLoan: () => {},
-    // extendLoan: () => {},
     netDues: (state, { payload }) => {
       const { p1 } = payload;
       BankService.netDues(lookup[p1.id]);
@@ -101,6 +99,13 @@ export const lecturesSlice = createSlice({
         state[key] = JSON.parse(JSON.stringify(lookup[key]));
       }
     },
+    setState: (state, { payload }) => {
+      lecturesSlice.caseReducers.clearLookup()
+      createBankingSystem(payload.setup);
+      for (const key in lookup) {
+        state[key] = JSON.parse(JSON.stringify(lookup[key]));
+      }
+    },
     updateLookup: (state) => {
       lecturesSlice.caseReducers.clearLookup();
       for (const key in state) {
@@ -111,16 +116,6 @@ export const lecturesSlice = createSlice({
       for (const key in lookup) {
         delete lookup[key];
       }
-    },
-    setupModule: (state, { payload }) => {
-      for (const key in lookup) {
-        delete lookup[key];
-      }
-      createBankingSystem(payload.setup);
-      for (const key in lookup) {
-        state[key] = JSON.parse(JSON.stringify(lookup[key]));
-      }
-      console.log(Object.keys(lookup))
     },
   },
 });
@@ -137,7 +132,7 @@ export const {
   netCorrespondingDues,
   settleDues,
   chNetDues,
-  setupModule,
+  setState,
 } = lecturesSlice.actions;
 
 export const selectParties = (state: RootState) => state.partiesLectures;
