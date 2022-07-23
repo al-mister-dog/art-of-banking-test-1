@@ -54,11 +54,11 @@ const Step: React.FunctionComponent<{ text: any; config: any }> = ({
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
-
+  
   useEffect(() => {
     dispatch(setupModule({ setup: config.state }));
     dispatch(resetTotalCreditData());
-  }, [config, dispatch]);
+  }, [config]);
 
   if (width > breakpoint) {
     return (
