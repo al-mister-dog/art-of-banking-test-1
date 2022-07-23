@@ -9,25 +9,40 @@ import { Box } from "@mui/material";
 import Player from "./sidepanel/Player";
 import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
-// import Refresh from "./toolbars/RefreshToolbar";
-// import { useState } from "react";
+import usePartiesArray from "../../helpers/useParties";
+import { useState } from "react";
 
 const Index: React.FunctionComponent<{
   config?: any;
   texts: any;
-  partiesRowOne: any;
-  partiesRowTwo: any;
-  selected: string;
-  selectParty: (v: any) => void;
-}> = ({
-  config,
-  texts,
-  partiesRowOne,
-  partiesRowTwo,
-  selected,
-  selectParty,
-}) => {
+}> = ({ config, texts }) => {
   const parties = useAppSelector(selectParties);
+  const [selected, setSelected] = useState<string>(
+    config.state.system === "centralbank" ? "bank1" : "customer1"
+  );
+
+  const configPartiesOne = config.parties.filter(
+    (party: string) => party.includes("central") || party.includes("customer")
+  );
+  const configPartiesTwo = config.parties.filter(
+    (party: string) =>
+      (party.includes("bank") || party.includes("clearinghouse")) &&
+      !party.includes("central")
+  );
+
+  const [partiesArray] = usePartiesArray(parties);
+
+  const partiesRowOne = partiesArray.filter((party) =>
+    configPartiesOne.includes(party.id)
+  );
+
+  const partiesRowTwo = partiesArray.filter((party) =>
+    configPartiesTwo.includes(party.id)
+  );
+
+  function selectParty(player: any) {
+    setSelected(player.id);
+  }
   return (
     <>
       <Introduction texts={texts} />
@@ -41,7 +56,6 @@ const Index: React.FunctionComponent<{
           borderRadius: "5px",
         }}
       >
-        
         <Box>
           <Board
             config={config}

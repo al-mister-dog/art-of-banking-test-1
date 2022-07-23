@@ -5,9 +5,9 @@ import { colors } from "../../../../config/colorPalette";
 const toolbarTextColor = colors.balanceSheetsTextColor
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
-  bank: any;
+  party: any;
   selectParty: (b: any) => void;
-}> = ({ config, bank, selectParty }) => {
+}> = ({ config, party, selectParty }) => {
   return (
     <Card
       style={{
@@ -26,7 +26,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
         },
         cursor: "pointer",
       }}
-      onClick={() => selectParty(bank)}
+      onClick={() => selectParty(party)}
     >
       <CardContent>
         <Typography
@@ -36,7 +36,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
             color: toolbarTextColor,
           }}
         >
-          {capitalize(bank.id)}
+          {capitalize(party.id)}
         </Typography>
         
       </CardContent>
@@ -44,13 +44,13 @@ const BalanceSheetTrader: React.FunctionComponent<{
         <SideBalance
           config={config}
           side="assets"
-          instruments={bank.assets}
-          reserves={bank.reserves}
+          instruments={party.assets}
+          reserves={party.reserves}
         />
         <SideBalance
           config={config}
           side="liabilities"
-          instruments={bank.liabilities}
+          instruments={party.liabilities}
         />
       </Box>
     </Card>

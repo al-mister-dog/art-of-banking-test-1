@@ -4,7 +4,7 @@ import BalanceSheet from "../../ui/mobile/BalanceSheet";
 const BoardContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "space-around",
-  
+
   [theme.breakpoints.up("mobile")]: {
     flexDirection: "column",
   },
@@ -44,30 +44,26 @@ const Board: React.FunctionComponent<{
   partiesRowOne: any;
   partiesRowTwo: any;
   selectParty: (a: any) => void;
-}> = ({ config, partiesRowOne,
-  partiesRowTwo, selectParty }) => {
+}> = ({ config, partiesRowOne, partiesRowTwo, selectParty }) => {
   return (
     <>
-      <BoardContainer
-      >
-        <BalanceSheetList
-        >
-          {partiesRowTwo.map((player: any, i: any) => (
+      <BoardContainer>
+        <BalanceSheetList>
+          {partiesRowTwo.map((party: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}
-              bank={player}
+              party={party}
               selectParty={selectParty}
             />
           ))}
         </BalanceSheetList>
-        <BalanceSheetList
-        >
-          {partiesRowOne.map((player: any, i: any) => (
+        <BalanceSheetList>
+          {partiesRowOne.map((party: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}
-              bank={player}
+              party={party}
               selectParty={selectParty}
             />
           ))}

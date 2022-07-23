@@ -10,21 +10,21 @@ const Board: React.FunctionComponent<{
     <>
       <div style={{ display: "flex", height: "60vh", justifyContent: "space-around" }}>
         <div style={{ overflowX: "hidden" }}>
-          {partiesRowTwo.map((player: any, i: any) => (
+          {partiesRowTwo.map((party: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}
-              bank={player}
+              party={party}
               selectParty={selectParty}
             />
           ))}
         </div>
         <div style={{ overflowX: "hidden" }}>
-          {partiesRowOne.map((player: any, i: any) => (
+          {partiesRowOne.map((party: any, i: any) => (
             <BalanceSheet
               key={i}
               config={config}
-              bank={player}
+              party={party}
               selectParty={selectParty}
             />
           ))}

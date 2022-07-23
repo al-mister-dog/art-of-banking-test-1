@@ -16,9 +16,9 @@ const BalanceSheetCard = styled(Card)(({theme}) => ({
 }))
 const BalanceSheetTrader: React.FunctionComponent<{
   config?: any;
-  bank: any;
+  party: any;
   selectParty: (b: any) => void;
-}> = ({ config, bank, selectParty }) => {
+}> = ({ config, party, selectParty }) => {
   return (
     <BalanceSheetCard
       sx={{        
@@ -30,7 +30,7 @@ const BalanceSheetTrader: React.FunctionComponent<{
         },
         cursor: "pointer",
       }}
-      onClick={() => selectParty(bank)}
+      onClick={() => selectParty(party)}
     >
       <CardContent sx={{ padding: 1 }}>
         <Typography
@@ -40,20 +40,20 @@ const BalanceSheetTrader: React.FunctionComponent<{
             color: toolbarTextColor,
           }}
         >
-          {capitalize(bank.id)}
+          {capitalize(party.id)}
         </Typography>
       </CardContent>
       <Box display={"flex"} sx={{ borderTop: `1px solid ${toolbarTextColor}` }}>
         <SideBalance
           config={config}
           side="assets"
-          instruments={bank.assets}
-          reserves={bank.reserves}
+          instruments={party.assets}
+          reserves={party.reserves}
         />
         <SideBalance
           config={config}
           side="liabilities"
-          instruments={bank.liabilities}
+          instruments={party.liabilities}
         />
       </Box>
     </BalanceSheetCard>
