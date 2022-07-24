@@ -2,12 +2,11 @@ import { useAppSelector } from "../../../../app/hooks";
 import {
   selectParties,
 } from "../../../../features/lectures/lecturesSlice";
-
+import { useState } from "react";
 import { Box, styled } from "@mui/material";
 import SelectedParty from "./sidepanel/SelectedParty";
 import Board from "../../Board";
 import Notifications from "./toolbars/NotificationsToolbar";
-import { useState } from "react";
 import usePartyRows from "../../helpers/usePartyRows";
 import Introduction from "../../../shared_ui/Introduction";
 
@@ -17,6 +16,7 @@ const InterfaceContainer = styled("div")(({ theme }) => ({
   marginBottom: "20px",
   
 }));
+
 const BoardContainer = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("mobile")]: {
     width: "50%",
@@ -31,6 +31,7 @@ const BoardContainer = styled("div")(({ theme }) => ({
     width: "65%",
   },
 }));
+
 const SidePanelContainer = styled("div")(({ theme }) => ({
   margin: "auto",
   [theme.breakpoints.up("mobile")]: {
