@@ -1,14 +1,9 @@
+import { useAppDispatch } from "../../../app/hooks";
+import { toggleTextExpanded } from "../../../features/ui/uiSlice";
 import * as React from "react";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
-import {
-  Box,
-  Stepper,
-  Step,
-  StepButton,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Box, Step, StepButton, Button, Typography } from "@mui/material";
 import StepperFooter from "../../shared_ui/StepperFooter";
 import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
@@ -20,6 +15,7 @@ const StepperIndex: React.FunctionComponent<{
   getStepContent: (step: number) => JSX.Element | "Unknown step";
   steps: string[];
 }> = ({ getStepContent, steps }) => {
+  const dispatch = useAppDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState<{
     [k: number]: boolean;
@@ -27,6 +23,7 @@ const StepperIndex: React.FunctionComponent<{
 
   function scrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    dispatch(toggleTextExpanded({textExpanded: false}))
   }
 
   function handleSetActiveStep(step: number) {

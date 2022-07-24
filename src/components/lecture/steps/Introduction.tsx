@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import Introduction from "../ui/Introduction"
+
 import Box from "@mui/material/Box"
+import Introduction from "../../shared_ui/Introduction";
 
 const Intro = ({text}: {text: any}) => {
   const [width, setWidth] = useState(window.innerWidth);

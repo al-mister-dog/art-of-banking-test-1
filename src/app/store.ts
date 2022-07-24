@@ -3,12 +3,14 @@ import  playersReducer from '../features/players/playersSlice';
 
 import lecturesReducer from '../features/lectures/lecturesSlice'
 import auxilliaryReducer from "../features/auxilliary/auxilliarySlice"
+import uiReducer from "../features/ui/uiSlice"
 
 export const store = configureStore({
   reducer: {
      players:  playersReducer,
      partiesLectures: lecturesReducer,
-     auxilliary: auxilliaryReducer
+     auxilliary: auxilliaryReducer,
+     ui: uiReducer,
   },
 });
 

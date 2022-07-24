@@ -1,4 +1,4 @@
-import Operations from "./Accordions";
+import Accordions from "./Accordions";
 import Balances from "./Balances";
 
 import { Tabs, Tab, Box } from "@mui/material";
@@ -47,9 +47,9 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
 
   return (
     <>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider", marginBottom: "25px" }}>
         <Tabs
-          centered
+          orientation="vertical"
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
@@ -69,7 +69,7 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
       </Box>
 
       <TabPanel value={value} index={0}>
-        <Operations config={config} selected={selected} />
+        <Accordions config={config} selected={selected} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Balances selected={selected} />

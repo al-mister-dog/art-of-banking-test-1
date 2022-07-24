@@ -1,6 +1,7 @@
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { selectUI, toggleTextExpanded } from "../../../features/ui/uiSlice";
 import Title from "./Title";
 import Text from "./Text";
-import { useState } from "react";
 import { Button } from "@mui/material";
 
 interface Texts {
@@ -9,9 +10,10 @@ interface Texts {
   assignment: string;
 }
 export default function Introduction({ texts }: { texts: Texts }) {
-  const [expanded, setExpanded] = useState<boolean>(false);
-  function toggleText() {
-    setExpanded(!expanded);
+  const dispatch = useAppDispatch();
+  const { textExpanded } = useAppSelector(selectUI);
+  function toggleText(bool: boolean) {
+    dispatch(toggleTextExpanded({ textExpanded: bool }));
   }
   return (
     <div
@@ -20,16 +22,16 @@ export default function Introduction({ texts }: { texts: Texts }) {
       }}
     >
       <Title>{texts.title}</Title>
-      {expanded ? (
+      {textExpanded ? (
         texts.paragraphs.map((paragraph, i) => <Text key={i}>{paragraph}</Text>)
       ) : (
         <Text>{texts.paragraphs[0]}</Text>
       )}
-      {expanded && <Text bold={true}>{texts.assignment}</Text>}
-      {expanded ? (
-        <Button onClick={toggleText}>...Close</Button>
+      {textExpanded && <Text bold={true}>{texts.assignment}</Text>}
+      {textExpanded ? (
+        <Button onClick={() => toggleText(false)}>...Close</Button>
       ) : (
-        <Button onClick={toggleText}>...Continue reading</Button>
+        <Button onClick={() => toggleText(true)}>...Continue reading</Button>
       )}
     </div>
   );
