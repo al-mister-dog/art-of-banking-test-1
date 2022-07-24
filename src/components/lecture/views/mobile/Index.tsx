@@ -1,15 +1,12 @@
 import { useAppSelector } from "../../../../app/hooks";
-import {
-  selectParties,
-  // createNewCustomer,
-} from "../../../../features/lectures/lecturesSlice";
+import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import Introduction from "../../ui/Introduction";
-import { Box } from "@mui/material";
-import Player from "./sidepanel/Player";
-import Board from "./Board";
+import SelectedParty from "./sidepanel/SelectedParty";
+import Board from "../../Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import { useState } from "react";
 import usePartyRows from "../../helpers/usePartyRows";
+import { Box } from "@mui/material";
 
 const Index: React.FunctionComponent<{
   config?: any;
@@ -26,28 +23,14 @@ const Index: React.FunctionComponent<{
   return (
     <>
       <Introduction texts={texts} />
+      <Board
+        config={config}
+        partiesRowOne={partiesRowOne}
+        partiesRowTwo={partiesRowTwo}
+        selectParty={selectParty}
+      />
+      {/* <SelectedParty config={config} selected={parties[selected]} /> */}
       <Notifications config={config} />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          // margin: "1px",
-          // border: "1px solid #BDBDBD",
-          borderRadius: "5px",
-        }}
-      >
-        <Box>
-          <Board
-            config={config}
-            partiesRowOne={partiesRowOne}
-            partiesRowTwo={partiesRowTwo}
-            selectParty={selectParty}
-          />
-        </Box>
-        <Box>
-          <Player config={config} selected={parties[selected]} />
-        </Box>
-      </Box>
     </>
   );
 };

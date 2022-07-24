@@ -4,34 +4,32 @@ import { capitalize } from "../../helpers/parsers";
 import { colors } from "../../../../config/colorPalette";
 const toolbarTextColor = colors.balanceSheetsTextColor;
 
-const BalanceSheetCard = styled(Card)(({theme}) => ({
+const BalanceSheetCard = styled(Card)(({ theme }) => ({
   flex: "0 0 auto",
-  minWidth: "30vw",
   borderRadius: 5,
   textAlign: "center",
-  margin: "5px",
+  // minWidth: "30vw",
+  // margin: "5px",
+  minWidth: 300, margin: 25,
   backgroundColor: colors.balanceSheetsColor,
-  [theme.breakpoints.up('tablet')]: {minWidth: "40vw"},
-  [theme.breakpoints.down('smallTablet')]: {minWidth: "85vw"}
-}))
-const BalanceSheetTrader: React.FunctionComponent<{
+  "&:hover": {
+    opacity: [0.9, 0.8, 0.7],
+  },
+  "&:active": {
+    border: "1px solid blue",
+  },
+  cursor: "pointer",
+  
+  [theme.breakpoints.down("laptop")]: { minWidth: "40vw" },
+  [theme.breakpoints.down("smallTablet")]: { minWidth: "85vw" },
+}));
+const BalanceSheet: React.FunctionComponent<{
   config?: any;
   party: any;
   selectParty: (b: any) => void;
 }> = ({ config, party, selectParty }) => {
   return (
-    <BalanceSheetCard
-      sx={{        
-        "&:hover": {
-          opacity: [0.9, 0.8, 0.7],
-        },
-        "&:active": {
-          border: "1px solid blue",
-        },
-        cursor: "pointer",
-      }}
-      onClick={() => selectParty(party)}
-    >
+    <BalanceSheetCard onClick={() => selectParty(party)}>
       <CardContent sx={{ padding: 1 }}>
         <Typography
           style={{
@@ -60,4 +58,4 @@ const BalanceSheetTrader: React.FunctionComponent<{
   );
 };
 
-export default BalanceSheetTrader;
+export default BalanceSheet;

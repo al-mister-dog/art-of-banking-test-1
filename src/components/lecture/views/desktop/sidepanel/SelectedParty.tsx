@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import PlayerTabs from "./PlayerTabs";
+import PlayerTabs from "./SelectedPartyTabs";
 import { deCamelize } from "../../../helpers/parsers";
 import {colors} from "../../../../../config/colorPalette"
 

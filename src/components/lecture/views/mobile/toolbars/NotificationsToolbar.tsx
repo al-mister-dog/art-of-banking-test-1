@@ -8,7 +8,6 @@ import {
   setTotalCreditData,
 } from "../../../../../features/auxilliary/auxilliarySlice";
 import { Box, Slider, Typography } from "@mui/material";
-
 import { useEffect } from "react";
 import {
   LineChart,
@@ -18,8 +17,10 @@ import {
   Line,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
+import { ContentType } from "recharts/types/component/DefaultLegendContent";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -43,13 +44,18 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       {config.constraint && (
-        <Box sx={{ width: "250px" }}>
-          <Typography variant="caption">
+        <Box
+          sx={{
+            width: "250px",
+          }}
+        >
+          <Typography variant="caption" sx={{fontFamily: "Roboto", fontWeight: "bold"}}>
             Reserve Requirement: %{reservePercentage}
           </Typography>
           <Slider
@@ -66,30 +72,42 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            height: "22vh",
           }}
         >
-          <Typography variant="caption" style={{ margin: 0, padding: 0 }}>
+          <Typography variant="caption" style={{ margin: 0, padding: 0, fontFamily: "Roboto", fontWeight: "bold" }}>
             Total System Credit: ${totalCredit}
           </Typography>
-          <LineChart
-            width={250}
-            height={100}
-            data={totalCreditData}
-            margin={{ bottom: -10 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis style={{ fontSize: "0.5rem" }} />
-            <Tooltip />
-            <Line
-              type="monotone"
-              name="+ credit"
-              dataKey="credit"
-              stroke={colors.balanceSheetsColor}
-            />
-            <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
-            <Legend iconType="line"/>
-          </LineChart>
+          <ResponsiveContainer width={300} height="100%">
+            <LineChart
+              data={totalCreditData}
+              margin={{ top: 10, right: 15, left: -35, bottom: -20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis style={{ fontSize: "0.5rem" }} />
+              <Tooltip />
+              <Line
+                type="monotone"
+                name="+ credit"
+                dataKey="credit"
+                stroke={colors.balanceSheetsColor}
+              />
+              <Line
+                type="monotone"
+                dataKey="reserves"
+                stroke={colors.darkMain}
+              />
+              <Legend
+                iconType="line"
+                verticalAlign="top"
+                wrapperStyle={{
+                  paddingBottom: "10px",
+                  paddingLeft: "30px",
+                }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </Box>
       )}
     </Box>

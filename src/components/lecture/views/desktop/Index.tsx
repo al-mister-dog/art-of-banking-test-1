@@ -1,13 +1,11 @@
 import { useAppSelector } from "../../../../app/hooks";
 import {
   selectParties,
-  // createNewCustomer,
 } from "../../../../features/lectures/lecturesSlice";
 import Introduction from "../../ui/Introduction";
-
 import { Box, styled } from "@mui/material";
-import Player from "./sidepanel/Player";
-import Board from "./Board";
+import SelectedParty from "./sidepanel/SelectedParty";
+import Board from "../../Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import { useState } from "react";
 import usePartyRows from "../../helpers/usePartyRows";
@@ -15,9 +13,6 @@ import usePartyRows from "../../helpers/usePartyRows";
 const InterfaceContainer = styled("div")(({ theme }) => ({
   display: "flex",
   height: "60vh",
-  // margin: "5px",
-  // border: "1px solid #BDBDBD",
-  // borderRadius: "5px",
   marginBottom: "20px",
 }));
 const BoardContainer = styled("div")(({ theme }) => ({
@@ -36,7 +31,6 @@ const BoardContainer = styled("div")(({ theme }) => ({
 }));
 const SidePanelContainer = styled("div")(({ theme }) => ({
   margin: "auto",
-
   [theme.breakpoints.up("mobile")]: {
     width: "50%",
   },
@@ -56,7 +50,7 @@ const Index: React.FunctionComponent<{
   texts: any;
 }> = ({ config, texts }) => {
   const parties = useAppSelector(selectParties);
-  const [partiesRowOne, partiesRowTwo] = usePartyRows(config, parties)
+  const [partiesRowOne, partiesRowTwo] = usePartyRows(config, parties);
   const [selected, setSelected] = useState<string>(
     config.state.system === "centralbank" ? "bank1" : "customer1"
   );
@@ -78,9 +72,6 @@ const Index: React.FunctionComponent<{
       <hr style={{ color: "#bccccd", width: "70%" }} />
       <Box
         sx={{
-          // backgroundColor: "#e2e9e9",
-          // borderTop: "1px solid #bccccd",
-
           marginTop: "50px",
           marginBottom: "50px",
         }}
@@ -94,17 +85,12 @@ const Index: React.FunctionComponent<{
               selectParty={selectParty}
             />
           </BoardContainer>
-
           <SidePanelContainer>
-            <Player config={config} selected={parties[selected]} />
+            <SelectedParty config={config} selected={parties[selected]} />
           </SidePanelContainer>
         </InterfaceContainer>
         <Notifications config={config} />
       </Box>
-      {/* <hr style={{ color: "#bccccd", width: "50%" }} /> */}
-      {/* <Button onClick={() => dispatch(createNewCustomer())}>
-        Create Customer
-      </Button> */}
     </>
   );
 };
