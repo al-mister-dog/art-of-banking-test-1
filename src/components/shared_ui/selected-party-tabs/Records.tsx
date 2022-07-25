@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { colors } from "../../config/colorPalette";
-import { IBank } from "../../features/lectures/program/types";
-import { deCamelize } from "../lecture/helpers/parsers";
+import { colors } from "../../../config/colorPalette";
+import { IBank } from "../../../features/lectures/program/types";
+import { deCamelize } from "../../lecture/helpers/parsers";
 
 const Records = ({ selected }: { selected: IBank }) => {
   return (

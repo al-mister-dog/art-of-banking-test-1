@@ -1,9 +1,8 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Box, Typography } from "@mui/material";
-import { Account } from "../../../../../features/lectures/program/types";
-import { deCamelize } from "../../../helpers/parsers";
-import { useEffect, useState } from "react";
-import { AccountMethods } from "../../../../../features/lectures/program/methods";
+
+import { Account } from "../../../features/lectures/program/types";
+import { deCamelize } from "../../lecture/helpers/parsers";
 
 interface NewAccount {
   id: string;
@@ -79,7 +78,7 @@ const Balances = ({ selected }: { selected: any }) => {
       type: account.type,
       amount: account.amount,
     });
-    console.log(assetsArray)
+    console.log(assetsArray);
   });
 
   let newLiabilitiesArray: Account[] = [];
@@ -142,4 +141,3 @@ const Balances = ({ selected }: { selected: any }) => {
 };
 
 export default Balances;
-
