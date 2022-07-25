@@ -12,7 +12,7 @@ const image = {
 const Page = styled("div")(({ theme }) => ({
   width: "90%",
   margin: "auto",
-  borderRadius: "15px",
+  borderRadius: "5px",
   background: colors.paper,
   padding: "20px",
   [theme.breakpoints.down("tablet")]: {

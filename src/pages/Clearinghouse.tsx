@@ -17,8 +17,8 @@ function getStepContent(step: number) {
       return <StepComponent text={config[4].text} config={config[4]} />;
     case 4:
       return <StepComponent text={config[5].text} config={config[5]} />;
-    // case 5:
-    //   return <Playground />;
+    case 5:
+      return <StepComponent text={config[6].text} config={config[6]} />;
     default:
       return "Unknown step";
   }
@@ -29,7 +29,7 @@ const steps = [
   "Multiple Banks",
   "Correspondent Banking",
   "The Clearing House",
-  // "Playground",
+  "Clearing House Loans",
 ];
 
 export default function Clearinghouse() {

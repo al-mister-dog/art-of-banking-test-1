@@ -150,7 +150,7 @@ const StepperDeskTop: React.FunctionComponent<{
       sx={{
         width: "90%",
         margin: "auto",
-        borderRadius: "15px",
+        borderRadius: "5px",
         background: colors.paper,
         marginTop: "150px",
         paddingTop: "20px",

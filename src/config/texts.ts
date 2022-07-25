@@ -293,7 +293,31 @@ export const clearinghouse = {
   step6: {
     lectureTitle: `Clearing House`,
     title: `Clearing House Loans`,
-    paragraphs: [``],
+    paragraphs: [
+      `The correspondent system of banking is a step forward from the older system of interbank
+      payments, but it could be improved. Obviously it would advantageous 
+      to devise a system where the bank only had to pay the net across all its correspondents, rather
+      than pay bilaterally with every bank in the network. It would be easier if all the banks held 
+      correspondent accounts with only one bank, and use those balances to clear all its payments.`,
+      `In the mid nineteenth century, a group of banks of roughly the same stature set up the New York
+      Clearing House Association, a bank who's reserves where made up of a subscription by every 
+      member bank. Any payment due to or from one bank became a payment due to or from the Clearing
+      House. These payments were made with "Clearing House Certificates" which were bank notes representing
+      the dollar, in cash or gold. Each bank had a deposit account of Clearinghouse Certificates. 
+      At the end of each day, all the banks would meet up at the Clearing House, net their due tos and due froms, 
+      and if they were a debtor party, pay the Clearing House in certificates, or if they were the 
+      creditor party, receive certificates from the Clearing House.`,
+      `Because the money supply in this system is made up entirely of the deposit accounts of the 
+      member banks, total due tos and due froms will always net to zero, and reserves will never 
+      have to move. However this system can break if one member bank ends up systematically becoming a debtor
+      and runs out of certificates in their account. Other members would be reluctant to extend an 
+      overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
+      To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
+      looked at in the next chapter.`,
+    ],
+    assignment: `Below are banks and customers who have done a day of trading and are now ready to net
+    and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
+    Then settle dues and see what happens to the banks' certificate accounts.`,
   },
   step7: {
     lectureTitle: `Clearing House`,

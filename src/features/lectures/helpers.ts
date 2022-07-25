@@ -94,7 +94,7 @@ function createCentralBank(id: string = "centralbank", reserves = 1000) {
 
 export function createBankingSystem(config: { system: any; parties: any }) {
   System.setSystem(config.system);
-  
+
   config.parties.forEach((bank: BankConfig) => {
     const newBank = createBank(bank.bank, bank.reserves);
     lookup[newBank.id] = newBank;
@@ -116,18 +116,20 @@ export function createBankingSystem(config: { system: any; parties: any }) {
         centralbank,
         bank.initialDeposit
       );
-    })
+    });
   }
 
   if (config.system === "clearinghouse") {
+    console.log(config.parties);
     const clearinghouse = createClearinghouse();
     lookup[clearinghouse.id] = clearinghouse;
     const bankKeys = Object.keys(lookup).filter((key) => key.includes("bank"));
     for (let i = 0; i < bankKeys.length; i++) {
+      const amount = config.parties[i].initialDeposit || 1000;
       ClearingHouseService.openAccount(
         lookup[`${bankKeys[i]}`],
         clearinghouse,
-        1000
+        amount
       );
     }
   }
