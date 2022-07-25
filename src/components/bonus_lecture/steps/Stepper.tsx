@@ -3,7 +3,6 @@ import { selectRecords } from "../../../features/players/playersSlice";
 import { useEffect, useState } from "react";
 import {
   Box,
-  Stepper,
   Step,
   StepButton,
   Button,
@@ -24,8 +23,8 @@ import RechangeOne from "./4-rechange1";
 import RechangeTwo from "./5-rechange2";
 import Playground from "./6-playground";
 import { colors } from "../../../config/colorPalette";
-import StepperHeader from "../../shared_ui/StepperHeader";
-import StepperFooter from "../../shared_ui/StepperFooter";
+import StepperHeader from "../../shared_ui/stepper/StepperHeader";
+import StepperFooter from "../../shared_ui/stepper/StepperFooter";
 
 function getStepContent(step: number) {
   switch (step) {

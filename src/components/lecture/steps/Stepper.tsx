@@ -4,12 +4,12 @@ import * as React from "react";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box, Step, StepButton, Button, Typography } from "@mui/material";
-import StepperFooter from "../../shared_ui/StepperFooter";
 import MobileStepper from "@mui/material/MobileStepper";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { colors } from "../../../config/colorPalette";
-import StepperHeader from "../../shared_ui/StepperHeader";
+import StepperHeader from "../../shared_ui/stepper/StepperHeader";
+import StepperFooter from "../../shared_ui/stepper/StepperFooter";
 
 const StepperIndex: React.FunctionComponent<{
   getStepContent: (step: number) => JSX.Element | "Unknown step";

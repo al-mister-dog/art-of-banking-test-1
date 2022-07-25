@@ -1,3 +1,4 @@
 export const state = {
-  textExpanded: false
+  textExpanded: false,
+  selectedPartyDrawerOpen: false,
 }

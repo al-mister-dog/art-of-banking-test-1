@@ -1,7 +1,5 @@
 import { useAppSelector } from "../../../../app/hooks";
-import {
-  selectParties,
-} from "../../../../features/lectures/lecturesSlice";
+import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import { useState } from "react";
 import { Box, styled } from "@mui/material";
 import SelectedParty from "./sidepanel/SelectedParty";
@@ -10,11 +8,34 @@ import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../helpers/usePartyRows";
 import Introduction from "../../../shared_ui/Introduction";
 
+const IntroContainer = styled("div")(({ theme }) => ({
+  marginTop: "50px",
+  marginBottom: "50px",
+  [theme.breakpoints.down("mobile")]: {
+    paddingLeft: "5px",
+    paddingRight: "5px",
+  },
+  [theme.breakpoints.up("mobile")]: {
+    paddingLeft: "25px",
+    paddingRight: "25px",
+  },
+  [theme.breakpoints.up("tablet")]: {
+    paddingLeft: "50px",
+    paddingRight: "50px",
+  },
+  [theme.breakpoints.up("laptop")]: {
+    paddingLeft: "75px",
+    paddingRight: "75px",
+  },
+  [theme.breakpoints.up("desktop")]: {
+    paddingLeft: "75px",
+    paddingRight: "75px",
+  },
+}));
 const InterfaceContainer = styled("div")(({ theme }) => ({
   display: "flex",
   height: "60vh",
   marginBottom: "20px",
-  
 }));
 
 const BoardContainer = styled("div")(({ theme }) => ({
@@ -62,16 +83,9 @@ const Index: React.FunctionComponent<{
   }
   return (
     <>
-      <Box
-        sx={{
-          paddingLeft: "75px",
-          paddingRight: "75px",
-          marginTop: "50px",
-          marginBottom: "50px",
-        }}
-      >
+      <IntroContainer>
         <Introduction texts={texts} />
-      </Box>
+      </IntroContainer>
       <hr style={{ color: "#bccccd", width: "70%" }} />
       <Box
         sx={{

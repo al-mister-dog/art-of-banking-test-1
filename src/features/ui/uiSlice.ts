@@ -10,12 +10,15 @@ export const uiSlice = createSlice({
   reducers: {
     toggleTextExpanded: (state, { payload }) => {
       state.textExpanded = payload.textExpanded;
-      console.log(state.textExpanded)
+    },
+    toggleSelectedPartyDrawer: (state, { payload }) => {
+      state.selectedPartyDrawerOpen = payload.selectedPartyDrawerOpen;
     },
   },
 });
 
-export const { toggleTextExpanded } = uiSlice.actions;
+export const { toggleTextExpanded, toggleSelectedPartyDrawer } =
+  uiSlice.actions;
 
 export const selectUI = (state: RootState) => state.ui;
 

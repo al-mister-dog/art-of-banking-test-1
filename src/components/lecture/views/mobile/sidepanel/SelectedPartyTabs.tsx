@@ -1,5 +1,6 @@
 import Accordions from "./Accordions";
 import Balances from "./Balances";
+import Records from "./Records";
 
 import { Tabs, Tab, Box } from "@mui/material";
 
@@ -74,11 +75,9 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
       <TabPanel value={value} index={1}>
         <Balances selected={selected} />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        {selected.records.map((record: string, i: number) => (
-          <p key={i}>{JSON.stringify(record)}</p>
-        ))}
-      </TabPanel> */}
+      <TabPanel value={value} index={2}>
+        <Records selected={selected}/>
+      </TabPanel>
     </>
   );
 };

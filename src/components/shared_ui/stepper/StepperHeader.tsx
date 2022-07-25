@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Stepper } from "@mui/material";
-import { colors } from "../../config/colorPalette";
+import { Stepper } from "@mui/material";
 
 const StepperHeader = ({
   children,
