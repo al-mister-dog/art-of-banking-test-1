@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import bankImg2 from "./assets/medici2.jpeg";
 import { colors } from "../../config/colorPalette";
+import { Link } from "react-router-dom";
 
 const image = {
   src: bankImg2,
@@ -53,7 +54,11 @@ export default function Home() {
     <>
       <Page>
         <TextContainer>
-          <Typography variant="h3" align="center" sx={{color: colors.darkMain, marginBottom: "25px"}}>
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{ color: colors.darkMain, marginBottom: "25px" }}
+          >
             Learn the Art of Banking
           </Typography>
           <Typography variant="h5">
@@ -79,14 +84,22 @@ export default function Home() {
               padding: "5px",
             }}
           >
-            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
+            <Typography
+              variant="h6"
+              align="justify"
+              sx={{ marginBottom: "15px", letterSpacing: "1px" }}
+            >
               Understanding banking and finance is a key requirement of making
               informed decisions, whether you are a thinking about earning extra
               money in trading and investment, or whether you want to learn more
               about economics in order to make informed decisions as a voter or
               a content provider.
             </Typography>
-            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
+            <Typography
+              variant="h6"
+              align="justify"
+              sx={{ marginBottom: "15px", letterSpacing: "1px" }}
+            >
               Unfortunately the world of banking is obscured in jargon as well
               as well as the fact that many of the opinions we receive about the
               subject come from people as misinformed as we are. This site aims
@@ -96,7 +109,11 @@ export default function Home() {
               up to a working knowledge of such things as Credit Default Swaps,
               Repos, Liquidity and Global Finance.
             </Typography>
-            <Typography variant= "h6" align="justify" sx={{ marginBottom: "5px", letterSpacing: "1px"}}>
+            <Typography
+              variant="h6"
+              align="justify"
+              sx={{ marginBottom: "15px", letterSpacing: "1px" }}
+            >
               To do this, the lectures contain small games in which the user can
               trade between banks and other institutions like pieces on a board.
               These games model banking systems from around the world and
@@ -105,6 +122,9 @@ export default function Home() {
               and when is possible.
             </Typography>
           </Box>
+          <Link to="fundamentals">
+            <Typography variant="h4" sx={{marginTop: "25px", marginBottom: "25px"}}>Start Here: Fundamentals</Typography>
+          </Link>
         </TextContainer>
       </Page>
     </>

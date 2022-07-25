@@ -32,18 +32,18 @@ const columnsAssets: GridColDef[] = [
       `${deCamelize(params.row.party)}`,
   },
   {
+    field: "amount",
+    headerName: "Amount",
+    width: 130,
+    valueGetter: (params: GridValueGetterParams) => `$${params.row.amount}`,
+  },
+  {
     field: "type",
     headerName: "Type",
     width: 150,
     valueGetter: (params: GridValueGetterParams) => {
       return `${deCamelize(params.row.type)}`;
     },
-  },
-  {
-    field: "amount",
-    headerName: "Amount",
-    width: 130,
-    valueGetter: (params: GridValueGetterParams) => `$${params.row.amount}`,
   },
 ];
 
@@ -56,17 +56,17 @@ const columnsLiabilities: GridColDef[] = [
       `${deCamelize(params.row.party)}`,
   },
   {
+    field: "amount",
+    headerName: "Amount",
+    width: 130,
+    valueGetter: (params: GridValueGetterParams) => `$${params.row.amount}`,
+  },
+  {
     field: "type",
     headerName: "Type",
     width: 150,
     valueGetter: (params: GridValueGetterParams) =>
       `${deCamelize(params.row.type)}`,
-  },
-  {
-    field: "amount",
-    headerName: "Amount",
-    width: 130,
-    valueGetter: (params: GridValueGetterParams) => `$${params.row.amount}`,
   },
 ];
 
