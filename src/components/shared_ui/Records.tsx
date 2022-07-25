@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { colors } from "../../../../../config/colorPalette";
-import { IBank } from "../../../../../features/lectures/fundamentalsSlice.spec";
-import { deCamelize } from "../../../helpers/parsers";
+import { colors } from "../../config/colorPalette";
+import { IBank } from "../../features/lectures/program/types";
+import { deCamelize } from "../lecture/helpers/parsers";
 
 const Records = ({ selected }: { selected: IBank }) => {
   return (
@@ -27,7 +27,7 @@ const Records = ({ selected }: { selected: IBank }) => {
               display: "flex",
               justifyContent: "space-between",
               padding: "5px",
-              borderBottom: `1px solid ${colors.light}`
+              borderBottom: `1px solid ${colors.light}`,
             }}
           >
             <Typography>{str1}</Typography>

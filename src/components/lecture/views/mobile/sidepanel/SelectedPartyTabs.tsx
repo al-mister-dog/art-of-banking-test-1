@@ -1,10 +1,11 @@
 import Accordions from "./Accordions";
 import Balances from "./Balances";
-import Records from "./Records";
+
 
 import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
+import Records from "../../../../shared_ui/Records";
 
 interface TabPanelProps {
   children?: React.ReactNode;

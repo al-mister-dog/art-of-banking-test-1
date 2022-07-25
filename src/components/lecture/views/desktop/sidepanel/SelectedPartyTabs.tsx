@@ -4,7 +4,7 @@ import Balances from "./Balances";
 import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
-import Records from "./Records";
+import Records from "../../../../shared_ui/Records";
 
 interface TabPanelProps {
   children?: React.ReactNode;
