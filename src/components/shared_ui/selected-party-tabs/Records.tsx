@@ -19,7 +19,7 @@ const Records = ({ selected }: { selected: IBank }) => {
           transactionType,
         } = record;
         const str1 = `${deCamelize(party)}: `;
-        const str2 = `${credit ? `+` : `-`}$${amount}`;
+        const str2 = `${credit ? `+` : `-`} $${amount}`;
         return (
           <Box
             key={index}
@@ -30,8 +30,8 @@ const Records = ({ selected }: { selected: IBank }) => {
               borderBottom: `1px solid ${colors.light}`,
             }}
           >
-            <Typography>{str1}</Typography>
-            <Typography>{str2}</Typography>
+            <Typography sx={{fontFamily: "Roboto"}}>{str1}</Typography>
+            <Typography sx={{fontFamily: "Roboto", fontWeight: "bold"}}>{str2}</Typography>
           </Box>
         );
       })}

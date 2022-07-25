@@ -113,21 +113,37 @@ const Balances = ({ selected }: { selected: any }) => {
       }}
     >
       <Box sx={{ marginBottom: 5 }}>
-        <Typography align="left">Assets</Typography>
+        <Typography
+          align="left"
+          sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+        >
+          Assets
+        </Typography>
         <Box sx={{ height: 200, width: "100%" }}>
           <Box sx={{ display: "flex", height: "100%" }}>
             <Box sx={{ flexGrow: 1 }}>
-              <DataGrid rows={assetsArray} columns={columnsAssets} hideFooter />
+              <DataGrid
+                sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+                rows={assetsArray}
+                columns={columnsAssets}
+                hideFooter
+              />
             </Box>
           </Box>
         </Box>
       </Box>
       <Box>
-        <Typography align="left">Liabilities</Typography>
+        <Typography
+          align="left"
+          sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+        >
+          Liabilities
+        </Typography>
         <Box sx={{ height: 200, width: "100%" }}>
           <Box sx={{ display: "flex", height: "100%" }}>
             <Box sx={{ flexGrow: 1 }}>
               <DataGrid
+                sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
                 rows={liabilitiesArray}
                 columns={columnsLiabilities}
                 hideFooter
