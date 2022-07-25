@@ -19,7 +19,6 @@ const Index: React.FunctionComponent<{
 }> = ({ config, parties, selected }) => {
   const dispatch = useAppDispatch();
   const { selectedPartyDrawerOpen } = useAppSelector(selectUI);
-  console.log(selectedPartyDrawerOpen)
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (

@@ -4,6 +4,7 @@ import Balances from "./Balances";
 import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
+import Records from "./Records";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,6 +66,9 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Balances selected={selected} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Records selected={selected} />
       </TabPanel>
     </>
   );

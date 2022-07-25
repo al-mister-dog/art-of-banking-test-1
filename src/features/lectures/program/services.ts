@@ -1,6 +1,7 @@
 import { partyFunctions } from "./instanceMethods";
 import { lookup } from "./lookupTables";
 import { PaymentMethods, AccountMethods } from "./methods";
+import addToRecords from "./records";
 import { SystemMethods } from "./systemMethods";
 
 import { IBank } from "./types";
@@ -98,12 +99,7 @@ export class BankService {
         "bankLoans",
         amount
       );
-      partyFunctions(b).decreaseInstrument(
-        a.id,
-        "assets",
-        "bankLoans",
-        amount
-      );
+      partyFunctions(b).decreaseInstrument(a.id, "assets", "bankLoans", amount);
     }
   }
   static repayLoanReserves(a: IBank, b: IBank, amount: number) {
@@ -115,29 +111,40 @@ export class BankService {
       "bankLoans",
       amount
     );
-    partyFunctions(b).decreaseInstrument(
-      a.id,
-      "assets",
-      "bankLoans",
-      amount
-    );
+    partyFunctions(b).decreaseInstrument(a.id, "assets", "bankLoans", amount);
   }
 }
 
 export class CustomerService {
   static deposit(a: IBank, b: IBank, amount: number) {
-    PaymentMethods.creditAccount(a, b, amount, [
-      "customerDeposits",
-      "customerOverdrafts",
-    ]);
+    const record = addToRecords(a, {
+      transactionType: "Deposit",
+      party: b.id,
+      amount: amount,
+    });
+    PaymentMethods.creditAccount(
+      a,
+      b,
+      amount,
+      ["customerDeposits", "customerOverdrafts"],
+      record
+    );
     partyFunctions(a).decreaseReserves(amount);
     partyFunctions(b).increaseReserves(amount);
   }
   static withdraw(a: IBank, b: IBank, amount: number) {
-    PaymentMethods.debitAccount(a, b, amount, [
-      "customerDeposits",
-      "customerOverdrafts",
-    ]);
+    const record = addToRecords(a, {
+      transactionType: "Withdraw",
+      party: b.id,
+      amount: amount,
+    });
+    PaymentMethods.debitAccount(
+      a,
+      b,
+      amount,
+      ["customerDeposits", "customerOverdrafts"],
+      record
+    );
     partyFunctions(a).increaseReserves(amount);
     partyFunctions(b).decreaseReserves(amount);
   }
@@ -196,15 +203,30 @@ export class CustomerService {
     } else {
       bankB = CustomerService.automateTransferToAccount(customerB);
     }
-
-    PaymentMethods.debitAccount(customerA, bankA, amount, [
-      "customerDeposits",
-      "customerOverdrafts",
-    ]);
-    PaymentMethods.creditAccount(customerB, bankB, amount, [
-      "customerDeposits",
-      "customerOverdrafts",
-    ]);
+    const recordA = addToRecords(customerA, {
+      transactionType: "Transfer",
+      party: customerB.id,
+      amount: amount,
+    });
+    const recordB = addToRecords(customerB, {
+      transactionType: "Transfer",
+      party: customerA.id,
+      amount: amount,
+    });
+    PaymentMethods.debitAccount(
+      customerA,
+      bankA,
+      amount,
+      ["customerDeposits", "customerOverdrafts"],
+      recordA
+    );
+    PaymentMethods.creditAccount(
+      customerB,
+      bankB,
+      amount,
+      ["customerDeposits", "customerOverdrafts"],
+      recordB
+    );
     if (bankA.id !== bankB.id) {
       SystemMethods.increaseDues(bankA, bankB, amount);
     }
@@ -370,8 +392,14 @@ export class CentralBankService {
       "bankLoans",
       amountPlusInterest
     );
-    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
-    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
   }
 
   static repayLoan(a: IBank, b: IBank, amount: number) {
@@ -386,15 +414,16 @@ export class CentralBankService {
         "bankLoans",
         amount
       );
-      partyFunctions(b).decreaseInstrument(
-        a.id,
-        "assets",
-        "bankLoans",
-        amount
-      );
+      partyFunctions(b).decreaseInstrument(a.id, "assets", "bankLoans", amount);
     }
-    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
-    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, ["bankDeposits", "daylightOverdrafts"])
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
   }
   static openAccount(bankA: IBank, bankB: IBank, amount: number = 0) {
     AccountMethods.createSubordinateAccount(

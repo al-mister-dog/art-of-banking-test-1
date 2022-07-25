@@ -1,13 +1,22 @@
 import { partyFunctions } from "./instanceMethods";
 import { SystemMethods } from "./systemMethods";
 import { IBank, InstrumentKey } from "./types";
-
+interface Record {
+  recordId: string;
+  transactionType: string;
+  instrumentType: string;
+  balance: number;
+  party: string;
+  amount: number;
+  credit: boolean;
+}
 export class PaymentMethods {
   static creditAccount(
     a: IBank,
     b: IBank,
     amount: number,
-    instruments: InstrumentKey[]
+    instruments: InstrumentKey[],
+    records?: Partial<Record>
   ) {
     const [creditInstrument, debtInstrument] = instruments;
     const id = `${a.id}-${b.id}`;
@@ -35,7 +44,26 @@ export class PaymentMethods {
         debtInstrument,
         account.amount
       );
-      createRecord(a, b, creditInstrument, amount, account.amount, true);
+      createRecord(
+        a,
+        {
+          instrumentType: creditInstrument,
+          balance: account.amount,
+          credit: true,
+        },
+        records
+      );
+      createRecord(
+        b,
+        {
+          transactionType: records?.transactionType,
+          party: a.id,
+          instrumentType: creditInstrument,
+          amount,
+          balance: account.amount,
+          credit: true,
+        }
+      );
     }
   }
 
@@ -43,7 +71,8 @@ export class PaymentMethods {
     a: IBank,
     b: IBank,
     amount: number,
-    instruments: InstrumentKey[]
+    instruments: InstrumentKey[],
+    records?: Partial<Record>
   ) {
     const [creditInstrument, debtInstrument] = instruments;
     const id = `${a.id}-${b.id}`;
@@ -70,7 +99,27 @@ export class PaymentMethods {
         debtInstrument,
         account.amount
       );
-      createRecord(a, b, creditInstrument, amount, account.amount, false);
+      // createRecord(a, b, creditInstrument, amount, account.amount, false);
+      createRecord(
+        a,
+        {
+          instrumentType: creditInstrument,
+          balance: account.amount,
+          credit: false,
+        },
+        records
+      );
+      createRecord(
+        b,
+        {
+          transactionType: records?.transactionType,
+          party: a.id,
+          instrumentType: creditInstrument,
+          amount,
+          balance: account.amount,
+          credit: false,
+        }
+      );
     }
   }
 
@@ -214,20 +263,13 @@ export class StatusMethods {
 }
 
 function createRecord(
-  a: IBank,
-  b: IBank,
-  creditInstrument: InstrumentKey,
-  transactionAmount: number,
-  balance: number,
-  credit: boolean
+  party: IBank,
+  record: Partial<Record>,
+  records?: Partial<Record>
 ) {
-  const record = {
-    id: `${a.id}`,
-    accountId: `${a.id}-${b.id}`,
-    accountType: creditInstrument,
-    transactionAmount,
-    balance,
-    credit,
+  const completeRecord = {
+    ...records,
+    ...record,
   };
-  a.records.push(record);
+  party.records.push(completeRecord);
 }
