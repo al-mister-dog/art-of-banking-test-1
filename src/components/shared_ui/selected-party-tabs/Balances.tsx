@@ -3,6 +3,19 @@ import { Box, Typography } from "@mui/material";
 
 import { Account } from "../../../features/lectures/program/types";
 import { deCamelize } from "../../lecture/helpers/parsers";
+import { colors } from "../../../config/colorPalette";
+
+const gridStyles = {
+  fontFamily: "Roboto",
+  fontWeight: "bold",
+  "& .MuiDataGrid-columnHeader": {
+    backgroundColor: colors.main,
+    color: colors.accordionTextColor,
+    fontFamily: "Garamond",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+};
 
 interface NewAccount {
   id: string;
@@ -23,7 +36,6 @@ const columnsAssets: GridColDef[] = [
     headerName: "Type",
     width: 150,
     valueGetter: (params: GridValueGetterParams) => {
-      console.log(params.row.type);
       return `${deCamelize(params.row.type)}`;
     },
   },
@@ -46,7 +58,7 @@ const columnsLiabilities: GridColDef[] = [
   {
     field: "type",
     headerName: "Type",
-    width: 100,
+    width: 150,
     valueGetter: (params: GridValueGetterParams) =>
       `${deCamelize(params.row.type)}`,
   },
@@ -78,7 +90,6 @@ const Balances = ({ selected }: { selected: any }) => {
       type: account.type,
       amount: account.amount,
     });
-    console.log(assetsArray);
   });
 
   let newLiabilitiesArray: Account[] = [];
@@ -123,7 +134,7 @@ const Balances = ({ selected }: { selected: any }) => {
           <Box sx={{ display: "flex", height: "100%" }}>
             <Box sx={{ flexGrow: 1 }}>
               <DataGrid
-                sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+                sx={gridStyles}
                 rows={assetsArray}
                 columns={columnsAssets}
                 hideFooter
@@ -143,7 +154,7 @@ const Balances = ({ selected }: { selected: any }) => {
           <Box sx={{ display: "flex", height: "100%" }}>
             <Box sx={{ flexGrow: 1 }}>
               <DataGrid
-                sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+                sx={gridStyles}
                 rows={liabilitiesArray}
                 columns={columnsLiabilities}
                 hideFooter

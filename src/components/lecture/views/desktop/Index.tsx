@@ -7,6 +7,7 @@ import Board from "../../Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../helpers/usePartyRows";
 import Introduction from "../../../shared_ui/Introduction";
+import { colors } from "../../../../config/colorPalette";
 
 const IntroContainer = styled("div")(({ theme }) => ({
   marginTop: "50px",
@@ -86,7 +87,7 @@ const Index: React.FunctionComponent<{
       <IntroContainer>
         <Introduction texts={texts} />
       </IntroContainer>
-      <hr style={{ color: "#bccccd", width: "70%" }} />
+      {/* <hr style={{ borderBottom: colors.darkMain, color: colors.darkMain,  width: "70%" }} /> */}
       <Box
         sx={{
           marginTop: "50px",

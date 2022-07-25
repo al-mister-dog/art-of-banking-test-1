@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { colors } from "../../config/colorPalette";
 
 export default function Text({
   children,
@@ -16,6 +17,7 @@ export default function Text({
         textAlign: "justify",
         marginBottom: "10px",
         fontWeight: bold ? "bold" : "",
+        color: colors.darkMain
       }}
     >
       {children}

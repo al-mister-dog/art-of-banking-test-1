@@ -5,6 +5,8 @@ import { deCamelize } from "../../lecture/helpers/parsers";
 
 const Records = ({ selected }: { selected: IBank }) => {
   return (
+    <>
+    <Typography>Transactions</Typography>
     <Box
       width="100%"
       sx={{ display: "flex", flexDirection: "column-reverse", margin: "auto" }}
@@ -27,15 +29,20 @@ const Records = ({ selected }: { selected: IBank }) => {
               display: "flex",
               justifyContent: "space-between",
               padding: "5px",
-              borderBottom: `1px solid ${colors.light}`,
+              // borderBottom: `1px solid ${colors.accordionColor}`,
+              "&:nth-of-type(even)": {
+                backgroundColor: `rgba(0,0,0,0.03)`
+              }
             }}
           >
             <Typography sx={{fontFamily: "Roboto"}}>{str1}</Typography>
-            <Typography sx={{fontFamily: "Roboto", fontWeight: "bold"}}>{str2}</Typography>
+            <Typography sx={{fontFamily: "Roboto", fontWeight: "bold", color: colors.darkMain}}>{str2}</Typography>
           </Box>
         );
       })}
     </Box>
+    </>
+    
   );
 };
 
