@@ -18,15 +18,16 @@ export interface CategoryTypes {
 
 export interface InstrumentTypes {
   daylightOverdrafts: Account[];
+  customerDeposits: Account[];
+  customerOverdrafts: Account[];
+  customerLoans: Account[];
   bankDeposits: Account[];
   bankOverdrafts: Account[];
   bankLoans: Account[];
-  customerOverdrafts: Account[];
-  customerDeposits: Account[];
-  dues: Account[];
   chCertificates: Account[];
   chOverdrafts: Account[];
-  customerLoans: Account[];
+  chLoans: Account[];
+  dues: Account[];
 }
 export interface IBank {
   id: string;
@@ -36,6 +37,7 @@ export interface IBank {
   balances: Category;
   reserves: number;
   records: any;
+  member?: boolean;
 }
 export type CategoryKey = keyof CategoryTypes;
 export type InstrumentKey = keyof InstrumentTypes;

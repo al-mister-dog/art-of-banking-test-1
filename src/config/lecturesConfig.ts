@@ -149,6 +149,7 @@ export const lectures = {
           "dues",
           "chCertificates",
           "chOverdrafts",
+          "chLoans"
         ],
         text: clearinghouse.step5,
         state: lecture2StateConfig.clearinghouse,
@@ -177,7 +178,8 @@ export const lectures = {
           // "customerOverdrafts",
           "dues",
           "chCertificates",
-          "chOverdrafts",
+          // "chOverdrafts",
+          "chLoans",
         ],
         text: clearinghouse.step6,
         state: clearinghouseState.clearinghouseLoans,

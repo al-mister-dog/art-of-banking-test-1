@@ -1,6 +1,7 @@
 import { partyFunctions } from "./instanceMethods";
 import { lookup } from "./lookupTables";
 import { PaymentMethods } from "./methods";
+import { ClearingHouseService } from "./services";
 import { IBank } from "./types";
 
 type SystemType = {
@@ -255,6 +256,7 @@ class ClearingHouseSystem extends AbstractSystem {
         });
       }
     }
+    ClearingHouseService.handleOveraft()
   }
 }
 

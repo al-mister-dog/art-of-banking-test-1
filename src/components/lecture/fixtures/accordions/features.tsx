@@ -83,7 +83,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         dispatchMethod="netClearinghouseDues"
         method="Net Dues"
-        btnText="Find Bank"
+        btnText="Net..."
       />
     ),
     settleDues: (
