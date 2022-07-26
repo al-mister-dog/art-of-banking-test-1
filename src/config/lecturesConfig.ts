@@ -174,8 +174,8 @@ export const lectures = {
           "clearinghouse"
         ],
         balanceSheetDisplay: [
-          // "customerDeposits",
-          // "customerOverdrafts",
+          "customerDeposits",
+          "customerOverdrafts",
           "dues",
           "chCertificates",
           // "chOverdrafts",

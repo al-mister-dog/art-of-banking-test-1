@@ -76,7 +76,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           }}
         >
           <Typography variant="caption" style={{ margin: 0, padding: 0, fontFamily: "Roboto", fontWeight: "bold" }}>
-            Total System Credit: ${totalCredit}
+          Total System Credit: ${parseInt(totalCredit.toFixed(2))}
           </Typography>
           <ResponsiveContainer width={300} height="100%">
             <LineChart

@@ -57,7 +57,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           }}
         >
           <Typography style={{ margin: 0, padding: 0 }}>
-            Total System Credit: ${totalCredit}
+            Total System Credit: ${parseInt(totalCredit.toFixed(2))}
           </Typography>
           <LineChart
             width={450}

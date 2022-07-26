@@ -14,8 +14,7 @@ export const fundamentals = {
       belong not only to banks, but businesses, governments, customers etc. Everyone is bank 
       and everyone has a balance sheet.`,
     ],
-    assignment: `Sources: CF Dunbar - Chapters on the Theory and History of Banking, 
-    Allyn Young = The Mystery of Money
+    assignment: `Sources: Allyn Young - The Mystery of Money
     Clearinghouse loan certificates as interbank loans in the United States, 1860–1913 - Christopher Hoag,
     Money and Banking - Perry Mehrling`,
   },
@@ -170,9 +169,8 @@ export const clearinghouse = {
       1913.`,
     ],
     assignment: `Sources: CF Dunbar - Chapters on the Theory and History of Banking, 
-    Allyn Young = The Mystery of Money
-    Clearinghouse loan certificates as interbank loans in the United States, 1860–1913 - Christopher Hoag,
-    Money and Banking - Perry Mehrling`,
+    Christopher Hoag - Clearinghouse loan certificates as interbank loans in the United States, 1860–1913, 
+    James Graham Cannon - Clearing House Loan Certificates and Substitutes for Money Used During the Panic of 1907`,
   },
 
   step2: {
@@ -294,30 +292,31 @@ export const clearinghouse = {
     lectureTitle: `Clearing House`,
     title: `Clearing House Loans`,
     paragraphs: [
-      `The correspondent system of banking is a step forward from the older system of interbank
-      payments, but it could be improved. Obviously it would advantageous 
-      to devise a system where the bank only had to pay the net across all its correspondents, rather
-      than pay bilaterally with every bank in the network. It would be easier if all the banks held 
-      correspondent accounts with only one bank, and use those balances to clear all its payments.`,
-      `In the mid nineteenth century, a group of banks of roughly the same stature set up the New York
-      Clearing House Association, a bank who's reserves where made up of a subscription by every 
-      member bank. Any payment due to or from one bank became a payment due to or from the Clearing
-      House. These payments were made with "Clearing House Certificates" which were bank notes representing
-      the dollar, in cash or gold. Each bank had a deposit account of Clearinghouse Certificates. 
-      At the end of each day, all the banks would meet up at the Clearing House, net their due tos and due froms, 
-      and if they were a debtor party, pay the Clearing House in certificates, or if they were the 
-      creditor party, receive certificates from the Clearing House.`,
-      `Because the money supply in this system is made up entirely of the deposit accounts of the 
-      member banks, total due tos and due froms will always net to zero, and reserves will never 
-      have to move. However this system can break if one member bank ends up systematically becoming a debtor
-      and runs out of certificates in their account. Other members would be reluctant to extend an 
-      overdraft to this debtor and the result would be the debtor bank defaulting and closing down. 
-      To avoid this, the Clearing House set up a loan system which worked as an overdraft and will be 
-      looked at in the next chapter.`,
+      `As we have seen in the previous example, the Clearing House offers banks the ability to
+    clear their accounts by netting all their claims from and to other banks and then settling
+    them at the Clearing House. This is because the sum total of each banks' reserves are held
+    at one big bank. If one bank is a net debtor, its debts are covered as the sum total can never
+    go beyond that of the Clearing House.`,
+      `However in times of stress, for example there is a drain of funds from outside of the Clearing 
+    House system (a bank run, or a drain of funds abroad), the sum total needed by all member banks 
+    will exceed the reserves of the Clearing House. In this situation the members can borrow from the 
+    clearinghouse itself. The clearinghouse funds the loan by issuing a clearinghouse loan certificate, 
+    on the back of collateral of any debtor bank. 
+    Whereas the clearinghouse certificate is directly backed by gold, the clearinghouse loan certificate is backed by the loan instead.`,
+      `Clearinghouse loan certificates are like banknotes, but they're being issued against member 
+    loans rather than the special 2% government bonds. Before 1907, it wasn't clear that they were legal.
+    Because a loan taken by a debtor bank accrued 6% interest, so did the Clearinghouse loan certificates. Sometimes, it was hard for the clearinghouse to get the loan certificates back because they paid so well.
+    Note that the Clearing House does not offer overdrafts in the same way a bank offers overdrafts
+    to its customers. The Clearing House needs to make sure any expansion of credit is collateralized, 
+    by its member banks. However the Clearinghouse loan certificates acted very much in the same way as
+    bank money, and in this sense they were a private money existing outside the remit of the state. This
+    opens interesting debates about whether money is solely a creature of the state or not. Also note that
+    in this example, debts dont really accumulate daily interest as time has not played a factor in this 
+    lecture series so far. In module 2 of this series, time will play a very large role...`,
     ],
-    assignment: `Below are banks and customers who have done a day of trading and are now ready to net
-    and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
-    Then settle dues and see what happens to the banks' certificate accounts.`,
+    assignment: `One bank has run debts that exceed the Clearing House reserves. Can you find out who? In this
+    example, any money that would have previously been considered as part of a 'clearinghouse overdraft' has been allocated between
+    member banks as Clearinghouse loan certificates`,
   },
   step7: {
     lectureTitle: `Clearing House`,

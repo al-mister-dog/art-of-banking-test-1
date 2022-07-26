@@ -406,14 +406,16 @@ export class ClearingHouseService {
         ClearingHouseService.createLoan(
           bank,
           lookup["clearinghouse"],
-          parseInt(allocatedDebtAmount.toFixed(2))
+          parseInt(allocatedDebtAmount.toFixed(2)),
+          6
         );
       });
       creditorBanks.forEach((bank) => {
         ClearingHouseService.createLoan(
           lookup["clearinghouse"],
           bank,
-          parseInt(allocatedCreditAmount.toFixed(2))
+          parseInt(allocatedCreditAmount.toFixed(2)),
+          6
         );
         bank.assets.chCertificates[0].amount -= parseInt(allocatedCreditAmount.toFixed(2))
       });
