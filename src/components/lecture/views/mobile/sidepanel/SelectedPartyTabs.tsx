@@ -1,7 +1,4 @@
 import Accordions from "./Accordions";
-
-
-
 import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
@@ -26,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 0 }}>{children}</Box>}
     </div>
   );
 }
@@ -50,7 +47,7 @@ const PlayerTabs: React.FunctionComponent<{ config: any; selected: any }> = ({
 
   return (
     <>
-      <Box sx={{ borderBottom: 1, borderColor: "divider", marginBottom: "25px" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider", marginBottom: "25px", }}>
         <Tabs
           orientation="vertical"
           value={value}
