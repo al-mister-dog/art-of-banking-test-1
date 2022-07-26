@@ -11,27 +11,6 @@ import { colors } from '../../../config/colorPalette';
 // export default CardButton
 
 const CardButton = styled(Button)({
-  // boxShadow: 'none',
-  // textTransform: 'none',
-  // fontSize: 16,
-  // padding: '6px 12px',
-  // border: '1px solid',
-  // lineHeight: 1.5,
-  // backgroundColor: '#0063cc',
-
-  // borderColor: '#0063cc',
-  // fontFamily: [
-  //   '-apple-system',
-  //   'BlinkMacSystemFont',
-  //   '"Segoe UI"',
-  //   'Roboto',
-  //   '"Helvetica Neue"',
-  //   'Arial',
-  //   'sans-serif',
-  //   '"Apple Color Emoji"',
-  //   '"Segoe UI Emoji"',
-  //   '"Segoe UI Symbol"',
-  // ].join(','),
   minWidth: "100px", justifyContent: "flex-start",
   backgroundColor: colors.paper,
   color: colors.darkMain,

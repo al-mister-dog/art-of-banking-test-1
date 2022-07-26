@@ -12,7 +12,7 @@ const gridStyles = {
     backgroundColor: colors.main,
     color: colors.accordionTextColor,
     fontFamily: "Garamond",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
   },
 };
@@ -126,7 +126,12 @@ const Balances = ({ selected }: { selected: any }) => {
       <Box sx={{ marginBottom: 5 }}>
         <Typography
           align="left"
-          sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+          variant="h6"
+          sx={{
+            fontFamily: "Roboto",
+            fontWeight: "bold",
+            color: colors.darkMain,
+          }}
         >
           Assets
         </Typography>
@@ -146,7 +151,12 @@ const Balances = ({ selected }: { selected: any }) => {
       <Box>
         <Typography
           align="left"
-          sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+          variant="h6"
+          sx={{
+            fontFamily: "Roboto",
+            fontWeight: "bold",
+            color: colors.darkMain,
+          }}
         >
           Liabilities
         </Typography>

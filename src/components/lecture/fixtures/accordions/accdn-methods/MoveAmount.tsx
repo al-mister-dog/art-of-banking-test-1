@@ -184,7 +184,9 @@ const MoveFixedAmount: React.FunctionComponent<{
           <CardButton
             variant="contained"
             onClick={handleClickOpenTo}
-            sx={{ width: "130px", marginBottom: "5px" }}
+            sx={{ 
+              // width: "130px",
+               marginBottom: "5px" }}
           >
             {btnText}
           </CardButton>
@@ -208,7 +210,7 @@ const MoveFixedAmount: React.FunctionComponent<{
             alignSelf: "flex-end",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "flex-end",
           }}
         >
           <Typography variant="h6" sx={{ margin: 0.75 }}>

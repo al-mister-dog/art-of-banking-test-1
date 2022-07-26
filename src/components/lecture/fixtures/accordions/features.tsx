@@ -27,7 +27,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         filterMethod={findBankByCustomersAccounts}
         method="Deposit To"
-        btnText="Deposit To"
+        btnText="To..."
         dispatchMethod="deposit"
         config={config}
       />
@@ -40,7 +40,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         filterMethod={findAllCustomers}
         method="Transfer To"
-        btnText="Transfer To"
+        btnText="To..."
         dispatchMethod="transfer"
         config={config}
       />
@@ -53,7 +53,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         filterMethod={findBankByCustomersAccounts}
         method="Withdraw From"
-        btnText="Withdraw From"
+        btnText="From..."
         dispatchMethod="withdraw"
         config={config}
       />
