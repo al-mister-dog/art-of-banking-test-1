@@ -114,7 +114,7 @@ const Dues: React.FunctionComponent<{
             onClick={handleClickOpenTo}
             sx={{ width: "130px", marginBottom: "5px" }}
           >
-            Net Dues Of
+            {btnText}
           </CardButton>
           <Typography
             variant="h6"

@@ -73,7 +73,7 @@ const features = (
         filterMethod={findOwedandOweingBanks}
         dispatchMethod="netCorrespondingDues"
         method="Net Dues"
-        btnText="Net Dues"
+        btnText="Find Bank"
       />
     ),
     chNetDues: (
@@ -83,7 +83,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         dispatchMethod="netClearinghouseDues"
         method="Net Dues"
-        btnText="Net Dues"
+        btnText="Find Bank"
       />
     ),
     settleDues: (
@@ -93,7 +93,7 @@ const features = (
         setAccordionExpanded={setAccordionExpanded}
         dispatchMethod="settleDues"
         method="Settle Dues"
-        btnText="Settle Dues"
+        btnText="Settle..."
       />
     ),
     receiveBankPayment: (
