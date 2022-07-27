@@ -120,6 +120,7 @@ export class CustomerService {
       ["customerDeposits", "customerOverdrafts"],
       recordB
     );
+    
     if (bankA.id !== bankB.id) {
       SystemMethods.increaseDues(bankA, bankB, amount);
     }

@@ -157,6 +157,18 @@ const features = (
         config={config}
       />
     ),
+    repayLoan: (
+      <MoveAmount
+        selected={selected}
+        accordionExpanded={accordionExpanded}
+        setAccordionExpanded={setAccordionExpanded}
+        filterMethod={findExcessReserveBanks}
+        dispatchMethod="repayLoan"
+        method="Repay Loan"
+        btnText="Find Bank"
+        config={config}
+      />
+    ),
   };
 };
 

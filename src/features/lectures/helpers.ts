@@ -120,7 +120,6 @@ export function createBankingSystem(config: { system: any; parties: any }) {
   }
 
   if (config.system === "clearinghouse") {
-    console.log(config.parties);
     const clearinghouse = createClearinghouse();
     lookup[clearinghouse.id] = clearinghouse;
     const bankKeys = Object.keys(lookup).filter((key) => key.includes("bank"));

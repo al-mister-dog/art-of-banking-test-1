@@ -24,6 +24,7 @@ const resetAccordions = {
   creditBankAccount: false,
   debitBankAccount: false,
   getLoan: false,
+  repayLoan: false,
 };
 
 const ResponsiveAccordion = styled(Accordion)(({ theme }) => ({

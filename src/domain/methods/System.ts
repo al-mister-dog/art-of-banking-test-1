@@ -1,7 +1,7 @@
 import { lookup } from "../lookupTables";
 import { PaymentMethods, partyFunctions } from "../methods";
 import { ClearingHouseService } from "../services";
-import { IBank } from "../types";
+import { IBank, Record } from "../types";
 
 type SystemType = {
   increaseDues(bankA: IBank, bankB: IBank, amount: number): void;
@@ -260,30 +260,44 @@ class ClearingHouseSystem extends AbstractSystem {
 }
 
 class CentralBankSystem extends AbstractSystem {
-  increaseDues(bankA: IBank, bankB: IBank, amount: number) {
-    partyFunctions(bankA).increaseInstrument(
-      lookup["centralbank"].id,
-      "liabilities",
-      "daylightOverdrafts",
-      amount
+  increaseDues(bankA: IBank, bankB: IBank, amount: number, record?: Partial<Record>) {
+    // partyFunctions(bankA).increaseInstrument(
+    //   lookup["centralbank"].id,
+    //   "liabilities",
+    //   "daylightOverdrafts",
+    //   amount
+    // );
+    // partyFunctions(lookup["centralbank"]).increaseInstrument(
+    //   bankA.id,
+    //   "assets",
+    //   "daylightOverdrafts",
+    //   amount
+    // );
+    // partyFunctions(bankB).increaseInstrument(
+    //   lookup["centralbank"].id,
+    //   "assets",
+    //   "bankDeposits",
+    //   amount
+    // );
+    // partyFunctions(lookup["centralbank"]).increaseInstrument(
+    //   bankB.id,
+    //   "liabilities",
+    //   "bankDeposits",
+    //   amount
+    // );
+    PaymentMethods.debitAccount(
+      bankA,
+      lookup["centralbank"],
+      amount,
+      ["bankDeposits", "daylightOverdrafts"],
+      // recordA
     );
-    partyFunctions(lookup["centralbank"]).increaseInstrument(
-      bankA.id,
-      "assets",
-      "daylightOverdrafts",
-      amount
-    );
-    partyFunctions(bankB).increaseInstrument(
-      lookup["centralbank"].id,
-      "assets",
-      "bankDeposits",
-      amount
-    );
-    partyFunctions(lookup["centralbank"]).increaseInstrument(
-      bankB.id,
-      "liabilities",
-      "bankDeposits",
-      amount
+    PaymentMethods.creditAccount(
+      bankB,
+      lookup["centralbank"],
+      amount,
+      ["bankDeposits", "daylightOverdrafts"],
+      // recordB
     );
   }
 

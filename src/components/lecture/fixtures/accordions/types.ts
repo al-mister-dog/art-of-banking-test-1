@@ -13,6 +13,7 @@ export interface Accordions {
   creditBankAccount: boolean;
   debitBankAccount: boolean;
   getLoan: boolean;
+  repayLoan: boolean;
 }
 
 export interface PartyOp {
@@ -52,6 +53,7 @@ export interface Dispatches {
   transfer: DispatchFunctionSig;
   payBank: DispatchFunctionSig;
   createLoan: DispatchFunctionSig;
+  repayLoan: DispatchFunctionSig;
   receiveBankPayment: DispatchFunctionSig;
   sendBankPayment: DispatchFunctionSig;
   creditBankAccount: DispatchFunctionSig;

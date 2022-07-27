@@ -85,6 +85,13 @@ export default function accordionList(
         component: features(selected, accordionExpanded, setAccordionExpanded)
           .getLoan,
       },
+      {
+        accordionKey: "repayLoan",
+        accordionTitle: "Repay Loan",
+        institutions: ["centralbank"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
+          .getLoan,
+      },
     ],
     clearinghouse: [
       {

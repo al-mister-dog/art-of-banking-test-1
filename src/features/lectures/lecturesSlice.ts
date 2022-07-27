@@ -59,6 +59,11 @@ export const lecturesSlice = createSlice({
       CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.update(state);
     },
+    repayLoan: (state, { payload }) => {
+      const { p1, p2, amt } = payload;
+      CentralBankService.repayLoan(lookup[p1.id], lookup[p2.id], amt);
+      lecturesSlice.caseReducers.update(state);
+    },
     netDues: (state, { payload }) => {
       const { p1 } = payload;
       BankService.netDues(lookup[p1.id]);
@@ -120,6 +125,7 @@ export const {
   debitBankAccount,
   payBank,
   createLoan,
+  repayLoan,
   netDues,
   netCorrespondingDues,
   settleDues,

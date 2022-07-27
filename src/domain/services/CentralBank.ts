@@ -49,11 +49,11 @@ export class CentralBankService {
       "bankLoans",
       amountPlusInterest
     );
-    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
       "bankDeposits",
       "daylightOverdrafts",
     ]);
-    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
       "bankDeposits",
       "daylightOverdrafts",
     ]);

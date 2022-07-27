@@ -122,6 +122,7 @@ export class PaymentMethods {
     debtInstrument: InstrumentKey,
     balance: number
   ) {
+
     if (balance > 0) {
       partyFunctions(a).setAccount(b.id, "assets", creditInstrument, balance);
       partyFunctions(b).setAccount(

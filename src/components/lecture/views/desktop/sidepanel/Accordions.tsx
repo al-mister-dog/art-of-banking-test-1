@@ -23,6 +23,7 @@ const resetAccordions: Accordions = {
   creditBankAccount: false,
   debitBankAccount: false,
   getLoan: false,
+  repayLoan: false,
 };
 
 
