@@ -1,4 +1,4 @@
-import { Account, CategoryKey, IBank, InstrumentKey } from "./types";
+import { Account, CategoryKey, IBank, InstrumentKey } from "../types";
 
 export const partyFunctions = (bank: IBank) => ({
   setAccount(

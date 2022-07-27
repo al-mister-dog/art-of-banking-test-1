@@ -10,7 +10,7 @@ import {
 import { lookup } from "./program/lookupTables";
 import { lecture1StateConfig } from "../../config/initialStateConfig"
 import { CustomerService } from "./program/services";
-import { System } from "./program/systemMethods";
+import { System } from "./program/methods";
 
 type BankConfig = {
   bank: string;

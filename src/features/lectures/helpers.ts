@@ -19,7 +19,7 @@ import {
   ClearingHouseService,
   CentralBankService,
 } from "./program/services";
-import { System } from "./program/systemMethods";
+import { System } from "./program/methods";
 import { IBank } from "./program/types";
 
 type BankConfig = {

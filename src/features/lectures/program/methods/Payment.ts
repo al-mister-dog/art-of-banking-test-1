@@ -1,15 +1,7 @@
-import { partyFunctions } from "./instanceMethods";
-import { SystemMethods } from "./systemMethods";
-import { IBank, InstrumentKey } from "./types";
-interface Record {
-  recordId: string;
-  transactionType: string;
-  instrumentType: string;
-  balance: number;
-  party: string;
-  amount: number;
-  credit: boolean;
-}
+import { SystemMethods, partyFunctions} from "../methods";
+import { IBank, InstrumentKey, Record } from "../types";
+import { RecordMethods } from "./Record";
+
 export class PaymentMethods {
   static creditAccount(
     a: IBank,
@@ -44,7 +36,7 @@ export class PaymentMethods {
         debtInstrument,
         account.amount
       );
-      createRecord(
+      RecordMethods.createRecord(
         a,
         {
           instrumentType: creditInstrument,
@@ -53,7 +45,7 @@ export class PaymentMethods {
         },
         records
       );
-      createRecord(
+      RecordMethods.createRecord(
         b,
         {
           transactionType: records?.transactionType,
@@ -99,8 +91,8 @@ export class PaymentMethods {
         debtInstrument,
         account.amount
       );
-      // createRecord(a, b, creditInstrument, amount, account.amount, false);
-      createRecord(
+      // RecordMethods.createRecord(a, b, creditInstrument, amount, account.amount, false);
+      RecordMethods.createRecord(
         a,
         {
           instrumentType: creditInstrument,
@@ -109,7 +101,7 @@ export class PaymentMethods {
         },
         records
       );
-      createRecord(
+      RecordMethods.createRecord(
         b,
         {
           transactionType: records?.transactionType,
@@ -172,104 +164,3 @@ export class PaymentMethods {
   }
 }
 
-export class AccountMethods {
-  static createBalance(
-    a: IBank,
-    b: IBank,
-    amount: number = 0,
-    creditInstrument: InstrumentKey
-  ) {
-    const id = `${a.id}-${b.id}`;
-    partyFunctions(a).createInstrument(
-      id,
-      "balances",
-      creditInstrument,
-      amount
-    );
-    partyFunctions(b).createInstrument(
-      id,
-      "balances",
-      creditInstrument,
-      amount
-    );
-  }
-
-  static createSubordinateAccount(
-    a: IBank,
-    b: IBank,
-    amount: number,
-    creditInstrument: InstrumentKey,
-    debtInstrument: InstrumentKey
-  ) {
-    partyFunctions(a).createInstrument(
-      b.id,
-      "assets",
-      creditInstrument,
-      amount
-    );
-    partyFunctions(a).createInstrument(b.id, "liabilities", debtInstrument, 0);
-    partyFunctions(b).createInstrument(a.id, "assets", debtInstrument, 0);
-    partyFunctions(b).createInstrument(
-      a.id,
-      "liabilities",
-      creditInstrument,
-      amount
-    );
-    if (b.id !== "centralbank") {
-    }
-
-    AccountMethods.createBalance(a, b, amount, creditInstrument);
-  }
-}
-
-export class StatusMethods {
-  static inOverdraft(bank: IBank) {
-    const potentialOverdrafts = Object.entries(bank.liabilities).map(
-      ([liabilityKey, liabilities]) => {
-        return liabilities.find((liability) => liability.amount > 0);
-      }
-    );
-    const overdrafts = potentialOverdrafts.filter((o) => o !== undefined);
-    return overdrafts.length > 0 ? true : false;
-  }
-  static isConstantDebtor(bank: IBank, timesIndebted: number) {
-    let num = 0;
-    for (
-      let i = bank.records.length - 1;
-      i > bank.records.length - (timesIndebted + 1);
-      i--
-    ) {
-      bank.records[i].credit ? num++ : num--;
-    }
-    return num === -timesIndebted ? true : false;
-  }
-  static isGeneralDebtor(bank: IBank) {
-    const creditTransactions = bank.records.filter(
-      (record: any) => record.credit === true
-    );
-    const debtTransactions = bank.records.filter(
-      (record: any) => record.credit === false
-    );
-    return debtTransactions.length > creditTransactions.length;
-  }
-  static creditStatus(bank: IBank) {
-    const creditTransactions = bank.records.filter(
-      (record: any) => record.credit === true
-    );
-    const totalTransactions = bank.records.length;
-    const timesInCredit = creditTransactions.length;
-    return Math.round((timesInCredit / totalTransactions) * 100);
-  }
-}
-
-function createRecord(
-  party: IBank,
-  record: Partial<Record>,
-  records?: Partial<Record>
-) {
-  const completeRecord = {
-    ...records,
-    ...record,
-  };
-  party.records.push(completeRecord);
-}

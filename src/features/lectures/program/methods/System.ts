@@ -1,8 +1,7 @@
-import { partyFunctions } from "./instanceMethods";
-import { lookup } from "./lookupTables";
-import { PaymentMethods } from "./methods";
-import { ClearingHouseService } from "./services";
-import { IBank } from "./types";
+import { lookup } from "../lookupTables";
+import { PaymentMethods, partyFunctions } from "../methods";
+import { ClearingHouseService } from "../services";
+import { IBank } from "../types";
 
 type SystemType = {
   increaseDues(bankA: IBank, bankB: IBank, amount: number): void;
