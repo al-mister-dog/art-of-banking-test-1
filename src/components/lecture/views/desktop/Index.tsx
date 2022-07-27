@@ -3,7 +3,7 @@ import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import { useState } from "react";
 import { Box, styled } from "@mui/material";
 import SelectedParty from "./sidepanel/SelectedParty";
-import Board from "../../Board";
+import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../helpers/usePartyRows";
 import Introduction from "../../../shared_ui/Introduction";

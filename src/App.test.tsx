@@ -1,16 +1,17 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
+import Home from "./pages/home/Home";
+import { MemoryRouter } from "react-router-dom";
 
-test('renders learn react link', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-
-  // expect(getByText(/learn/i)).toBeInTheDocument();
-  expect(1 + 1).toEqual(2)
+describe("Home Page", () => {
+  test("Home page title renders", () => {
+    render(
+      <Provider store={store}>
+        <Home />
+      </Provider>,
+      { wrapper: MemoryRouter }
+    );
+    expect(screen.getByText(/Learn the Art of Banking/i)).toBeInTheDocument();
+  });
 });

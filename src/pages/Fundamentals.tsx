@@ -24,7 +24,7 @@ function getStepContent(step: number) {
       return "Unknown step";
   }
 }
-const steps = [
+export const steps = [
   "Introduction",
   "Balance Sheets and Deposits",
   "Deposit Transfers",

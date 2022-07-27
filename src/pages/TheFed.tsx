@@ -23,7 +23,7 @@ function getStepContent(step: number) {
       return "Unknown step";
   }
 }
-const steps = [
+export const steps = [
   "Introduction",
   "Daylight Overdrafts",
   "Fed Funds Market",

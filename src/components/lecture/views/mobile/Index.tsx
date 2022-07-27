@@ -6,7 +6,7 @@ import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import { useState } from "react";
 import { styled } from "@mui/material";
 import SelectedPartyDrawer from "../../../shared_ui/index-page/selected-party/Drawer";
-import Board from "../../Board";
+import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../helpers/usePartyRows";
 import Introduction from "../../../shared_ui/Introduction";
