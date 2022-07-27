@@ -8,7 +8,7 @@ import {
 import { Box, Typography } from "@mui/material";
 import CardButton from "../../../ui/CardButton";
 import { Accordions, DuesDispatches } from "../types";
-import { IBank } from "../../../../../features/lectures/program/types";
+import { IBank } from "../../../../../domain/types";
 import { useEffect, useState } from "react";
 import { netAmount } from "../../../helpers/utils";
 import ChoosePlayer from "../dialogs/ChoosePartyDialog";

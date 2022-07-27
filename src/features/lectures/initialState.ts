@@ -1,4 +1,4 @@
-import { IBank } from "./program/types";
+import { IBank } from "../../domain/types";
 import {
   commercialAssets,
   commercialLiabilities,
@@ -6,11 +6,11 @@ import {
   customerAssets,
   customerLiabilities,
   customerBalances,
-} from "./program/fixtures";
-import { lookup } from "./program/lookupTables";
-import { lecture1StateConfig } from "../../config/initialStateConfig"
-import { CustomerService } from "./program/services";
-import { System } from "./program/methods";
+} from "../../domain/fixtures";
+import { lookup } from "../../domain/lookupTables";
+import { lecture1StateConfig } from "../../config/initialStateConfig";
+import { CustomerService } from "../../domain/services";
+import { System } from "../../domain/methods";
 
 type BankConfig = {
   bank: string;
@@ -101,7 +101,7 @@ function createBankingSystem(config: { system: any; parties: any }) {
   });
 }
 
-const defaultSetup = lecture1StateConfig.defaultSetup
-createBankingSystem(defaultSetup)
-const setupState = JSON.parse(JSON.stringify(state))
+const defaultSetup = lecture1StateConfig.defaultSetup;
+createBankingSystem(defaultSetup);
+const setupState = JSON.parse(JSON.stringify(state));
 export { setupState, defaultSetup };

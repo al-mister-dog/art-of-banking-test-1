@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
 import { Accordions } from "../../types";
-import { IBank } from "../../../../../../features/lectures/program/types";
+import { IBank } from "../../../../../../domain/types";
 import ChoosePlayer from "../../dialogs/ChoosePartyDialog";
 import CardButton from "../../../../ui/CardButton";
 import { findOwedandOweingBanks } from "../../../../helpers/filters";

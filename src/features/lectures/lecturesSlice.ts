@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { lookup } from "./program/lookupTables";
-import { IBank } from "./program/types";
+import { lookup } from "../../domain/lookupTables";
+import { IBank } from "../../domain/types";
 import { setupState } from "./initialState";
 import { createBankingSystem } from "./helpers";
-import { CentralBankService, CustomerService } from "./program/services";
-import { BankService } from "./program/services";
-import { PaymentMethods } from "./program/methods";
+import { CentralBankService, CustomerService } from "../../domain/services";
+import { BankService } from "../../domain/services";
+import { PaymentMethods } from "../../domain/methods";
 
 interface BankState {
   [index: string]: IBank;

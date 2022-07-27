@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { IBank } from "../lectures/program/types";
+import { IBank } from "../../domain/types";
 
 import {
   reservePercentage,

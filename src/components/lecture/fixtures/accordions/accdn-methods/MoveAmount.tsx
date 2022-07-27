@@ -16,7 +16,7 @@ import CardButton from "../../../ui/CardButton";
 import Amount from "./Amount";
 import { Box, Typography } from "@mui/material";
 import { Accordions, Dispatches, PayloadArguments } from "../types";
-import { IBank } from "../../../../../features/lectures/program/types";
+import { IBank } from "../../../../../domain/types";
 import { capitalize } from "../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
 import useParties from "../../../helpers/useParties";

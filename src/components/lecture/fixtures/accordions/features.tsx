@@ -1,4 +1,4 @@
-import { IBank } from "../../../../features/lectures/program/types";
+import { IBank } from "../../../../domain/types";
 import {
   findExcessReserveBanks,
   findAllCustomers,

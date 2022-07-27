@@ -1,4 +1,4 @@
-import { IBank } from "../../../../features/lectures/program/types";
+import { IBank } from "../../../../domain/types";
 
 export interface Accordions {
   deposit: boolean;

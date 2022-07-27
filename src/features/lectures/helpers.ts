@@ -11,16 +11,16 @@ import {
   centralBankAssets,
   centralBankBalances,
   centralBankLiabilities,
-} from "./program/fixtures";
-import { lookup } from "./program/lookupTables";
+} from "../../domain/fixtures";
+import { lookup } from "../../domain/lookupTables";
 import {
   CustomerService,
   BankService,
   ClearingHouseService,
   CentralBankService,
-} from "./program/services";
-import { System } from "./program/methods";
-import { IBank } from "./program/types";
+} from "../../domain/services";
+import { System } from "../../domain/methods";
+import { IBank } from "../../domain/types";
 
 type BankConfig = {
   bank: string;
