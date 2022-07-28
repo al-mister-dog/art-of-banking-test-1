@@ -104,7 +104,10 @@ const MoveFixedAmount: React.FunctionComponent<{
       });
       setSelectedValueAmount(0);
       setSelectedValuePlayer(null);
-      setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
+      setAccordionExpanded({
+        ...accordionExpanded,
+        [dispatchMethod as keyof Accordions]: false,
+      });
     }
   };
 
@@ -157,6 +160,11 @@ const MoveFixedAmount: React.FunctionComponent<{
           selectedAmount = selectedValueTo.liabilities.dues.find(
             (account) => account.id === selected.id
           );
+        } else if (dispatchMethod === "repayLoan") {
+          console.log(selectedValueTo)
+          selectedAmount = selectedValueTo.assets.bankLoans.find(
+            (account) => account.id === selected.id
+          );
         } else {
           selectedAmount = selected.liabilities.dues.find(
             (account: { id: string }) => account.id === selectedValueTo.id
@@ -188,9 +196,10 @@ const MoveFixedAmount: React.FunctionComponent<{
           <CardButton
             variant="contained"
             onClick={handleClickOpenTo}
-            sx={{ 
+            sx={{
               // width: "130px",
-               marginBottom: "5px" }}
+              marginBottom: "5px",
+            }}
           >
             {btnText}
           </CardButton>

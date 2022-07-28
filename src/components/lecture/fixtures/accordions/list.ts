@@ -90,7 +90,7 @@ export default function accordionList(
         accordionTitle: "Repay Loan",
         institutions: ["centralbank"],
         component: features(selected, accordionExpanded, setAccordionExpanded)
-          .getLoan,
+          .repayLoan,
       },
     ],
     clearinghouse: [

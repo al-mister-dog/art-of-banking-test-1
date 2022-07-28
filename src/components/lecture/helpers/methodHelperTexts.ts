@@ -62,6 +62,13 @@ const methodHelperTexts: Method = {
         : `There are no banks with sufficient reserves`;
     },
   },
+  "Repay Loan": {
+    moreThanOne(arr: any[]) {
+      return arr.length > 0
+        ? `Find a bank to repay loan`
+        : `You do not owe any banks`;
+    },
+  },
 };
 
 export default methodHelperTexts

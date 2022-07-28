@@ -6,6 +6,7 @@ import {
   findOwedBanks,
   findOweingBanks,
   findOwedandOweingBanks,
+  findBankToRepayLoan,
 } from "../../helpers/filters";
 import MoveAmount from "./accdn-methods/MoveAmount";
 import Dues from "./accdn-methods/Dues";
@@ -162,7 +163,7 @@ const features = (
         selected={selected}
         accordionExpanded={accordionExpanded}
         setAccordionExpanded={setAccordionExpanded}
-        filterMethod={findExcessReserveBanks}
+        filterMethod={findBankToRepayLoan}
         dispatchMethod="repayLoan"
         method="Repay Loan"
         btnText="Find Bank"

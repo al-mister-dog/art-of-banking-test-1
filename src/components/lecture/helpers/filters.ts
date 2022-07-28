@@ -85,3 +85,13 @@ export const findOwedandOweingBanks = (
   );
   return owedAndOweingBanks;
 };
+
+export const findBankToRepayLoan = (selected: IBank, partiesArray: IBank[]) => {
+  return partiesArray.filter(
+    (party) =>
+      party.type === "bank" &&
+      party.assets.bankLoans.find(
+        (account) => account.id === selected.id && account.amount > 0
+      )
+  );
+};

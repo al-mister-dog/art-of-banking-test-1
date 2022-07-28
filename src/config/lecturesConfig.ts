@@ -75,6 +75,7 @@ export const lectures = {
         state: lecture1StateConfig.creditSetup,
       } as Step,
     },
+    nextStep: "clearinghouse"
   },
   clearinghouse: {
     title: "clearinghouse",
@@ -185,6 +186,7 @@ export const lectures = {
         state: clearinghouseState.clearinghouseLoans,
       },
     },
+    nextStep: "the-fed"
   },
 
 
@@ -261,5 +263,6 @@ export const lectures = {
       //   state: lecture2StateConfig.clearinghouse,
       // },
     },
+    nextStep: "medici"
   },
 };

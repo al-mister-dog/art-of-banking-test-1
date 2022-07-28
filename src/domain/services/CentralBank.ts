@@ -73,11 +73,11 @@ export class CentralBankService {
       );
       partyFunctions(b).decreaseInstrument(a.id, "assets", "bankLoans", amount);
     }
-    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
+    PaymentMethods.debitAccount(a, lookup["centralbank"], amount, [
       "bankDeposits",
       "daylightOverdrafts",
     ]);
-    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
+    PaymentMethods.creditAccount(b, lookup["centralbank"], amount, [
       "bankDeposits",
       "daylightOverdrafts",
     ]);

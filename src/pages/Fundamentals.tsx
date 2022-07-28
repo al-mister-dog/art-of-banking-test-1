@@ -4,8 +4,7 @@ import StepComponent from "../components/lecture/steps/Step";
 import StepperIndex from "../components/lecture/steps/Stepper";
 
 const config = lectures.fundamentals.steps;
-
-
+const nextStep = lectures.fundamentals.nextStep
 function getStepContent(step: number) {
   switch (step) {
     case 0:
@@ -35,6 +34,6 @@ export const steps = [
 
 export default function Fundamentals() {
   return (
-    <StepperIndex steps={steps} getStepContent={getStepContent}/>
+    <StepperIndex steps={steps} getStepContent={getStepContent} nextStep={nextStep}/>
   )
 }

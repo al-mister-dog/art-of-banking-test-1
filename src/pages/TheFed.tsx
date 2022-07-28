@@ -4,7 +4,7 @@ import StepComponent from "../components/lecture/steps/Step";
 import StepperIndex from "../components/lecture/steps/Stepper";
 
 const config = lectures.centralbank.steps;
-
+const nextStep = lectures.centralbank.nextStep
 function getStepContent(step: number) {
   switch (step) {
     case 0:
@@ -34,6 +34,6 @@ export const steps = [
 
 export default function Clearinghouse() {
   return (
-    <StepperIndex steps={steps} getStepContent={getStepContent}/>
+    <StepperIndex steps={steps} getStepContent={getStepContent} nextStep={nextStep}/>
   )
 }

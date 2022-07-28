@@ -4,7 +4,7 @@ import StepComponent from "../components/lecture/steps/Step";
 import StepperIndex from "../components/lecture/steps/Stepper";
 
 const config = lectures.clearinghouse.steps;
-
+const nextStep = lectures.clearinghouse.nextStep
 function getStepContent(step: number) {
   switch (step) {
     case 0:
@@ -18,7 +18,7 @@ function getStepContent(step: number) {
     case 4:
       return <StepComponent text={config[5].text} config={config[5]} />;
     case 5:
-      return <StepComponent text={config[6].text} config={config[6]} />;
+      return <StepComponent text={config[6].text} config={config[6]}/>;
     default:
       return "Unknown step";
   }
@@ -34,6 +34,6 @@ export const steps = [
 
 export default function Clearinghouse() {
   return (
-    <StepperIndex steps={steps} getStepContent={getStepContent}/>
+    <StepperIndex steps={steps} getStepContent={getStepContent} nextStep={nextStep}/>
   )
 }

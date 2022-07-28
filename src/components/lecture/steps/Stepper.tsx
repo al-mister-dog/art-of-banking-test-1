@@ -10,11 +10,13 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { colors } from "../../../config/colorPalette";
 import StepperHeader from "../../shared_ui/stepper/StepperHeader";
 import StepperFooter from "../../shared_ui/stepper/StepperFooter";
+import { useNavigate } from "react-router-dom";
 
 const StepperIndex: React.FunctionComponent<{
   getStepContent: (step: number) => JSX.Element | "Unknown step";
   steps: string[];
-}> = ({ getStepContent, steps }) => {
+  nextStep?: string;
+}> = ({ getStepContent, steps, nextStep }) => {
   const dispatch = useAppDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState<{
@@ -23,7 +25,7 @@ const StepperIndex: React.FunctionComponent<{
 
   function scrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    dispatch(toggleTextExpanded({textExpanded: false}))
+    dispatch(toggleTextExpanded({ textExpanded: false }));
   }
 
   function handleSetActiveStep(step: number) {
@@ -67,6 +69,7 @@ const StepperIndex: React.FunctionComponent<{
         handleSetActiveStep={handleSetActiveStep}
         handleSetActiveStepBack={handleSetActiveStepBack}
         handleSetCompleted={handleSetCompleted}
+        nextStep={nextStep}
       />
     );
   }
@@ -78,6 +81,7 @@ const StepperIndex: React.FunctionComponent<{
       handleSetActiveStep={handleSetActiveStep}
       handleNext={handleNext}
       handleBack={handleBack}
+      nextStep={nextStep}
     />
   );
 };
@@ -92,6 +96,7 @@ const StepperDeskTop: React.FunctionComponent<{
   handleSetActiveStep: (step: number) => void;
   handleSetActiveStepBack: () => void;
   handleSetCompleted: (v?: any) => void;
+  nextStep?: string;
 }> = ({
   steps,
   activeStep,
@@ -100,6 +105,7 @@ const StepperDeskTop: React.FunctionComponent<{
   handleSetActiveStep,
   handleSetActiveStepBack,
   handleSetCompleted,
+  nextStep,
 }) => {
   const totalSteps = () => {
     return steps.length;
@@ -145,6 +151,7 @@ const StepperDeskTop: React.FunctionComponent<{
     handleSetCompleted({});
   };
 
+  let navigate = useNavigate()
   return (
     <Box
       sx={{
@@ -170,9 +177,13 @@ const StepperDeskTop: React.FunctionComponent<{
       <div>
         {allStepsCompleted() ? (
           <>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
+            
+            
+              <Typography sx={{ margin: "auto" }} onClick={() => navigate(`/${nextStep}`)}>
+                Click here to go to the next lecture!
+              </Typography>
+            
+
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleReset}>Reset</Button>
@@ -224,6 +235,7 @@ const StepperMobile: React.FunctionComponent<{
   handleSetActiveStep: (step: number) => void;
   handleNext: () => void;
   handleBack: () => void;
+  nextStep?: string;
 }> = ({
   steps,
   activeStep,
@@ -231,6 +243,7 @@ const StepperMobile: React.FunctionComponent<{
   handleSetActiveStep,
   handleNext,
   handleBack,
+  nextStep,
 }) => {
   const theme = useTheme();
 
