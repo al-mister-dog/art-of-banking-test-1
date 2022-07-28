@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import { colors } from "../../config/colorPalette";
+import { colors } from "../../../config/colorPalette";
 
 const TitleText = styled(Typography)(({ theme }) => ({
   letterSpacing: "2px",

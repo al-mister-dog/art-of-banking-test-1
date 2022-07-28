@@ -1,5 +1,5 @@
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { selectUI, toggleTextExpanded } from "../../features/ui/uiSlice";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { selectUI, toggleTextExpanded } from "../../../features/ui/uiSlice";
 import Title from "./Title";
 import Text from "./Text";
 import { Button } from "@mui/material";

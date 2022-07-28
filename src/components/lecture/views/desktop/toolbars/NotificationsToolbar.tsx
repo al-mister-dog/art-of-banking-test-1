@@ -20,6 +20,7 @@ import {
   Tooltip,
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
+import SingleCredit from "../../../../shared_ui/charts/SingleCredit";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -39,7 +40,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   useEffect(() => {
     dispatch(setTotalCreditData({ parties }));
   }, [parties]);
-  
+
   return (
     <Box
       sx={{
@@ -56,7 +57,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             alignItems: "center",
           }}
         >
-          <Typography style={{ margin: 0, padding: 0 }}>
+          {/* <Typography style={{ margin: 0, padding: 0 }}>
             Total System Credit: ${parseInt(totalCredit.toFixed(2))}
           </Typography>
           <LineChart
@@ -77,7 +78,9 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             />
             <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
             <Legend iconType="line" />
-          </LineChart>
+          </LineChart> */}
+          {config.parties.includes("centralbank") && <SingleCredit />}
+          
         </Box>
       )}
       {config.constraint && (

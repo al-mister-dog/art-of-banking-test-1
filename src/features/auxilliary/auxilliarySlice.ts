@@ -1,17 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { IBank } from "../../domain/types";
-
+import { total } from "../../components/lecture/helpers/total";
 import {
   reservePercentage,
   totalCreditData,
+  singleCreditData,
   totalCredit,
+  singleCredit,
 } from "./initialState";
 
 const initialState = {
   reservePercentage,
   totalCreditData,
+  singleCreditData,
   totalCredit,
+  singleCredit,
 };
 
 export const auxilliarySlice = createSlice({
@@ -96,9 +100,12 @@ export const auxilliarySlice = createSlice({
         }
       });
 
-      const totalReserves = allBanks.reduce((a, c) => {
-        return {reserves: a.reserves + c.reserves}
-      }, {reserves: 0}).reserves
+      const totalReserves = allBanks.reduce(
+        (a, c) => {
+          return { reserves: a.reserves + c.reserves };
+        },
+        { reserves: 0 }
+      ).reserves;
 
       const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
         (a: Account, c: Account) => {
@@ -110,11 +117,82 @@ export const auxilliarySlice = createSlice({
       const totalCredit = totalAssetsAndLiabilities.amount;
 
       state.totalCredit = totalCredit;
-      state.totalCreditData =[ ...state.totalCreditData, { name: "", credit: state.totalCredit, reserves: totalReserves }];
+      state.totalCreditData = [
+        ...state.totalCreditData,
+        { name: "", credit: state.totalCredit, reserves: totalReserves },
+      ];
+    },
+    setSingleCreditData: (state, { payload }) => {
+      let partiesArray: IBank[] = [];
+      interface Obj {
+        [index: string]: any;
+      }
+      interface Account {
+        [index: string]: any;
+      }
+
+      for (const key in payload.parties) {
+        partiesArray = [...partiesArray, payload.parties[key]];
+      }
+
+      const centralBank = partiesArray.filter(
+        (party) => party.type === "centralbank"
+      );
+      const otherBanks = partiesArray.filter(
+        (party) => party.type === "bank"
+      );
+      
+      let totalCentralBankCredit = 0
+      let reserves = 0
+      if (centralBank.length > 0) {
+        const totalOverdrafts = total(centralBank[0].assets.daylightOverdrafts).amount
+        const totalBankDeposits = total(centralBank[0].liabilities.bankDeposits).amount
+        totalCentralBankCredit = totalOverdrafts + totalBankDeposits
+        reserves = totalBankDeposits
+      }
+
+      // const totalOverdrafts = total(centralBank[0].assets.daylightOverdrafts)
+      // console.log(totalOverdrafts)
+
+      // let bankAssetsAndLiabilities: Obj[] = [];
+
+      // allBanks.forEach((bank) => {
+      //   for (const key in bank) {
+      //     if (key === "liabilities" || key === "assets") {
+      //       for (const k in bank[key]) {
+      //         bankAssetsAndLiabilities = [
+      //           ...bankAssetsAndLiabilities,
+      //           ...bank[key][k],
+      //         ];
+      //       }
+      //     }
+      //   }
+      // });
+
+      // const totalReserves = allBanks.reduce((a, c) => {
+      //   return {reserves: a.reserves + c.reserves}
+      // }, {reserves: 0}).reserves
+
+      // const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
+      //   (a: Account, c: Account) => {
+      //     return { amount: a.amount + c.amount };
+      //   },
+      //   { amount: 0 }
+      // );
+
+      // // const totalCredit = totalAssetsAndLiabilities.amount;
+      
+      state.singleCredit = totalCentralBankCredit;
+      state.singleCreditData = [
+        ...state.singleCreditData,
+        { name: "", credit: state.singleCredit, reserves: reserves },
+      ];
     },
     resetTotalCreditData: (state) => {
       state.totalCredit = 0;
-      state.totalCreditData =[ { name: "", credit: state.totalCredit, reserves: 0 }];
+      state.totalCreditData = [
+        { name: "", credit: state.totalCredit, reserves: 0 },
+      ];
     },
   },
 });
@@ -123,6 +201,7 @@ export const {
   setReservePercentage,
   getTotalCreditData,
   setTotalCreditData,
+  setSingleCreditData,
   resetTotalCreditData,
 } = auxilliarySlice.actions;
 

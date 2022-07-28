@@ -21,6 +21,7 @@ import {
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
 import { ContentType } from "recharts/types/component/DefaultLegendContent";
+import SingleCredit from "../../../../shared_ui/charts/SingleCredit";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -75,10 +76,10 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             height: "22vh",
           }}
         >
-          <Typography variant="caption" style={{ margin: 0, padding: 0, fontFamily: "Roboto", fontWeight: "bold" }}>
+          {/* <Typography variant="caption" style={{ margin: 0, padding: 0, fontFamily: "Roboto", fontWeight: "bold" }}>
           Total System Credit: ${parseInt(totalCredit.toFixed(2))}
-          </Typography>
-          <ResponsiveContainer width={300} height="100%">
+          </Typography> */}
+          {/* <ResponsiveContainer width={300} height="100%">
             <LineChart
               data={totalCreditData}
               margin={{ top: 10, right: 15, left: -35, bottom: -20 }}
@@ -107,7 +108,9 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
                 }}
               />
             </LineChart>
-          </ResponsiveContainer>
+            
+          </ResponsiveContainer> */}
+          {config.parties.includes("centralbank") && <SingleCredit />}
         </Box>
       )}
     </Box>

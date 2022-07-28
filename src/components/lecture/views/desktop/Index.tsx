@@ -6,7 +6,7 @@ import SelectedParty from "./sidepanel/SelectedParty";
 import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../helpers/usePartyRows";
-import Introduction from "../../../shared_ui/Introduction";
+import Introduction from "../../../shared_ui/text/Introduction";
 import { colors } from "../../../../config/colorPalette";
 
 const IntroContainer = styled("div")(({ theme }) => ({

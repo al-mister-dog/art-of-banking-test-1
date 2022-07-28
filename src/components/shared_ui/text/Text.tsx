@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { colors } from "../../config/colorPalette";
+import { colors } from "../../../config/colorPalette";
 
 export default function Text({
   children,
