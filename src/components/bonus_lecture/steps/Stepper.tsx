@@ -301,9 +301,9 @@ const StepperMobile: React.FunctionComponent<{
     <Box
       sx={{
         margin: "auto",
-        borderRadius: "15px",
+        borderRadius: "5px",
         background: colors.paper,
-        marginTop: "50px",
+        marginTop: "120px",
         padding: "20px 5px",
       }}
     >
