@@ -28,3 +28,7 @@ sort out repay loan: done
 complete-step function: not done
 
 link to next lecture: half done
+
+
+
+reorganize accordion functionality
