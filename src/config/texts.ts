@@ -386,29 +386,38 @@ export const centralbank = {
     lectureTitle: `Fed Funds`,
     title: `The Fed Funds Market`,
     paragraphs: [
-      `In reality there isn't just one bank but many banks. If a customer from Bank 1 pays a
-      customer from Bank 2, the liabilities of Bank 1 decreases but the liabilities of Bank2 
-      increases. However Bank 2 has not received any cash in return for this increase in its
-      deposit liabilities; Bank 2 is in effect owed money by Bank 1. This raises the problem
-      of how to settle payments between banks.`,
-      `In America during the first half of the 19th century, a cheque received by one bank 
-      would have the name of the bank from which the customer belonging to some other bank 
-      had made a payment. These cheques would be tallied up at the end of the day or week 
-      and then a bill demanding payment from that bank would be issued. Likewise, this same 
-      bank will receive bills demanding payments to other banks from which customers from 
-      this bank have made transfers to customers to those other banks. Each bank would have 
-      a porter who would shift reserves from bank to bank, carrying the risk of making 
-      mistakes in payments, honest or dishonest.`,
-      `We introduce in this step 'dues'. These dues represent money owed to or from a bank and 
-      appear on both sides of a bank's balance sheet. They are not really any different to 
-      deposits or overdrafts, representing payments the banks will make to eachother at a future
-      date. When payments are settled these dues are wiped off the balance sheets and end up in
-      each banks' reserves. In the next step we will look at an improved way of dealing with payments between banks.`,
+      `We have seen how a bank that has gone into its daylight overdraft with the Fed can 
+      get a loan from another bank in order to settle this overdraft. But what does this loan
+      consist of?`,
+      `A bank that looks for loans in the Federal Reserve system goes into the 'Fed Funds Market'
+      to do so. In this market are other banks looking to loan out reserves or looking to borrow 
+      reserves. These reserves are accepted as payment to settle overdrafts with the Fed. They can
+      be used as payment 'right now'. When Bank B lends to Bank A, Bank B is lending reserves. However,
+      the loan that appears on Bank B's assets and Bank A's liabilities is called 'Fed Funds'. Fed
+      Funds are credit, money that Bank A promises to pay the next day. Fed Funds is the money with
+      which banks settle payments with other banks. They are not the liability or the asset of the 
+      Fed.
+      `,
+      `In the previous example we saw that Bank 1 went into its daylight overdraft in order to make a payment.
+      Then Bank 1 took out a loan with another bank to pay it off. In the credit chart you may have noticed
+      that the credit at the Fed expanded when the bank went into its overdraft, and then the credit
+      contracted when the bank took a loan to pay it off. However the credit between the lender and 
+      loanee bank remained. This is called the expansion of private credit. Private credit allows banks
+      flexibility in investments and payments, but private credit can sometimes expand so high that
+      a financial crisis or even a crash may follow. `,
+      `The Fed tries to anticipate and adjust for this using the Fed Funds Rate (in the UK the equivelent
+        is the interest rate or bank rate). The federal funds rate 
+      is the interest rate that banks charge each other to borrow or lend excess reserves overnight. 
+      This rate is set by the Federal Open Market Committee (FOMC) and is adjusted to either encourage
+      or discourage lending. The rate may be increased if the Fed wish to see less banks making risky
+      investments. If the Fed Funds Rate is high then a bank may think twice about doing that 
+      requires them to take a loan with another bank, as the interest on that loan will be much higher.
+      Conversely the rate may be decreased during recessions to allow banks the freedom to make more
+      investments and payments in order to kick start the economy.`
     ],
-    assignment: `Here we have a twos banks each with two customers, who have 50 dollars in their
-    accounts. Make payments between customers and note how 'due tos' and 'due froms' get added to
-    each bank's balance sheet. Note where this money goes once payments between banks have been
-    settled.`,
+    assignment: `Get banks to take out loans, get into overdrafts and settle payments. This may need
+    to be preceeded by customer transfers. Also increase or decrease the Fed Funds Rate. Would you 
+    take a loan out if that was the rate?`,
   },
   step4: {
     lectureTitle: `Clearing House`,

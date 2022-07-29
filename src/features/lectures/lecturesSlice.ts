@@ -55,8 +55,8 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.update(state);
     },
     createLoan: (state, { payload }) => {
-      const { p1, p2, amt } = payload;
-      CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt);
+      const { p1, p2, amt, fedFundsRate } = payload;
+      CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt, fedFundsRate);
       lecturesSlice.caseReducers.update(state);
     },
     repayLoan: (state, { payload }) => {

@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { colors } from "../../../../config/colorPalette";
 import { deCamelize, capitalize } from "../../helpers/parsers";
-const toolbarTextColor = colors.balanceSheetsTextColor
+const toolbarTextColor = colors.balanceSheetsTextColor;
 
 const SideOfBalanceSheet: React.FunctionComponent<{
   config?: any;
@@ -95,11 +95,19 @@ const SideOfBalanceSheet: React.FunctionComponent<{
               fontSize: 12,
               color: toolbarTextColor,
               fontWeight: 500,
+              borderTop: `1px solid ${toolbarTextColor}`,
             }}
           >
-            <hr style={{backgroundColor: "black"}}/>
-            <Typography sx={{ margin: 0, padding: 0, fontSize: 13, fontFamily: "Roboto",
-          fontWeight: "bold", }}>
+            {/* <hr style={{backgroundColor: "black"}}/> */}
+            <Typography
+              sx={{
+                margin: 0,
+                padding: 0,
+                fontSize: 13,
+                fontFamily: "Roboto",
+                fontWeight: "bold",
+              }}
+            >
               Reserves: ${reserves}
             </Typography>
           </div>

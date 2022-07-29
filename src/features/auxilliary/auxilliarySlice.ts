@@ -3,6 +3,7 @@ import { RootState } from "../../app/store";
 import { IBank } from "../../domain/types";
 import { total } from "../../components/lecture/helpers/total";
 import {
+  fedFundsRate,
   reservePercentage,
   totalCreditData,
   centralbankCreditData,
@@ -11,6 +12,7 @@ import {
 } from "./initialState";
 
 const initialState = {
+  fedFundsRate,
   reservePercentage,
   totalCreditData,
   centralbankCreditData,
@@ -24,6 +26,9 @@ export const auxilliarySlice = createSlice({
   reducers: {
     setReservePercentage: (state, { payload }) => {
       state.reservePercentage = payload.percentage;
+    },
+    setFedFundsRate: (state, { payload }) => {
+      state.fedFundsRate = payload.rate;
     },
     getTotalCreditData: (state, { payload }) => {
       let partiesArray: IBank[] = [];
@@ -153,7 +158,7 @@ export const auxilliarySlice = createSlice({
         reserves = totalBankDeposits;
       }
 
-      let otherBanksTotal = 0
+      let otherBanksTotal = 0;
       otherBanks.forEach((bank) => {
         for (const key in bank) {
           if (key === "liabilities" || key === "assets") {
@@ -164,7 +169,7 @@ export const auxilliarySlice = createSlice({
                   k === "daylightOverdrafts") &&
                 bank[key][k].length > 0
               ) {
-                otherBanksTotal += total(bank[key][k]).amount
+                otherBanksTotal += total(bank[key][k]).amount;
               }
             }
           }
@@ -188,10 +193,17 @@ export const auxilliarySlice = createSlice({
         { name: "", credit: state.totalCredit, reserves: 0 },
       ];
     },
+    resetCentralbankCreditData: (state) => {
+      state.totalCredit = 0;
+      state.totalCreditData = [
+        { name: "", credit: state.totalCredit, reserves: 0 },
+      ];
+    },
   },
 });
 
 export const {
+  setFedFundsRate,
   setReservePercentage,
   getTotalCreditData,
   setTotalCreditData,

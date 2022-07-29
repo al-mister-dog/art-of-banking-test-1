@@ -1,3 +1,4 @@
+export const fedFundsRate = 11;
 export const reservePercentage = 25;
 export const totalCredit = 0;
 export const centralbankCredit = 0;

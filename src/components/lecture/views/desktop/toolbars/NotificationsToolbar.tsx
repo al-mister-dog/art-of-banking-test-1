@@ -21,6 +21,9 @@ import {
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
 import CentralBankCredit from "../../../../shared_ui/charts/CentralBankCredit";
+import FedFundsRateSlider from "../../../../shared_ui/charts/FedFundsRateSlider";
+import ReserveRequirementSlider from "../../../../shared_ui/charts/ReserveRequirementSlider";
+import TotalCreditChart from "../../../../shared_ui/charts/TotalCredit";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -49,50 +52,16 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
         alignItems: "flex-start",
       }}
     >
-      {config.credit && (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          {/* <Typography style={{ margin: 0, padding: 0 }}>
-            Total System Credit: ${parseInt(totalCredit.toFixed(2))}
-          </Typography>
-          <LineChart
-            width={450}
-            height={125}
-            data={totalCreditData}
-            margin={{ top: 5, right: 30, left: 20, bottom: -10 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis style={{ fontSize: "0.6rem" }} />
-            <Tooltip />
-            <Line
-              type="monotone"
-              name="+ credit"
-              dataKey="credit"
-              stroke={colors.balanceSheetsColor}
-            />
-            <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
-            <Legend iconType="line" />
-          </LineChart> */}
-          {config.parties.includes("centralbank") && <CentralBankCredit />}
-          
-        </Box>
+      {config.constraint && <ReserveRequirementSlider />}
+      {config.parties.includes("centralbank") && (
+        <>
+          <CentralBankCredit />
+          <FedFundsRateSlider />
+        </>
       )}
-      {config.constraint && (
-        <Box width={300}>
-          <Typography>Reserve Requirement: %{reservePercentage}</Typography>
-          <Slider
-            defaultValue={25}
-            aria-label="Default"
-            valueLabelDisplay="auto"
-            onChange={handleChangeReserveRequirement}
-          />
-        </Box>
+
+      {config.credit && !config.parties.includes("centralbank") && (
+        <TotalCreditChart />
       )}
     </Box>
   );

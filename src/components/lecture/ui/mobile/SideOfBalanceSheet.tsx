@@ -82,7 +82,7 @@ const SideOfBalanceSheet: React.FunctionComponent<{
             fontWeight: 500,
           }}
         >
-          <hr style={{borderColor: colors.paper}}/>
+          
           <Typography sx={{ margin: 0, padding: 0, fontSize: 15, fontFamily: "Roboto",
           fontWeight: "bold", }}>
             Reserves: ${reserves}

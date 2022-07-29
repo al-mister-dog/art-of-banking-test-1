@@ -43,6 +43,8 @@ const MoveFixedAmount: React.FunctionComponent<{
   btnText,
   dispatchMethod,
 }) => {
+  const {fedFundsRate} = useAppSelector(selectAuxilliary)
+
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );
@@ -65,7 +67,8 @@ const MoveFixedAmount: React.FunctionComponent<{
       dispatch(payBank(payloadArgs));
     },
     createLoan(payloadArgs: PayloadArguments) {
-      dispatch(createLoan(payloadArgs));
+      
+      dispatch(createLoan({...payloadArgs, fedFundsRate}));
     },
     repayLoan(payloadArgs: PayloadArguments) {
       dispatch(repayLoan(payloadArgs));
