@@ -1,5 +1,6 @@
 import { Box, Typography, Slider } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { colors } from "../../../config/colorPalette";
 import {
   setFedFundsRate,
   selectAuxilliary,
@@ -9,10 +10,7 @@ const FedFundsSlider = () => {
   const dispatch = useAppDispatch();
   const { fedFundsRate } = useAppSelector(selectAuxilliary);
 
-  function handleChangeFedFundsRate(
-    event: Event,
-    newValue: number | number[]
-  ) {
+  function handleChangeFedFundsRate(event: Event, newValue: number | number[]) {
     dispatch(setFedFundsRate({ rate: newValue }));
   }
   return (
@@ -22,8 +20,11 @@ const FedFundsSlider = () => {
       }}
     >
       <Typography
-        variant="caption"
-        sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+        sx={{
+          fontFamily: "Roboto",
+          fontWeight: "bold",
+          color: colors.darkMain,
+        }}
       >
         Fed Funds Rate: %{fedFundsRate}
       </Typography>

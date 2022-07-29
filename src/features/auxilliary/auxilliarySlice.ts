@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { IBank } from "../../domain/types";
+import { IBank, Account } from "../../domain/types";
 import { total } from "../../components/lecture/helpers/total";
 import {
   fedFundsRate,
@@ -10,6 +10,7 @@ import {
   totalCredit,
   centralbankCredit,
 } from "./initialState";
+import getPartiesArray from "../../components/lecture/helpers/getPartiesArray";
 
 const initialState = {
   fedFundsRate,
@@ -31,23 +32,9 @@ export const auxilliarySlice = createSlice({
       state.fedFundsRate = payload.rate;
     },
     getTotalCreditData: (state, { payload }) => {
-      let partiesArray: IBank[] = [];
-      interface Obj {
-        [index: string]: any;
-      }
-      interface Account {
-        [index: string]: any;
-      }
+      const allBanks = getPartiesArray(payload.parties, "bank");
 
-      for (const key in payload.parties) {
-        partiesArray = [...partiesArray, payload.parties[key]];
-      }
-
-      const allBanks = partiesArray.filter((party) =>
-        party.id.includes("bank")
-      );
-
-      let bankAssetsAndLiabilities: Obj[] = [];
+      let bankAssetsAndLiabilities: Account[] = [];
 
       allBanks.forEach((bank) => {
         for (const key in bank) {
@@ -62,35 +49,13 @@ export const auxilliarySlice = createSlice({
         }
       });
 
-      const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
-        (a: Account, c: Account) => {
-          return { amount: a.amount + c.amount };
-        },
-        { amount: 0 }
-      );
-
-      const totalCredit = totalAssetsAndLiabilities.amount;
-
+      const totalCredit = total(bankAssetsAndLiabilities, "amount")
       state.totalCredit = totalCredit;
     },
     setTotalCreditData: (state, { payload }) => {
-      let partiesArray: IBank[] = [];
-      interface Obj {
-        [index: string]: any;
-      }
-      interface Account {
-        [index: string]: any;
-      }
+      const allBanks = getPartiesArray(payload.parties, "bank");
 
-      for (const key in payload.parties) {
-        partiesArray = [...partiesArray, payload.parties[key]];
-      }
-
-      const allBanks = partiesArray.filter((party) =>
-        party.id.includes("bank")
-      );
-
-      let bankAssetsAndLiabilities: Obj[] = [];
+      let bankAssetsAndLiabilities: Account[] = [];
 
       allBanks.forEach((bank) => {
         for (const key in bank) {
@@ -105,23 +70,17 @@ export const auxilliarySlice = createSlice({
         }
       });
 
-      const totalReserves = allBanks.reduce(
-        (a, c) => {
-          return { reserves: a.reserves + c.reserves };
-        },
-        { reserves: 0 }
-      ).reserves;
-
-      const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
-        (a: Account, c: Account) => {
-          return { amount: a.amount + c.amount };
-        },
-        { amount: 0 }
+      const totalReserves = total(allBanks, "reserves");
+      
+      const totalAssetsAndLiabilities = total(
+        bankAssetsAndLiabilities,
+        "amount"
       );
 
-      const totalCredit = totalAssetsAndLiabilities.amount;
-
+      const totalCredit = totalAssetsAndLiabilities;
+      
       state.totalCredit = totalCredit;
+      
       state.totalCreditData = [
         ...state.totalCreditData,
         { name: "", credit: state.totalCredit, reserves: totalReserves },
@@ -129,12 +88,6 @@ export const auxilliarySlice = createSlice({
     },
     setcentralbankCreditData: (state, { payload }) => {
       let partiesArray: IBank[] = [];
-      interface Obj {
-        [index: string]: any;
-      }
-      interface Account {
-        [index: string]: any;
-      }
 
       for (const key in payload.parties) {
         partiesArray = [...partiesArray, payload.parties[key]];
@@ -149,11 +102,13 @@ export const auxilliarySlice = createSlice({
       let reserves = 0;
       if (centralBank.length > 0) {
         const totalOverdrafts = total(
-          centralBank[0].assets.daylightOverdrafts
-        ).amount;
+          centralBank[0].assets.daylightOverdrafts,
+          "amount"
+        );
         const totalBankDeposits = total(
-          centralBank[0].liabilities.bankDeposits
-        ).amount;
+          centralBank[0].liabilities.bankDeposits,
+          "amount"
+        );
         totalCentralBankCredit = totalOverdrafts + totalBankDeposits;
         reserves = totalBankDeposits;
       }
@@ -169,7 +124,7 @@ export const auxilliarySlice = createSlice({
                   k === "daylightOverdrafts") &&
                 bank[key][k].length > 0
               ) {
-                otherBanksTotal += total(bank[key][k]).amount;
+                otherBanksTotal += total(bank[key][k], "amount");
               }
             }
           }

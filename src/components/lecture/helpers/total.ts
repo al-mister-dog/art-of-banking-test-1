@@ -1,10 +1,10 @@
-import { Account } from "../../../domain/types";
-
-export const total = (instruments: Account[]) => {
+export const total = (instruments: any, key: string) => {
+  type Object = { [x: string]: any; }
+  const k = `${key}`
   return instruments.reduce(
-    (a, c) => {
-      return { amount: a.amount + c.amount };
+    (a: Object, c: Object) => {
+      return { [k]: a[k] + c[k] };
     },
-    { amount: 0 }
-  );
+    { [k]: 0 }
+  )[k];
 };

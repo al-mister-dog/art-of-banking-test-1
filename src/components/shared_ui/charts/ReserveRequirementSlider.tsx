@@ -1,5 +1,6 @@
 import { Box, Typography, Slider } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { colors } from "../../../config/colorPalette";
 import {
   setReservePercentage,
   selectAuxilliary,
@@ -22,8 +23,7 @@ const ReserveRequirementSlider = () => {
       }}
     >
       <Typography
-        variant="caption"
-        sx={{ fontFamily: "Roboto", fontWeight: "bold" }}
+        sx={{ fontFamily: "Roboto", fontWeight: "bold", color: colors.darkMain }}
       >
         Reserve Requirement: %{reservePercentage}
       </Typography>
