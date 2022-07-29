@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { selectParties } from "../../../features/lectures/lecturesSlice";
 import {
   selectAuxilliary,
-  setcentralbankCreditData,
+  setTotalCreditData,
 } from "../../../features/auxilliary/auxilliarySlice";
 import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
@@ -12,19 +12,19 @@ import {
   XAxis,
   YAxis,
   Line,
-  Legend,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 import { colors } from "../../../config/colorPalette";
 
-const ButtonAppBar: React.FunctionComponent = () => {
+const TotalCreditChart: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const { centralbankCreditData } = useAppSelector(selectAuxilliary);
+  const { totalCreditData, totalCredit } = useAppSelector(selectAuxilliary);
 
   useEffect(() => {
-    dispatch(setcentralbankCreditData({ parties }));
+    dispatch(setTotalCreditData({ parties }));
   }, [parties]);
 
   return (
@@ -45,11 +45,11 @@ const ButtonAppBar: React.FunctionComponent = () => {
           color: colors.darkMain,
         }}
       >
-        Credit Expansion
+        Total System Credit: ${parseInt(totalCredit.toFixed(2))}
       </Typography>
-      <ResponsiveContainer width={350} height="100%">
+      <ResponsiveContainer width={300} height="100%">
         <LineChart
-          data={centralbankCreditData}
+          data={totalCreditData}
           margin={{ top: 10, right: 15, left: -35, bottom: -20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -60,16 +60,15 @@ const ButtonAppBar: React.FunctionComponent = () => {
             type="monotone"
             name="+ credit"
             dataKey="credit"
-            stroke="#20d6df"
+            stroke={colors.balanceSheetsColor}
           />
-          <Line type="monotone" dataKey="reserves" stroke="#cf3095" />
-          <Line type="monotone" dataKey="privateCredit" stroke="#615404" />
+          <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
           <Legend
             iconType="line"
             verticalAlign="top"
             wrapperStyle={{
               paddingBottom: "10px",
-              // paddingLeft: "30px",
+              paddingLeft: "30px",
             }}
           />
         </LineChart>
@@ -78,4 +77,4 @@ const ButtonAppBar: React.FunctionComponent = () => {
   );
 };
 
-export default ButtonAppBar;
+export default TotalCreditChart;
