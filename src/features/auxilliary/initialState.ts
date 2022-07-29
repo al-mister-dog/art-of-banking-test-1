@@ -1,6 +1,7 @@
 export const reservePercentage = 25;
 export const totalCredit = 0;
-export const singleCredit = 0;
+export const centralbankCredit = 0;
+export const privateCredit = 0;
 export const totalCreditData = [
   {
     name: "",
@@ -8,11 +9,12 @@ export const totalCreditData = [
     reserves: 0,
   },
 ];
-export const singleCreditData = [
+export const centralbankCreditData = [
   {
     name: "",
     credit: 0,
     reserves: 0,
+    privateCredit: 0,
   },
 ];
 export const interestRate = 1;

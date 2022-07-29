@@ -16,7 +16,7 @@ import { colors } from "../../../config/colorPalette";
 import {
   selectAuxilliary,
   setReservePercentage,
-  setSingleCreditData,
+  setcentralbankCreditData,
 } from "../../../features/auxilliary/auxilliarySlice";
 import { selectParties } from "../../../features/lectures/lecturesSlice";
 
@@ -25,7 +25,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
 }) => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const { reservePercentage, totalCreditData, singleCreditData, singleCredit, totalCredit } =
+  const { reservePercentage, totalCreditData, centralbankCreditData, centralbankCredit, totalCredit } =
     useAppSelector(selectAuxilliary);
 
   function handleChangeReserveRequirement(
@@ -36,7 +36,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   }
 
   useEffect(() => {
-    dispatch(setSingleCreditData({ parties }));
+    dispatch(setcentralbankCreditData({ parties }));
   }, [parties]);
 
   return (
@@ -54,13 +54,13 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
           alignItems: "center",
         }}
       >
-        <Typography style={{ margin: 0, padding: 0 }}>
-          Total System Credit: ${parseInt(singleCredit.toFixed(2))}
+        <Typography style={{ margin: 0, padding: 0, fontFamily: "Roboto", fontWeight: "bold", color: colors.darkMain }}>
+          Credit Expansion
         </Typography>
         <LineChart
           width={450}
           height={125}
-          data={singleCreditData}
+          data={centralbankCreditData}
           margin={{ top: 5, right: 30, left: 20, bottom: -10 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -71,9 +71,10 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             type="monotone"
             name="+ credit"
             dataKey="credit"
-            stroke={colors.balanceSheetsColor}
+            stroke="#20d6df"
           />
-          <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
+          <Line type="monotone" dataKey="reserves" stroke="#cf3095" />
+          <Line type="monotone" dataKey="privateCredit" stroke="#615404" />
           <Legend iconType="line" />
         </LineChart>
       </Box>

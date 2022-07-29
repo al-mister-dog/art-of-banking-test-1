@@ -5,17 +5,17 @@ import { total } from "../../components/lecture/helpers/total";
 import {
   reservePercentage,
   totalCreditData,
-  singleCreditData,
+  centralbankCreditData,
   totalCredit,
-  singleCredit,
+  centralbankCredit,
 } from "./initialState";
 
 const initialState = {
   reservePercentage,
   totalCreditData,
-  singleCreditData,
+  centralbankCreditData,
   totalCredit,
-  singleCredit,
+  centralbankCredit,
 };
 
 export const auxilliarySlice = createSlice({
@@ -122,7 +122,7 @@ export const auxilliarySlice = createSlice({
         { name: "", credit: state.totalCredit, reserves: totalReserves },
       ];
     },
-    setSingleCreditData: (state, { payload }) => {
+    setcentralbankCreditData: (state, { payload }) => {
       let partiesArray: IBank[] = [];
       interface Obj {
         [index: string]: any;
@@ -138,54 +138,48 @@ export const auxilliarySlice = createSlice({
       const centralBank = partiesArray.filter(
         (party) => party.type === "centralbank"
       );
-      const otherBanks = partiesArray.filter(
-        (party) => party.type === "bank"
-      );
-      
-      let totalCentralBankCredit = 0
-      let reserves = 0
+      const otherBanks = partiesArray.filter((party) => party.type === "bank");
+
+      let totalCentralBankCredit = 0;
+      let reserves = 0;
       if (centralBank.length > 0) {
-        const totalOverdrafts = total(centralBank[0].assets.daylightOverdrafts).amount
-        const totalBankDeposits = total(centralBank[0].liabilities.bankDeposits).amount
-        totalCentralBankCredit = totalOverdrafts + totalBankDeposits
-        reserves = totalBankDeposits
+        const totalOverdrafts = total(
+          centralBank[0].assets.daylightOverdrafts
+        ).amount;
+        const totalBankDeposits = total(
+          centralBank[0].liabilities.bankDeposits
+        ).amount;
+        totalCentralBankCredit = totalOverdrafts + totalBankDeposits;
+        reserves = totalBankDeposits;
       }
 
-      // const totalOverdrafts = total(centralBank[0].assets.daylightOverdrafts)
-      // console.log(totalOverdrafts)
+      let otherBanksTotal = 0
+      otherBanks.forEach((bank) => {
+        for (const key in bank) {
+          if (key === "liabilities" || key === "assets") {
+            for (const k in bank[key]) {
+              if (
+                (k === "bankDeposits" ||
+                  k === "bankLoans" ||
+                  k === "daylightOverdrafts") &&
+                bank[key][k].length > 0
+              ) {
+                otherBanksTotal += total(bank[key][k]).amount
+              }
+            }
+          }
+        }
+      });
 
-      // let bankAssetsAndLiabilities: Obj[] = [];
-
-      // allBanks.forEach((bank) => {
-      //   for (const key in bank) {
-      //     if (key === "liabilities" || key === "assets") {
-      //       for (const k in bank[key]) {
-      //         bankAssetsAndLiabilities = [
-      //           ...bankAssetsAndLiabilities,
-      //           ...bank[key][k],
-      //         ];
-      //       }
-      //     }
-      //   }
-      // });
-
-      // const totalReserves = allBanks.reduce((a, c) => {
-      //   return {reserves: a.reserves + c.reserves}
-      // }, {reserves: 0}).reserves
-
-      // const totalAssetsAndLiabilities = bankAssetsAndLiabilities.reduce(
-      //   (a: Account, c: Account) => {
-      //     return { amount: a.amount + c.amount };
-      //   },
-      //   { amount: 0 }
-      // );
-
-      // // const totalCredit = totalAssetsAndLiabilities.amount;
-      
-      state.singleCredit = totalCentralBankCredit;
-      state.singleCreditData = [
-        ...state.singleCreditData,
-        { name: "", credit: state.singleCredit, reserves: reserves },
+      state.centralbankCredit = totalCentralBankCredit;
+      state.centralbankCreditData = [
+        ...state.centralbankCreditData,
+        {
+          name: "",
+          credit: state.centralbankCredit,
+          reserves: reserves,
+          privateCredit: otherBanksTotal,
+        },
       ];
     },
     resetTotalCreditData: (state) => {
@@ -201,7 +195,7 @@ export const {
   setReservePercentage,
   getTotalCreditData,
   setTotalCreditData,
-  setSingleCreditData,
+  setcentralbankCreditData,
   resetTotalCreditData,
 } = auxilliarySlice.actions;
 

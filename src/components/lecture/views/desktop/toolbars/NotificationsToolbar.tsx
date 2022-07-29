@@ -20,7 +20,7 @@ import {
   Tooltip,
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
-import SingleCredit from "../../../../shared_ui/charts/SingleCredit";
+import CentralBankCredit from "../../../../shared_ui/charts/CentralBankCredit";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -79,7 +79,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
             <Line type="monotone" dataKey="reserves" stroke={colors.darkMain} />
             <Legend iconType="line" />
           </LineChart> */}
-          {config.parties.includes("centralbank") && <SingleCredit />}
+          {config.parties.includes("centralbank") && <CentralBankCredit />}
           
         </Box>
       )}
