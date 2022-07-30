@@ -55,13 +55,13 @@ export default function Home() {
       <Page>
         <TextContainer>
           <Typography
-            variant="h3"
+            variant="h2"
             align="center"
             sx={{ color: colors.darkMain, marginBottom: "25px" }}
           >
-            Learn the Art of Banking
+            The Art of Banking
           </Typography>
-          <Typography variant="h5">
+          <Typography variant="h4" align="center">
             from the Italian masters to the New York Money Market...
           </Typography>
 

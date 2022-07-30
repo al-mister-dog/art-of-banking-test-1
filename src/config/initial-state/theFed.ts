@@ -1,4 +1,4 @@
-export const lecture3StateConfig = {
+export const theFedState = {
   daylightOverdraft: {
     system: "centralbank",
     parties: [

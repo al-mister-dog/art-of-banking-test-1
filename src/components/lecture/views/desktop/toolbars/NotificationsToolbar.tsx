@@ -20,10 +20,10 @@ import {
   Tooltip,
 } from "recharts";
 import { colors } from "../../../../../config/colorPalette";
-import CentralBankCredit from "../../../../shared_ui/charts/CentralBankCredit";
-import FedFundsRateSlider from "../../../../shared_ui/charts/FedFundsRateSlider";
-import ReserveRequirementSlider from "../../../../shared_ui/charts/ReserveRequirementSlider";
-import TotalCreditChart from "../../../../shared_ui/charts/TotalCredit";
+import CentralBankCredit from "../../../../ui/charts/CentralBankCredit";
+import FedFundsRateSlider from "../../../../ui/charts/FedFundsRateSlider";
+import ReserveRequirementSlider from "../../../../ui/charts/ReserveRequirementSlider";
+import TotalCreditChart from "../../../../ui/charts/TotalCredit";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,

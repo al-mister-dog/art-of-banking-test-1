@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { textsIntro } from "../assets/texts"
-import Introduction from "../../shared_ui/text/Introduction"
+import Introduction from "../../ui/text/Introduction"
 import Box from "@mui/material/Box"
 
 export default function Intro() {

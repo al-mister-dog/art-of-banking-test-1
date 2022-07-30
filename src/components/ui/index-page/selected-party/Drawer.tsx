@@ -6,7 +6,7 @@ import {
 import { Box, Button, SwipeableDrawer } from "@mui/material";
 import { colors } from "../../../../config/colorPalette";
 import { IBank } from "../../../../features/lectures/fundamentalsSlice.spec";
-import SelectedParty from "../../../lecture/views/mobile/sidepanel/SelectedParty";
+import SelectedParty from "../../../lecture/views/mobile/sidepanel/Panel";
 
 interface BankState {
   [index: string]: IBank;

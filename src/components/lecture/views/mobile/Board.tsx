@@ -1,5 +1,5 @@
-import BalanceSheet from "../../../shared_ui/BalanceSheet";
-import { BoardContainer, BalanceSheetList } from "../../../shared_ui/board";
+import BalanceSheet from "../../../ui/balance-sheet/BalanceSheet";
+import { BoardContainer, BalanceSheetList } from "../../../ui/board";
 
 const Board: React.FunctionComponent<{
   config?: any;

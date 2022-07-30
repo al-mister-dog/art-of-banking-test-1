@@ -2,7 +2,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Box, Typography } from "@mui/material";
 
 import { Account } from "../../../domain/types";
-import { deCamelize } from "../../lecture/helpers/parsers";
+import { deCamelize } from "../../../helpers/parsers";
 import { colors } from "../../../config/colorPalette";
 
 const gridStyles = {

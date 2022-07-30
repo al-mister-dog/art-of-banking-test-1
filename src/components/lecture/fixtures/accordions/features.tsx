@@ -7,7 +7,7 @@ import {
   findOweingBanks,
   findOwedandOweingBanks,
   findBankToRepayLoan,
-} from "../../helpers/filters";
+} from "../../../../helpers/filters";
 import MoveAmount from "./accdn-methods/MoveAmount";
 import Dues from "./accdn-methods/Dues";
 import OpenAccountCard from "./accdn-methods/OpenAccountCard";

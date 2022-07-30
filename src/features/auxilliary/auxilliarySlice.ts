@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { IBank, Account } from "../../domain/types";
-import { total } from "../../components/lecture/helpers/total";
+import { total } from "../../helpers/total";
 import {
   fedFundsRate,
   reservePercentage,
@@ -10,7 +10,7 @@ import {
   totalCredit,
   centralbankCredit,
 } from "./initialState";
-import getPartiesArray from "../../components/lecture/helpers/getPartiesArray";
+import getPartiesArray from "../../helpers/getPartiesArray";
 
 const initialState = {
   fedFundsRate,

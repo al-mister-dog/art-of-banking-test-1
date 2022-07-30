@@ -9,11 +9,11 @@ import { Box, Typography } from "@mui/material";
 import { Accordions } from "../../types";
 import { IBank } from "../../../../../../domain/types";
 import ChoosePlayer from "../../dialogs/ChoosePartyDialog";
-import CardButton from "../../../../ui/CardButton";
-import { findOwedandOweingBanks } from "../../../../helpers/filters";
-import { deCamelize } from "../../../../helpers/parsers";
+import CardButton from "../../../../../ui/CardButton";
+import { findOwedandOweingBanks } from "../../../../../../helpers/filters";
+import { deCamelize } from "../../../../../../helpers/parsers";
 import { colors } from "../../../../../../config/colorPalette";
-import { netAmount } from "../../../../helpers/utils";
+import { netAmount } from "../../../../../../helpers/utils";
 
 const NetDuesCard: React.FunctionComponent<{
   selected: any;

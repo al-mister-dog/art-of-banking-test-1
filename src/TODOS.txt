@@ -21,7 +21,7 @@ BANK DEPOSITS ARE RESERVES AT THE FED
 
 
 //////
-Need more than one credit chart eg the feds credit/single banks credit/total credit etc
+Need more than one credit chart eg the feds credit/single banks credit/total credit etc: done
 
 sort out repay loan: done
 
@@ -29,6 +29,10 @@ complete-step function: not done
 
 link to next lecture: half done
 
-
+add inflation and interest articles from trial of pyxb
 
 reorganize accordion functionality
+
+
+redundant ui
+views/ui/balancesheets

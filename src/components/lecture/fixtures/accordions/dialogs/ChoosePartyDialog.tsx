@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { blue } from "@mui/material/colors";
-import methodHelperTexts from "../../../helpers/methodHelperTexts";
+import methodHelperTexts from "../../../../../helpers/methodHelperTexts";
 
 export interface ChoosePartyProps {
   open: boolean;

@@ -13,14 +13,14 @@ import {
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
 import { useEffect, useState } from "react";
 import ChoosePlayer from "../dialogs/ChoosePartyDialog";
-import CardButton from "../../../ui/CardButton";
+import CardButton from "../../../../ui/CardButton";
 import Amount from "./Amount";
 import { Box, Typography } from "@mui/material";
 import { Accordions, Dispatches, PayloadArguments } from "../types";
 import { IBank } from "../../../../../domain/types";
-import { capitalize } from "../../../helpers/parsers";
+import { capitalize } from "../../../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
-import useParties from "../../../helpers/useParties";
+import useParties from "../../../../../helpers/useParties";
 
 const MoveFixedAmount: React.FunctionComponent<{
   variable?: boolean;
@@ -43,15 +43,17 @@ const MoveFixedAmount: React.FunctionComponent<{
   btnText,
   dispatchMethod,
 }) => {
+  const dispatch = useAppDispatch();
+  //additional payload args
   const {fedFundsRate} = useAppSelector(selectAuxilliary)
-
+  //
   const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
     null
   );
   const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<number>(0);
 
-  const dispatch = useAppDispatch();
+  
 
   const dispatchMethods = {
     deposit(payloadArgs: PayloadArguments) {
@@ -67,7 +69,6 @@ const MoveFixedAmount: React.FunctionComponent<{
       dispatch(payBank(payloadArgs));
     },
     createLoan(payloadArgs: PayloadArguments) {
-      
       dispatch(createLoan({...payloadArgs, fedFundsRate}));
     },
     repayLoan(payloadArgs: PayloadArguments) {

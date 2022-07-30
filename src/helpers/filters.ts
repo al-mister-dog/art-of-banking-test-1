@@ -1,4 +1,4 @@
-import { IBank } from "../../../domain/types";
+import { IBank } from "../domain/types";
 
 export const findBankByCustomersAccounts = (
   selected: IBank,

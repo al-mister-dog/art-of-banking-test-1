@@ -5,7 +5,7 @@ import {
 import { Box, Typography } from "@mui/material";
 
 import { Accordions } from "../../types";
-import CardButton from "../../../../ui/CardButton";
+import CardButton from "../../../../../ui/CardButton";
 
 const ChNetDuesCard: React.FunctionComponent<{
   selected: any;

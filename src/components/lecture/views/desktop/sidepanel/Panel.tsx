@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import PlayerTabs from "./SelectedPartyTabs";
-import { deCamelize } from "../../../helpers/parsers";
+import PlayerTabs from "./Tabs";
+import { deCamelize } from "../../../../../helpers/parsers";
 import {colors} from "../../../../../config/colorPalette"
 
 const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({

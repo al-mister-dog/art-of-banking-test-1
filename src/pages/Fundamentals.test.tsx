@@ -7,7 +7,7 @@ import Fundamentals from "./Fundamentals";
 
 // const steps = lectures.fundamentals.steps;
 import { steps } from "./Fundamentals";
-import { BoardContainer } from "../components/shared_ui/board/BoardContainer";
+import { BoardContainer } from "../components/ui/board/BoardContainer";
 function renderPage() {
   render(
     <Provider store={store}>

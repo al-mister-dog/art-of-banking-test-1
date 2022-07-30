@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Button, { ButtonProps } from '@mui/material/Button';
-import { colors } from '../../../config/colorPalette';
+import { colors } from '../../config/colorPalette';
 
 // const CardButton = ({func}: {func: (v?: any) => void}) => {
 //   return (

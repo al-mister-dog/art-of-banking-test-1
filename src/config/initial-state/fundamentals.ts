@@ -1,4 +1,4 @@
-export const lecture1StateConfig = {
+export const fundamentalsState = {
   step1And2: {},
   defaultSetup: {
     system: "default",

@@ -1,6 +1,5 @@
 import { fundamentals, clearinghouse, centralbank } from "./texts";
-import { lecture1StateConfig, lecture2StateConfig, lecture3StateConfig } from "./initialStateConfig";
-import {clearinghouseState} from "./initial-state/2clearinghouse"
+import {fundamentalsState, clearinghouseState, theFedState} from "./initial-state"
 
 export interface Text {
   title: string;
@@ -42,7 +41,7 @@ export const lectures = {
         parties: ["customer1", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step2,
-        state: lecture1StateConfig.defaultSetup,
+        state: fundamentalsState.defaultSetup,
       } as Step,
       3: {
         title: "step3",
@@ -52,7 +51,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step3,
-        state: lecture1StateConfig.defaultSetup,
+        state: fundamentalsState.defaultSetup,
       } as Step,
       4: {
         title: "step4",
@@ -62,7 +61,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step4,
-        state: lecture1StateConfig.overdraft,
+        state: fundamentalsState.overdraft,
       } as Step,
       5: {
         title: "step5",
@@ -72,7 +71,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: fundamentals.step5,
-        state: lecture1StateConfig.creditSetup,
+        state: fundamentalsState.creditSetup,
       } as Step,
     },
     nextStep: "clearinghouse"
@@ -91,7 +90,7 @@ export const lectures = {
         parties: ["customer1", "customer2", "customer3", "customer4", "bank1"],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts"],
         text: clearinghouse.step2,
-        state: lecture2StateConfig.oneBigBank,
+        state: clearinghouseState.oneBigBank,
       },
       3: {
         overdraft: true,
@@ -107,7 +106,7 @@ export const lectures = {
         ],
         balanceSheetDisplay: ["customerDeposits", "customerOverdrafts", "dues"],
         text: clearinghouse.step3,
-        state: lecture2StateConfig.multipleBanks,
+        state: clearinghouseState.multipleBanks,
       },
       4: {
         overdraft: true,
@@ -129,7 +128,7 @@ export const lectures = {
           "dues",
         ],
         text: clearinghouse.step4,
-        state: lecture2StateConfig.correspondentBanking,
+        state: clearinghouseState.correspondentBanking,
       },
       5: {
         overdraft: true,
@@ -153,7 +152,7 @@ export const lectures = {
           "chLoans"
         ],
         text: clearinghouse.step5,
-        state: lecture2StateConfig.clearinghouse,
+        state: clearinghouseState.clearinghouse,
       },
       6: {
         overdraft: true,
@@ -203,65 +202,21 @@ export const lectures = {
         overdraft: true,
         credit: true,
         constraint: false,
-        parties: ["bank1", "bank2", "bank3", "centralbank", "customer1", "customer2"],
+        parties: ["bank1", "bank2", "bank3", "centralbank"],
         balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans", "customerDeposits", "customerOverdrafts"],
         text: centralbank.step2,
-        state: lecture3StateConfig.daylightOverdraft,
+        state: theFedState.daylightOverdraft,
       },
       3: {
         overdraft: true,
         credit: true,
         constraint: false,
         parties: ["bank1", "bank2", "bank3","centralbank", "customer1", "customer2", "customer3"],
-        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans"],
+        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans", "customerDeposits"],
         text: centralbank.step3,
-        state: lecture3StateConfig.fedFundsMarket,
+        state: theFedState.fedFundsMarket,
       },
-      // 4: {
-      //   overdraft: true,
-      //   credit: true,
-      //   constraint: false,
-      //   parties: [
-      //     "customer1",
-      //     "customer2",
-      //     "customer3",
-      //     "customer4",
-      //     "bank1",
-      //     "bank2",
-      //   ],
-      //   balanceSheetDisplay: [
-      //     "customerDeposits",
-      //     "customerOverdrafts",
-      //     "bankDeposits",
-      //     "bankOverdrafts",
-      //     "dues",
-      //   ],
-      //   text: centralbank.step4,
-      //   state: lecture2StateConfig.correspondentBanking,
-      // },
-      // 5: {
-      //   overdraft: true,
-      //   credit: true,
-      //   constraint: false,
-      //   parties: [
-      //     "customer1",
-      //     "customer2",
-      //     "customer3",
-      //     "customer4",
-      //     "bank1",
-      //     "bank2",
-      //     "clearinghouse"
-      //   ],
-      //   balanceSheetDisplay: [
-      //     "customerDeposits",
-      //     "customerOverdrafts",
-      //     "dues",
-      //     "chCertificates",
-      //     "chOverdrafts",
-      //   ],
-      //   text: clearinghouse.step5,
-      //   state: lecture2StateConfig.clearinghouse,
-      // },
+      
     },
     nextStep: "medici"
   },

@@ -6,15 +6,15 @@ import {
   chNetDues,
 } from "../../../../../features/lectures/lecturesSlice";
 import { Box, Typography } from "@mui/material";
-import CardButton from "../../../ui/CardButton";
+import CardButton from "../../../../ui/CardButton";
 import { Accordions, DuesDispatches } from "../types";
 import { IBank } from "../../../../../domain/types";
 import { useEffect, useState } from "react";
-import { netAmount } from "../../../helpers/utils";
+import { netAmount } from "../../../../../helpers/utils";
 import ChoosePlayer from "../dialogs/ChoosePartyDialog";
 import { colors } from "../../../../../config/colorPalette";
-import { deCamelize } from "../../../helpers/parsers";
-import useParties from "../../../helpers/useParties";
+import { deCamelize } from "../../../../../helpers/parsers";
+import useParties from "../../../../../helpers/useParties";
 
 const Dues: React.FunctionComponent<{
   selected: any;

@@ -1,4 +1,4 @@
-import { IBank } from "../../../domain/types";
+import { IBank } from "../domain/types";
 import usePartiesArray from "./useParties";
 interface BankState {
   [index: string]: IBank;

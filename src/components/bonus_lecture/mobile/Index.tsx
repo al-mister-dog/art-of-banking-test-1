@@ -3,7 +3,7 @@ import {
   selectTraders,
   selectBankers,
 } from "../../../features/players/playersSlice";
-import Introduction from "../../shared_ui/text/Introduction";
+import Introduction from "../../ui/text/Introduction";
 import { Box } from "@mui/material";
 import Player from "./sidepanel/Player";
 import Board from "./Board";

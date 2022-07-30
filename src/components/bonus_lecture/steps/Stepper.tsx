@@ -23,8 +23,8 @@ import RechangeOne from "./4-rechange1";
 import RechangeTwo from "./5-rechange2";
 import Playground from "./6-playground";
 import { colors } from "../../../config/colorPalette";
-import StepperHeader from "../../shared_ui/stepper/StepperHeader";
-import StepperFooter from "../../shared_ui/stepper/StepperFooter";
+import StepperHeader from "../../ui/stepper/StepperHeader";
+import StepperFooter from "../../ui/stepper/StepperFooter";
 
 function getStepContent(step: number) {
   switch (step) {
@@ -303,7 +303,7 @@ const StepperMobile: React.FunctionComponent<{
         margin: "auto",
         borderRadius: "5px",
         background: colors.paper,
-        marginTop: "120px",
+        marginTop: "170px",
         padding: "20px 5px",
       }}
     >

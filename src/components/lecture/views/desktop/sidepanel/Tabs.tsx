@@ -4,8 +4,8 @@ import Operations from "./Accordions";
 import { Tabs, Tab, Box } from "@mui/material";
 
 import { useState } from "react";
-import Records from "../../../../shared_ui/selected-party-tabs/Records";
-import Balances from "../../../../shared_ui/selected-party-tabs/Balances";
+import Records from "../../../../ui/side-panel/Records";
+import Balances from "../../../../ui/side-panel/Balances";
 
 interface TabPanelProps {
   children?: React.ReactNode;

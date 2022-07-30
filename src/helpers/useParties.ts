@@ -1,17 +1,17 @@
-import { IBank } from "../../../domain/types";
+import { IBank } from "../domain/types";
 
 type Parties = {
   [index: string]: IBank;
 };
 
-const usePartiesCopyArray = (
+const usePartiesArray = (
   parties: Parties,
   selected?: IBank,
   filterMethod?: (a: IBank, b: IBank[]) => IBank[]
 ) => {
   let partiesArray: IBank[] = [];
   for (const key in parties) {
-    partiesArray = [...partiesArray, JSON.parse(JSON.stringify(parties[key]))]
+    partiesArray = [...partiesArray, parties[key]];
   }
   if (filterMethod && selected) {
     const selectedParties = filterMethod(selected, partiesArray);
@@ -21,4 +21,4 @@ const usePartiesCopyArray = (
   }
 };
 
-export default usePartiesCopyArray;
+export default usePartiesArray;

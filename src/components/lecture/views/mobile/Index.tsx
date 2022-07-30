@@ -5,11 +5,11 @@ import {
 import { selectParties } from "../../../../features/lectures/lecturesSlice";
 import { useState } from "react";
 import { styled } from "@mui/material";
-import SelectedPartyDrawer from "../../../shared_ui/index-page/selected-party/Drawer";
+import SelectedPartyDrawer from "../../../ui/index-page/selected-party/Drawer";
 import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
-import usePartyRows from "../../helpers/usePartyRows";
-import Introduction from "../../../shared_ui/text/Introduction";
+import usePartyRows from "../../../../helpers/usePartyRows";
+import Introduction from "../../../ui/text/Introduction";
 
 const IntroContainer = styled("div")(({ theme }) => ({
   marginTop: "50px",
