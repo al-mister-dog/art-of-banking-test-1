@@ -17,7 +17,7 @@ const Page = styled("div")(({ theme }) => ({
   padding: "20px",
   [theme.breakpoints.down("tablet")]: {
     width: "100%",
-    marginTop: "120px",
+    marginTop: "170px",
   },
   [theme.breakpoints.up("tablet")]: {
     marginTop: "150px",
