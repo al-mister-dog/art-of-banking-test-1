@@ -448,7 +448,8 @@ export const centralbank = {
     assignment: `Assignment: I have just taken out a mortgage loan to pay you for a house. Make sure 
     my bank (Citibank) has enough funds to cover this transaction, by taking a loan out with HSBC, and get me
     to transfer funds to your bank account (with Chase). For extra credit, you could start the transaction by getting HSBC to 
-    acquire funds from Chase before lending to Citibank.`,
+    acquire funds from Chase before lending to Citibank. For extra extra credit, can you find a way
+    of contracting the credit after the transfer has been completed? Hint: its down to you...`,
   },
   step5: {
     lectureTitle: `Clearing House`,

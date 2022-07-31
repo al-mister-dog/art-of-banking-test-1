@@ -29,10 +29,8 @@ complete-step function: not done
 
 link to next lecture: half done
 
-add inflation and interest articles from trial of pyxb
+add inflation and interest articles from trial of pyx: not done
 
-reorganize accordion functionality
+reorganize accordion functionality: not done
 
-
-redundant ui
-views/ui/balancesheets
+sort out centralbank system customer withdraw
