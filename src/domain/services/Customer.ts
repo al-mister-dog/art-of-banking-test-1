@@ -120,7 +120,7 @@ export class CustomerService {
       ["customerDeposits", "customerOverdrafts"],
       recordB
     );
-    
+
     if (bankA.id !== bankB.id) {
       SystemMethods.increaseDues(bankA, bankB, amount);
     }
@@ -201,15 +201,19 @@ export class CustomerService {
       "mortgages",
       amount
     );
-    partyFunctions(b).createInstrument(
-      a.id,
-      "assets",
-      "mortgages",
-      amount
+    partyFunctions(b).createInstrument(a.id, "assets", "mortgages", amount);
+    RecordMethods.createCorrespondingRecords(a, b, "mortgage", amount)
+    const recordA = RecordMethods.addToRecords(a, {
+      transactionType: "Deposit",
+      party: b.id,
+      amount: amount,
+    });
+    PaymentMethods.creditAccount(
+      a,
+      b,
+      amount,
+      ["customerDeposits", "customerOverdrafts"],
+      recordA
     );
-    PaymentMethods.creditAccount(a, b, amount, [
-      "customerDeposits",
-      "customerOverdrafts",
-    ]);
   }
 }

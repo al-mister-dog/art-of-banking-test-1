@@ -43,7 +43,7 @@ const ImportCard: React.FunctionComponent<{ selected: any, accordionExpanded: Ac
       selected.id !== t.id && selected.city !== t.city && t.type === "exporter"
   );
 
-  const [selectedValueTo, setSelectedValuePlayer] = useState<Trader | null>(
+  const [selectedValueTo, setSelectedValueParty] = useState<Trader | null>(
     null
   );
   const [openTo, setOpenTo] = useState(false);
@@ -69,7 +69,7 @@ const ImportCard: React.FunctionComponent<{ selected: any, accordionExpanded: Ac
   const onClickTrade = () => {
     dispatch(trade({ importer: selected, exporter: selectedValueTo, amount: selectedValueAmount }));
     setSelectedValueAmount(0)
-    setSelectedValuePlayer(null)
+    setSelectedValueParty(null)
     setAccordionExpanded({...accordionExpanded, import: false})
   }
 
@@ -97,7 +97,7 @@ const ImportCard: React.FunctionComponent<{ selected: any, accordionExpanded: Ac
             Import From
           </Button>
           <ChoosePlayer
-            setSelectedValuePlayer={setSelectedValuePlayer}
+            setSelectedValueParty={setSelectedValueParty}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={selectedTraders}

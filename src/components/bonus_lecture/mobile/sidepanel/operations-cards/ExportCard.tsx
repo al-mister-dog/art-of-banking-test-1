@@ -42,7 +42,7 @@ const ExportCard: React.FunctionComponent<{
       selected.id !== t.id && selected.city !== t.city && t.type === "importer"
   );
 
-  const [selectedValueTo, setSelectedValuePlayer] =
+  const [selectedValueTo, setSelectedValueParty] =
     React.useState<Trader | null>(null);
   const [openTo, setOpenTo] = React.useState(false);
   const handleClickOpenTo = () => {
@@ -71,7 +71,7 @@ const ExportCard: React.FunctionComponent<{
         amount: selectedValueAmount,
       })
     );
-    setSelectedValuePlayer(null);
+    setSelectedValueParty(null);
     setSelectedValueAmount(0);
     setAccordionExpanded({ ...accordionExpanded, export: false });
   };
@@ -109,7 +109,7 @@ const ExportCard: React.FunctionComponent<{
             Export To
           </Button>
           <ChoosePlayerDialog
-            setSelectedValuePlayer={setSelectedValuePlayer}
+            setSelectedValueParty={setSelectedValueParty}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={selectedTraders}

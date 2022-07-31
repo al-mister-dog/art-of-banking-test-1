@@ -19,4 +19,24 @@ export class RecordMethods {
     }
     return record;
   }
+
+  static createCorrespondingRecords(
+    bankA: IBank,
+    bankB: IBank,
+    method: string,
+    amount?: number
+  ) {
+    const recordA = RecordMethods.addToRecords(bankA, {
+      transactionType: method,
+      party: bankB.id,
+      amount: amount,
+    });
+    RecordMethods.createRecord(bankA, recordA);
+    const recordB = RecordMethods.addToRecords(bankB, {
+      transactionType: method,
+      party: bankA.id,
+      amount: amount,
+    });
+    RecordMethods.createRecord(bankB, recordB);
+  }
 }

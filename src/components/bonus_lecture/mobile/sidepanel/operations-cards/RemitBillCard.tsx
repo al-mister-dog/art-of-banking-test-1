@@ -45,7 +45,7 @@ const ExportCard: React.FunctionComponent<{
     (t) => selected.id !== t.id && t.type === "banker"
   );
 
-  const [selectedValueTo, setSelectedValuePlayer] = useState<Banker | null>(
+  const [selectedValueTo, setSelectedValueParty] = useState<Banker | null>(
     null
   );
   const [openTo, setOpenTo] = useState(false);
@@ -74,7 +74,7 @@ const ExportCard: React.FunctionComponent<{
         bill: selectedBill,
       })
     );
-    setSelectedValuePlayer(null);
+    setSelectedValueParty(null);
     setSelectedBill(null);
     setAccordionExpanded({ ...accordionExpanded, remitBill: false });
   };
@@ -118,7 +118,7 @@ const ExportCard: React.FunctionComponent<{
               </Button>
               <ChoosePlayer
                 onClose={handleCloseTo}
-                setSelectedValuePlayer={setSelectedValuePlayer}
+                setSelectedValueParty={setSelectedValueParty}
                 open={openTo}
                 selectedBankers={selectedBankers}
                 info={{type: selected.type, action: "remitBill"}}

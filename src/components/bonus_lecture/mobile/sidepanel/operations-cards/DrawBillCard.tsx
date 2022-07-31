@@ -44,7 +44,7 @@ const DrawBillCard: React.FunctionComponent<{
   const { you, tomasso } = useAppSelector(selectBankers);
 
   const [selectedBill, setSelectedBill] = useState<any>(null);
-  const [selectedValuePlayer, setSelectedValuePlayer] = useState<Banker | null>(null);
+  const [selectedValuePlayer, setSelectedValueParty] = useState<Banker | null>(null);
   const [openPlayer, setOpenPlayer] = useState(false);
 
   const handleClickOpenPlayer = () => {
@@ -88,7 +88,7 @@ const DrawBillCard: React.FunctionComponent<{
         bill: selectedBill,
       })
     );
-    setSelectedValuePlayer(null);
+    setSelectedValueParty(null);
     setSelectedBill(null);
     setAccordionExpanded({ ...accordionExpanded, drawBill: false });
   };
@@ -134,7 +134,7 @@ const DrawBillCard: React.FunctionComponent<{
               </Button>
               <ToDialog
                 onClose={handleCloseTo}
-                setSelectedValuePlayer={setSelectedValuePlayer}
+                setSelectedValueParty={setSelectedValueParty}
                 open={openPlayer}
                 selectedBankers={selectedBankers}
                 info={{type: selected.type, action: "drawBill"}}

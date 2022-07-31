@@ -60,6 +60,9 @@ export interface Dispatches {
   sendBankPayment: DispatchFunctionSig;
   creditBankAccount: DispatchFunctionSig;
   debitBankAccount: DispatchFunctionSig;
+  settleDues: () => void;
+  netClearinghouseDues: () => void;
+  netCorrespondingDues: () => void;
 }
 
 export interface DuesDispatches {

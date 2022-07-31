@@ -1,23 +1,13 @@
-import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
-import {
-  selectParties,
-  payBank,
-  creditBankAccount,
-  debitBankAccount,
-  withdraw,
-  deposit,
-  transfer,
-  bankTransfer,
-  createLoan,
-  repayLoan,
-} from "../../../../../features/lectures/lecturesSlice";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectParties } from "../../../../../features/lectures/lecturesSlice";
 import { selectAuxilliary } from "../../../../../features/auxilliary/auxilliarySlice";
 import { useEffect, useState } from "react";
-import ChoosePlayer from "../dialogs/ChoosePartyDialog";
+import ChooseParty from "../dialogs/ChoosePartyDialog";
 import CardButton from "../../../../ui/CardButton";
+import DispatchButton from "./Dispatch";
 import Amount from "./Amount";
 import { Box, Typography } from "@mui/material";
-import { Accordions, Dispatches, PayloadArguments } from "../types";
+import { Accordions, Dispatches } from "../types";
 import { IBank } from "../../../../../domain/types";
 import { capitalize } from "../../../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
@@ -44,53 +34,9 @@ const MoveFixedAmount: React.FunctionComponent<{
   btnText,
   dispatchMethod,
 }) => {
-  const dispatch = useAppDispatch();
-  //additional payload args
-  const {fedFundsRate} = useAppSelector(selectAuxilliary)
-  //
-  const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
-    null
-  );
+  const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(null);
   const [openTo, setOpenTo] = useState(false);
   const [selectedValueAmount, setSelectedValueAmount] = useState<number>(0);
-
-  
-
-  const dispatchMethods = {
-    deposit(payloadArgs: PayloadArguments) {
-      dispatch(deposit(payloadArgs));
-    },
-    withdraw(payloadArgs: PayloadArguments) {
-      dispatch(withdraw(payloadArgs));
-    },
-    transfer(payloadArgs: PayloadArguments) {
-      dispatch(transfer(payloadArgs));
-    },
-    bankTransfer(payloadArgs: PayloadArguments) {
-      dispatch(bankTransfer(payloadArgs));
-    },
-    payBank(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    createLoan(payloadArgs: PayloadArguments) {
-      dispatch(createLoan({...payloadArgs, fedFundsRate}));
-    },
-    repayLoan(payloadArgs: PayloadArguments) {
-      dispatch(repayLoan(payloadArgs));
-    },
-    sendBankPayment(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    receiveBankPayment(payloadArgs: PayloadArguments) {
-      dispatch(payBank(payloadArgs));
-    },
-    creditBankAccount(payloadArgs: PayloadArguments) {
-      dispatch(creditBankAccount(payloadArgs));
-    },
-    debitBankAccount(payloadArgs: PayloadArguments) {
-      dispatch(debitBankAccount(payloadArgs));
-    },
-  };
 
   const parties = useAppSelector(selectParties);
   const { reservePercentage } = useAppSelector(selectAuxilliary);
@@ -101,22 +47,6 @@ const MoveFixedAmount: React.FunctionComponent<{
   };
   const handleCloseTo = () => {
     setOpenTo(false);
-  };
-
-  const onClickOk = () => {
-    if (selectedValueTo !== null) {
-      dispatchMethods[dispatchMethod]({
-        p1: selected,
-        p2: selectedValueTo,
-        amt: selectedValueAmount,
-      });
-      setSelectedValueAmount(0);
-      setSelectedValuePlayer(null);
-      setAccordionExpanded({
-        ...accordionExpanded,
-        [dispatchMethod as keyof Accordions]: false,
-      });
-    }
   };
 
   const [error, setError] = useState(false);
@@ -169,7 +99,7 @@ const MoveFixedAmount: React.FunctionComponent<{
             (account) => account.id === selected.id
           );
         } else if (dispatchMethod === "repayLoan") {
-          console.log(selectedValueTo)
+          console.log(selectedValueTo);
           selectedAmount = selectedValueTo.assets.bankLoans.find(
             (account) => account.id === selected.id
           );
@@ -211,8 +141,8 @@ const MoveFixedAmount: React.FunctionComponent<{
           >
             {btnText}
           </CardButton>
-          <ChoosePlayer
-            setSelectedValuePlayer={setSelectedValuePlayer}
+          <ChooseParty
+            setSelectedValueParty={setSelectedValueParty}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={selectedParties}
@@ -258,18 +188,17 @@ const MoveFixedAmount: React.FunctionComponent<{
           justifyContent: "flex-end",
         }}
       >
-        <CardButton
-          variant="contained"
-          disabled={
-            selectedValueAmount < 1 ||
-            selectedValueTo === null ||
-            !selectedValueAmount
-          }
-          sx={{ marginTop: "10px" }}
-          onClick={onClickOk}
-        >
-          Ok
-        </CardButton>
+        <DispatchButton
+          selected={selected}
+          selectedValueTo={selectedValueTo}
+          setSelectedValueParty={setSelectedValueParty}
+          selectedValueAmount={selectedValueAmount}
+          setSelectedValueAmount={setSelectedValueAmount}
+          accordionExpanded={accordionExpanded}
+          setAccordionExpanded={setAccordionExpanded}
+          dispatchMethod={dispatchMethod}
+          btnText="Ok"
+        />
       </div>
     </Box>
   );

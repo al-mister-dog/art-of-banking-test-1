@@ -14,14 +14,14 @@ import methodHelperTexts from "../../../../../helpers/methodHelperTexts";
 
 export interface ChoosePartyProps {
   open: boolean;
-  setSelectedValuePlayer: (v: any) => void;
+  setSelectedValueParty: (v: any) => void;
   onClose: () => void;
   selectedBankers: any[];
   method: string;
 }
 
-export default function ChoosePlayer(props: ChoosePartyProps) {
-  const { onClose, setSelectedValuePlayer, open, selectedBankers, method } =
+export default function ChooseParty(props: ChoosePartyProps) {
+  const { onClose, setSelectedValueParty, open, selectedBankers, method } =
     props;
 
   const handleClose = () => {
@@ -29,7 +29,7 @@ export default function ChoosePlayer(props: ChoosePartyProps) {
   };
 
   const handleListItemClick = (value: any) => {
-    setSelectedValuePlayer(value);
+    setSelectedValueParty(value);
     onClose();
   };
 

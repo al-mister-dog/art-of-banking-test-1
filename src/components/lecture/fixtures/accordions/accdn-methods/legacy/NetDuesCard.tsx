@@ -28,7 +28,7 @@ const NetDuesCard: React.FunctionComponent<{
     partiesArray = [...partiesArray, parties[key]];
   }
   const selectedParties = findOwedandOweingBanks(selected, partiesArray);
-  const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
+  const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(
     null
   );
   const [openTo, setOpenTo] = useState(false);
@@ -56,7 +56,7 @@ const NetDuesCard: React.FunctionComponent<{
   return (
     <Box>
       <ChoosePlayer
-        setSelectedValuePlayer={setSelectedValuePlayer}
+        setSelectedValueParty={setSelectedValueParty}
         open={openTo}
         onClose={handleCloseTo}
         selectedBankers={selectedParties}

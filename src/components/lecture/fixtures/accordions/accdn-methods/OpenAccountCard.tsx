@@ -28,7 +28,7 @@ const ImportCard: React.FunctionComponent<{
   // }
   // const bankParties = findBankByCustomersAccounts(selected, partiesArray);
   // const [selectAmount, setSelectAmount] = useState(false);
-  // const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
+  // const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(
   //   null
   // );
   // const [openTo, setOpenTo] = useState(false);
@@ -47,7 +47,7 @@ const ImportCard: React.FunctionComponent<{
   //     withdraw({ p1: selected, p2: selectedValueTo, amt: selectedValueAmount })
   //   );
   //   setSelectedValueAmount(0);
-  //   setSelectedValuePlayer(null);
+  //   setSelectedValueParty(null);
   //   setAccordionExpanded({ ...accordionExpanded, deposit: false });
   // };
 
@@ -105,7 +105,7 @@ const ImportCard: React.FunctionComponent<{
             Withdraw From
           </Button>
           <ChoosePlayer
-            setSelectedValuePlayer={setSelectedValuePlayer}
+            setSelectedValueParty={setSelectedValueParty}
             open={openTo}
             onClose={handleCloseTo}
             selectedBankers={bankParties}

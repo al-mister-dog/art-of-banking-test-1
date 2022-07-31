@@ -7,7 +7,7 @@ import {
 } from "../../../../../features/lectures/lecturesSlice";
 import { Box, Typography } from "@mui/material";
 import CardButton from "../../../../ui/CardButton";
-import { Accordions, DuesDispatches } from "../types";
+import { Accordions, DuesDispatches, Dispatches } from "../types";
 import { IBank } from "../../../../../domain/types";
 import { useEffect, useState } from "react";
 import { netAmount } from "../../../../../helpers/utils";
@@ -15,13 +15,14 @@ import ChoosePlayer from "../dialogs/ChoosePartyDialog";
 import { colors } from "../../../../../config/colorPalette";
 import { deCamelize } from "../../../../../helpers/parsers";
 import useParties from "../../../../../helpers/useParties";
+import DispatchButton from "./Dispatch";
 
 const Dues: React.FunctionComponent<{
   selected: any;
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
   filterMethod?: (selected: IBank, partiesArray: IBank[]) => IBank[];
-  dispatchMethod: keyof DuesDispatches;
+  dispatchMethod: keyof Dispatches;
   method: string;
   btnText: string;
 }> = ({
@@ -36,7 +37,7 @@ const Dues: React.FunctionComponent<{
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
   const [selectedParties] = useParties(parties, selected, filterMethod)
-  const [selectedValueTo, setSelectedValuePlayer] = useState<IBank | null>(
+  const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(
     null
   );
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
@@ -55,14 +56,14 @@ const Dues: React.FunctionComponent<{
     },
   };
 
-  function handleDispatch() {
-    if (dispatchMethod === "settleDues") {
-      dispatchMethods.settleDues();
-    } else if (dispatchMethod === "netClearinghouseDues") {
-      dispatchMethods.netClearinghouseDues();
-    }
-    setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
-  }
+  // function handleDispatch() {
+  //   if (dispatchMethod === "settleDues") {
+  //     dispatchMethods.settleDues();
+  //   } else if (dispatchMethod === "netClearinghouseDues") {
+  //     dispatchMethods.netClearinghouseDues();
+  //   }
+  //   setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
+  // }
 
   const handleClickOpenTo = () => {
     setOpenTo(true);
@@ -89,7 +90,7 @@ const Dues: React.FunctionComponent<{
   return filterMethod ? (
     <Box>
       <ChoosePlayer
-        setSelectedValuePlayer={setSelectedValuePlayer}
+        setSelectedValueParty={setSelectedValueParty}
         open={openTo}
         onClose={handleCloseTo}
         selectedBankers={selectedParties}
@@ -204,9 +205,15 @@ const Dues: React.FunctionComponent<{
           })}
         </Box>
       </Box>
-      <CardButton variant="contained" onClick={handleDispatch}>
-        {btnText}
-      </CardButton>
+      <DispatchButton
+          selected={selected}
+          selectedValueTo={selectedValueTo}
+          setSelectedValueParty={setSelectedValueParty}
+          accordionExpanded={accordionExpanded}
+          setAccordionExpanded={setAccordionExpanded}
+          dispatchMethod={dispatchMethod}
+          btnText="Ok"
+        />
     </Box>
   );
 };

@@ -1,5 +1,10 @@
 import { lookup } from "../lookupTables";
-import { PaymentMethods, AccountMethods, partyFunctions } from "../methods";
+import {
+  PaymentMethods,
+  AccountMethods,
+  partyFunctions,
+  RecordMethods,
+} from "../methods";
 import { IBank } from "../types";
 
 export class CentralBankService {
@@ -57,6 +62,18 @@ export class CentralBankService {
       "bankDeposits",
       "daylightOverdrafts",
     ]);
+    RecordMethods.createCorrespondingRecords(
+      a,
+      lookup["centralbank"],
+      "repayLoan",
+      amount
+    );
+    RecordMethods.createCorrespondingRecords(
+      b,
+      lookup["centralbank"],
+      "repayLoan",
+      amount
+    );
   }
 
   static repayLoan(a: IBank, b: IBank, amount: number) {
