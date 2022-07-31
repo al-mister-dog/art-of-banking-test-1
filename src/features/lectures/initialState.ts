@@ -14,7 +14,7 @@ import {
   clearinghouseLiabilities,
 } from "../../domain/fixtures";
 import { lookup } from "../../domain/lookupTables";
-import { lecture1StateConfig } from "../../config/initialStateConfig";
+import { fundamentalsState } from "../../config/state";
 import { BankService, CentralBankService, ClearingHouseService, CustomerService } from "../../domain/services";
 import { System } from "../../domain/methods";
 
@@ -169,7 +169,7 @@ export function createBankingSystem(config: { system: any; parties: any }) {
   });
 }
 
-const defaultSetup = lecture1StateConfig.defaultSetup;
+const defaultSetup = fundamentalsState.defaultSetup;
 createBankingSystem(defaultSetup);
 const setupState = JSON.parse(JSON.stringify(lookup));
 console.log(setupState)

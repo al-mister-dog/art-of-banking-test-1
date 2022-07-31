@@ -3,8 +3,8 @@ import Introduction from "../components/lecture/steps/Introduction";
 import StepComponent from "../components/lecture/steps/Step";
 import StepperIndex from "../components/lecture/steps/Stepper";
 
-const config = lectures.centralbank.steps;
-const nextStep = lectures.centralbank.nextStep;
+const config = lectures.theFed.steps;
+const nextStep = lectures.theFed.nextStep;
 function getStepContent(step: number) {
   switch (step) {
     case 0:
