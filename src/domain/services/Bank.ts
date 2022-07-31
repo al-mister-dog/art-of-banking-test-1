@@ -4,10 +4,20 @@ import {
   SystemMethods,
   partyFunctions,
 } from "../methods";
-
+import { lookup } from "../lookupTables";
 import { IBank } from "../types";
 
 export class BankService {
+  static transfer(a: IBank, b: IBank, amount: number) {
+    PaymentMethods.creditAccount(a, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
+    PaymentMethods.debitAccount(b, lookup["centralbank"], amount, [
+      "bankDeposits",
+      "daylightOverdrafts",
+    ]);
+  }
   static payBank(a: IBank, b: IBank) {
     const amountDue = b.liabilities.dues.find(
       (account: { id: string }) => account.id === a.id

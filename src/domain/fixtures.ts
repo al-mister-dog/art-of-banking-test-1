@@ -7,6 +7,7 @@ export const commercialAssets = {
   chOverdrafts: [],
   chLoans: [],
   customerLoans: [],
+  mortgages: [],
   dues: [],
 };
 
@@ -20,6 +21,7 @@ export const commercialLiabilities = {
   chOverdrafts: [],
   chLoans: [],
   customerLoans: [],
+  mortgages: [],
   dues: [],
 };
 
@@ -29,11 +31,12 @@ export const commercialBalances = {
   chCertificates: [],
 };
 
-export const customerAssets = { customerDeposits: [] };
+export const customerAssets = { customerDeposits: [], properties: [], };
 
 export const customerLiabilities = {
   customerOverdrafts: [],
   customerLoans: [],
+  mortgages: [],
 };
 
 export const customerBalances = { customerDeposits: [] };

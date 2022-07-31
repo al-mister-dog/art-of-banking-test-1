@@ -3,7 +3,7 @@ import { RootState } from "../../app/store";
 import { lookup } from "../../domain/lookupTables";
 import { IBank } from "../../domain/types";
 import { setupState } from "./initialState";
-import { createBankingSystem } from "./helpers";
+import { createBankingSystem } from "../../helpers/createParties";
 import { CentralBankService, CustomerService } from "../../domain/services";
 import { BankService } from "../../domain/services";
 import { PaymentMethods } from "../../domain/methods";
@@ -33,6 +33,11 @@ export const lecturesSlice = createSlice({
     transfer: (state, { payload }) => {
       const { p1, p2, amt } = payload;
       CustomerService.transfer(lookup[p1.id], lookup[p2.id], amt);
+      lecturesSlice.caseReducers.update(state);
+    },
+    bankTransfer: (state, { payload }) => {
+      const { p1, p2, amt } = payload;
+      BankService.transfer(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.update(state);
     },
     creditBankAccount: (state, { payload }) => {
@@ -121,6 +126,7 @@ export const {
   deposit,
   withdraw,
   transfer,
+  bankTransfer,
   creditBankAccount,
   debitBankAccount,
   payBank,

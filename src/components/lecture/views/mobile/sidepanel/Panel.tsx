@@ -25,7 +25,7 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
             padding: "10px",
           }}
         >
-          <Typography variant="h4" sx={{color: colors.darkMain}}>{deCamelize(selected.id)}</Typography>
+          <Typography variant="h4" sx={{color: colors.darkMain}}>{selected.name ? deCamelize(selected.name) : deCamelize(selected.id)}</Typography>
           <Typography variant="h6" sx={{fontFamily: "Roboto", fontWeight: "bold", color: colors.darkMain}}>Cash: ${selected.reserves}</Typography>
         </div>
 

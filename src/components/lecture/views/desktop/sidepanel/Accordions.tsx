@@ -13,6 +13,7 @@ import { colors } from "../../../../../config/colorPalette";
 const resetAccordions: Accordions = {
   deposit: false,
   transfer: false,
+  bankTransfer: false,
   withdraw: false,
   openAccount: false,
   netDues: false,

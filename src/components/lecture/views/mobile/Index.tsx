@@ -46,7 +46,7 @@ const Index: React.FunctionComponent<{
   const [selected, setSelected] = useState<string>(
     config.state.system === "centralbank" ? "bank1" : "customer1"
   );
-
+  console.log(parties)
   function selectParty(player: any) {
     setSelected(player.id);
     dispatch(toggleSelectedPartyDrawer({ selectedPartyDrawerOpen: true }));

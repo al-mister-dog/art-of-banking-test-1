@@ -51,6 +51,13 @@ export default function accordionList(
           .netDues,
       },
       {
+        accordionKey: "bankTransfer",
+        accordionTitle: "Transfer",
+        institutions: ["centralbank"],
+        component: features(selected, accordionExpanded, setAccordionExpanded)
+          .bankTransfer,
+      },
+      {
         accordionKey: "receiveBankPayment",
         accordionTitle: "Receive Bank Payment",
         institutions: ["interbank"],

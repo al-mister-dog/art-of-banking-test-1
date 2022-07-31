@@ -4,14 +4,14 @@ export const lecture1StateConfig = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
           },
         ],
@@ -24,15 +24,15 @@ export const lecture1StateConfig = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -46,19 +46,19 @@ export const lecture1StateConfig = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 40 }],
+            transfers: [{ id: "customer2", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer1", amount: 20 }],
+            transfers: [{ id: "customer1", amount: 20 }],
           },
         ],
         reserves: 500,
@@ -71,25 +71,25 @@ export const lecture2StateConfig = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 0,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 0,
           },
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -102,16 +102,16 @@ export const lecture2StateConfig = {
     system: "interbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 40 }],
+            transfers: [{ id: "customer4", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -119,16 +119,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 20 }],
+            transfers: [{ id: "customer2", amount: 20 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -141,16 +141,16 @@ export const lecture2StateConfig = {
     system: "correspondent",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 40 }],
+            transfers: [{ id: "customer4", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -158,16 +158,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 20 }],
+            transfers: [{ id: "customer2", amount: 20 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -180,16 +180,16 @@ export const lecture2StateConfig = {
     system: "clearinghouse",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 50 }],
+            transfers: [{ id: "customer4", amount: 50 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -197,16 +197,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 30 }],
+            transfers: [{ id: "customer2", amount: 30 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -219,16 +219,16 @@ export const lecture2StateConfig = {
     system: "clearinghouse",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer4", amount: 50 }],
+            transfers: [{ id: "customer4", amount: 50 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 100,
           },
@@ -236,16 +236,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer2", amount: 30 }],
+            transfers: [{ id: "customer2", amount: 30 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 100,
           },
@@ -253,16 +253,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank3",
+        id: "bank3",
         customers: [
           {
-            customer: "customer5",
+            id: "customer5",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer2", amount: 30 }],
+            transfers: [{ id: "customer2", amount: 30 }],
           },
           {
-            customer: "customer6",
+            id: "customer6",
             reserves: 100,
             initialDeposit: 100,
           },
@@ -270,16 +270,16 @@ export const lecture2StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank4",
+        id: "bank4",
         customers: [
           {
-            customer: "customer7",
+            id: "customer7",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer4", amount: 30 }],
+            transfers: [{ id: "customer4", amount: 30 }],
           },
           {
-            customer: "customer8",
+            id: "customer8",
             reserves: 100,
             initialDeposit: 100,
           },
@@ -295,23 +295,23 @@ export const lecture3StateConfig = {
     system: "centralbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 100 }],
+            transfers: [{ id: "customer2", amount: 100 }],
           },
         ],
         initialDeposit: 0,
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 0,
           },
@@ -320,10 +320,10 @@ export const lecture3StateConfig = {
         reserves: 100,
       },
       {
-        bank: "bank3",
+        id: "bank3",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 0,
           },
@@ -337,10 +337,10 @@ export const lecture3StateConfig = {
     system: "centralbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -349,10 +349,10 @@ export const lecture3StateConfig = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -361,10 +361,49 @@ export const lecture3StateConfig = {
         reserves: 100,
       },
       {
-        bank: "bank3",
+        id: "bank3",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
+            reserves: 100,
+            initialDeposit: 50,
+          },
+        ],
+        initialDeposit: 100,
+        reserves: 100,
+      },
+    ],
+  },
+  mortgages: {
+    system: "centralbank",
+    parties: [
+      {
+        id: "bank1",
+        name: "Citibank",
+        customers: [
+          {
+            id: "customer1",
+            name: "me",
+            reserves: 100,
+            initialDeposit: 0,
+          },
+        ],
+        initialDeposit: 100,
+        reserves: 0,
+      },
+      {
+        id: "bank2",
+        name: "HSBC",
+        initialDeposit: 100,
+        reserves: 100,
+      },
+      {
+        id: "bank3",
+        name: "Chase",
+        customers: [
+          {
+            id: "customer3",
+            name: "you",
             reserves: 100,
             initialDeposit: 50,
           },

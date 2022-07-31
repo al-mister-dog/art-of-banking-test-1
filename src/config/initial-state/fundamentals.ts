@@ -4,14 +4,14 @@ export const fundamentalsState = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
           },
         ],
@@ -24,15 +24,15 @@ export const fundamentalsState = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -46,19 +46,19 @@ export const fundamentalsState = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 40 }],
+            transfers: [{ id: "customer2", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer1", amount: 20 }],
+            transfers: [{ id: "customer1", amount: 20 }],
           },
         ],
         reserves: 500,

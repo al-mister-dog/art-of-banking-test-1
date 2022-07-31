@@ -3,6 +3,7 @@ import { IBank } from "../../../../domain/types";
 export interface Accordions {
   deposit: boolean;
   transfer: boolean;
+  bankTransfer: boolean;
   withdraw: boolean;
   openAccount: boolean;
   netDues: boolean;
@@ -51,6 +52,7 @@ export interface Dispatches {
   withdraw: DispatchFunctionSig;
   deposit: DispatchFunctionSig;
   transfer: DispatchFunctionSig;
+  bankTransfer: DispatchFunctionSig;
   payBank: DispatchFunctionSig;
   createLoan: DispatchFunctionSig;
   repayLoan: DispatchFunctionSig;

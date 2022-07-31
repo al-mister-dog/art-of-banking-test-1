@@ -14,6 +14,7 @@ import { Accordions, PartyOps } from "../../../fixtures/accordions/types";
 const resetAccordions = {
   deposit: false,
   transfer: false,
+  bankTransfer: false,
   withdraw: false,
   openAccount: false,
   netDues: false,

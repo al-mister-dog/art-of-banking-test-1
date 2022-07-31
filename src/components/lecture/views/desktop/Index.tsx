@@ -78,6 +78,7 @@ const Index: React.FunctionComponent<{
   const [selected, setSelected] = useState<string>(
     config.state.system === "centralbank" ? "bank1" : "customer1"
   );
+
   function selectParty(player: any) {
     setSelected(player.id);
   }

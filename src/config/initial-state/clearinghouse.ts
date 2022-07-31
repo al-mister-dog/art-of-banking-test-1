@@ -3,25 +3,25 @@ export const clearinghouseState = {
     system: "default",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 0,
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 0,
           },
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -34,16 +34,16 @@ export const clearinghouseState = {
     system: "interbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 40 }],
+            transfers: [{ id: "customer4", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -51,16 +51,16 @@ export const clearinghouseState = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 20 }],
+            transfers: [{ id: "customer2", amount: 20 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -73,16 +73,16 @@ export const clearinghouseState = {
     system: "correspondent",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 40 }],
+            transfers: [{ id: "customer4", amount: 40 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -90,16 +90,16 @@ export const clearinghouseState = {
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 20 }],
+            transfers: [{ id: "customer2", amount: 20 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -112,16 +112,16 @@ export const clearinghouseState = {
     system: "clearinghouse",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer4", amount: 50 }],
+            transfers: [{ id: "customer4", amount: 50 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -130,16 +130,16 @@ export const clearinghouseState = {
         member: true,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 30 }],
+            transfers: [{ id: "customer2", amount: 30 }],
           },
           {
-            customer: "customer4",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 50,
           },
@@ -153,19 +153,19 @@ export const clearinghouseState = {
     system: "clearinghouse",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer4", amount: 100 }, { customer: "customer6", amount: 100 }],
+            transfers: [{ id: "customer4", amount: 100 }, { id: "customer6", amount: 100 }],
           },
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer7", amount: 100 }, { customer: "customer8", amount: 100 }],
+            transfers: [{ id: "customer7", amount: 100 }, { id: "customer8", amount: 100 }],
           },
         ],
         reserves: 0,
@@ -173,35 +173,16 @@ export const clearinghouseState = {
         member: true,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer2", amount: 30 }],
+            transfers: [{ id: "customer2", amount: 30 }],
           },
           {
-            customer: "customer4",
-            reserves: 100,
-            initialDeposit: 100,
-          },
-        ],
-        reserves: 0,
-        initialDeposit: 200,
-        member: true,
-      },
-      {
-        bank: "bank3",
-        customers: [
-          {
-            customer: "customer5",
-            reserves: 100,
-            initialDeposit: 100,
-            transfers: [{ customer: "customer4", amount: 30 }],
-          },
-          {
-            customer: "customer6",
+            id: "customer4",
             reserves: 100,
             initialDeposit: 100,
           },
@@ -211,16 +192,35 @@ export const clearinghouseState = {
         member: true,
       },
       {
-        bank: "bank4",
+        id: "bank3",
         customers: [
           {
-            customer: "customer7",
+            id: "customer5",
             reserves: 100,
             initialDeposit: 100,
-            transfers: [{ customer: "customer5", amount: 30 }],
+            transfers: [{ id: "customer4", amount: 30 }],
           },
           {
-            customer: "customer8",
+            id: "customer6",
+            reserves: 100,
+            initialDeposit: 100,
+          },
+        ],
+        reserves: 0,
+        initialDeposit: 200,
+        member: true,
+      },
+      {
+        id: "bank4",
+        customers: [
+          {
+            id: "customer7",
+            reserves: 100,
+            initialDeposit: 100,
+            transfers: [{ id: "customer5", amount: 30 }],
+          },
+          {
+            id: "customer8",
             reserves: 100,
             initialDeposit: 100,
           },

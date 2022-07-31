@@ -194,4 +194,22 @@ export class CustomerService {
       amount
     );
   }
+  static createMortgage(a: IBank, b: IBank, amount: number) {
+    partyFunctions(a).createInstrument(
+      b.id,
+      "liabilities",
+      "mortgages",
+      amount
+    );
+    partyFunctions(b).createInstrument(
+      a.id,
+      "assets",
+      "mortgages",
+      amount
+    );
+    PaymentMethods.creditAccount(a, b, amount, [
+      "customerDeposits",
+      "customerOverdrafts",
+    ]);
+  }
 }

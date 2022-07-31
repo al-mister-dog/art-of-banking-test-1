@@ -7,6 +7,7 @@ import {
   findOweingBanks,
   findOwedandOweingBanks,
   findBankToRepayLoan,
+  findAllBanks,
 } from "../../../../helpers/filters";
 import MoveAmount from "./accdn-methods/MoveAmount";
 import Dues from "./accdn-methods/Dues";
@@ -43,6 +44,19 @@ const features = (
         method="Transfer To"
         btnText="To..."
         dispatchMethod="transfer"
+        config={config}
+      />
+    ),
+    bankTransfer: (
+      <MoveAmount
+        variable
+        selected={selected}
+        accordionExpanded={accordionExpanded}
+        setAccordionExpanded={setAccordionExpanded}
+        filterMethod={findAllBanks}
+        method="Transfer To"
+        btnText="To..."
+        dispatchMethod="bankTransfer"
         config={config}
       />
     ),

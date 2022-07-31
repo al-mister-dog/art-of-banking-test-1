@@ -1,5 +1,9 @@
 import { fundamentals, clearinghouse, centralbank } from "./texts";
-import {fundamentalsState, clearinghouseState, theFedState} from "./initial-state"
+import {
+  fundamentalsState,
+  clearinghouseState,
+  theFedState,
+} from "./initial-state";
 
 export interface Text {
   title: string;
@@ -74,7 +78,7 @@ export const lectures = {
         state: fundamentalsState.creditSetup,
       } as Step,
     },
-    nextStep: "clearinghouse"
+    nextStep: "clearinghouse",
   },
   clearinghouse: {
     title: "clearinghouse",
@@ -141,7 +145,7 @@ export const lectures = {
           "customer4",
           "bank1",
           "bank2",
-          "clearinghouse"
+          "clearinghouse",
         ],
         balanceSheetDisplay: [
           "customerDeposits",
@@ -149,7 +153,7 @@ export const lectures = {
           "dues",
           "chCertificates",
           "chOverdrafts",
-          "chLoans"
+          "chLoans",
         ],
         text: clearinghouse.step5,
         state: clearinghouseState.clearinghouse,
@@ -171,7 +175,7 @@ export const lectures = {
           "bank2",
           "bank3",
           "bank4",
-          "clearinghouse"
+          "clearinghouse",
         ],
         balanceSheetDisplay: [
           "customerDeposits",
@@ -185,12 +189,8 @@ export const lectures = {
         state: clearinghouseState.clearinghouseLoans,
       },
     },
-    nextStep: "the-fed"
+    nextStep: "the-fed",
   },
-
-
-
-
   centralbank: {
     title: "centralbank",
     steps: {
@@ -203,7 +203,13 @@ export const lectures = {
         credit: true,
         constraint: false,
         parties: ["bank1", "bank2", "bank3", "centralbank"],
-        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans", "customerDeposits", "customerOverdrafts"],
+        balanceSheetDisplay: [
+          "bankDeposits",
+          "daylightOverdrafts",
+          "bankLoans",
+          "customerDeposits",
+          "customerOverdrafts",
+        ],
         text: centralbank.step2,
         state: theFedState.daylightOverdraft,
       },
@@ -211,13 +217,48 @@ export const lectures = {
         overdraft: true,
         credit: true,
         constraint: false,
-        parties: ["bank1", "bank2", "bank3","centralbank", "customer1", "customer2", "customer3"],
-        balanceSheetDisplay: ["bankDeposits", "daylightOverdrafts", "bankLoans", "customerDeposits"],
+        parties: [
+          "bank1",
+          "bank2",
+          "bank3",
+          "centralbank",
+          "customer1",
+          "customer2",
+          "customer3",
+        ],
+        balanceSheetDisplay: [
+          "bankDeposits",
+          "daylightOverdrafts",
+          "bankLoans",
+          "customerDeposits",
+        ],
         text: centralbank.step3,
         state: theFedState.fedFundsMarket,
       },
-      
+      4: {
+        overdraft: true,
+        credit: true,
+        constraint: false,
+        parties: [
+          "bank1",
+          "bank2",
+          "bank3",
+          "centralbank",
+          "customer1",
+          "customer2",
+        ],
+        balanceSheetDisplay: [
+          "bankDeposits",
+          "daylightOverdrafts",
+          "bankLoans",
+          "properties",
+          "customerDeposits",
+          "mortgages",
+        ],
+        text: centralbank.step4,
+        state: theFedState.mortgages,
+      },
     },
-    nextStep: "medici"
+    nextStep: "medici",
   },
 };

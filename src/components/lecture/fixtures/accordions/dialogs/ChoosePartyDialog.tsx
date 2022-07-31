@@ -54,7 +54,7 @@ export default function ChoosePlayer(props: ChoosePartyProps) {
                   <PersonIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary={banker.id} />
+              <ListItemText primary={banker.name ? banker.name : banker.id} />
             </ListItem>
           ))}
         </List>

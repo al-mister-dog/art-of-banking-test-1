@@ -3,7 +3,7 @@ import PlayerTabs from "./Tabs";
 import { deCamelize } from "../../../../../helpers/parsers";
 import {colors} from "../../../../../config/colorPalette"
 
-const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
+const Panel: React.FunctionComponent<{ config?: any; selected: any }> = ({
   config,
   selected,
 }) => {
@@ -31,7 +31,7 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
           align="left"
           sx={{ marginTop: 4, color: colors.darkMain }}
         >
-          {deCamelize(selected.id)}
+          {selected.name ? deCamelize(selected.name) : deCamelize(selected.id)}
         </Typography>
         <Typography
           variant="h6"
@@ -50,4 +50,4 @@ const Player: React.FunctionComponent<{ config?: any; selected: any }> = ({
     </Box>
   );
 };
-export default Player;
+export default Panel;

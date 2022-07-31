@@ -7,6 +7,7 @@ import {
   withdraw,
   deposit,
   transfer,
+  bankTransfer,
   createLoan,
   repayLoan,
 } from "../../../../../features/lectures/lecturesSlice";
@@ -64,6 +65,9 @@ const MoveFixedAmount: React.FunctionComponent<{
     },
     transfer(payloadArgs: PayloadArguments) {
       dispatch(transfer(payloadArgs));
+    },
+    bankTransfer(payloadArgs: PayloadArguments) {
+      dispatch(bankTransfer(payloadArgs));
     },
     payBank(payloadArgs: PayloadArguments) {
       dispatch(payBank(payloadArgs));

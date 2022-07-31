@@ -6,46 +6,74 @@ import {
   customerAssets,
   customerLiabilities,
   customerBalances,
+  centralBankAssets,
+  centralBankBalances,
+  centralBankLiabilities,
+  clearinghouseAssets,
+  clearinghouseBalances,
+  clearinghouseLiabilities,
 } from "../../domain/fixtures";
 import { lookup } from "../../domain/lookupTables";
 import { lecture1StateConfig } from "../../config/initialStateConfig";
-import { CustomerService } from "../../domain/services";
+import { BankService, CentralBankService, ClearingHouseService, CustomerService } from "../../domain/services";
 import { System } from "../../domain/methods";
 
 type BankConfig = {
-  bank: string;
+  id: string;
   customers: CustomerConfig[];
+  initialDeposit: number;
   reserves: number;
 };
 type CustomerConfig = {
-  customer: string;
+  id: string;
   reserves: number;
   initialDeposit: number;
   transfers: TransferConfig[];
 };
-type TransferConfig = { customer: string; amount: number };
+type TransferConfig = { id: string; amount: number };
 
-function createCustomer(id: string, reserves = 0) {
+interface StateObject {
+  [index: string]: IBank;
+}
+const state: StateObject = {};
+
+function createBank(bank: any) {
+  const newBank: IBank = {
+    id: bank.id,
+    type: "bank",
+    name: bank.name || "",
+    assets: { ...commercialAssets },
+    liabilities: { ...commercialLiabilities },
+    balances: { ...commercialBalances },
+    reserves: bank.reserves || 0,
+    records: [],
+  };
+  lookup[newBank.id] = JSON.parse(JSON.stringify(newBank));
+  return newBank;
+}
+
+function createCustomer(customer: any) {
   const newCustomer: IBank = {
-    id,
+    id: customer.id,
     type: "customer",
+    name: customer.name || "",
     assets: { ...customerAssets },
     liabilities: { ...customerLiabilities },
     balances: { ...customerBalances },
-    reserves,
+    reserves: customer.reserves || 0,
     records: [],
   };
   lookup[newCustomer.id] = JSON.parse(JSON.stringify(newCustomer));
   return newCustomer;
 }
 
-function createBank(id: string, reserves = 0) {
+function createClearinghouse(id: string = "clearinghouse", reserves = 0) {
   const newBank: IBank = {
     id,
-    type: "bank",
-    assets: { ...commercialAssets },
-    liabilities: { ...commercialLiabilities },
-    balances: { ...commercialBalances },
+    type: "clearinghouse",
+    assets: { ...clearinghouseAssets },
+    liabilities: { ...clearinghouseLiabilities },
+    balances: { ...clearinghouseBalances },
     reserves,
     records: [],
   };
@@ -53,55 +81,96 @@ function createBank(id: string, reserves = 0) {
   return newBank;
 }
 
-interface StateObject {
-  [index: string]: IBank;
+function createCentralBank(id: string = "centralbank", reserves = 1000) {
+  const newBank: IBank = {
+    id,
+    type: "centralbank",
+    name: "",
+    assets: { ...centralBankAssets },
+    liabilities: { ...centralBankLiabilities },
+    balances: { ...centralBankBalances },
+    reserves,
+    records: [],
+  };
+  lookup[newBank.id] = JSON.parse(JSON.stringify(newBank));
+  return newBank;
 }
-const state: StateObject = {};
 
-function createBankingSystem(config: { system: any; parties: any }) {
+export function createBankingSystem(config: { system: any; parties: any }) {
   System.setSystem(config.system);
+
   config.parties.forEach((bank: BankConfig) => {
-    const newBank = createBank(bank.bank, bank.reserves);
-    // lookup[newBank.id] = JSON.parse(JSON.stringify(newBank));
+    const newBank = createBank(bank);
     lookup[newBank.id] = newBank;
-    state[newBank.id] = newBank;
     bank.customers?.forEach((customer) => {
-      const newCustomer = createCustomer(customer.customer, customer.reserves);
-      // lookup[newCustomer.id] = JSON.parse(JSON.stringify(newCustomer));
+      const newCustomer = createCustomer(customer);
       lookup[newCustomer.id] = newCustomer;
-      state[newCustomer.id] = newCustomer;
       CustomerService.openAccount(newCustomer, newBank);
       customer.initialDeposit &&
         CustomerService.deposit(newCustomer, newBank, customer.initialDeposit);
     });
   });
-  // if (config.system === "correspondent") {
-  //   for (let i = 0; i < Object.keys(lookup).length - 1; i++) {
-  //     for (let j = i + 1; j < Object.keys(lookup).length; j++) {
-  //       BankService.openAccount(
-  //         lookup[`${Object.keys(lookup)[i]}`],
-  //         lookup[`${Object.keys(lookup)[j]}`]
-  //       );
-  //       BankService.openAccount(
-  //         lookup[`${Object.keys(lookup)[j]}`],
-  //         lookup[`${Object.keys(lookup)[i]}`]
-  //       );
-  //     }
-  //   }
-  // }
-  config.parties.forEach((bank: BankConfig) => {
-    bank.customers.forEach((customer) => {
-      customer.transfers?.forEach((transfer) => {
-        const thisCustomer = lookup[customer.customer];
-        const payee = lookup[transfer.customer];
-        const amount = transfer.amount;
-        CustomerService.transfer(thisCustomer, payee, amount);
-      });
+
+  if (config.system === "centralbank") {
+    const centralbank = createCentralBank();
+    lookup[centralbank.id] = centralbank;
+    config.parties.forEach((bank: BankConfig) => {
+      CentralBankService.openAccount(
+        lookup[bank.id],
+        centralbank,
+        bank.initialDeposit
+      );
     });
+  }
+
+  if (config.system === "clearinghouse") {
+    const clearinghouse = createClearinghouse();
+    lookup[clearinghouse.id] = clearinghouse;
+    const bankKeys = Object.keys(lookup).filter((key) => key.includes("bank"));
+    for (let i = 0; i < bankKeys.length; i++) {
+      const amount = config.parties[i].initialDeposit || 1000;
+      ClearingHouseService.openAccount(
+        lookup[`${bankKeys[i]}`],
+        clearinghouse,
+        amount
+      );
+    }
+  }
+
+  if (config.system === "correspondent") {
+    const bankKeys = Object.keys(lookup).filter((key) => key.includes("bank"));
+    for (let i = 0; i < Object.keys(lookup).length - 1; i++) {
+      for (let j = i + 1; j < bankKeys.length; j++) {
+        BankService.openAccount(
+          lookup[`${bankKeys[i]}`],
+          lookup[`${bankKeys[j]}`],
+          200
+        );
+        BankService.openAccount(
+          lookup[`${bankKeys[j]}`],
+          lookup[`${bankKeys[i]}`],
+          200
+        );
+      }
+    }
+  }
+
+  config.parties.forEach((bank: BankConfig) => {
+    if (bank.customers) {
+      bank.customers.forEach((customer) => {
+        customer.transfers?.forEach((transfer) => {
+          const thisCustomer = lookup[customer.id];
+          const payee = lookup[transfer.id];
+          const amount = transfer.amount;
+          CustomerService.transfer(thisCustomer, payee, amount);
+        });
+      });
+    }
   });
 }
 
 const defaultSetup = lecture1StateConfig.defaultSetup;
 createBankingSystem(defaultSetup);
-const setupState = JSON.parse(JSON.stringify(state));
+const setupState = JSON.parse(JSON.stringify(lookup));
+console.log(setupState)
 export { setupState, defaultSetup };

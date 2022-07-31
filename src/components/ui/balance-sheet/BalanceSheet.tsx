@@ -3,7 +3,6 @@ import { colors } from "../../../config/colorPalette";
 import { capitalize } from "../../../helpers/parsers";
 import SideOfBalanceSheet from "./SideOfBalanceSheet";
 
-
 const BalanceSheetCard = styled(Card)(({ theme }) => ({
   flex: "0 0 auto",
   borderRadius: 5,
@@ -37,7 +36,7 @@ const BalanceSheet: React.FunctionComponent<{
             color: colors.balanceSheetsTextColor,
           }}
         >
-          {capitalize(party.id)}
+          {party.name ? capitalize(party.name) : capitalize(party.id)}
         </Typography>
       </CardContent>
       <Box

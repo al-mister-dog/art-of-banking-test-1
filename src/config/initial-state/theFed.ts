@@ -3,23 +3,23 @@ export const theFedState = {
     system: "centralbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 100 }],
+            transfers: [{ id: "customer2", amount: 100 }],
           },
         ],
         initialDeposit: 0,
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 0,
           },
@@ -28,10 +28,10 @@ export const theFedState = {
         reserves: 100,
       },
       {
-        bank: "bank3",
+        id: "bank3",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 0,
           },
@@ -45,22 +45,22 @@ export const theFedState = {
     system: "centralbank",
     parties: [
       {
-        bank: "bank1",
+        id: "bank1",
         customers: [
           {
-            customer: "customer1",
+            id: "customer1",
             reserves: 100,
             initialDeposit: 50,
-            transfers: [{ customer: "customer2", amount: 100 }],
+            transfers: [{ id: "customer2", amount: 100 }],
           },
         ],
         reserves: 0,
       },
       {
-        bank: "bank2",
+        id: "bank2",
         customers: [
           {
-            customer: "customer2",
+            id: "customer2",
             reserves: 100,
             initialDeposit: 0,
           },
@@ -68,15 +68,55 @@ export const theFedState = {
         reserves: 100,
       },
       {
-        bank: "bank3",
+        id: "bank3",
         customers: [
           {
-            customer: "customer3",
+            id: "customer3",
             reserves: 100,
             initialDeposit: 0,
           },
         ],
         reserves: 100,
+      },
+    ],
+  },
+  mortgages: {
+    system: "centralbank",
+    parties: [
+      {
+        id: "bank1",
+        name: "Citibank",
+        customers: [
+          {
+            id: "customer1",
+            name: "me",
+            initialDeposit: 0,
+            reserves: 0,
+            mortgages: 500000,
+          },
+        ],
+        initialDeposit: 250000,
+        reserves: 0,
+      },
+      {
+        id: "bank2",
+        name: "HSBC",
+        initialDeposit: 250000,
+        reserves: 250000,
+      },
+      {
+        id: "bank3",
+        name: "Chase",
+        customers: [
+          {
+            id: "customer2",
+            name: "you",
+            reserves: 0,
+            initialDeposit: 0,
+          },
+        ],
+        initialDeposit: 250000,
+        reserves: 250000,
       },
     ],
   },

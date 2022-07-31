@@ -26,7 +26,7 @@ export const fundamentals = {
       `A balance sheet is a T shaped graph that has two sides. One side consists
       of assets, and the other side consists of liabilities. Assets are things that
       you own, like money or a car, and liabilities are things that you
-      owe to someone else, which could also be money or a mortgage etc.
+      owe to someone else, which could also be money or a mortgages etc.
       Please note that in this example the bank's liabilities are 'deposits' and
       the customer's assets are also 'deposits'. Both the bank and the customer have
       cash as an assets, which counts towards their reserves, but the customer's cash 
@@ -420,36 +420,35 @@ export const centralbank = {
     take a loan out if that was the rate?`,
   },
   step4: {
-    lectureTitle: `Clearing House`,
-    title: `Correspondent Banking`,
+    lectureTitle: `The Fed`,
+    title: `Funding a Mortgage`,
     paragraphs: [
-      `Instead of transferring reserves for each order of payment, suppose that each day each
-      bank collects “due tos” and “due froms” with respect to every other bank. 
-      At the end of the day, each bank nets the payments to each other bank. If Bank 1 owes
-      Bank 2 $50 and Bank 2 owes Bank 1 $50, the net will be zero. And if Bank 1 owes Bank 2
-      $50 and Bank 2 owes Bank 1 $30, the net will be $20 owed to Bank 2.`,
-      `Further, instead of settling these payments in gold or cash, each bank could simply 
-      have an account with every other bank. These are called correspondent accounts, and 
-      are in effect a swap of IOUs. Bank 1 owes deposits to Bank 2 and Bank 2 owes deposits
-      to Bank 1. Now, if Bank 1 owes Bank 2, Bank 1 can pay Bank 2 by drawing on balances held 
-      at Bank 2, or by increasing the balance held at Bank 1 to Bank 2’s credit. `,
-      `Regarding settling payments via bank deposit accounts there are two options. Suppose Bank 1 owes Bank 2.
-      Bank 1 can decrease Bank 2's liabilities to Bank 1, which would also decrease Bank 1's assets 
-      from Bank 2. Alternatively Bank 1 can increase Bank 2's assets from Bank 1, which would also
-      increase Bank 1's liabilities to Bank 2. In the first case total deposits fall (debiting) and 
-      in the second case total deposits increase (crediting). Historically the bigger more central 
-      bank will be credited by the smaller less central bank.`,
-      `The invention of correspondent banking amounts to moving from a money payment
-      system to a credit payment system between banks. Note that, since the correspondent system is a
-      credit system, we are not constrained by the quantity of gold, only by the various bi-lateral credit
-      limits. One can imagine an entire banking system using these book entries to clear bi-lateral net
-      payments at the end of the day. But there is an even better way, which we will look at in
-      the next step.
+      `The funding of a mortgage loan involves banks going into the Fed Funds market to fund 
+      its customers purchasing properties. Imagine I want to buy a house from you. I will do this
+      by getting a mortgage loan from my bank (Citibank). We swap IOUs; Citibank promises deposits
+      to make my purchase and I promise to pay a mortgage loan to Citibank after x number of years.
+      Then I use these deposits to transfer the money to you in return for the deeds of your property.`,
+      `Behind the scenes there is a lot going on. As we have seen in previous lessons, transfers 
+      between customers of different banks involves those banks oweing each other money. Citibank 
+      may not have enough deposits to cover your transfer. In this case Citibank will need to require a Fed
+      Funds loan from another bank (let say HSBC). Once the reserves are in Citibank's account,
+      I can go ahead and transfer the money to your bank account (you bank at Chase). This will all
+      happen super quickly and under watchful eyes (I wouldn't just be able to cash out the mortgage
+      loan and skip the country).`,
+      `Now lets imagine at the beginning of the day that HSBC did not have the reserves to make a 
+      loan to Citibank. Then it could aqquire reserves by taking a loan out from Chase. Strange as it
+      sounds, in this scenario, my bank could have funded its payment to your bank with your own
+      banks reserves! Such is the alchemy of banking.`,
+      `One other thing to take note of is the role that HSBC has taken in this transaction. HSBC has
+      become a facilitator of a transaction between two other banks. HSBC is buying and selling money
+      in order to facilitate this payment. This role is called the Dealer Function, with HSBC being
+      the Dealer between two banks. We will look more closeley at the Dealer Function in the next lesson.
       `,
     ],
-    assignment: `Assignment: There are two banks each with two customers who have made various transfers.
-    One bank owes another bank. Net the payments and settle using corresponding accounts. Corresponding
-    accounts contain "Bank Deposits".`,
+    assignment: `Assignment: I have just taken out a mortgage loan to pay you for a house. Make sure 
+    my bank (Citibank) has enough funds to cover this transaction, by taking a loan out with HSBC, and get me
+    to transfer funds to your bank account (with Chase). For extra credit, you could start the transaction by getting HSBC to 
+    acquire funds from Chase before lending to Citibank.`,
   },
   step5: {
     lectureTitle: `Clearing House`,
