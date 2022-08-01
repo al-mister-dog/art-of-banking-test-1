@@ -52,7 +52,7 @@ function createBank(bank: any) {
   return newBank;
 }
 
-function createCustomer(customer: any) {
+export function createCustomer(customer: any) {
   const newCustomer: IBank = {
     id: customer.id,
     type: "customer",

@@ -10,6 +10,7 @@ export interface IntroStep {
 
 export interface Step {
   title: string;
+  playground?: boolean;
   overdraft: boolean;
   credit: boolean;
   constraint: boolean;

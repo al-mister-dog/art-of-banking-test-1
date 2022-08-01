@@ -3,10 +3,11 @@ import { RootState } from "../../app/store";
 import { lookup } from "../../domain/lookupTables";
 import { IBank } from "../../domain/types";
 import { setupState } from "./initialState";
-import { createBankingSystem } from "../../helpers/createParties";
+import { createBankingSystem, createCustomer } from "../../helpers/createParties";
 import { CentralBankService, CustomerService } from "../../domain/services";
 import { BankService } from "../../domain/services";
 import { PaymentMethods } from "../../domain/methods";
+
 
 interface BankState {
   [index: string]: IBank;
@@ -98,11 +99,22 @@ export const lecturesSlice = createSlice({
       lecturesSlice.caseReducers.update(state);
     },
     customerOpenAccount: (state, { payload }) => {
-      const {p1, p2, amt} = payload
+      const { p1, p2, amt } = payload;
       CustomerService.openAccount(lookup[p1.id], lookup[p2.id]);
       CustomerService.deposit(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.update(state);
     },
+    createNewCustomer: (state, { payload }) => {
+      const { name, cash } = payload;
+      const customer = {
+        id: name,
+        name: name,
+        reserves: cash,
+      };
+      createCustomer(customer);
+      lecturesSlice.caseReducers.update(state);
+    },
+
     setState: (state, { payload }) => {
       lecturesSlice.caseReducers.clearLookup();
       createBankingSystem(payload.setup);
@@ -149,6 +161,7 @@ export const {
   settleDues,
   chNetDues,
   setState,
+  createNewCustomer,
 } = lecturesSlice.actions;
 
 export const selectParties = (state: RootState) => state.partiesLectures;

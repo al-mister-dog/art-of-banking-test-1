@@ -24,6 +24,7 @@ import CentralBankCredit from "../../../../ui/charts/CentralBankCredit";
 import FedFundsRateSlider from "../../../../ui/charts/FedFundsRateSlider";
 import ReserveRequirementSlider from "../../../../ui/charts/ReserveRequirementSlider";
 import TotalCreditChart from "../../../../ui/charts/TotalCredit";
+import CreateCustomer from "../../../../ui/CreateCustomer";
 
 const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -65,6 +66,7 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
       {config.credit && !config.parties.includes("centralbank") && (
         <TotalCreditChart />
       )}
+      {config.playground && (<CreateCustomer />)}
     </Box>
   );
 };

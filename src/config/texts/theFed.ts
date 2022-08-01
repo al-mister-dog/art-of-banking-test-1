@@ -153,4 +153,14 @@ export const theFedText = {
     and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
     Then settle dues and see what happens to the banks' certificate accounts.`,
   },
+  step6: {
+    lectureTitle: `Clearing House`,
+    title: `Sand Box`,
+    paragraphs: [
+      ``,
+    ],
+    assignment: `Below are banks and customers who have done a day of trading and are now ready to net
+    and settle dues with the clearinghouse. Net dues at the Clearing House and follow who owes who. 
+    Then settle dues and see what happens to the banks' certificate accounts.`,
+  },
 };

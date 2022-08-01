@@ -4,6 +4,7 @@ import ReserveRequirementSlider from "../../../../ui/charts/ReserveRequirementSl
 import TotalCreditChart from "../../../../ui/charts/TotalCredit";
 import CentralBankCredit from "../../../../ui/charts/CentralBankCredit";
 import FedFundsRateSlider from "../../../../ui/charts/FedFundsRateSlider";
+import CreateCustomer from "../../../../ui/CreateCustomer";
 
 const NotificationsToolbar: React.FunctionComponent<{ config?: any }> = ({
   config,
@@ -27,6 +28,7 @@ const NotificationsToolbar: React.FunctionComponent<{ config?: any }> = ({
       {config.credit && !config.parties.includes("centralbank") && (
         <TotalCreditChart />
       )}
+      {config.playground && (<CreateCustomer />)}
     </Box>
   );
 };
