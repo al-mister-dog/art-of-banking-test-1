@@ -172,5 +172,4 @@ export function createBankingSystem(config: { system: any; parties: any }) {
 const defaultSetup = fundamentalsState.defaultSetup;
 createBankingSystem(defaultSetup);
 const setupState = JSON.parse(JSON.stringify(lookup));
-console.log(setupState)
 export { setupState, defaultSetup };

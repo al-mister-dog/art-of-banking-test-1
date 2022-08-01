@@ -7,6 +7,7 @@ import Board from "./Board";
 import Notifications from "./toolbars/NotificationsToolbar";
 import usePartyRows from "../../../../helpers/usePartyRows";
 import Introduction from "../../../ui/text/Introduction";
+import { colors } from "../../../../config/colorPalette";
 
 const IntroContainer = styled("div")(({ theme }) => ({
   marginTop: "50px",
@@ -36,9 +37,14 @@ const InterfaceContainer = styled("div")(({ theme }) => ({
   display: "flex",
   height: "60vh",
   marginBottom: "20px",
+  paddingTop: "25px",
 }));
 
 const BoardContainer = styled("div")(({ theme }) => ({
+  border: `1px solid #dad8be`,
+  borderRadius: "5px",
+  boxShadow: `inset 2px 4px 5px #dad8be`,
+  marginLeft: "20px",
   [theme.breakpoints.up("mobile")]: {
     width: "50%",
   },
@@ -92,6 +98,8 @@ const Index: React.FunctionComponent<{
         sx={{
           marginTop: "50px",
           marginBottom: "50px",
+          paddingBottom: "50px",
+          // backgroundColor: "#fcfbf3",
         }}
       >
         <InterfaceContainer>

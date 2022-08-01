@@ -48,8 +48,10 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "space-around",
         alignItems: "flex-start",
+        padding: "20px",
+        
       }}
     >
       {config.constraint && <ReserveRequirementSlider />}

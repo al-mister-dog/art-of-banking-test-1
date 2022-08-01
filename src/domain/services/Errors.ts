@@ -11,7 +11,7 @@ export class ErrorsService {
     selectedValueAmount: number
   ) {
     if (systemCheck === "centralbank") {
-      console.log("HERE")
+
       if (
         selectedValueAmount < 1 ||
         selectedValueTo === null ||

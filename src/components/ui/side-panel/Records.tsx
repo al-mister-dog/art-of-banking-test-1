@@ -12,7 +12,7 @@ const Records = ({ selected }: { selected: IBank }) => {
       sx={{ display: "flex", flexDirection: "column-reverse", margin: "auto" }}
     >
       {selected.records.map((record: any, index: number) => {
-        console.log(record)
+
         const {
           amount,
           balance,

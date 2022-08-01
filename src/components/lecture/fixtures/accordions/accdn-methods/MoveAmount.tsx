@@ -152,7 +152,7 @@ const MoveFixedAmount: React.FunctionComponent<{
             (account) => account.id === selected.id
           );
         } else if (dispatchMethod === "repayLoan") {
-          console.log(selectedValueTo);
+          
           selectedAmount = selectedValueTo.assets.bankLoans.find(
             (account) => account.id === selected.id
           );
