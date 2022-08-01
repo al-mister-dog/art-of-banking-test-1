@@ -52,41 +52,94 @@ const MoveFixedAmount: React.FunctionComponent<{
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(``);
 
+  interface Errors {
+    transfer: any;
+    withdraw: any;
+  }
+  const errors = {
+    deposit(amount: number) {
+      if (amount > selected.reserves) {
+        setError(true);
+        setErrorMessage(`You don't have enough cash`);
+      } else {
+        setError(false);
+        setErrorMessage(``);
+      }
+    },
+    transfer(amount: number) {
+      if (
+        !config.credit &&
+        amount > selected.assets.customerDeposits[0].amount
+      ) {
+        setError(true);
+        setErrorMessage(`Your bank does not allow overdrafts`);
+      } else {
+        setError(false);
+        setErrorMessage(``);
+      }
+    },
+    withdraw(amount: number) {
+      if (config.system === "centralbank" && selectedValueTo) {
+        const reserves = selectedValueTo.assets.bankDeposits[0].amount;
+        if (
+          selectedValueTo &&
+          config.constraint &&
+          reserves - amount <= (reserves / 100) * reservePercentage
+        ) {
+          setError(true);
+          setErrorMessage(`Your bank has insufficent reserve requirements`);
+        } else if (selectedValueTo !== null && amount > reserves) {
+          setError(true);
+          setErrorMessage(`Your bank has insufficent reserves`);
+        } else {
+          setError(false);
+          setErrorMessage(``);
+        }
+      } else {
+        if (
+          selectedValueTo &&
+          config.constraint &&
+          selectedValueTo.reserves - amount <=
+            (selectedValueTo.reserves / 100) * reservePercentage
+        ) {
+          setError(true);
+          setErrorMessage(`Your bank has insufficent reserve requirements`);
+        } else if (
+          selectedValueTo !== null &&
+          amount > selectedValueTo.reserves
+        ) {
+          setError(true);
+          setErrorMessage(`Your bank has insufficent reserves`);
+        } else {
+          setError(false);
+          setErrorMessage(``);
+        }
+      }
+    },
+    createLoan(amount: number) {
+      //if exception eg if bank can go into its own overdraft
+      setError(false);
+      setErrorMessage(``);
+    },
+    bankTransfer(amount: number) {
+      //TODO
+      setError(false);
+      setErrorMessage(``);
+    }
+  };
   const handleChangeAmount = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const amount = parseInt(event.target.value);
-    if (selectedValueTo) {
-      // console.log(selectedValueTo.reserves);
+    let amount = parseInt(event.target.value);
+    let key = dispatchMethod as keyof Errors;
+    if (isNaN(amount)) {
+      amount = 0
     }
     if (amount <= 0) {
       setError(true);
       setErrorMessage(``);
-    } else if (
-      dispatchMethod === "transfer" &&
-      !config.credit &&
-      amount > selected.assets.customerDeposits[0].amount
-    ) {
-      setError(true);
-      setErrorMessage(`Your bank does not allow overdrafts`);
-    } else if (
-      selectedValueTo &&
-      dispatchMethod === "withdraw" &&
-      config.constraint &&
-      selectedValueTo.reserves - amount <=
-        (selectedValueTo.reserves / 100) * reservePercentage
-    ) {
-      setError(true);
-      setErrorMessage(`Your bank has insufficent reserve requirements`);
-    } else if (
-      dispatchMethod === "withdraw" &&
-      selectedValueTo !== null &&
-      amount > selectedValueTo.reserves
-    ) {
-      setError(true);
-      setErrorMessage(`Your bank has insufficent reserves`);
     } else {
-      setError(false);
-      setErrorMessage(``);
+      errors[key](amount);
     }
+
     setSelectedValueAmount(amount);
   };
 
@@ -198,6 +251,7 @@ const MoveFixedAmount: React.FunctionComponent<{
           setAccordionExpanded={setAccordionExpanded}
           dispatchMethod={dispatchMethod}
           btnText="Ok"
+          variable={true}
         />
       </div>
     </Box>

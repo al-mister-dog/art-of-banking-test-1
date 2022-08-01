@@ -36,10 +36,8 @@ const Dues: React.FunctionComponent<{
 }) => {
   const dispatch = useAppDispatch();
   const parties = useAppSelector(selectParties);
-  const [selectedParties] = useParties(parties, selected, filterMethod)
-  const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(
-    null
-  );
+  const [selectedParties] = useParties(parties, selected, filterMethod);
+  const [selectedValueTo, setSelectedValueParty] = useState<IBank | null>(null);
   const [selectedValueAmount, setSelectedValueAmount] = useState<string>("");
 
   const [openTo, setOpenTo] = useState(false);
@@ -56,14 +54,14 @@ const Dues: React.FunctionComponent<{
     },
   };
 
-  // function handleDispatch() {
-  //   if (dispatchMethod === "settleDues") {
-  //     dispatchMethods.settleDues();
-  //   } else if (dispatchMethod === "netClearinghouseDues") {
-  //     dispatchMethods.netClearinghouseDues();
-  //   }
-  //   setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
-  // }
+  function onClickOk() {
+    if (dispatchMethod === "settleDues") {
+      dispatchMethods.settleDues();
+    } else if (dispatchMethod === "netClearinghouseDues") {
+      dispatchMethods.netClearinghouseDues();
+    }
+    setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
+  }
 
   const handleClickOpenTo = () => {
     setOpenTo(true);
@@ -75,7 +73,10 @@ const Dues: React.FunctionComponent<{
 
   const onClickNetDues = () => {
     dispatchMethods.netCorrespondingDues();
-    setAccordionExpanded({ ...accordionExpanded, [dispatchMethod as keyof Accordions]: false });
+    setAccordionExpanded({
+      ...accordionExpanded,
+      [dispatchMethod as keyof Accordions]: false,
+    });
   };
 
   useEffect(() => {
@@ -205,15 +206,13 @@ const Dues: React.FunctionComponent<{
           })}
         </Box>
       </Box>
-      <DispatchButton
-          selected={selected}
-          selectedValueTo={selectedValueTo}
-          setSelectedValueParty={setSelectedValueParty}
-          accordionExpanded={accordionExpanded}
-          setAccordionExpanded={setAccordionExpanded}
-          dispatchMethod={dispatchMethod}
-          btnText="Ok"
-        />
+      <CardButton
+        variant="contained"
+        sx={{ marginTop: "10px" }}
+        onClick={onClickOk}
+      >
+        {btnText}
+      </CardButton>
     </Box>
   );
 };

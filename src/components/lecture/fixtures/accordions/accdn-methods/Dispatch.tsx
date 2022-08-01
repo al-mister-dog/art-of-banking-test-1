@@ -25,9 +25,10 @@ const DispatchButton: React.FunctionComponent<{
   accordionExpanded: Accordions;
   setAccordionExpanded: (v: Accordions) => void;
   dispatchMethod: keyof Dispatches;
-  selectedValueAmount?: number;
-  setSelectedValueAmount?: (v: number) => void;
+  selectedValueAmount: number;
+  setSelectedValueAmount: (v: number) => void;
   btnText?: string;
+  variable?: boolean;
 }> = ({
   selected,
   selectedValueTo,
@@ -115,7 +116,7 @@ const DispatchButton: React.FunctionComponent<{
     }
   };
 
-  return setSelectedValueAmount && selectedValueAmount ? (
+  return (
     <CardButton
       variant="contained"
       disabled={
@@ -123,14 +124,6 @@ const DispatchButton: React.FunctionComponent<{
         selectedValueTo === null ||
         !selectedValueAmount
       }
-      sx={{ marginTop: "10px" }}
-      onClick={onClickOk}
-    >
-      {btnText}
-    </CardButton>
-  ) : (
-    <CardButton
-      variant="contained"
       sx={{ marginTop: "10px" }}
       onClick={onClickOk}
     >
