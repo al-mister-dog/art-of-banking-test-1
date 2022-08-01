@@ -21,6 +21,19 @@ const features = (
   config?: any
 ): FeatureObjects => {
   return {
+    openAccount: (
+      <MoveAmount
+        variable
+        selected={selected}
+        accordionExpanded={accordionExpanded}
+        setAccordionExpanded={setAccordionExpanded}
+        filterMethod={findAllBanks}
+        method="Open Account"
+        btnText="with..."
+        dispatchMethod="openAccount"
+        config={config}
+      />
+    ),
     deposit: (
       <MoveAmount
         variable
@@ -73,13 +86,13 @@ const features = (
         config={config}
       />
     ),
-    openAccount: (
-      <OpenAccountCard
-        selected={selected}
-        accordionExpanded={accordionExpanded}
-        setAccordionExpanded={setAccordionExpanded}
-      />
-    ),
+    // openAccount: (
+    //   <OpenAccountCard
+    //     selected={selected}
+    //     accordionExpanded={accordionExpanded}
+    //     setAccordionExpanded={setAccordionExpanded}
+    //   />
+    // ),
     netDues: (
       <Dues
         selected={selected}

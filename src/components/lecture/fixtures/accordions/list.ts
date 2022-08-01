@@ -9,6 +9,17 @@ export default function accordionList(
   let partyOperations: PartyOps = {
     customer: [
       {
+        accordionKey: "openAccount",
+        accordionTitle: "Open Account",
+        institutions: ["none"],
+        component: features(
+          selected,
+          accordionExpanded,
+          setAccordionExpanded,
+          config
+        ).openAccount,
+      },
+      {
         accordionKey: "deposit",
         accordionTitle: "Deposit",
         institutions: ["none"],

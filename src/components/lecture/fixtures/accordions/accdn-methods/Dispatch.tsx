@@ -1,5 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../../../../../app/hooks";
 import {
+  customerOpenAccount,
   payBank,
   creditBankAccount,
   debitBankAccount,
@@ -45,6 +46,9 @@ const DispatchButton: React.FunctionComponent<{
   const { fedFundsRate } = useAppSelector(selectAuxilliary);
 
   const dispatchMethods = {
+    openAccount(payloadArgs: PayloadArguments) {
+      dispatch(customerOpenAccount(payloadArgs));
+    },
     deposit(payloadArgs: PayloadArguments) {
       dispatch(deposit(payloadArgs));
     },

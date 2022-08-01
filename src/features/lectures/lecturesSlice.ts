@@ -61,7 +61,12 @@ export const lecturesSlice = createSlice({
     },
     createLoan: (state, { payload }) => {
       const { p1, p2, amt, fedFundsRate } = payload;
-      CentralBankService.createLoan(lookup[p1.id], lookup[p2.id], amt, fedFundsRate);
+      CentralBankService.createLoan(
+        lookup[p1.id],
+        lookup[p2.id],
+        amt,
+        fedFundsRate
+      );
       lecturesSlice.caseReducers.update(state);
     },
     repayLoan: (state, { payload }) => {
@@ -90,6 +95,12 @@ export const lecturesSlice = createSlice({
     },
     settleDues: (state) => {
       PaymentMethods.settleDues();
+      lecturesSlice.caseReducers.update(state);
+    },
+    customerOpenAccount: (state, { payload }) => {
+      const {p1, p2, amt} = payload
+      CustomerService.openAccount(lookup[p1.id], lookup[p2.id]);
+      CustomerService.deposit(lookup[p1.id], lookup[p2.id], amt);
       lecturesSlice.caseReducers.update(state);
     },
     setState: (state, { payload }) => {
@@ -123,6 +134,7 @@ export const lecturesSlice = createSlice({
 });
 
 export const {
+  customerOpenAccount,
   deposit,
   withdraw,
   transfer,

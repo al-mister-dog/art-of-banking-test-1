@@ -9,7 +9,7 @@ import Amount from "./Amount";
 import { Box, Typography } from "@mui/material";
 import { Accordions, Dispatches } from "../types";
 import { IBank } from "../../../../../domain/types";
-import { capitalize } from "../../../../../helpers/parsers";
+import { capitalize, deCamelize } from "../../../../../helpers/parsers";
 import { colors } from "../../../../../config/colorPalette";
 import useParties from "../../../../../helpers/useParties";
 
@@ -79,7 +79,8 @@ const MoveFixedAmount: React.FunctionComponent<{
       }
     },
     withdraw(amount: number) {
-      if (config.system === "centralbank" && selectedValueTo) {
+      if (config.state.system === "centralbank" && selectedValueTo) {
+        console.log(12345);
         const reserves = selectedValueTo.assets.bankDeposits[0].amount;
         if (
           selectedValueTo &&
@@ -125,13 +126,18 @@ const MoveFixedAmount: React.FunctionComponent<{
       //TODO
       setError(false);
       setErrorMessage(``);
-    }
+    },
+    openAccount(amount: number) {
+      //TODO
+      setError(false);
+      setErrorMessage(``);
+    },
   };
   const handleChangeAmount = (event: React.ChangeEvent<HTMLInputElement>) => {
     let amount = parseInt(event.target.value);
     let key = dispatchMethod as keyof Errors;
     if (isNaN(amount)) {
-      amount = 0
+      amount = 0;
     }
     if (amount <= 0) {
       setError(true);
@@ -152,7 +158,6 @@ const MoveFixedAmount: React.FunctionComponent<{
             (account) => account.id === selected.id
           );
         } else if (dispatchMethod === "repayLoan") {
-          
           selectedAmount = selectedValueTo.assets.bankLoans.find(
             (account) => account.id === selected.id
           );
@@ -218,7 +223,13 @@ const MoveFixedAmount: React.FunctionComponent<{
           }}
         >
           <Typography variant="h6" sx={{ margin: 0.75 }}>
-            {selectedValueTo ? `${capitalize(selectedValueTo.id)}` : ` `}
+            {selectedValueTo
+              ? `${
+                  selectedValueTo.name
+                    ? `${deCamelize(selectedValueTo.name)}`
+                    : `${deCamelize(selectedValueTo.id)}`
+                }`
+              : ` `}
           </Typography>
           {variable ? (
             <Amount

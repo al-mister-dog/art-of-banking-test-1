@@ -3,6 +3,13 @@ interface Method {
 }
 
 const methodHelperTexts: Method = {
+  "Open Account": {
+    moreThanOne(arr: any[]) {
+      return arr.length > 0
+        ? `Find a Bank to Open Account With`
+        : `There are no banks`;
+    },
+  },
   "Receive Bank Payment": {
     moreThanOne(arr: any[]) {
       return arr.length > 0
