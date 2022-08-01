@@ -66,6 +66,7 @@ export class PaymentMethods {
     instruments: InstrumentKey[],
     records?: Partial<Record>
   ) {
+    console.log(a, b, amount, instruments, records)
     const [creditInstrument, debtInstrument] = instruments;
     const id = `${a.id}-${b.id}`;
     const account = a.balances[creditInstrument].find(

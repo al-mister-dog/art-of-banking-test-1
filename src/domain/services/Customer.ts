@@ -5,6 +5,7 @@ import {
   SystemMethods,
   partyFunctions,
 } from "../methods";
+import { systemCheck } from "../methods/System";
 import { RecordMethods } from "../methods/Record";
 import { IBank } from "../types";
 
@@ -38,8 +39,18 @@ export class CustomerService {
       ["customerDeposits", "customerOverdrafts"],
       record
     );
-    partyFunctions(a).increaseReserves(amount);
-    partyFunctions(b).decreaseReserves(amount);
+    if (systemCheck === "centralbank") {
+      partyFunctions(a).increaseReserves(amount);
+      PaymentMethods.debitAccount(
+        b,
+        lookup["centralbank"],
+        amount,
+        ["bankDeposits", "daylightOverdrafts"],
+        record
+      );
+    } else {
+      partyFunctions(b).decreaseReserves(amount);
+    }
   }
   private static automateTransferFromAccount(c: IBank) {
     const accountWithMostCash = c.balances.customerDeposits.sort(
@@ -120,7 +131,6 @@ export class CustomerService {
       ["customerDeposits", "customerOverdrafts"],
       recordB
     );
-
     if (bankA.id !== bankB.id) {
       SystemMethods.increaseDues(bankA, bankB, amount);
     }
@@ -202,7 +212,7 @@ export class CustomerService {
       amount
     );
     partyFunctions(b).createInstrument(a.id, "assets", "mortgages", amount);
-    RecordMethods.createCorrespondingRecords(a, b, "mortgage", amount)
+    RecordMethods.createCorrespondingRecords(a, b, "mortgage", amount);
     const recordA = RecordMethods.addToRecords(a, {
       transactionType: "Deposit",
       party: b.id,

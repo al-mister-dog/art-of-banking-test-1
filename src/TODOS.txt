@@ -33,6 +33,6 @@ add inflation and interest articles from trial of pyx: not done
 
 reorganize accordion functionality: not done
 
-sort out centralbank system customer withdraw
+sort out centralbank system customer withdraw (IMPORTANT)
 
 sort out records
