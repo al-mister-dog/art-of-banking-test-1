@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import PlayerTabs from "./Tabs";
 import { deCamelize } from "../../../../../helpers/parsers";
 import {colors} from "../../../../../config/colorPalette"
@@ -33,18 +33,7 @@ const Panel: React.FunctionComponent<{ config?: any; selected: any }> = ({
         >
           {selected.name ? deCamelize(selected.name) : deCamelize(selected.id)}
         </Typography>
-        <Typography
-          variant="h6"
-          align="left"
-          sx={{
-            marginTop: 4,
-            fontFamily: "Roboto",
-            fontWeight: "bold",
-            color: colors.darkMain,
-          }}
-        >
-          Cash: ${selected.reserves}
-        </Typography>
+        <Button variant="contained">Dashboard</Button>
       </Box>
       <PlayerTabs config={config} selected={selected} />
     </Box>

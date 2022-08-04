@@ -51,8 +51,9 @@ const ButtonAppBar: React.FunctionComponent<{ config?: any }> = ({
         display: "flex",
         justifyContent: "space-around",
         alignItems: "flex-start",
-        padding: "20px",
-        
+        margin: "20px",
+        border: `1px solid #dad8be`,
+        borderRadius: "5px",
       }}
     >
       {config.constraint && <ReserveRequirementSlider />}

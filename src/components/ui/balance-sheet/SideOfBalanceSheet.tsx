@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { colors } from "../../../config/colorPalette";
-import { capitalize, deCamelize } from "../../../helpers/parsers";
+import { capitalize, deCamelize, getPartyNameById } from "../../../helpers/parsers";
 
 const toolbarTextColor = colors.balanceSheetsTextColor;
 
@@ -76,7 +76,7 @@ const SideOfBalanceSheet: React.FunctionComponent<{
                         fontWeight: "bold",
                       }}
                     >
-                      <span>{account.id}: </span>
+                      <span>{getPartyNameById(account.id)}: </span>
                       <span>${account.amount}</span>
                     </Typography>
                   );
